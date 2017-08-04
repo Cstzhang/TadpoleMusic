@@ -9,10 +9,13 @@
 /* Begin PBXBuildFile section */
 		6DA06F821F341196009086E4 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DA06F811F341196009086E4 /* main.m */; };
 		6DA06F851F341196009086E4 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DA06F841F341196009086E4 /* AppDelegate.m */; };
-		6DA06F881F341196009086E4 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DA06F871F341196009086E4 /* ViewController.m */; };
-		6DA06F8B1F341196009086E4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6DA06F891F341196009086E4 /* Main.storyboard */; };
 		6DA06F8D1F341196009086E4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6DA06F8C1F341196009086E4 /* Assets.xcassets */; };
 		6DA06F901F341196009086E4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6DA06F8E1F341196009086E4 /* LaunchScreen.storyboard */; };
+		6DA06FAC1F345499009086E4 /* BaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DA06FAA1F345499009086E4 /* BaseViewController.m */; };
+		6DA06FAF1F3454CB009086E4 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DA06FAE1F3454CB009086E4 /* MainViewController.m */; };
+		6DA06FB31F3461CB009086E4 /* CommonMethods.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DA06FB21F3461CB009086E4 /* CommonMethods.m */; };
+		6DA06FB81F3473D0009086E4 /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DA06FB71F3473D0009086E4 /* HomeViewController.m */; };
+		6DA06FBB1F3473DB009086E4 /* MyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DA06FBA1F3473DB009086E4 /* MyViewController.m */; };
 		C301262EFF58C3E061D8450D /* libPods-TadpoleMusic.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CE0DCFCBB95E7EBAA7B4E76B /* libPods-TadpoleMusic.a */; };
 /* End PBXBuildFile section */
 
@@ -22,12 +25,19 @@
 		6DA06F811F341196009086E4 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		6DA06F831F341196009086E4 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		6DA06F841F341196009086E4 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		6DA06F861F341196009086E4 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		6DA06F871F341196009086E4 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
-		6DA06F8A1F341196009086E4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		6DA06F8C1F341196009086E4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		6DA06F8F1F341196009086E4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		6DA06F911F341196009086E4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		6DA06FA91F345499009086E4 /* BaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseViewController.h; sourceTree = "<group>"; };
+		6DA06FAA1F345499009086E4 /* BaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseViewController.m; sourceTree = "<group>"; };
+		6DA06FAD1F3454CB009086E4 /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
+		6DA06FAE1F3454CB009086E4 /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
+		6DA06FB11F3461CB009086E4 /* CommonMethods.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommonMethods.h; sourceTree = "<group>"; };
+		6DA06FB21F3461CB009086E4 /* CommonMethods.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommonMethods.m; sourceTree = "<group>"; };
+		6DA06FB61F3473D0009086E4 /* HomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeViewController.h; sourceTree = "<group>"; };
+		6DA06FB71F3473D0009086E4 /* HomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeViewController.m; sourceTree = "<group>"; };
+		6DA06FB91F3473DB009086E4 /* MyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyViewController.h; sourceTree = "<group>"; };
+		6DA06FBA1F3473DB009086E4 /* MyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyViewController.m; sourceTree = "<group>"; };
 		709DFB86E9835E018CE23D66 /* Pods-TadpoleMusic.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TadpoleMusic.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TadpoleMusic/Pods-TadpoleMusic.debug.xcconfig"; sourceTree = "<group>"; };
 		CE0DCFCBB95E7EBAA7B4E76B /* libPods-TadpoleMusic.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-TadpoleMusic.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -82,11 +92,12 @@
 		6DA06F7F1F341196009086E4 /* TadpoleMusic */ = {
 			isa = PBXGroup;
 			children = (
+				6DA06F9A1F3427CB009086E4 /* MainController */,
+				6DA06F9C1F3427DD009086E4 /* Expand */,
+				6DA06F971F3427CB009086E4 /* Base */,
+				6DA06F981F3427CB009086E4 /* Define */,
 				6DA06F831F341196009086E4 /* AppDelegate.h */,
 				6DA06F841F341196009086E4 /* AppDelegate.m */,
-				6DA06F861F341196009086E4 /* ViewController.h */,
-				6DA06F871F341196009086E4 /* ViewController.m */,
-				6DA06F891F341196009086E4 /* Main.storyboard */,
 				6DA06F8C1F341196009086E4 /* Assets.xcassets */,
 				6DA06F8E1F341196009086E4 /* LaunchScreen.storyboard */,
 				6DA06F911F341196009086E4 /* Info.plist */,
@@ -101,6 +112,76 @@
 				6DA06F811F341196009086E4 /* main.m */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		6DA06F971F3427CB009086E4 /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				6DA06FA91F345499009086E4 /* BaseViewController.h */,
+				6DA06FAA1F345499009086E4 /* BaseViewController.m */,
+			);
+			path = Base;
+			sourceTree = "<group>";
+		};
+		6DA06F981F3427CB009086E4 /* Define */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Define;
+			sourceTree = "<group>";
+		};
+		6DA06F9A1F3427CB009086E4 /* MainController */ = {
+			isa = PBXGroup;
+			children = (
+				6DA06FB41F3473BC009086E4 /* Home */,
+				6DA06FB51F3473BC009086E4 /* My */,
+				6DA06FA31F34545F009086E4 /* Base */,
+			);
+			path = MainController;
+			sourceTree = "<group>";
+		};
+		6DA06F9C1F3427DD009086E4 /* Expand */ = {
+			isa = PBXGroup;
+			children = (
+				6DA06FB01F3461C2009086E4 /* Tools */,
+			);
+			path = Expand;
+			sourceTree = "<group>";
+		};
+		6DA06FA31F34545F009086E4 /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				6DA06FAD1F3454CB009086E4 /* MainViewController.h */,
+				6DA06FAE1F3454CB009086E4 /* MainViewController.m */,
+			);
+			path = Base;
+			sourceTree = "<group>";
+		};
+		6DA06FB01F3461C2009086E4 /* Tools */ = {
+			isa = PBXGroup;
+			children = (
+				6DA06FB11F3461CB009086E4 /* CommonMethods.h */,
+				6DA06FB21F3461CB009086E4 /* CommonMethods.m */,
+			);
+			path = Tools;
+			sourceTree = "<group>";
+		};
+		6DA06FB41F3473BC009086E4 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				6DA06FB61F3473D0009086E4 /* HomeViewController.h */,
+				6DA06FB71F3473D0009086E4 /* HomeViewController.m */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		6DA06FB51F3473BC009086E4 /* My */ = {
+			isa = PBXGroup;
+			children = (
+				6DA06FB91F3473DB009086E4 /* MyViewController.h */,
+				6DA06FBA1F3473DB009086E4 /* MyViewController.m */,
+			);
+			path = My;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -167,7 +248,6 @@
 			files = (
 				6DA06F901F341196009086E4 /* LaunchScreen.storyboard in Resources */,
 				6DA06F8D1F341196009086E4 /* Assets.xcassets in Resources */,
-				6DA06F8B1F341196009086E4 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -226,23 +306,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6DA06F881F341196009086E4 /* ViewController.m in Sources */,
 				6DA06F851F341196009086E4 /* AppDelegate.m in Sources */,
+				6DA06FB31F3461CB009086E4 /* CommonMethods.m in Sources */,
+				6DA06FAC1F345499009086E4 /* BaseViewController.m in Sources */,
+				6DA06FAF1F3454CB009086E4 /* MainViewController.m in Sources */,
 				6DA06F821F341196009086E4 /* main.m in Sources */,
+				6DA06FB81F3473D0009086E4 /* HomeViewController.m in Sources */,
+				6DA06FBB1F3473DB009086E4 /* MyViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		6DA06F891F341196009086E4 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				6DA06F8A1F341196009086E4 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		6DA06F8E1F341196009086E4 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
