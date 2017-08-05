@@ -9,31 +9,38 @@
 #import "HomeViewController.h"
 
 @interface HomeViewController ()
+/** 提示语label */
+@property (nonatomic,strong) UILabel * tipsLabel;
+/** 监听的Button */
+@property (nonatomic,strong) UIButton * searchBtn;
+/** 音乐类型button */
+@property (nonatomic,strong) UIButton * musicTypeBtn;
+/** 哼唱类型button */
+@property (nonatomic,strong) UIButton * hummingTypeBtn;
 
 @end
 
 @implementation HomeViewController
+#pragma mark - **************** 懒加载
 
+
+#pragma mark - **************** 初始化
+//设置提示title
+
+
+//设置识别按钮
+
+//设置 音乐/哼唱切换按钮
+
+//添加雷达效果
+
+#pragma mark - **************** 什么周期
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    // Do any additional setup after loading the view.
     self.view.backgroundColor = [UIColor greenColor];
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

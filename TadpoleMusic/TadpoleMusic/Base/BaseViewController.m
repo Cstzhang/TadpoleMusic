@@ -19,6 +19,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    //设置头部样式，透明头部
     [self setBaseNav];
     //取消默认缩进
     self.automaticallyAdjustsScrollViewInsets = NO;

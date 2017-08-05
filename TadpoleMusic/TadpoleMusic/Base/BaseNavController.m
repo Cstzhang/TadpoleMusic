@@ -17,7 +17,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     //设置titile 字体
-    [self.navigationBar setTitleTextAttributes:@{NSFontAttributeName:[UIFont systemFontOfSize:18],NSForegroundColorAttributeName:[UIColor whiteColor]}];
+    [self.navigationBar setTitleTextAttributes:@{NSFontAttributeName:[UIFont systemFontOfSize:16],NSForegroundColorAttributeName:[UIColor whiteColor]}];
 }
 
 //统一样式
@@ -48,7 +48,7 @@
     }
 }
 
-
+//统一返回按钮事件
 - (void)backBarButtonItemAction
 {
     [self.navigationItem setHidesBackButton:NO];
