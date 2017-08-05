@@ -1,24 +1,24 @@
 //
-//  MyViewController.m
+//  HotListViewController.m
 //  TadpoleMusic
 //
-//  Created by zhangzb on 2017/8/4.
+//  Created by zhangzb on 2017/8/5.
 //  Copyright © 2017年 zhangzb. All rights reserved.
 //
 
-#import "MyViewController.h"
+#import "HotListViewController.h"
 
-@interface MyViewController ()
+@interface HotListViewController ()
 
 @end
 
-@implementation MyViewController
+@implementation HotListViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self.navigationItem setTitle:@"我的搜索"];
     // Do any additional setup after loading the view.
-    self.view.backgroundColor = [UIColor yellowColor];
+    self.view.backgroundColor = [UIColor redColor];
 }
 
 - (void)didReceiveMemoryWarning {

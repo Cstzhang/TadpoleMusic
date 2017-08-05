@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6D028EC11F35BD35000E0935 /* HotListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D028EC01F35BD35000E0935 /* HotListViewController.m */; };
+		6D028EC81F35C9D4000E0935 /* BaseNavController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D028EC71F35C9D4000E0935 /* BaseNavController.m */; };
 		6DA06F821F341196009086E4 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DA06F811F341196009086E4 /* main.m */; };
 		6DA06F851F341196009086E4 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DA06F841F341196009086E4 /* AppDelegate.m */; };
 		6DA06F8D1F341196009086E4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6DA06F8C1F341196009086E4 /* Assets.xcassets */; };
@@ -21,6 +23,10 @@
 
 /* Begin PBXFileReference section */
 		03A2AD41D0941161208EBF30 /* Pods-TadpoleMusic.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TadpoleMusic.release.xcconfig"; path = "Pods/Target Support Files/Pods-TadpoleMusic/Pods-TadpoleMusic.release.xcconfig"; sourceTree = "<group>"; };
+		6D028EBF1F35BD35000E0935 /* HotListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HotListViewController.h; sourceTree = "<group>"; };
+		6D028EC01F35BD35000E0935 /* HotListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HotListViewController.m; sourceTree = "<group>"; };
+		6D028EC61F35C9D4000E0935 /* BaseNavController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseNavController.h; sourceTree = "<group>"; };
+		6D028EC71F35C9D4000E0935 /* BaseNavController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseNavController.m; sourceTree = "<group>"; };
 		6DA06F7D1F341196009086E4 /* TadpoleMusic.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TadpoleMusic.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6DA06F811F341196009086E4 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		6DA06F831F341196009086E4 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -71,6 +77,15 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		6D028EBE1F35BD20000E0935 /* HotList */ = {
+			isa = PBXGroup;
+			children = (
+				6D028EBF1F35BD35000E0935 /* HotListViewController.h */,
+				6D028EC01F35BD35000E0935 /* HotListViewController.m */,
+			);
+			path = HotList;
+			sourceTree = "<group>";
+		};
 		6DA06F741F341196009086E4 = {
 			isa = PBXGroup;
 			children = (
@@ -119,6 +134,8 @@
 			children = (
 				6DA06FA91F345499009086E4 /* BaseViewController.h */,
 				6DA06FAA1F345499009086E4 /* BaseViewController.m */,
+				6D028EC61F35C9D4000E0935 /* BaseNavController.h */,
+				6D028EC71F35C9D4000E0935 /* BaseNavController.m */,
 			);
 			path = Base;
 			sourceTree = "<group>";
@@ -135,6 +152,7 @@
 			children = (
 				6DA06FB41F3473BC009086E4 /* Home */,
 				6DA06FB51F3473BC009086E4 /* My */,
+				6D028EBE1F35BD20000E0935 /* HotList */,
 				6DA06FA31F34545F009086E4 /* Base */,
 			);
 			path = MainController;
@@ -306,6 +324,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6D028EC11F35BD35000E0935 /* HotListViewController.m in Sources */,
 				6DA06F851F341196009086E4 /* AppDelegate.m in Sources */,
 				6DA06FB31F3461CB009086E4 /* CommonMethods.m in Sources */,
 				6DA06FAC1F345499009086E4 /* BaseViewController.m in Sources */,
@@ -313,6 +332,7 @@
 				6DA06F821F341196009086E4 /* main.m in Sources */,
 				6DA06FB81F3473D0009086E4 /* HomeViewController.m in Sources */,
 				6DA06FBB1F3473DB009086E4 /* MyViewController.m in Sources */,
+				6D028EC81F35C9D4000E0935 /* BaseNavController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

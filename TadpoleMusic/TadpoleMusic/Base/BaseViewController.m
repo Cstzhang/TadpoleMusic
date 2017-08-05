@@ -8,7 +8,10 @@
 
 #import "BaseViewController.h"
 #import "CommonMethods.h"
+
+
 @interface BaseViewController ()
+
 
 @end
 
@@ -17,7 +20,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setBaseNav];
-    [self setBaseScroView];
+    //取消默认缩进
+    self.automaticallyAdjustsScrollViewInsets = NO;
 }
 
 #pragma mark - **************** set base navigationController
@@ -32,17 +36,7 @@
                        barMetrics:UIBarMetricsDefault];
     //此处使底部线条失效
     [navigationBar setShadowImage:[UIImage new]];
-
-}
-
-#pragma mark - **************** switch
-
-#pragma mark - **************** UIScrollView
--(void)setBaseScroView{
-
-
-
-
+   
 }
 
 
