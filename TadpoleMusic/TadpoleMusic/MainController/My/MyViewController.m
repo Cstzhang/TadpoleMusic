@@ -7,8 +7,11 @@
 //
 
 #import "MyViewController.h"
+#import "CircleRippleView.h"
 
 @interface MyViewController ()
+/** <#注释#> */
+@property (nonatomic,strong) CircleRippleView * rippleView;
 
 @end
 
@@ -17,8 +20,12 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self.navigationItem setTitle:@"我的"];
-    // Do any additional setup after loading the view.
-//    self.view.backgroundColor = [UIColor yellowColor];
+//    self.rippleView = [[CircleRippleView alloc] initWithFrame:CGRectMake(0, 0, 300, 300)];
+//    _rippleView.center = CGPointMake(self.view.bounds.size.width / 2.0, self.view.bounds.size.height / 2.0);
+//    [self.view addSubview:_rippleView];
+//    _rippleView.backgroundColor = [[UIColor greenColor] colorWithAlphaComponent:0.4];
+//    [_rippleView startAnimation];
+    
 }
 
 - (void)didReceiveMemoryWarning {

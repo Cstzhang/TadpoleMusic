@@ -18,7 +18,7 @@
     [self setAppWindows];
     [self setRootViewController];
 
-    NSLog(@"%s",__func__);
+//    NSLog(@"%s",__func__);
     return YES;
 }
 

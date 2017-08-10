@@ -17,11 +17,11 @@
 		6DA06F8D1F341196009086E4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6DA06F8C1F341196009086E4 /* Assets.xcassets */; };
 		6DA06F901F341196009086E4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6DA06F8E1F341196009086E4 /* LaunchScreen.storyboard */; };
 		6DA06FAC1F345499009086E4 /* BaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DA06FAA1F345499009086E4 /* BaseViewController.m */; };
-		6DA06FAF1F3454CB009086E4 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DA06FAE1F3454CB009086E4 /* MainViewController.m */; };
 		6DA06FB81F3473D0009086E4 /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DA06FB71F3473D0009086E4 /* HomeViewController.m */; };
 		6DA06FBB1F3473DB009086E4 /* MyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DA06FBA1F3473DB009086E4 /* MyViewController.m */; };
 		6DA317021F3C3BA900593A0E /* ComFunc.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DA317011F3C3BA900593A0E /* ComFunc.m */; };
 		6DA317061F3C3E5300593A0E /* UIColor+Addition.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DA317051F3C3E5300593A0E /* UIColor+Addition.m */; };
+		6DA3170E1F3C5C1000593A0E /* CircleRippleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DA3170D1F3C5C1000593A0E /* CircleRippleView.m */; };
 		C301262EFF58C3E061D8450D /* libPods-TadpoleMusic.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CE0DCFCBB95E7EBAA7B4E76B /* libPods-TadpoleMusic.a */; };
 /* End PBXBuildFile section */
 
@@ -49,10 +49,8 @@
 		6DA06F8C1F341196009086E4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		6DA06F8F1F341196009086E4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		6DA06F911F341196009086E4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		6DA06FA91F345499009086E4 /* BaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseViewController.h; sourceTree = "<group>"; };
-		6DA06FAA1F345499009086E4 /* BaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseViewController.m; sourceTree = "<group>"; };
-		6DA06FAD1F3454CB009086E4 /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
-		6DA06FAE1F3454CB009086E4 /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
+		6DA06FA91F345499009086E4 /* BaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BaseViewController.h; path = ../../Base/BaseViewController.h; sourceTree = "<group>"; };
+		6DA06FAA1F345499009086E4 /* BaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BaseViewController.m; path = ../../Base/BaseViewController.m; sourceTree = "<group>"; };
 		6DA06FB61F3473D0009086E4 /* HomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeViewController.h; sourceTree = "<group>"; };
 		6DA06FB71F3473D0009086E4 /* HomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeViewController.m; sourceTree = "<group>"; };
 		6DA06FB91F3473DB009086E4 /* MyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyViewController.h; sourceTree = "<group>"; };
@@ -61,6 +59,8 @@
 		6DA317011F3C3BA900593A0E /* ComFunc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ComFunc.m; sourceTree = "<group>"; };
 		6DA317041F3C3E5300593A0E /* UIColor+Addition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+Addition.h"; sourceTree = "<group>"; };
 		6DA317051F3C3E5300593A0E /* UIColor+Addition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+Addition.m"; sourceTree = "<group>"; };
+		6DA3170C1F3C5C1000593A0E /* CircleRippleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CircleRippleView.h; sourceTree = "<group>"; };
+		6DA3170D1F3C5C1000593A0E /* CircleRippleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CircleRippleView.m; sourceTree = "<group>"; };
 		709DFB86E9835E018CE23D66 /* Pods-TadpoleMusic.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TadpoleMusic.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TadpoleMusic/Pods-TadpoleMusic.debug.xcconfig"; sourceTree = "<group>"; };
 		CE0DCFCBB95E7EBAA7B4E76B /* libPods-TadpoleMusic.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-TadpoleMusic.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -158,8 +158,6 @@
 		6DA06F971F3427CB009086E4 /* Base */ = {
 			isa = PBXGroup;
 			children = (
-				6DA06FA91F345499009086E4 /* BaseViewController.h */,
-				6DA06FAA1F345499009086E4 /* BaseViewController.m */,
 				6D028EC61F35C9D4000E0935 /* BaseNavController.h */,
 				6D028EC71F35C9D4000E0935 /* BaseNavController.m */,
 				6D524B5B1F3B511F00E8C434 /* RootTabBarController.h */,
@@ -203,8 +201,8 @@
 		6DA06FA31F34545F009086E4 /* Base */ = {
 			isa = PBXGroup;
 			children = (
-				6DA06FAD1F3454CB009086E4 /* MainViewController.h */,
-				6DA06FAE1F3454CB009086E4 /* MainViewController.m */,
+				6DA06FA91F345499009086E4 /* BaseViewController.h */,
+				6DA06FAA1F345499009086E4 /* BaseViewController.m */,
 			);
 			path = Base;
 			sourceTree = "<group>";
@@ -212,6 +210,7 @@
 		6DA06FB01F3461C2009086E4 /* Tools */ = {
 			isa = PBXGroup;
 			children = (
+				6DA3170B1F3C5BE200593A0E /* CircleRipple */,
 				6DA316FF1F3C3B4100593A0E /* CommonMethods */,
 			);
 			path = Tools;
@@ -262,6 +261,15 @@
 				6DA317051F3C3E5300593A0E /* UIColor+Addition.m */,
 			);
 			name = Additions;
+			sourceTree = "<group>";
+		};
+		6DA3170B1F3C5BE200593A0E /* CircleRipple */ = {
+			isa = PBXGroup;
+			children = (
+				6DA3170C1F3C5C1000593A0E /* CircleRippleView.h */,
+				6DA3170D1F3C5C1000593A0E /* CircleRippleView.m */,
+			);
+			name = CircleRipple;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -389,8 +397,8 @@
 				6D028EC11F35BD35000E0935 /* HotListViewController.m in Sources */,
 				6DA06F851F341196009086E4 /* AppDelegate.m in Sources */,
 				6DA06FAC1F345499009086E4 /* BaseViewController.m in Sources */,
-				6DA06FAF1F3454CB009086E4 /* MainViewController.m in Sources */,
 				6DA06F821F341196009086E4 /* main.m in Sources */,
+				6DA3170E1F3C5C1000593A0E /* CircleRippleView.m in Sources */,
 				6DA06FB81F3473D0009086E4 /* HomeViewController.m in Sources */,
 				6DA06FBB1F3473DB009086E4 /* MyViewController.m in Sources */,
 				6DA317021F3C3BA900593A0E /* ComFunc.m in Sources */,

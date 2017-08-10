@@ -80,6 +80,14 @@
 //线条粗度
 #define LINE_WIDTH 0.5f
 
+#pragma mark - **************** 适配
+//自适应高度和宽度
+#define HEIGHT_RATIO_6 (SCREEN_HEIGHT / 667)
+#define WIDTH_RATIO_6 (SCREEN_WIDTH / 375)
+//比例数
+#define RATIO_H(number) number*HEIGHT_RATIO_6
+#define RATIO_W(number) number*WIDTH_RATIO_6
+
 
 
 #endif /* DefineTheme_h */
