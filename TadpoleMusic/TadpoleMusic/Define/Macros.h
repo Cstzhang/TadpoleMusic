@@ -23,6 +23,7 @@
 #import "AppDelegate+ViewController.h"
 #import "AppDelegate+AppService.h"
 //工具类
-#import "CommonMethods.h"
+#import "ComFunc.h"
+#import "UIColor+Addition.h"
 
 #endif /* Macros_h */

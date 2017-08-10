@@ -18,9 +18,10 @@
 		6DA06F901F341196009086E4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6DA06F8E1F341196009086E4 /* LaunchScreen.storyboard */; };
 		6DA06FAC1F345499009086E4 /* BaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DA06FAA1F345499009086E4 /* BaseViewController.m */; };
 		6DA06FAF1F3454CB009086E4 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DA06FAE1F3454CB009086E4 /* MainViewController.m */; };
-		6DA06FB31F3461CB009086E4 /* CommonMethods.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DA06FB21F3461CB009086E4 /* CommonMethods.m */; };
 		6DA06FB81F3473D0009086E4 /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DA06FB71F3473D0009086E4 /* HomeViewController.m */; };
 		6DA06FBB1F3473DB009086E4 /* MyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DA06FBA1F3473DB009086E4 /* MyViewController.m */; };
+		6DA317021F3C3BA900593A0E /* ComFunc.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DA317011F3C3BA900593A0E /* ComFunc.m */; };
+		6DA317061F3C3E5300593A0E /* UIColor+Addition.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DA317051F3C3E5300593A0E /* UIColor+Addition.m */; };
 		C301262EFF58C3E061D8450D /* libPods-TadpoleMusic.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CE0DCFCBB95E7EBAA7B4E76B /* libPods-TadpoleMusic.a */; };
 /* End PBXBuildFile section */
 
@@ -52,12 +53,14 @@
 		6DA06FAA1F345499009086E4 /* BaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseViewController.m; sourceTree = "<group>"; };
 		6DA06FAD1F3454CB009086E4 /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
 		6DA06FAE1F3454CB009086E4 /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
-		6DA06FB11F3461CB009086E4 /* CommonMethods.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommonMethods.h; sourceTree = "<group>"; };
-		6DA06FB21F3461CB009086E4 /* CommonMethods.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommonMethods.m; sourceTree = "<group>"; };
 		6DA06FB61F3473D0009086E4 /* HomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeViewController.h; sourceTree = "<group>"; };
 		6DA06FB71F3473D0009086E4 /* HomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeViewController.m; sourceTree = "<group>"; };
 		6DA06FB91F3473DB009086E4 /* MyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyViewController.h; sourceTree = "<group>"; };
 		6DA06FBA1F3473DB009086E4 /* MyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyViewController.m; sourceTree = "<group>"; };
+		6DA317001F3C3BA900593A0E /* ComFunc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ComFunc.h; sourceTree = "<group>"; };
+		6DA317011F3C3BA900593A0E /* ComFunc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ComFunc.m; sourceTree = "<group>"; };
+		6DA317041F3C3E5300593A0E /* UIColor+Addition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+Addition.h"; sourceTree = "<group>"; };
+		6DA317051F3C3E5300593A0E /* UIColor+Addition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+Addition.m"; sourceTree = "<group>"; };
 		709DFB86E9835E018CE23D66 /* Pods-TadpoleMusic.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TadpoleMusic.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TadpoleMusic/Pods-TadpoleMusic.debug.xcconfig"; sourceTree = "<group>"; };
 		CE0DCFCBB95E7EBAA7B4E76B /* libPods-TadpoleMusic.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-TadpoleMusic.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -103,6 +106,7 @@
 		6D524B541F3B4D3400E8C434 /* Category */ = {
 			isa = PBXGroup;
 			children = (
+				6DA317031F3C3E1600593A0E /* Additions */,
 				6DA316FA1F3C2E4F00593A0E /* AppDelegate */,
 			);
 			path = Category;
@@ -208,8 +212,7 @@
 		6DA06FB01F3461C2009086E4 /* Tools */ = {
 			isa = PBXGroup;
 			children = (
-				6DA06FB11F3461CB009086E4 /* CommonMethods.h */,
-				6DA06FB21F3461CB009086E4 /* CommonMethods.m */,
+				6DA316FF1F3C3B4100593A0E /* CommonMethods */,
 			);
 			path = Tools;
 			sourceTree = "<group>";
@@ -241,6 +244,24 @@
 				6D524B591F3B4E1100E8C434 /* AppDelegate+ViewController.m */,
 			);
 			name = AppDelegate;
+			sourceTree = "<group>";
+		};
+		6DA316FF1F3C3B4100593A0E /* CommonMethods */ = {
+			isa = PBXGroup;
+			children = (
+				6DA317001F3C3BA900593A0E /* ComFunc.h */,
+				6DA317011F3C3BA900593A0E /* ComFunc.m */,
+			);
+			name = CommonMethods;
+			sourceTree = "<group>";
+		};
+		6DA317031F3C3E1600593A0E /* Additions */ = {
+			isa = PBXGroup;
+			children = (
+				6DA317041F3C3E5300593A0E /* UIColor+Addition.h */,
+				6DA317051F3C3E5300593A0E /* UIColor+Addition.m */,
+			);
+			name = Additions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -367,15 +388,16 @@
 			files = (
 				6D028EC11F35BD35000E0935 /* HotListViewController.m in Sources */,
 				6DA06F851F341196009086E4 /* AppDelegate.m in Sources */,
-				6DA06FB31F3461CB009086E4 /* CommonMethods.m in Sources */,
 				6DA06FAC1F345499009086E4 /* BaseViewController.m in Sources */,
 				6DA06FAF1F3454CB009086E4 /* MainViewController.m in Sources */,
 				6DA06F821F341196009086E4 /* main.m in Sources */,
 				6DA06FB81F3473D0009086E4 /* HomeViewController.m in Sources */,
 				6DA06FBB1F3473DB009086E4 /* MyViewController.m in Sources */,
+				6DA317021F3C3BA900593A0E /* ComFunc.m in Sources */,
 				6D524B5A1F3B4E1100E8C434 /* AppDelegate+ViewController.m in Sources */,
 				6D524B5D1F3B511F00E8C434 /* RootTabBarController.m in Sources */,
 				6D028EC81F35C9D4000E0935 /* BaseNavController.m in Sources */,
+				6DA317061F3C3E5300593A0E /* UIColor+Addition.m in Sources */,
 				6D524B571F3B4DDF00E8C434 /* AppDelegate+AppService.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

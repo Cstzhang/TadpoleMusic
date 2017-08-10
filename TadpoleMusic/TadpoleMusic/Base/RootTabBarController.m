@@ -22,30 +22,41 @@
 -(void)setTabBarUI{
     
     //基础设置
-    self.tabBar.translucent=NO;//透明度,设置为不是半透明
-    self.tabBar.backgroundImage=[CommonMethods createImageWithColor:CLEAR_COLOR];//背景图去掉
+    //透明度,设置为不是半透明
+    self.tabBar.translucent=YES;
+    //背景图去掉
+    self.tabBar.backgroundImage=[ComFunc createImageWithColor:CLEAR_COLOR];
+    //设置分割线颜色
+    [self.tabBar setShadowImage:[ComFunc createImageWithColor:[UIColor zb_colorWithHex:0x28e532]]];
     self.delegate=self;
     //tabbar数据数组
-    NSArray * itemTitles        = @[@"搜歌",@"榜单",@"我的"];
-    NSArray *normalImageItems = @[@"Home-icon-unselect",@"My-case-icon-unselect",@"My-case-icon-unselect"];
-    NSArray *selectImageItems = @[@"Home-icon-select",@"My-case-icon-select",@"My-case-icon-select"];
-    NSArray * controllClass   = @[@"HomeViewController",@"HotListViewController",@"MyViewController"];
+    NSArray * itemTitles        = @[@"搜歌",@"我的"];
+    NSArray *normalImageItems = @[@"music_icon_unselect",@"me_icon_unselect"];
+    NSArray *selectImageItems = @[@"music_icon_select",@"me_icon_select"];
+    NSArray * controllClass   = @[@"HomeViewController",@"MyViewController"];
     NSMutableArray * controllers = [[NSMutableArray alloc]init];
     //循环添加tabbar的Controller
     for (int i = 0; i<itemTitles.count; i++) {
+        //实例化控制器
         UIViewController *oneTabController            = [[NSClassFromString(controllClass[i]) alloc]init];
         BaseNavController *navigation                 = [[BaseNavController alloc]initWithRootViewController:oneTabController];
-        //tabBarItem样式
+        //图片
         navigation.tabBarItem.image                   = [[UIImage imageNamed:normalImageItems[i]] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
         
         navigation.tabBarItem.selectedImage            = [[UIImage imageNamed:selectImageItems[i]] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
-        navigation.tabBarItem.titlePositionAdjustment  = UIOffsetMake(0,-3);//文字向上偏移
+        //偏移量
+        navigation.tabBarItem.titlePositionAdjustment  = UIOffsetMake(0,0);//文字向上偏移-3
         [controllers addObject:navigation];
-        // 设置文字的样式
+        //设置文字的颜色
         NSMutableDictionary *textAttrs                 = [NSMutableDictionary dictionary];
         textAttrs[NSForegroundColorAttributeName]      = TABBAR_NORMAL_TINTCOLOR;
+        textAttrs[NSFontAttributeName]                 = TEXT_FONT;
         NSMutableDictionary *selectTextAttrs           = [NSMutableDictionary dictionary];
-        selectTextAttrs[NSForegroundColorAttributeName] = TABBAR_SELECT_TINTCOLOR;
+        selectTextAttrs[NSFontAttributeName]           = TEXT_FONT;
+        selectTextAttrs[NSForegroundColorAttributeName] = [UIColor zb_colorWithHex:0xb0ff07];
+        //设置字体大小
+        
+        
         // navigation.tabBarItem
         [navigation.tabBarItem  setTitleTextAttributes:textAttrs forState:UIControlStateNormal];
         [navigation.tabBarItem setTitleTextAttributes:selectTextAttrs forState:UIControlStateSelected];

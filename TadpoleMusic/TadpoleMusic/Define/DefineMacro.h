@@ -9,15 +9,21 @@
 #ifndef DefineMacro_h
 #define DefineMacro_h
 
+#pragma mark - **************** UI部分
 
-//通知中心
-#define KNotificationCenter [NSNotificationCenter defaultCenter]
-//Appdelegate
-#define kAppDelegate (AppDelegate *)[[UIApplication sharedApplication] delegate]
-//弱引用
-#define kWeakSelf(type)  __weak typeof(type) weak##type = type;
-//强引用
-#define kStrongSelf(type) __strong typeof(type) type = weak##type;
+#pragma mark - **************** 判断版本
+//APP版本号
+#define kAppVersion [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"]
+/** UUID用户设备标识 */
+#define DEVICE_UUID [[UIDevice currentDevice].identifierForVendor UUIDString]
+//系统版本号
+#define kSystemVersion [[UIDevice currentDevice] systemVersion]
+//获取当前语言
+#define kCurrentLanguage ([[NSLocale preferredLanguages] objectAtIndex:0])
+//判断是否为iPhone
+#define kISiPhone (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone)
+//判断是否为iPad
+#define kISiPad (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)
 //判断是否是iPhone4s
 #define IS_IPHONE4S (([[UIScreen mainScreen] bounds].size.height-480)?NO:YES)
 //判断是否是iPhone5
@@ -29,13 +35,7 @@
 //当前设备的ios版本
 #define IOS_VERSION [[[UIDevice currentDevice] systemVersion] floatValue]
 
-//开发的时候打印，但是发布的时候不打印的NSLog
-#ifdef DEBUG
-#define NSLog(...) NSLog(@"%s 第%d行 \n %@\n\n",__func__,__LINE__,[NSString stringWithFormat:__VA_ARGS__])
-#else
-#define NSLog(...)
-#endif
-
+#pragma mark - **************** 判断属性
 //字符串是否为空
 #define kStringIsEmpty(str) ([str isKindOfClass:[NSNull class]] || str == nil || [str length] < 1 ? YES : NO )
 //数组是否为空
@@ -44,34 +44,57 @@
 #define kDictIsEmpty(dic) (dic == nil || [dic isKindOfClass:[NSNull class]] || dic.allKeys == 0)
 //是否是空对象
 #define kObjectIsEmpty(_object) (_object == nil \
-                                  || [_object isKindOfClass:[NSNull class]] \
-                                  || ([_object respondsToSelector:@selector(length)] && [(NSData *)_object length] == 0) \
-                                  || ([_object respondsToSelector:@selector(count)] && [(NSArray *)_object count] == 0))
-//APP版本号
-#define kAppVersion [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"]
-//系统版本号
-#define kSystemVersion [[UIDevice currentDevice] systemVersion]
-//获取当前语言
-#define kCurrentLanguage ([[NSLocale preferredLanguages] objectAtIndex:0])
-//判断是否为iPhone
-#define kISiPhone (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone)
-//判断是否为iPad
-#define kISiPad (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)
-//获取沙盒Document路径
-#define kDocumentPath [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) firstObject]
+|| [_object isKindOfClass:[NSNull class]] \
+|| ([_object respondsToSelector:@selector(length)] && [(NSData *)_object length] == 0) \
+|| ([_object respondsToSelector:@selector(count)] && [(NSArray *)_object count] == 0))
+
+#pragma mark - **************** 注册，强弱引用
+
+//Appdelegate
+#define kAppDelegate (AppDelegate *)[[UIApplication sharedApplication] delegate]
+//弱引用
+#define kWeakSelf(type)  __weak typeof(type) weak##type = type;
+//强引用
+#define kStrongSelf(type) __strong typeof(type) type = weak##type;
+
+#pragma mark - **************** 其他
+//开发的时候打印，但是发布的时候不打印的NSLog
+#ifdef DEBUG
+#define NSLog(...) NSLog(@"%s 第%d行 \n %@\n\n",__func__,__LINE__,[NSString stringWithFormat:__VA_ARGS__])
+#else
+#define NSLog(...)
+#endif
+//带alert的log
+#ifdef DEBUG
+//#define ULog(...)
+#define ULog(fmt, ...)  { UIAlertView *alert = [[UIAlertView alloc] initWithTitle:[NSString stringWithFormat:@"%s\n [Line %d] ", __PRETTY_FUNCTION__, __LINE__] message:[NSString stringWithFormat:fmt, ##__VA_ARGS__]  delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil]; [alert show]; }
+#else
+#define ULog(...)
+#endif
+
+#pragma mark - **************** 沙盒路径
 //获取沙盒temp路径
-#define kTempPath NSTemporaryDirectory()
+#define kPathTemp                   NSTemporaryDirectory()
+//获取沙盒Document路径
+#define kPathDocument               [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0]
 //获取沙盒Cache路径
-#define kCachePath [NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES) firstObject]
+#define kPathCache                  [NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES) objectAtIndex:0]
+#define kPathSearch                 [kPathDocument stringByAppendingPathComponent:@"Search.plist"]
+#define kPathMagazine               [kPathDocument stringByAppendingPathComponent:@"Magazine"]
+#define kPathDownloadedMgzs         [kPathMagazine stringByAppendingPathComponent:@"DownloadedMgz.plist"]
+#define kPathDownloadURLs           [kPathMagazine stringByAppendingPathComponent:@"DownloadURLs.plist"]
+#define kPathOperation              [kPathMagazine stringByAppendingPathComponent:@"Operation.plist"]
+#define kPathSplashScreen           [kPathCache stringByAppendingPathComponent:@"splashScreen"]
 
-/** 数据为空背景图 */
-#define NETERR_BACKGROUND_IMAGE @"emptyBackground"
-#define EMPTY_BACKGROUND_IMAGE @"emptyBackground"
-/** 本地保密数据keychain存储 */
-/** UUID用户设备标识 */
-#define DEVICE_UUID [[UIDevice currentDevice].identifierForVendor UUIDString]
 
-#pragma mark ——— 第三方平台相关
+#pragma mark - **************** 第三方平台相关
+
+#pragma mark - **************** 其他
+//获取系统时间戳
+#define getCurentTime [NSString stringWithFormat:@"%ld", (long)[[NSDate date] timeIntervalSince1970]]
+//是否竖屏
+#define IsPortrait ([UIApplication sharedApplication].statusBarOrientation == UIInterfaceOrientationPortrait || [UIApplication sharedApplication].statusBarOrientation == UIInterfaceOrientationPortraitUpsideDown)
+
 
 #define MAS_SHORTHAND
 #define MAS_SHORTHAND_GLOBALS

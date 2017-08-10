@@ -19,7 +19,7 @@
 //    //设置tabbar的主题颜色
     [self.navigationBar setBarTintColor:CLEAR_COLOR];
 //    //设置导航栏的字体样式
-    [self.navigationBar setTitleTextAttributes:@{NSFontAttributeName:TITLE_FONT,NSForegroundColorAttributeName:[UIColor blueColor]}];
+    [self.navigationBar setTitleTextAttributes:@{NSFontAttributeName:TITLE_FONT,NSForegroundColorAttributeName:[UIColor whiteColor]}];
     self.delegate=self;
 }
 
