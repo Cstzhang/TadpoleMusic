@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		6D028EC11F35BD35000E0935 /* HotListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D028EC01F35BD35000E0935 /* HotListViewController.m */; };
 		6D028EC81F35C9D4000E0935 /* BaseNavController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D028EC71F35C9D4000E0935 /* BaseNavController.m */; };
+		6D524B571F3B4DDF00E8C434 /* AppDelegate+AppService.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D524B561F3B4DDF00E8C434 /* AppDelegate+AppService.m */; };
+		6D524B5A1F3B4E1100E8C434 /* AppDelegate+ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D524B591F3B4E1100E8C434 /* AppDelegate+ViewController.m */; };
+		6D524B5D1F3B511F00E8C434 /* RootTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D524B5C1F3B511F00E8C434 /* RootTabBarController.m */; };
 		6DA06F821F341196009086E4 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DA06F811F341196009086E4 /* main.m */; };
 		6DA06F851F341196009086E4 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DA06F841F341196009086E4 /* AppDelegate.m */; };
 		6DA06F8D1F341196009086E4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6DA06F8C1F341196009086E4 /* Assets.xcassets */; };
@@ -31,6 +34,13 @@
 		6D028ECA1F35EA0B000E0935 /* DefineRequest.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DefineRequest.h; sourceTree = "<group>"; };
 		6D028ECB1F35EA0B000E0935 /* DefineTheme.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DefineTheme.h; sourceTree = "<group>"; };
 		6D028ECC1F35EA0B000E0935 /* Main_pch.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Main_pch.pch; sourceTree = "<group>"; };
+		6D524B531F3B4AFF00E8C434 /* Macros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Macros.h; sourceTree = "<group>"; };
+		6D524B551F3B4DDF00E8C434 /* AppDelegate+AppService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "AppDelegate+AppService.h"; sourceTree = "<group>"; };
+		6D524B561F3B4DDF00E8C434 /* AppDelegate+AppService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "AppDelegate+AppService.m"; sourceTree = "<group>"; };
+		6D524B581F3B4E1100E8C434 /* AppDelegate+ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "AppDelegate+ViewController.h"; sourceTree = "<group>"; };
+		6D524B591F3B4E1100E8C434 /* AppDelegate+ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "AppDelegate+ViewController.m"; sourceTree = "<group>"; };
+		6D524B5B1F3B511F00E8C434 /* RootTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootTabBarController.h; sourceTree = "<group>"; };
+		6D524B5C1F3B511F00E8C434 /* RootTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RootTabBarController.m; sourceTree = "<group>"; };
 		6DA06F7D1F341196009086E4 /* TadpoleMusic.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TadpoleMusic.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6DA06F811F341196009086E4 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		6DA06F831F341196009086E4 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -90,6 +100,14 @@
 			path = HotList;
 			sourceTree = "<group>";
 		};
+		6D524B541F3B4D3400E8C434 /* Category */ = {
+			isa = PBXGroup;
+			children = (
+				6DA316FA1F3C2E4F00593A0E /* AppDelegate */,
+			);
+			path = Category;
+			sourceTree = "<group>";
+		};
 		6DA06F741F341196009086E4 = {
 			isa = PBXGroup;
 			children = (
@@ -140,6 +158,8 @@
 				6DA06FAA1F345499009086E4 /* BaseViewController.m */,
 				6D028EC61F35C9D4000E0935 /* BaseNavController.h */,
 				6D028EC71F35C9D4000E0935 /* BaseNavController.m */,
+				6D524B5B1F3B511F00E8C434 /* RootTabBarController.h */,
+				6D524B5C1F3B511F00E8C434 /* RootTabBarController.m */,
 			);
 			path = Base;
 			sourceTree = "<group>";
@@ -151,6 +171,7 @@
 				6D028ECA1F35EA0B000E0935 /* DefineRequest.h */,
 				6D028ECB1F35EA0B000E0935 /* DefineTheme.h */,
 				6D028ECC1F35EA0B000E0935 /* Main_pch.pch */,
+				6D524B531F3B4AFF00E8C434 /* Macros.h */,
 			);
 			path = Define;
 			sourceTree = "<group>";
@@ -169,6 +190,7 @@
 		6DA06F9C1F3427DD009086E4 /* Expand */ = {
 			isa = PBXGroup;
 			children = (
+				6D524B541F3B4D3400E8C434 /* Category */,
 				6DA06FB01F3461C2009086E4 /* Tools */,
 			);
 			path = Expand;
@@ -208,6 +230,17 @@
 				6DA06FBA1F3473DB009086E4 /* MyViewController.m */,
 			);
 			path = My;
+			sourceTree = "<group>";
+		};
+		6DA316FA1F3C2E4F00593A0E /* AppDelegate */ = {
+			isa = PBXGroup;
+			children = (
+				6D524B551F3B4DDF00E8C434 /* AppDelegate+AppService.h */,
+				6D524B561F3B4DDF00E8C434 /* AppDelegate+AppService.m */,
+				6D524B581F3B4E1100E8C434 /* AppDelegate+ViewController.h */,
+				6D524B591F3B4E1100E8C434 /* AppDelegate+ViewController.m */,
+			);
+			name = AppDelegate;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -340,7 +373,10 @@
 				6DA06F821F341196009086E4 /* main.m in Sources */,
 				6DA06FB81F3473D0009086E4 /* HomeViewController.m in Sources */,
 				6DA06FBB1F3473DB009086E4 /* MyViewController.m in Sources */,
+				6D524B5A1F3B4E1100E8C434 /* AppDelegate+ViewController.m in Sources */,
+				6D524B5D1F3B511F00E8C434 /* RootTabBarController.m in Sources */,
 				6D028EC81F35C9D4000E0935 /* BaseNavController.m in Sources */,
+				6D524B571F3B4DDF00E8C434 /* AppDelegate+AppService.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

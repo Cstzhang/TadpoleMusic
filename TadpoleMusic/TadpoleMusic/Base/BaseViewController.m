@@ -7,7 +7,7 @@
 //
 
 #import "BaseViewController.h"
-#import "CommonMethods.h"
+//#import "CommonMethods.h"
 
 
 @interface BaseViewController ()
@@ -19,10 +19,10 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self setBackImage];
     //设置头部样式，透明头部
     [self setBaseNav];
     //取消默认缩进
-    self.automaticallyAdjustsScrollViewInsets = NO;
 }
 
 #pragma mark - **************** set base navigationController
@@ -40,6 +40,12 @@
    
 }
 
+//设置背景图
+-(void)setBackImage{
+    UIImage *image = [UIImage imageNamed:@"main_background_green"];
+    self.view.layer.contents = (id)image.CGImage;
+    self.view.layer.backgroundColor = [UIColor clearColor].CGColor;
+}
 
 
 

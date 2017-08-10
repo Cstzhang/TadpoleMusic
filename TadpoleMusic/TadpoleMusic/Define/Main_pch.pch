@@ -8,19 +8,9 @@
 
 #ifndef Main_pch_pch
 #define Main_pch_pch
-//常用宏
-#import "DefineMacro.h"
-#import "DefineTheme.h"
-#import "DefineRequest.h"
-//第三方
-#import <SDWebImage/UIImageView+WebCache.h>
-#import <AFNetworking.h>
-#import <MJRefresh.h>
-#import <MJExtension.h>
-#import <Masonry.h>
-#import "MBProgressHUD.h"
-//本工程
-
+#import "Macros.h"
+#import <UIKit/UIKit.h>
+#import <Foundation/Foundation.h>
 
 
 #endif /* Main_pch_pch */

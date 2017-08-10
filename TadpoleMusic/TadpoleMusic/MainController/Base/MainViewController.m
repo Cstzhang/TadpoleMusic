@@ -50,14 +50,15 @@
     //基础控制器数组
     //for 循环添加控制器
     for (int i = 0; i<self.controllClassArr.count; i++) {
+        NSLog(@"creat controller %@",self.controllClassArr[i]);
         //初始化一个控制器
         UIViewController *oneController=[[NSClassFromString(self.controllClassArr[i]) alloc]init];
-        //初始化一个NavController
-        BaseNavController *navController=[[BaseNavController alloc]initWithRootViewController:oneController];
+//        //初始化一个NavController
+//        BaseNavController *navController=[[BaseNavController alloc]initWithRootViewController:oneController];
         //设置位置
-        navController.view.frame = CGRectMake(kScreenWidth*i, 0, kScreenWidth, kScreenHeight);
+        oneController.view.frame = CGRectMake(kScreenWidth*i, 0, kScreenWidth, kScreenHeight);
         //添加控制器
-        [self.scrollView addSubview:navController.view];
+        [self.scrollView addSubview:oneController.view];
     }
 }
 

@@ -16,11 +16,14 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    //设置titile 字体
-    [self.navigationBar setTitleTextAttributes:@{NSFontAttributeName:[UIFont systemFontOfSize:16],NSForegroundColorAttributeName:[UIColor whiteColor]}];
+//    //设置tabbar的主题颜色
+    [self.navigationBar setBarTintColor:CLEAR_COLOR];
+//    //设置导航栏的字体样式
+    [self.navigationBar setTitleTextAttributes:@{NSFontAttributeName:TITLE_FONT,NSForegroundColorAttributeName:[UIColor blueColor]}];
+    self.delegate=self;
 }
 
-//统一样式
+//统一返回样式
 -(void)pushViewController:(UIViewController *)viewController animated:(BOOL)animated{
     if (self.viewControllers.count > 0) {
         //隐藏tabbar
@@ -37,7 +40,6 @@
     
 }
 
-
 //解决手势失效问题
 - (void)navigationController:(UINavigationController *)navigationController didShowViewController:(UIViewController *)viewController animated:(BOOL)animated
 {
@@ -48,7 +50,14 @@
     }
 }
 
-//统一返回按钮事件
+
+//设置状态栏样式样式
+- (UIStatusBarStyle)preferredStatusBarStyle
+{
+    return UIStatusBarStyleDefault;
+}
+
+//返回方法
 - (void)backBarButtonItemAction
 {
     [self.navigationItem setHidesBackButton:NO];

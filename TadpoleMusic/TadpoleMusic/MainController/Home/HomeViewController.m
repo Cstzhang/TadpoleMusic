@@ -22,11 +22,20 @@
 
 @implementation HomeViewController
 #pragma mark - **************** 懒加载
+//设置提示title
+-(UILabel *)tipsLabel{
+    if (_tipsLabel) {
+        _tipsLabel = [[UILabel alloc]initWithFrame:CGRectMake(100, 100, 100, 100)];
+        _tipsLabel.font = TIP_TEXT_FONT;
+        _tipsLabel.textColor = [UIColor redColor];
+        _tipsLabel.text = @"*******************我是提示语*******************";
+    }
+    return _tipsLabel;
+}
 
 
 #pragma mark - **************** 初始化
 //设置提示title
-
 
 //设置识别按钮
 
@@ -37,9 +46,14 @@
 #pragma mark - **************** 什么周期
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self.view addSubview:self.tipsLabel];
     
-    self.view.backgroundColor = [UIColor greenColor];
+    
 }
+
+
+
+
 
 
 
