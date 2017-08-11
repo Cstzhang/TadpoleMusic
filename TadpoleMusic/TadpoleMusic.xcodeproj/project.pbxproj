@@ -22,6 +22,11 @@
 		6DA317021F3C3BA900593A0E /* ComFunc.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DA317011F3C3BA900593A0E /* ComFunc.m */; };
 		6DA317061F3C3E5300593A0E /* UIColor+Addition.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DA317051F3C3E5300593A0E /* UIColor+Addition.m */; };
 		6DA3170E1F3C5C1000593A0E /* CircleRippleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DA3170D1F3C5C1000593A0E /* CircleRippleView.m */; };
+		6DEFC7701F3DEB3200E45603 /* libACRCloud_IOS_SDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6DEFC76F1F3DEB3200E45603 /* libACRCloud_IOS_SDK.a */; };
+		6DEFC7721F3DEBCD00E45603 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6DEFC7711F3DEBCD00E45603 /* AudioToolbox.framework */; };
+		6DEFC7741F3DEBD300E45603 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6DEFC7731F3DEBD300E45603 /* AVFoundation.framework */; };
+		6DEFC7761F3DEBDA00E45603 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6DEFC7751F3DEBDA00E45603 /* Security.framework */; };
+		6DEFC7781F3DEBE800E45603 /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 6DEFC7771F3DEBE800E45603 /* libc++.tbd */; };
 		C301262EFF58C3E061D8450D /* libPods-TadpoleMusic.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CE0DCFCBB95E7EBAA7B4E76B /* libPods-TadpoleMusic.a */; };
 /* End PBXBuildFile section */
 
@@ -61,6 +66,13 @@
 		6DA317051F3C3E5300593A0E /* UIColor+Addition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+Addition.m"; sourceTree = "<group>"; };
 		6DA3170C1F3C5C1000593A0E /* CircleRippleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CircleRippleView.h; sourceTree = "<group>"; };
 		6DA3170D1F3C5C1000593A0E /* CircleRippleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CircleRippleView.m; sourceTree = "<group>"; };
+		6DEFC76D1F3DEB0900E45603 /* ACRCloudConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ACRCloudConfig.h; sourceTree = "<group>"; };
+		6DEFC76E1F3DEB0900E45603 /* ACRCloudRecognition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ACRCloudRecognition.h; sourceTree = "<group>"; };
+		6DEFC76F1F3DEB3200E45603 /* libACRCloud_IOS_SDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libACRCloud_IOS_SDK.a; sourceTree = "<group>"; };
+		6DEFC7711F3DEBCD00E45603 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		6DEFC7731F3DEBD300E45603 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		6DEFC7751F3DEBDA00E45603 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		6DEFC7771F3DEBE800E45603 /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "usr/lib/libc++.tbd"; sourceTree = SDKROOT; };
 		709DFB86E9835E018CE23D66 /* Pods-TadpoleMusic.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TadpoleMusic.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TadpoleMusic/Pods-TadpoleMusic.debug.xcconfig"; sourceTree = "<group>"; };
 		CE0DCFCBB95E7EBAA7B4E76B /* libPods-TadpoleMusic.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-TadpoleMusic.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -70,7 +82,12 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6DEFC7781F3DEBE800E45603 /* libc++.tbd in Frameworks */,
+				6DEFC7761F3DEBDA00E45603 /* Security.framework in Frameworks */,
+				6DEFC7741F3DEBD300E45603 /* AVFoundation.framework in Frameworks */,
+				6DEFC7721F3DEBCD00E45603 /* AudioToolbox.framework in Frameworks */,
 				C301262EFF58C3E061D8450D /* libPods-TadpoleMusic.a in Frameworks */,
+				6DEFC7701F3DEB3200E45603 /* libACRCloud_IOS_SDK.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -89,6 +106,10 @@
 		35D53089EB1E243D69AD90E5 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				6DEFC7771F3DEBE800E45603 /* libc++.tbd */,
+				6DEFC7751F3DEBDA00E45603 /* Security.framework */,
+				6DEFC7731F3DEBD300E45603 /* AVFoundation.framework */,
+				6DEFC7711F3DEBCD00E45603 /* AudioToolbox.framework */,
 				CE0DCFCBB95E7EBAA7B4E76B /* libPods-TadpoleMusic.a */,
 			);
 			name = Frameworks;
@@ -218,6 +239,7 @@
 		6DA06FB01F3461C2009086E4 /* Tools */ = {
 			isa = PBXGroup;
 			children = (
+				6DEFC76C1F3DEAD300E45603 /* ACRCloud */,
 				6DA3170B1F3C5BE200593A0E /* CircleRipple */,
 				6DA316FF1F3C3B4100593A0E /* CommonMethods */,
 			);
@@ -278,6 +300,16 @@
 				6DA3170D1F3C5C1000593A0E /* CircleRippleView.m */,
 			);
 			name = CircleRipple;
+			sourceTree = "<group>";
+		};
+		6DEFC76C1F3DEAD300E45603 /* ACRCloud */ = {
+			isa = PBXGroup;
+			children = (
+				6DEFC76F1F3DEB3200E45603 /* libACRCloud_IOS_SDK.a */,
+				6DEFC76D1F3DEB0900E45603 /* ACRCloudConfig.h */,
+				6DEFC76E1F3DEB0900E45603 /* ACRCloudRecognition.h */,
+			);
+			name = ACRCloud;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -532,6 +564,10 @@
 				INFOPLIST_FILE = TadpoleMusic/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/TadpoleMusic/Expand/Tools",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.zzb.kd.TadpoleMusic;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -547,6 +583,10 @@
 				INFOPLIST_FILE = TadpoleMusic/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/TadpoleMusic/Expand/Tools",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.zzb.kd.TadpoleMusic;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
