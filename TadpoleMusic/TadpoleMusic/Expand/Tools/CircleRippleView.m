@@ -45,9 +45,9 @@
     replicator.bounds = CGRectMake(0, 0, width, width);
     replicator.position = CGPointMake(width / 2.0, width / 2.0);
     //在短时间内的复制延时,一般用在动画上(支持动画的延时)
-    replicator.instanceDelay = 0.5;
+    replicator.instanceDelay = 0.8;
     //拷贝图层的次数,包括其所有的子图层,默认值是1,也就是没有任何子图层被复制
-    replicator.instanceCount = 8;
+    replicator.instanceCount = 3;
     [replicator addSublayer:_circleShapeLayer];
     [self.layer addSublayer:replicator];
 }
@@ -73,9 +73,9 @@
     //添加动画
     groupAnimation.animations = @[alphaAnim, scaleAnim];
     //动画时长数值大动画越慢（应该优化成音量来控制）
-    groupAnimation.duration = 5.0;
+    groupAnimation.duration = 3.0;
     //结束时是否执行逆动画
-    groupAnimation.autoreverses = NO;
+    groupAnimation.autoreverses = YES;
     //重复次数 HUGE不停重复
     groupAnimation.repeatCount = HUGE;
     
