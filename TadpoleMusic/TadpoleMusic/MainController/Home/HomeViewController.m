@@ -146,17 +146,19 @@ typedef NS_ENUM(NSInteger, SearchType){
             make.width.equalTo(RATIO_W(100));
             make.height.equalTo(RATIO_W(30));
     }];
+    UIButton *rightBt=[UIButton buttonWithType:UIButtonTypeSystem];
+    rightBt.frame=CGRectMake(0, 0, 42, 23);
+    [rightBt setTitle:@"停止" forState:UIControlStateNormal];
+    [rightBt addTarget:self action:@selector(stopSearchMusic) forControlEvents:UIControlEventTouchUpInside];
+    UIBarButtonItem *rightItem=[[UIBarButtonItem alloc]initWithCustomView:rightBt];
+    self.navigationItem.rightBarButtonItem=rightItem;
+
   
 }
-//设置提示title
 
 
 
-//设置 音乐/哼唱切换按钮
-
-//添加雷达效果
-
-#pragma mark - **************** 什么周期
+#pragma mark - **************** 生命周期
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setupUI];
@@ -164,42 +166,63 @@ typedef NS_ENUM(NSInteger, SearchType){
 }
 
 
-
-
-
 #pragma mark - **************** 交互方法
 //搜索音乐
 -(void)searchMusic{
     NSLog(@"搜索音乐");
-    [_rippleView startAnimation];
+    //如果已经正在识别了，直接返回
     if (_start) {
-        if(_client) {
-            [_client stopRecordRec];
-        }
-        _start = NO;
         return;
     }
+    //开始动画
+    [_rippleView startAnimation];
     
-//    self.resultView.text = @"";
-//    self.costLabel.text = @"";
-    
-    
+    //开始采集声纹
     [_client startRecordRec];
+    //开始状态
     _start = YES;
+    //开始时间
     startTime = [[NSDate date] timeIntervalSince1970];
 }
+//音乐搜索的类型：听歌
 -(void)searchTypeMusic{
+    //如果已经正在识别了，直接返回
+    if (_start) {
+        return;
+    }
     NSLog(@"听音乐搜索模式");
     self.searchType=SearchTypeMusic;
     self.hummingTypeBtn.selected = NO;
     self.musicTypeBtn.selected=YES;
+    _config.accessKey = ACR_ACCESS_KEY;
+    _config.accessSecret = ACR_ACCESS_SECRET;
 }
 
+//音乐搜索的类型：哼唱
 -(void)searchTypeHumming{
+    //如果已经正在识别了，直接返回
+    if (_start) {
+        return;
+    }
     NSLog(@"听音乐搜索模式");
     self.searchType=SearchTypeMusicHumming;
     self.hummingTypeBtn.selected = YES;
     self.musicTypeBtn.selected=NO;
+    _config.accessKey = ACR_HUMMING_ACCESS_KEY;
+    _config.accessSecret = ACR_HUMMING_ACCESS_SECRET;
+}
+
+//停止音乐识别
+-(void)stopSearchMusic{
+    //停止识别
+    NSLog(@"停止");
+    if(_client) {
+        [_client stopRecordRec];
+    }
+    _start = NO;
+    //停止动画
+    //暂停动画
+    [_rippleView stopAnimation];
 }
 
 
@@ -212,10 +235,10 @@ typedef NS_ENUM(NSInteger, SearchType){
     _config = [[ACRCloudConfig alloc] init];
     
     //秘钥
-    _config.accessKey = @"540ffc1c9d9c4337a8bd8c7057c0b0cd";
-    _config.accessSecret = @"ZDBl5mNcxPM3yuUgdUwuc0CtrG9kS1zqwC9OX8Oi";
+    _config.accessKey = ACR_ACCESS_KEY;
+    _config.accessSecret = ACR_ACCESS_SECRET;
     //HOST
-    _config.host = @"identify-ap-southeast-1.acrcloud.com";
+    _config.host = ACR_HOST;
     //http https
     _config.protocol = @"http";
     
@@ -253,7 +276,6 @@ typedef NS_ENUM(NSInteger, SearchType){
     //_config.resultFpBlock = ^(NSString *result, NSData* fingerprint) {
     //    [weakSelf handleResultFp:result fingerprint:fingerprint];
     //};
-    
     _client = [[ACRCloudRecognition alloc] initWithConfig:_config];
     
     //start pre-record

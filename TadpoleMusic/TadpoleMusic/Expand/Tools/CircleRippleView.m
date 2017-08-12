@@ -74,6 +74,7 @@
     groupAnimation.animations = @[alphaAnim, scaleAnim];
     //动画时长数值大动画越慢（应该优化成音量来控制）
     groupAnimation.duration = 3.0;
+//    groupAnimation.speed
     //结束时是否执行逆动画
     groupAnimation.autoreverses = YES;
     //重复次数 HUGE不停重复
@@ -82,7 +83,7 @@
     [_circleShapeLayer addAnimation:groupAnimation forKey:nil];
 }
 
-//结束动画，有点粗暴
+//结束动画
 - (void)stopAnimation
 {
     NSLog(@"结束波纹动画");

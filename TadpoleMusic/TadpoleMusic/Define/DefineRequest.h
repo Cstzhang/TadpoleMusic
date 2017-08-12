@@ -23,17 +23,26 @@
 #define KNotificationCenter [NSNotificationCenter defaultCenter]
 #define TNCancelFavoriteProductNotification     @"TNCancelFavoriteProductNotification"      //取消收藏时
 #define TNMarkFavoriteProductNotification       @"TNMarkFavoriteProductNotification"        //标记收藏时
-
 #define kNotficationDownloadProgressChanged     @"kNotficationDownloadProgressChanged"      //下载进度变化
 #define kNotificationPauseDownload              @"kNotificationPauseDownload"               //暂停下载
 #define kNotificationStartDownload              @"kNotificationStartDownload"               //开始下载
-
 #define kNotificationDownloadSuccess            @"kNotificationDownloadSuccess"             //下载成功
 #define kNotificationDownloadFailed             @"kNotificationDownloadFailed"              //下载失败
 #define kNotificationDownloadNewMagazine        @"kNotificationDownloadNewMagazine"
 
 
+#pragma mark - **************** ACR
+//服务器
+#define ACR_HOST  @"identify-ap-southeast-1.acrcloud.com"
+//音乐识别key
+#define ACR_ACCESS_KEY  @"73e8aebd48ca67eec3f03ed346e21132"
+#define ACR_ACCESS_SECRET  @"ZWrtiCZ3vx50a2fadDsrUUHVfkQov2Y0Vr6ftlLh"
+//哼唱识别key
+#define ACR_HUMMING_ACCESS_KEY  @"540ffc1c9d9c4337a8bd8c7057c0b0cd"
+#define ACR_HUMMING_ACCESS_SECRET  @"ZDBl5mNcxPM3yuUgdUwuc0CtrG9kS1zqwC9OX8Oi"
 
+
+#pragma mark - **************** ACR
 
 //***************发布环境*************
 #ifdef DEBUG
