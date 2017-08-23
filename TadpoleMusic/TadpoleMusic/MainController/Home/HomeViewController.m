@@ -10,6 +10,8 @@
 #import "CircleRippleView.h"
 #import "ACRCloudConfig.h"
 #import "ACRCloudRecognition.h"
+#import "SearchMusicViewController.h"
+#import "SongModel.h"
 //搜索按钮的宽度
 static  const int BTN_WIDTH = 160;
 //搜索类型
@@ -45,6 +47,8 @@ typedef NS_ENUM(NSInteger, SearchType){
 @property (nonatomic,strong) CircleRippleView * rippleView;
 /** 搜索类型 */
 @property (nonatomic, assign) SearchType searchType;
+/** 音乐模型 */
+@property (nonatomic,strong) SongModel * songModel;
 
 @end
 
@@ -169,7 +173,8 @@ typedef NS_ENUM(NSInteger, SearchType){
 #pragma mark - **************** 交互方法
 //搜索音乐
 -(void)searchMusic{
-    NSLog(@"搜索音乐");
+//    [self modalToSearhMusicView];
+//    NSLog(@"搜索音乐");
     //如果已经正在识别了，直接返回
     if (_start) {
         return;
@@ -215,13 +220,12 @@ typedef NS_ENUM(NSInteger, SearchType){
 //停止音乐识别
 -(void)stopSearchMusic{
     //停止识别
-    NSLog(@"停止");
+    NSLog(@"停止音乐识别");
     if(_client) {
         [_client stopRecordRec];
     }
     _start = NO;
     //停止动画
-    //暂停动画
     [_rippleView stopAnimation];
 }
 
@@ -304,77 +308,81 @@ typedef NS_ENUM(NSInteger, SearchType){
          resultType:(ACRCloudResultType)resType
 {
     
-    
     dispatch_async(dispatch_get_main_queue(), ^{
         NSError *error = nil;
         
         NSData *jsonData = [result dataUsingEncoding:NSUTF8StringEncoding];
         NSDictionary* jsonObject = [NSJSONSerialization JSONObjectWithData:jsonData options:NSJSONReadingMutableContainers error:&error];
-        
         NSString *r = nil;
         
         NSLog(@"%@", result);
-        
+        //能够搜索到歌曲的处理
         if ([[jsonObject valueForKeyPath: @"status.code"] integerValue] == 0) {
             if ([jsonObject valueForKeyPath: @"metadata.music"]) {
-                NSDictionary *meta = [jsonObject valueForKeyPath: @"metadata.music"][0];
-                NSString *title = [meta objectForKey:@"title"];
-                NSString *artist = [meta objectForKey:@"artists"][0][@"name"];
-                NSString *album = [meta objectForKey:@"album"][@"name"];
-                NSString *play_offset_ms = [meta objectForKey:@"play_offset_ms"];
-                NSString *duration = [meta objectForKey:@"duration_ms"];
+                self.songModel = [SongModel musicInfoWithDict:jsonObject];
+//                NSDictionary *meta = [jsonObject valueForKeyPath: @"metadata.music"][0];
+//                //发行方 音乐标签信息
+//                NSString *label = [meta objectForKey:@"label"];
+//                //识别度
+//                NSString *score = [meta objectForKey:@"score"];
+//                //歌名
+//                NSString *title = [meta objectForKey:@"title"];
+//                //发行时间
+//                NSString *release_date = [meta objectForKey:@"release_date"];
+//                //艺术家
+//                NSString *artist = [meta objectForKey:@"artists"][0][@"name"];
+//                //专辑名
+//                NSString *album = [meta objectForKey:@"album"][@"name"];
+//                //播放的音频/歌曲的时间位置(毫秒)
+//                NSString *play_offset_ms = [meta objectForKey:@"play_offset_ms"];
+//                //毫秒级的跟踪时间
+//                NSString *duration = [meta objectForKey:@"duration_ms"];
                 
-                NSArray *ra = @[[NSString stringWithFormat:@"title:%@", title],
-                                [NSString stringWithFormat:@"artist:%@", artist],
-                                [NSString stringWithFormat:@"album:%@", album],
-                                [NSString stringWithFormat:@"play_offset_ms:%@", play_offset_ms],
-                                [NSString stringWithFormat:@"duration_ms:%@", duration]];
-                r = [ra componentsJoinedByString:@"\n"];
+//                NSArray *ra = @[[NSString stringWithFormat:@"title:%@", title],
+//                                [NSString stringWithFormat:@"artist:%@", artist],
+//                                [NSString stringWithFormat:@"album:%@", album],
+//                                [NSString stringWithFormat:@"play_offset_ms:%@", play_offset_ms],
+//                                [NSString stringWithFormat:@"duration_ms:%@", duration]];
+//                r = [ra componentsJoinedByString:@"\n"];
+                [self modalToSearhMusicView:self.songModel.title];
             }
-            if ([jsonObject valueForKeyPath: @"metadata.custom_files"]) {
-                NSDictionary *meta = [jsonObject valueForKeyPath: @"metadata.custom_files"][0];
-                NSString *title = [meta objectForKey:@"title"];
-                NSString *audio_id = [meta objectForKey:@"audio_id"];
-                
-                r = [NSString stringWithFormat:@"title : %@\naudio_id : %@", title, audio_id];
-            }
-            if ([jsonObject valueForKeyPath: @"metadata.streams"]) {
-                NSDictionary *meta = [jsonObject valueForKeyPath: @"metadata.streams"][0];
-                NSString *title = [meta objectForKey:@"title"];
-                NSString *title_en = [meta objectForKey:@"title_en"];
-                
-                r = [NSString stringWithFormat:@"title : %@\ntitle_en : %@", title,title_en];
-            }
-            if ([jsonObject valueForKeyPath: @"metadata.custom_streams"]) {
-                NSDictionary *meta = [jsonObject valueForKeyPath: @"metadata.custom_streams"][0];
-                NSString *title = [meta objectForKey:@"title"];
-                
-                r = [NSString stringWithFormat:@"title : %@", title];
-            }
+            //处理哼唱识别的数据结果
             if ([jsonObject valueForKeyPath: @"metadata.humming"]) {
                 NSArray *metas = [jsonObject valueForKeyPath: @"metadata.humming"];
                 NSMutableArray *ra = [NSMutableArray arrayWithCapacity:6];
                 for (id d in metas) {
+                    //歌名
                     NSString *title = [d objectForKey:@"title"];
+                    //相似度
                     NSString *score = [d objectForKey:@"score"];
+                    //艺术家
+                    NSString *artist = [d objectForKey:@"artists"][0][@"name"];
+                    //专辑名
+                    NSString *album = [d objectForKey:@"album"][@"name"];
+                    
                     NSString *sh = [NSString stringWithFormat:@"title : %@  score : %@", title, score];
                     
                     [ra addObject:sh];
                 }
                 r = [ra componentsJoinedByString:@"\n"];
+                NSString *title1 = metas[0][@"title"];
+                [self modalToSearhMusicView:title1];
             }
-            
+        
             //self.resultView.text = r;
         } else {
+           //识别失败
            // self.resultView.text = result;
+            
         }
         
         [_client stopRecordRec];
         _start = NO;
+        [_rippleView stopAnimation];
         
-        //        NSTimeInterval nowTime = [[NSDate date] timeIntervalSince1970];
-        //        int cost = nowTime - startTime;
-        //        self.costLabel.text = [NSString stringWithFormat:@"cost : %ds", cost];
+        //NSTimeInterval nowTime = [[NSDate date] timeIntervalSince1970];
+        //int cost = nowTime - startTime;
+        //self.costLabel.text = [NSString stringWithFormat:@"cost : %ds", cost];
         
     });
 }
@@ -393,4 +401,16 @@ typedef NS_ENUM(NSInteger, SearchType){
         //self.stateLabel.text = [NSString stringWithFormat:@"State : %@",state];
     });
 }
+#pragma mark - **************** other
+/**
+ *  跳转到搜索结果页
+ */
+-(void)modalToSearhMusicView:(NSString *)songName{
+    SearchMusicViewController *searchVC = [[SearchMusicViewController alloc]init];
+    searchVC.songName =songName;
+    [self presentViewController:searchVC animated:YES completion:nil];
+
+}
+
+
 @end

@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		6D028EC11F35BD35000E0935 /* HotListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D028EC01F35BD35000E0935 /* HotListViewController.m */; };
 		6D028EC81F35C9D4000E0935 /* BaseNavController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D028EC71F35C9D4000E0935 /* BaseNavController.m */; };
+		6D403DCE1F41EAF500EB3DCB /* SearchHandle.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D403DCD1F41EAF500EB3DCB /* SearchHandle.m */; };
 		6D524B571F3B4DDF00E8C434 /* AppDelegate+AppService.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D524B561F3B4DDF00E8C434 /* AppDelegate+AppService.m */; };
 		6D524B5A1F3B4E1100E8C434 /* AppDelegate+ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D524B591F3B4E1100E8C434 /* AppDelegate+ViewController.m */; };
 		6D524B5D1F3B511F00E8C434 /* RootTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D524B5C1F3B511F00E8C434 /* RootTabBarController.m */; };
@@ -22,11 +23,16 @@
 		6DA317021F3C3BA900593A0E /* ComFunc.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DA317011F3C3BA900593A0E /* ComFunc.m */; };
 		6DA317061F3C3E5300593A0E /* UIColor+Addition.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DA317051F3C3E5300593A0E /* UIColor+Addition.m */; };
 		6DA3170E1F3C5C1000593A0E /* CircleRippleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DA3170D1F3C5C1000593A0E /* CircleRippleView.m */; };
+		6DB9AD211F4482ED0011FE33 /* SongModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DB9AD201F4482ED0011FE33 /* SongModel.m */; };
 		6DEFC7701F3DEB3200E45603 /* libACRCloud_IOS_SDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6DEFC76F1F3DEB3200E45603 /* libACRCloud_IOS_SDK.a */; };
 		6DEFC7721F3DEBCD00E45603 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6DEFC7711F3DEBCD00E45603 /* AudioToolbox.framework */; };
 		6DEFC7741F3DEBD300E45603 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6DEFC7731F3DEBD300E45603 /* AVFoundation.framework */; };
 		6DEFC7761F3DEBDA00E45603 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6DEFC7751F3DEBDA00E45603 /* Security.framework */; };
 		6DEFC7781F3DEBE800E45603 /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 6DEFC7771F3DEBE800E45603 /* libc++.tbd */; };
+		6DFEC5D01F42A1D0000CB1F8 /* SearchMusicViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DFEC5CF1F42A1D0000CB1F8 /* SearchMusicViewController.m */; };
+		6DFEC5DA1F433BCE000CB1F8 /* libGumbo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6DFEC5D51F433BCE000CB1F8 /* libGumbo.a */; };
+		6DFEC5DB1F433BCE000CB1F8 /* OCGumbo.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DFEC5D71F433BCE000CB1F8 /* OCGumbo.m */; };
+		6DFEC5DC1F433BCE000CB1F8 /* OCGumbo+Query.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DFEC5D91F433BCE000CB1F8 /* OCGumbo+Query.m */; };
 		C301262EFF58C3E061D8450D /* libPods-TadpoleMusic.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CE0DCFCBB95E7EBAA7B4E76B /* libPods-TadpoleMusic.a */; };
 /* End PBXBuildFile section */
 
@@ -40,6 +46,8 @@
 		6D028ECA1F35EA0B000E0935 /* DefineRequest.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DefineRequest.h; sourceTree = "<group>"; };
 		6D028ECB1F35EA0B000E0935 /* DefineTheme.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DefineTheme.h; sourceTree = "<group>"; };
 		6D028ECC1F35EA0B000E0935 /* Main_pch.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Main_pch.pch; sourceTree = "<group>"; };
+		6D403DCC1F41EAF500EB3DCB /* SearchHandle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchHandle.h; sourceTree = "<group>"; };
+		6D403DCD1F41EAF500EB3DCB /* SearchHandle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchHandle.m; sourceTree = "<group>"; };
 		6D524B531F3B4AFF00E8C434 /* Macros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Macros.h; sourceTree = "<group>"; };
 		6D524B551F3B4DDF00E8C434 /* AppDelegate+AppService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "AppDelegate+AppService.h"; sourceTree = "<group>"; };
 		6D524B561F3B4DDF00E8C434 /* AppDelegate+AppService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "AppDelegate+AppService.m"; sourceTree = "<group>"; };
@@ -66,6 +74,8 @@
 		6DA317051F3C3E5300593A0E /* UIColor+Addition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+Addition.m"; sourceTree = "<group>"; };
 		6DA3170C1F3C5C1000593A0E /* CircleRippleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CircleRippleView.h; sourceTree = "<group>"; };
 		6DA3170D1F3C5C1000593A0E /* CircleRippleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CircleRippleView.m; sourceTree = "<group>"; };
+		6DB9AD1F1F4482ED0011FE33 /* SongModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SongModel.h; sourceTree = "<group>"; };
+		6DB9AD201F4482ED0011FE33 /* SongModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SongModel.m; sourceTree = "<group>"; };
 		6DEFC76D1F3DEB0900E45603 /* ACRCloudConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ACRCloudConfig.h; sourceTree = "<group>"; };
 		6DEFC76E1F3DEB0900E45603 /* ACRCloudRecognition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ACRCloudRecognition.h; sourceTree = "<group>"; };
 		6DEFC76F1F3DEB3200E45603 /* libACRCloud_IOS_SDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libACRCloud_IOS_SDK.a; sourceTree = "<group>"; };
@@ -73,6 +83,15 @@
 		6DEFC7731F3DEBD300E45603 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		6DEFC7751F3DEBDA00E45603 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		6DEFC7771F3DEBE800E45603 /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "usr/lib/libc++.tbd"; sourceTree = SDKROOT; };
+		6DFEC5CE1F42A1D0000CB1F8 /* SearchMusicViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchMusicViewController.h; sourceTree = "<group>"; };
+		6DFEC5CF1F42A1D0000CB1F8 /* SearchMusicViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchMusicViewController.m; sourceTree = "<group>"; };
+		6DFEC5D31F433BCE000CB1F8 /* gumbo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = gumbo.h; sourceTree = "<group>"; };
+		6DFEC5D41F433BCE000CB1F8 /* tag_enum.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = tag_enum.h; sourceTree = "<group>"; };
+		6DFEC5D51F433BCE000CB1F8 /* libGumbo.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libGumbo.a; sourceTree = "<group>"; };
+		6DFEC5D61F433BCE000CB1F8 /* OCGumbo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OCGumbo.h; sourceTree = "<group>"; };
+		6DFEC5D71F433BCE000CB1F8 /* OCGumbo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OCGumbo.m; sourceTree = "<group>"; };
+		6DFEC5D81F433BCE000CB1F8 /* OCGumbo+Query.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "OCGumbo+Query.h"; sourceTree = "<group>"; };
+		6DFEC5D91F433BCE000CB1F8 /* OCGumbo+Query.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "OCGumbo+Query.m"; sourceTree = "<group>"; };
 		709DFB86E9835E018CE23D66 /* Pods-TadpoleMusic.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TadpoleMusic.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TadpoleMusic/Pods-TadpoleMusic.debug.xcconfig"; sourceTree = "<group>"; };
 		CE0DCFCBB95E7EBAA7B4E76B /* libPods-TadpoleMusic.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-TadpoleMusic.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -84,6 +103,7 @@
 			files = (
 				6DEFC7781F3DEBE800E45603 /* libc++.tbd in Frameworks */,
 				6DEFC7761F3DEBDA00E45603 /* Security.framework in Frameworks */,
+				6DFEC5DA1F433BCE000CB1F8 /* libGumbo.a in Frameworks */,
 				6DEFC7741F3DEBD300E45603 /* AVFoundation.framework in Frameworks */,
 				6DEFC7721F3DEBCD00E45603 /* AudioToolbox.framework in Frameworks */,
 				C301262EFF58C3E061D8450D /* libPods-TadpoleMusic.a in Frameworks */,
@@ -122,6 +142,20 @@
 				6D028EC01F35BD35000E0935 /* HotListViewController.m */,
 			);
 			path = HotList;
+			sourceTree = "<group>";
+		};
+		6D403DCB1F41EAC100EB3DCB /* SearchHandle */ = {
+			isa = PBXGroup;
+			children = (
+				6DFEC5D11F433BCE000CB1F8 /* gumbo */,
+				6DFEC5D61F433BCE000CB1F8 /* OCGumbo.h */,
+				6DFEC5D71F433BCE000CB1F8 /* OCGumbo.m */,
+				6DFEC5D81F433BCE000CB1F8 /* OCGumbo+Query.h */,
+				6DFEC5D91F433BCE000CB1F8 /* OCGumbo+Query.m */,
+				6D403DCC1F41EAF500EB3DCB /* SearchHandle.h */,
+				6D403DCD1F41EAF500EB3DCB /* SearchHandle.m */,
+			);
+			name = SearchHandle;
 			sourceTree = "<group>";
 		};
 		6D4C9DEC1F3D5F3F005E77BD /* Vender */ = {
@@ -210,6 +244,7 @@
 		6DA06F9A1F3427CB009086E4 /* MainController */ = {
 			isa = PBXGroup;
 			children = (
+				6DFEC5CD1F429BF1000CB1F8 /* SearchMusic */,
 				6DA06FB41F3473BC009086E4 /* Home */,
 				6DA06FB51F3473BC009086E4 /* My */,
 				6D028EBE1F35BD20000E0935 /* HotList */,
@@ -239,6 +274,7 @@
 		6DA06FB01F3461C2009086E4 /* Tools */ = {
 			isa = PBXGroup;
 			children = (
+				6D403DCB1F41EAC100EB3DCB /* SearchHandle */,
 				6DEFC76C1F3DEAD300E45603 /* ACRCloud */,
 				6DA3170B1F3C5BE200593A0E /* CircleRipple */,
 				6DA316FF1F3C3B4100593A0E /* CommonMethods */,
@@ -249,6 +285,7 @@
 		6DA06FB41F3473BC009086E4 /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				6DB9AD1E1F4482CD0011FE33 /* Model */,
 				6DA06FB61F3473D0009086E4 /* HomeViewController.h */,
 				6DA06FB71F3473D0009086E4 /* HomeViewController.m */,
 			);
@@ -302,6 +339,15 @@
 			name = CircleRipple;
 			sourceTree = "<group>";
 		};
+		6DB9AD1E1F4482CD0011FE33 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				6DB9AD1F1F4482ED0011FE33 /* SongModel.h */,
+				6DB9AD201F4482ED0011FE33 /* SongModel.m */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
 		6DEFC76C1F3DEAD300E45603 /* ACRCloud */ = {
 			isa = PBXGroup;
 			children = (
@@ -310,6 +356,33 @@
 				6DEFC76E1F3DEB0900E45603 /* ACRCloudRecognition.h */,
 			);
 			name = ACRCloud;
+			sourceTree = "<group>";
+		};
+		6DFEC5CD1F429BF1000CB1F8 /* SearchMusic */ = {
+			isa = PBXGroup;
+			children = (
+				6DFEC5CE1F42A1D0000CB1F8 /* SearchMusicViewController.h */,
+				6DFEC5CF1F42A1D0000CB1F8 /* SearchMusicViewController.m */,
+			);
+			path = SearchMusic;
+			sourceTree = "<group>";
+		};
+		6DFEC5D11F433BCE000CB1F8 /* gumbo */ = {
+			isa = PBXGroup;
+			children = (
+				6DFEC5D21F433BCE000CB1F8 /* include */,
+				6DFEC5D51F433BCE000CB1F8 /* libGumbo.a */,
+			);
+			path = gumbo;
+			sourceTree = "<group>";
+		};
+		6DFEC5D21F433BCE000CB1F8 /* include */ = {
+			isa = PBXGroup;
+			children = (
+				6DFEC5D31F433BCE000CB1F8 /* gumbo.h */,
+				6DFEC5D41F433BCE000CB1F8 /* tag_enum.h */,
+			);
+			path = include;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -434,17 +507,22 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6DFEC5DB1F433BCE000CB1F8 /* OCGumbo.m in Sources */,
 				6D028EC11F35BD35000E0935 /* HotListViewController.m in Sources */,
 				6DA06F851F341196009086E4 /* AppDelegate.m in Sources */,
 				6DA06FAC1F345499009086E4 /* BaseViewController.m in Sources */,
+				6DB9AD211F4482ED0011FE33 /* SongModel.m in Sources */,
 				6DA06F821F341196009086E4 /* main.m in Sources */,
 				6DA3170E1F3C5C1000593A0E /* CircleRippleView.m in Sources */,
+				6DFEC5D01F42A1D0000CB1F8 /* SearchMusicViewController.m in Sources */,
 				6DA06FB81F3473D0009086E4 /* HomeViewController.m in Sources */,
+				6DFEC5DC1F433BCE000CB1F8 /* OCGumbo+Query.m in Sources */,
 				6DA06FBB1F3473DB009086E4 /* MyViewController.m in Sources */,
 				6DA317021F3C3BA900593A0E /* ComFunc.m in Sources */,
 				6D524B5A1F3B4E1100E8C434 /* AppDelegate+ViewController.m in Sources */,
 				6D524B5D1F3B511F00E8C434 /* RootTabBarController.m in Sources */,
 				6D028EC81F35C9D4000E0935 /* BaseNavController.m in Sources */,
+				6D403DCE1F41EAF500EB3DCB /* SearchHandle.m in Sources */,
 				6DA317061F3C3E5300593A0E /* UIColor+Addition.m in Sources */,
 				6D524B571F3B4DDF00E8C434 /* AppDelegate+AppService.m in Sources */,
 			);
@@ -567,6 +645,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/TadpoleMusic/Expand/Tools",
+					"$(PROJECT_DIR)/TadpoleMusic/Expand/Tools/gumbo",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.zzb.kd.TadpoleMusic;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -586,6 +665,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/TadpoleMusic/Expand/Tools",
+					"$(PROJECT_DIR)/TadpoleMusic/Expand/Tools/gumbo",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.zzb.kd.TadpoleMusic;
 				PRODUCT_NAME = "$(TARGET_NAME)";
