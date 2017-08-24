@@ -8,16 +8,19 @@
 
 #import "SearchMusicViewController.h"
 #import "SearchHandle.h"
+#import "SearchModel.h"
 @interface SearchMusicViewController ()
-
+/** <#注释#> */
+@property (nonatomic,strong) NSMutableArray * searchArray;
 @end
 
 @implementation SearchMusicViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-     self.view.backgroundColor = [UIColor yellowColor];
-     [SearchHandle searchMusicInBD:self.songName];
+    self.view.backgroundColor = [UIColor yellowColor];
+    self.searchArray = [NSMutableArray arrayWithArray:[SearchHandle searchMusicInBD:self.songName]];
+    NSLog(@"self.searchArray %@",self.searchArray);
     // Do any additional setup after loading the view.
 }
 

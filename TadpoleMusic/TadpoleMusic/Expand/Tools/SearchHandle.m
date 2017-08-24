@@ -7,17 +7,24 @@
 //
 
 #import "SearchHandle.h"
+#import "SearchModel.h"
+@interface SearchHandle()
+/** 搜索数据*/
 
+
+@end
 @implementation SearchHandle
+#pragma mark - **************** 懒加载
+
+#pragma mark - **************** 搜索部分
 /**
  在百度里面搜索歌曲
  
  @param songName 歌曲名字
  */
-+(void)searchMusicInBD:(NSString *)songName{
-    NSLog(@"songName : %@",songName);
-    
-//   NSString *key = [NSString stringWithCString:songName encoding:NSUTF8StringEncoding];
++(NSArray *)searchMusicInBD:(NSString *)songName{
+     NSMutableArray * result = [NSMutableArray array];
+    //判断Url中是否有特殊符号（ - 排除干扰
     NSMutableArray *stringArray =[[NSMutableArray alloc]init];
     if ([songName containsString:@"("]) {
         [stringArray addObjectsFromArray:[songName componentsSeparatedByString:@"("]];
@@ -25,62 +32,72 @@
     if ([songName containsString:@"-"]) {
         [stringArray addObjectsFromArray:[songName componentsSeparatedByString:@"-"]];
     }
-    
+    //确认正确的url
     NSString *url= [NSString stringWithFormat:@"http://www.baidu.com/s?wd=%@",songName];
     if (stringArray.count!=0) {
         url= [NSString stringWithFormat:@"http://www.baidu.com/s?wd=%@",stringArray[0]];
     }
-
-    
-//    NSString *key = [NSURL URLWithString:url] ? url : [self strUTF8Encoding:url];
     NSLog(@"key ===========%@",url);
+    
+    //获取网页HTML
     NSURL *xcfURL = [NSURL URLWithString:[url stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]]];
     NSError *error = nil;
     NSString *htmlString = [NSString stringWithContentsOfURL:xcfURL encoding:NSUTF8StringEncoding error:&error];
     if (htmlString==nil||htmlString.length==0) {
+        #warning 待处理
         NSLog(@"没有搜索出歌曲");
-        return;
+        return result;
     }
     OCGumboDocument *document = [[OCGumboDocument alloc] initWithHTMLString:htmlString];
-    NSLog(@"htmlString :%@",htmlString);
-    //尝试第一种关键词搜索
-    OCGumboNode *element1 = document.Query(@"body").find(@".c-icon-play-circle").first();
-    if (element1 != nil && element1.attr(@"href") !=nil &&element1.attr(@"href").length !=0) {
-         NSLog(@"text = %@", element1.attr(@"href"));
-        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:element1.attr(@"href")]];
-    }else{
-        OCGumboNode *element2 = document.Query(@"body").find(@".op-musicsong-songname").first();
-        if (element2 != nil && element2.attr(@"href") !=nil &&element2.attr(@"href").length !=0) {
-             NSLog(@"text = %@", element2.attr(@"href"));
-            [[UIApplication sharedApplication] openURL:[NSURL URLWithString:element2.attr(@"href")]];
+    
+    #pragma mark - **************** 抓取平台名称
+    OCQueryObject *musicPlatformElement = document.Query(@"body").find(@".c-tabs").find(@".c-tabs-nav-li");
+    if ((unsigned long)musicPlatformElement.count>0) {
+        //  NSMutableString * musicUrl =ß[[NSMutableString alloc]init];
+        for (OCGumboElement *ele in musicPlatformElement) {
+            NSLog(@"songName = %@", ele.text());
         }
-    
+       
     }
-    //  抓取图片 op-musicsong-img
-    //  MV wa-se-st-image_single_video
-    
-    
-//    OCQueryObject *element1 = document.Query(@"body").find(@".c-icon-play-circle");
-//    NSLog(@"element.count %lu",(unsigned long)element1.count);
-//    if ((unsigned long)element1.count>0) {
-//        NSMutableString * musicUrl = [[NSMutableString alloc]init];
-//        for (OCGumboElement *ele in element1) {
-//            NSLog(@"text = %@", ele.attr(@"href"));
-//            [musicUrl stringByAppendingString:ele.attr(@"href")];
-//        }
-//        
-//        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"http://www.abt.com"]];
-//    }else{//尝试第二种搜索
-//        OCQueryObject *element2 = document.Query(@"body").find(@".c-btn");
-//        NSLog(@"element.count %lu",(unsigned long)element2.count);
-//        for (OCGumboElement *ele in element2) {
-//                NSLog(@"text = %@", ele.attr(@"href"));
-//            }
-//    }
+    #pragma mark - **************** 抓取专辑封面
+    OCGumboNode *songImageGumboNode = document.Query(@"body").find(@".op-musicsong-img").first();
+    if (songImageGumboNode != nil && songImageGumboNode.attr(@"src") !=nil &&songImageGumboNode.attr(@"src").length !=0) {
+             NSLog(@"songImage = %@", songImageGumboNode.attr(@"src"));
+        }
+    #pragma mark - **************** 抓取歌曲URL
+    OCQueryObject *getElement = document.Query(@"body").find(@".c-icon-play-circle");
+    OCQueryObject *songUrlElement = document.Query(@"body").find(@".c-tabs").find(@".c-tabs-content");
+    if ((unsigned long)getElement.count>0 && songUrlElement.count>0) {
+        for (OCGumboElement *ele in songUrlElement) {
+           OCGumboNode *firstSong =ele.Query(@".c-icon-play-circle").first();
+            NSLog(@"firstSong %@",firstSong.attr(@"href"));
+        }
+    }else{//尝试第二种搜索
+        for (OCGumboElement *ele in songUrlElement) {
+            OCGumboNode *firstSong =ele.Query(@".op-musicsong-songname").first();
+            if (firstSong == nil) {
+                return result;
+            }
+            NSLog(@"firstSong %@",firstSong.attr(@"href"));
+        }
+    }
    
-    
-
+    #pragma mark - **************** 准备返回数据
+   
+//    for ( int i=0; i<musicPlatformElement.count; i++) {
+//        NSDictionary * tmpMusic = [NSDictionary dictionary];
+//        OCGumboElement *elePlatform = musicPlatformElement[i];
+//        OCGumboElement *eleSong = songUrlElement[i];
+//        OCGumboNode *firstSong =eleSong.Query(@".c-icon-play-circle").first();
+//        [tmpMusic setValue:elePlatform.text() forKey:@"musicPlatform"];
+//        [tmpMusic setValue:songImageGumboNode.attr(@"src") forKey:@"songImageUrl"];
+//        [tmpMusic setValue:firstSong.attr(@"href") forKey:@"musicPlatform"];
+//        SearchModel *oneModel = [[SearchModel alloc]initWithDict:tmpMusic];
+//        [result addObject:oneModel];
+//    }
+    return result;
 }
+
 #pragma mark - url 中文格式化
 + (NSString *)strUTF8Encoding:(NSString *)str
 {
