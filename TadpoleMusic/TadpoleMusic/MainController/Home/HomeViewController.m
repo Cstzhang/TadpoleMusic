@@ -11,7 +11,9 @@
 #import "ACRCloudConfig.h"
 #import "ACRCloudRecognition.h"
 #import "SearchMusicViewController.h"
+#import "SongViewController.h"
 #import "SongModel.h"
+#import "SearchHandle.h"
 //搜索按钮的宽度
 static  const int BTN_WIDTH = 160;
 //搜索类型
@@ -165,6 +167,9 @@ typedef NS_ENUM(NSInteger, SearchType){
 #pragma mark - **************** 生命周期
 - (void)viewDidLoad {
     [super viewDidLoad];
+//    [SearchHandle searchMusicInBD:@"hello adele"];
+//    [SearchHandle searchMusicInBD:@"喜欢你"];
+//    [SearchHandle searchMusicInBD:@"你那么爱他"];
     [self setupUI];
     [self registerACR];
 }
@@ -406,7 +411,7 @@ typedef NS_ENUM(NSInteger, SearchType){
  *  跳转到搜索结果页
  */
 -(void)modalToSearhMusicView:(NSString *)songName{
-    SearchMusicViewController *searchVC = [[SearchMusicViewController alloc]init];
+    SongViewController *searchVC = [[SongViewController alloc]init];
     searchVC.songName =songName;
     [self presentViewController:searchVC animated:YES completion:nil];
 

@@ -14,6 +14,8 @@
 		6D524B571F3B4DDF00E8C434 /* AppDelegate+AppService.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D524B561F3B4DDF00E8C434 /* AppDelegate+AppService.m */; };
 		6D524B5A1F3B4E1100E8C434 /* AppDelegate+ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D524B591F3B4E1100E8C434 /* AppDelegate+ViewController.m */; };
 		6D524B5D1F3B511F00E8C434 /* RootTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D524B5C1F3B511F00E8C434 /* RootTabBarController.m */; };
+		6D6888B71F4F1BE20079DD3B /* SongViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D6888B51F4F1BE20079DD3B /* SongViewController.m */; };
+		6D6888B81F4F1BE20079DD3B /* SongViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6D6888B61F4F1BE20079DD3B /* SongViewController.xib */; };
 		6DA06F821F341196009086E4 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DA06F811F341196009086E4 /* main.m */; };
 		6DA06F851F341196009086E4 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DA06F841F341196009086E4 /* AppDelegate.m */; };
 		6DA06F8D1F341196009086E4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6DA06F8C1F341196009086E4 /* Assets.xcassets */; };
@@ -58,6 +60,9 @@
 		6D524B591F3B4E1100E8C434 /* AppDelegate+ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "AppDelegate+ViewController.m"; sourceTree = "<group>"; };
 		6D524B5B1F3B511F00E8C434 /* RootTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootTabBarController.h; sourceTree = "<group>"; };
 		6D524B5C1F3B511F00E8C434 /* RootTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RootTabBarController.m; sourceTree = "<group>"; };
+		6D6888B41F4F1BE20079DD3B /* SongViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SongViewController.h; sourceTree = "<group>"; };
+		6D6888B51F4F1BE20079DD3B /* SongViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SongViewController.m; sourceTree = "<group>"; };
+		6D6888B61F4F1BE20079DD3B /* SongViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SongViewController.xib; sourceTree = "<group>"; };
 		6DA06F7D1F341196009086E4 /* TadpoleMusic.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TadpoleMusic.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6DA06F811F341196009086E4 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		6DA06F831F341196009086E4 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -376,6 +381,9 @@
 				6D1D1EB61F4DC7030048A5EE /* Model */,
 				6DFEC5CE1F42A1D0000CB1F8 /* SearchMusicViewController.h */,
 				6DFEC5CF1F42A1D0000CB1F8 /* SearchMusicViewController.m */,
+				6D6888B41F4F1BE20079DD3B /* SongViewController.h */,
+				6D6888B51F4F1BE20079DD3B /* SongViewController.m */,
+				6D6888B61F4F1BE20079DD3B /* SongViewController.xib */,
 			);
 			path = SearchMusic;
 			sourceTree = "<group>";
@@ -460,6 +468,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6D6888B81F4F1BE20079DD3B /* SongViewController.xib in Resources */,
 				6DA06F901F341196009086E4 /* LaunchScreen.storyboard in Resources */,
 				6DA06F8D1F341196009086E4 /* Assets.xcassets in Resources */,
 			);
@@ -529,6 +538,7 @@
 				6DA3170E1F3C5C1000593A0E /* CircleRippleView.m in Sources */,
 				6DFEC5D01F42A1D0000CB1F8 /* SearchMusicViewController.m in Sources */,
 				6DA06FB81F3473D0009086E4 /* HomeViewController.m in Sources */,
+				6D6888B71F4F1BE20079DD3B /* SongViewController.m in Sources */,
 				6DFEC5DC1F433BCE000CB1F8 /* OCGumbo+Query.m in Sources */,
 				6DA06FBB1F3473DB009086E4 /* MyViewController.m in Sources */,
 				6DA317021F3C3BA900593A0E /* ComFunc.m in Sources */,
