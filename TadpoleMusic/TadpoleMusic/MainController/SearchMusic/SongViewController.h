@@ -7,8 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
-
+@class SongModel;
 @interface SongViewController : UIViewController
-/** 要搜索的歌名 */
-@property (nonatomic,copy) NSString * songName;
+/** 搜索到的歌曲模型 */
+@property (nonatomic,strong) SongModel * songModel;
 @end

@@ -71,6 +71,7 @@
             //歌曲封面
             if (songImageGumboNode != nil && songImageGumboNode.attr(@"src") !=nil &&songImageGumboNode.attr(@"src").length !=0) {
                  imageUrl = songImageGumboNode.attr(@"src");
+                 NSLog(@"songImage %@",imageUrl);
             }
             //歌曲URL
             if ((unsigned long)getElement.count>0 && songUrlElement.count>0) {//情况1

@@ -10,10 +10,10 @@
 #import "CircleRippleView.h"
 #import "ACRCloudConfig.h"
 #import "ACRCloudRecognition.h"
-#import "SearchMusicViewController.h"
 #import "SongViewController.h"
 #import "SongModel.h"
 #import "SearchHandle.h"
+
 //搜索按钮的宽度
 static  const int BTN_WIDTH = 160;
 //搜索类型
@@ -56,6 +56,7 @@ typedef NS_ENUM(NSInteger, SearchType){
 
 @implementation HomeViewController
 #pragma mark - **************** 懒加载
+
 //设置提示title
 -(UILabel *)tipsLabel{
     if (!_tipsLabel) {
@@ -100,7 +101,6 @@ typedef NS_ENUM(NSInteger, SearchType){
         _searchBtn = [UIButton buttonWithType:UIButtonTypeCustom];
         [_searchBtn addTarget:self action:@selector(searchMusic) forControlEvents:UIControlEventTouchUpInside];
         [_searchBtn setBackgroundImage:[UIImage imageNamed:@"searchButton"] forState:UIControlStateNormal];
-        [_searchBtn setBackgroundImage:[UIImage imageNamed:@"searchButton"] forState:UIControlStateHighlighted];
         [_searchBtn setBackgroundImage:[UIImage imageNamed:@"searchButton"] forState:UIControlStateHighlighted];
         [_searchBtn setBackgroundImage:[UIImage imageNamed:@"searchButton"] forState:UIControlStateSelected];
     
@@ -178,8 +178,6 @@ typedef NS_ENUM(NSInteger, SearchType){
 #pragma mark - **************** 交互方法
 //搜索音乐
 -(void)searchMusic{
-//    [self modalToSearhMusicView];
-//    NSLog(@"搜索音乐");
     //如果已经正在识别了，直接返回
     if (_start) {
         return;
@@ -325,31 +323,7 @@ typedef NS_ENUM(NSInteger, SearchType){
         if ([[jsonObject valueForKeyPath: @"status.code"] integerValue] == 0) {
             if ([jsonObject valueForKeyPath: @"metadata.music"]) {
                 self.songModel = [SongModel musicInfoWithDict:jsonObject];
-//                NSDictionary *meta = [jsonObject valueForKeyPath: @"metadata.music"][0];
-//                //发行方 音乐标签信息
-//                NSString *label = [meta objectForKey:@"label"];
-//                //识别度
-//                NSString *score = [meta objectForKey:@"score"];
-//                //歌名
-//                NSString *title = [meta objectForKey:@"title"];
-//                //发行时间
-//                NSString *release_date = [meta objectForKey:@"release_date"];
-//                //艺术家
-//                NSString *artist = [meta objectForKey:@"artists"][0][@"name"];
-//                //专辑名
-//                NSString *album = [meta objectForKey:@"album"][@"name"];
-//                //播放的音频/歌曲的时间位置(毫秒)
-//                NSString *play_offset_ms = [meta objectForKey:@"play_offset_ms"];
-//                //毫秒级的跟踪时间
-//                NSString *duration = [meta objectForKey:@"duration_ms"];
-                
-//                NSArray *ra = @[[NSString stringWithFormat:@"title:%@", title],
-//                                [NSString stringWithFormat:@"artist:%@", artist],
-//                                [NSString stringWithFormat:@"album:%@", album],
-//                                [NSString stringWithFormat:@"play_offset_ms:%@", play_offset_ms],
-//                                [NSString stringWithFormat:@"duration_ms:%@", duration]];
-//                r = [ra componentsJoinedByString:@"\n"];
-                [self modalToSearhMusicView:self.songModel.title];
+                [self modalToSearhMusicView];
             }
             //处理哼唱识别的数据结果
             if ([jsonObject valueForKeyPath: @"metadata.humming"]) {
@@ -371,7 +345,7 @@ typedef NS_ENUM(NSInteger, SearchType){
                 }
                 r = [ra componentsJoinedByString:@"\n"];
                 NSString *title1 = metas[0][@"title"];
-                [self modalToSearhMusicView:title1];
+//                [self modalToSearhMusicView];
             }
         
             //self.resultView.text = r;
@@ -410,11 +384,12 @@ typedef NS_ENUM(NSInteger, SearchType){
 /**
  *  跳转到搜索结果页
  */
--(void)modalToSearhMusicView:(NSString *)songName{
+-(void)modalToSearhMusicView{
     SongViewController *searchVC = [[SongViewController alloc]init];
-    searchVC.songName =songName;
+    searchVC.songModel =self.songModel;
     [self presentViewController:searchVC animated:YES completion:nil];
-
+//    self.songView.songName = songName ;
+//    [self.view.window addSubview:self.songView];
 }
 
 
