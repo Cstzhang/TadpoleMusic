@@ -22,7 +22,7 @@
  
  @param songName 歌曲名字
  */
-+(NSArray *)searchMusicInBD:(NSString *)songName{
++(NSMutableArray *)searchMusicInBD:(NSString *)songName{
      NSMutableArray * result = [NSMutableArray array];
     //判断Url中是否有特殊符号（ - 排除干扰
     NSMutableArray *stringArray =[[NSMutableArray alloc]init];

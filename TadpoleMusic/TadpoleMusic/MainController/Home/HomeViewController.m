@@ -370,7 +370,6 @@ typedef NS_ENUM(NSInteger, SearchType){
 {
     dispatch_async(dispatch_get_main_queue(), ^{
        // self.volumeLabel.text = [NSString stringWithFormat:@"Volume : %f",volume];
-        
     });
 }
 
@@ -388,8 +387,7 @@ typedef NS_ENUM(NSInteger, SearchType){
     SongViewController *searchVC = [[SongViewController alloc]init];
     searchVC.songModel =self.songModel;
     [self presentViewController:searchVC animated:YES completion:nil];
-//    self.songView.songName = songName ;
-//    [self.view.window addSubview:self.songView];
+
 }
 
 
