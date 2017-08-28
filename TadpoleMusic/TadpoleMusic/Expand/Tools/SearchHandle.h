@@ -26,5 +26,5 @@
 
  @param songName 歌曲名字
  */
-+(NSMutableArray *)searchMusicInBD:(NSString *)songName;
++(NSMutableDictionary *)searchMusicInBD:(NSString *)songName;
 @end

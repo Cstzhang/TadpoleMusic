@@ -33,25 +33,35 @@
 @property (weak, nonatomic) IBOutlet UILabel *searchScoreLabel;
 /** 各个平台View */
 @property (weak, nonatomic) IBOutlet UICollectionView *platformCollectionView;
+@property (weak, nonatomic) IBOutlet UIView *songBackView;
 
 #pragma mark - **************** 数据部分
 
 /** 平台数组 */
-@property (nonatomic,strong) NSMutableArray * searchArray;
+@property (nonatomic,strong) NSMutableDictionary * searchDic;
+
+/** 平台数组 */
+@property (nonatomic,strong) NSMutableArray * songPlatform;
 
 
 @end
 
 @implementation SongViewController
 #pragma mark - **************** 懒加载
--(NSMutableArray *)searchArray{
-    if (!_searchArray) {
-        _searchArray= [[NSMutableArray alloc]init];
+-(NSMutableDictionary *)searchDic{
+    if (!_searchDic) {
+        _searchDic= [[NSMutableDictionary alloc]init];
     }
-    return  _searchArray;
+    return  _searchDic;
 }
 
 
+-(NSMutableArray *)songPlatform{
+    if (!_songPlatform) {
+        _songPlatform= [[NSMutableArray alloc]init];
+    }
+    return  _songPlatform;
+}
 #pragma mark - **************** -初始化
 -(void)setBaseUI{
     UIImage *backGroundImage=[UIImage imageNamed:@"bg"];
@@ -61,6 +71,18 @@
     self.platformCollectionView.dataSource= self;
     //注册cell
     [self.platformCollectionView registerNib:[UINib nibWithNibName:@"PlatformViewCell" bundle:nil]forCellWithReuseIdentifier:@"PlatformViewCell"];
+    //设置背景卡片圆角
+    self.songBackView.layer.cornerRadius = 8;
+    self.songBackView.layer.masksToBounds = YES;
+    //头像圆角
+    self.artistImage.layer.masksToBounds =YES;
+    self.artistImage.layer.cornerRadius =self.artistImage.bounds.size.height/2;
+    self.artistImage.layer.borderWidth=1;
+    self.artistImage.layer.borderColor=[UIColor whiteColor].CGColor;
+    //设置边框及边框颜色
+    self.songBackView.layer.borderWidth = 8;
+    self.songBackView.layer.borderColor =[ [UIColor clearColor] CGColor];
+    
 }
 
 -(void)setBaseData{
@@ -84,27 +106,45 @@
 }
 
 -(void)searchMusciInfo{
-   
-    self.searchArray = [SearchHandle searchMusicInBD:self.songModel.title];
-    if (self.searchArray.count != 0 ) {
-        NSLog(@" self.searchArray %@", self.searchArray);
-        [self showPlatformData];
+//    self.searchDic = [SearchHandle searchMusicInBD:self.songModel.title];
+
+//    self.searchDic = [SearchHandle searchMusicInBD:@"Down at the coffeeshop"];
+    self.searchDic = [SearchHandle searchMusicInBD:@"Down at the coffeeshop"];
+    [self showHeadview];
+    self.songPlatform = [NSMutableArray arrayWithArray:self.searchDic[@"musicPlatform"]];
+    if (self.songPlatform.count != 0 ) {//
+        [self.platformCollectionView reloadData];
     }else{
         NSLog(@"没有歌曲的平台信息");
+        
     }
     
   
 
 }
 
-
--(void)showPlatformData{
+-(void)showHeadview{
+    NSURL *imgUrl = [NSURL URLWithString:[self.searchDic valueForKey:@"songImageUrl"]];
+    NSString * userAgent = @"";
+    userAgent = [NSString stringWithFormat:@"%@/%@ (%@; iOS %@; Scale/%0.2f)", [[[NSBundle mainBundle] infoDictionary] objectForKey:(__bridge NSString *)kCFBundleExecutableKey] ?: [[[NSBundle mainBundle] infoDictionary] objectForKey:(__bridge NSString *)kCFBundleIdentifierKey], [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"] ?: [[[NSBundle mainBundle] infoDictionary] objectForKey:(__bridge NSString *)kCFBundleVersionKey], [[UIDevice currentDevice] model], [[UIDevice currentDevice] systemVersion], [[UIScreen mainScreen] scale]];
     
-    SearchModel * model = self.searchArray[0];
-    NSURL *imgUrl = [NSURL URLWithString:model.songImageUrl ];
-    [self.artistImage sd_setImageWithURL:imgUrl placeholderImage:[UIImage imageNamed:@"默认头像"]];
-    [self.platformCollectionView reloadData];
+    if (userAgent) {
+        if (![userAgent canBeConvertedToEncoding:NSASCIIStringEncoding]) {
+            NSMutableString *mutableUserAgent = [userAgent mutableCopy];
+            if (CFStringTransform((__bridge CFMutableStringRef)(mutableUserAgent), NULL, (__bridge CFStringRef)@"Any-Latin; Latin-ASCII; [:^ASCII:] Remove", false)) {
+                userAgent = mutableUserAgent;
+            }
+        }
+        [[SDWebImageDownloader sharedDownloader] setValue:userAgent forHTTPHeaderField:@"User-Agent"];
+    }
+    [self.artistImage sd_setImageWithURL:imgUrl placeholderImage:[UIImage imageNamed:@"默认头像"] completed:^(UIImage * _Nullable image, NSError * _Nullable error, SDImageCacheType cacheType, NSURL * _Nullable imageURL) {
+        NSLog(@"error %@",error);
+        NSLog(@"image %@",image);
+    }];
+    
+
 }
+
 
 - (IBAction)clickCloseBtn:(id)sender {
     //点击返回
@@ -119,7 +159,7 @@
 // numberOfItemsInSection
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
-    return self.searchArray.count;
+    return self.songPlatform.count;
 }
 
 //cellForItemAtIndexPath
@@ -127,8 +167,8 @@
 {
     //创建 PhotoCollectionViewCell 创建cell的时候与cell对应的presenter 也创建了
     PlatformViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"PlatformViewCell" forIndexPath:indexPath];
-    if (self.searchArray.count!=0) {
-        SearchModel * model = self.searchArray[indexPath.row];
+    if (self.songPlatform.count!=0) {
+        SearchModel * model = self.songPlatform[indexPath.row];
         cell.platformName.text = model.musicPlatform;
         cell.platformImage.image = [UIImage imageNamed:model.musicPlatform];
     }
@@ -145,7 +185,7 @@
 //didSelectItemAtIndexPath 点击
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    SearchModel * model = self.searchArray[indexPath.row];
+    SearchModel * model = self.songPlatform[indexPath.row];
     NSURL *songUrl = [NSURL URLWithString:model.songUrl];
     NSLog(@"你点击了我 %ld %@",(long)indexPath.row,songUrl);
     [[UIApplication sharedApplication] openURL:songUrl];

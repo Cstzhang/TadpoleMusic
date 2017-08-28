@@ -88,7 +88,6 @@ typedef NS_ENUM(NSInteger, SearchType){
         [_musicTypeBtn setBackgroundImage:[UIImage imageNamed:@"type_unslected"] forState:UIControlStateNormal];
         [_musicTypeBtn setBackgroundImage:[UIImage imageNamed:@"type_unslected"] forState:UIControlStateHighlighted];
         [_musicTypeBtn setBackgroundImage:[UIImage imageNamed:@"type_slected"] forState:UIControlStateSelected];
-        
     }
     return _musicTypeBtn;
 }
@@ -185,19 +184,22 @@ typedef NS_ENUM(NSInteger, SearchType){
 #pragma mark - **************** 交互方法
 //搜索音乐
 -(void)searchMusic{
-    //如果已经正在识别了，直接返回
-    if (_start) {
-        [self stopSearchMusic];
-        return;
-    }
-    //开始动画
-    [_rippleView startAnimation];
-    //开始采集声纹
-    [_client startRecordRec];
-    //开始状态
-    _start = YES;
-    //开始时间
-    startTime = [[NSDate date] timeIntervalSince1970];
+    //初始化识别为歌曲识别
+    self.searchType=SearchTypeMusic;
+    [self jumpToSearhMusicView];
+//    //如果已经正在识别了，直接返回
+//    if (_start) {
+//        [self stopSearchMusic];
+//        return;
+//    }
+//    //开始动画
+//    [_rippleView startAnimation];
+//    //开始采集声纹
+//    [_client startRecordRec];
+//    //开始状态
+//    _start = YES;
+//    //开始时间
+//    startTime = [[NSDate date] timeIntervalSince1970];
 }
 //音乐搜索的类型：听歌
 -(void)searchTypeMusic{
@@ -315,16 +317,16 @@ typedef NS_ENUM(NSInteger, SearchType){
 
 //搜索返回
 -(void)handleResult:(NSString *)result resultType:(ACRCloudResultType)resType{
-    __weak typeof(self)weakSelf = self;
     dispatch_async(dispatch_get_main_queue(), ^{
         NSError *error = nil;
         NSData *jsonData = [result dataUsingEncoding:NSUTF8StringEncoding];
         NSDictionary* jsonObject = [NSJSONSerialization JSONObjectWithData:jsonData options:NSJSONReadingMutableContainers error:&error];
+        NSLog(@"识别结果:%@ ", result);
         //能够搜索到歌曲的处理
         if ([[jsonObject valueForKeyPath: @"status.code"] integerValue] == 0) {
             if ([jsonObject valueForKeyPath: @"metadata.music"]) {
-                weakSelf.songModel = [SongModel musicInfoWithDict:jsonObject];
-                [weakSelf jumpToSearhMusicView];
+                self.songModel = [SongModel musicInfoWithDict:jsonObject];
+                [self jumpToSearhMusicView];
             }
             //处理哼唱识别的数据结果
             if ([jsonObject valueForKeyPath: @"metadata.humming"]) {
@@ -332,20 +334,23 @@ typedef NS_ENUM(NSInteger, SearchType){
                 if (metas.count!=0) {
                     for (id song in metas) {
                         HummingModel *oneModel = [HummingModel hummingInfoWithDict:song];
-                        [weakSelf.hummingArray addObject:oneModel];
+                        [self.hummingArray addObject:oneModel];
                     }
-                    [weakSelf jumpToSearhMusicView];
+                    [self jumpToSearhMusicView];
                 }
             }
         } else {
              #warning 处理不同搜索结果的提示
-             NSLog(@"识别失败:%@ ", result);
+            
             /* 
              {"status":{"code":2005, "msg":"rec timeout", "version":"1.0"}}
              {"status":{"msg":"No result","code":1001,"version":"1.0"}}
              {"status":{"code":2001, "msg":"init failed or request timeout", "version":"1.0"}}
              {"status":{"code":2004, "msg":"unable to generate fingerprint", "version":"1.0"}}
+             {"status":{"msg":"No result","code":1001,"version":"1.0"}}
+              {"status":{"code":3003, "msg":"limit exceeded, please upgrade your account", "version":"1.0"}}
              */
+            NSLog(@"error %@",error);
             
         }
         
@@ -384,17 +389,17 @@ typedef NS_ENUM(NSInteger, SearchType){
  *  跳转到搜索结果页
  */
 -(void)jumpToSearhMusicView{
-    switch (_searchType) {
-        case 1:
+    switch (self.searchType) {
+        case SearchTypeMusic:
         {
             SongViewController *searchVC = [[SongViewController alloc]init];
-            searchVC.songModel =self.songModel;
+//            searchVC.songModel =self.songModel;
             [self presentViewController:searchVC animated:YES completion:nil];
         
         }
             break;
             
-        default:
+        case SearchTypeMusicHumming:
         {
             HummingListController *hummingVC =[[HummingListController alloc]init];
             hummingVC.hummingArray = self.hummingArray;

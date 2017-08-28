@@ -13,8 +13,6 @@
 /** 播放URL */
 @property (nonatomic,copy) NSString * songUrl;
 
-/** 专辑封面URL */
-@property (nonatomic,copy) NSString * songImageUrl;
 
 /** 平台名称 */
 @property (nonatomic,copy) NSString * musicPlatform;

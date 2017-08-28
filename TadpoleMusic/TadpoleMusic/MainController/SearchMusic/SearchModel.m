@@ -18,12 +18,7 @@
             [self setValue:dict[@"songUrl"] forKey:@"songUrl"];
             
         }
-        if ((NSNull *)dict[@"songImageUrl"] ==[NSNull null]) {
-            [self setValue:@"" forKey:@"songImageUrl"];
-        }else{
-            [self setValue:dict[@"songImageUrl"] forKey:@"songImageUrl"];
-            
-        }
+
         if ((NSNull *)dict[@"musicPlatform"] ==[NSNull null]) {
             [self setValue:@"" forKey:@"musicPlatform"];
         }else{

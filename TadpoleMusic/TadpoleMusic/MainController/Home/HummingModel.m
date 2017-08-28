@@ -28,17 +28,17 @@
             
         }
         //艺术家
-        if ((NSNull *)[meta objectForKey:@"artists"][0][@"name"] ==[NSNull null]) {
+        if ((NSNull *)[dict objectForKey:@"artists"][0]==[NSNull null]) {
             [self setValue:@"" forKey:@"artist"];
         }else{
-            [self setValue:[meta objectForKey:@"artists"][0][@"name"] forKey:@"artist"];
+            [self setValue:[dict objectForKey:@"artists"][0] forKey:@"artist"];
             
         }
         //专辑名
-        if ((NSNull *)[meta objectForKey:@"album"][@"name"] ==[NSNull null]) {
+        if ((NSNull *)[dict objectForKey:@"album"][@"name"]==[NSNull null]) {
             [self setValue:@"" forKey:@"album"];
         }else{
-            [self setValue:[meta objectForKey:@"album"][@"name"] forKey:@"album"];
+            [self setValue:[dict objectForKey:@"album"][@"name"] forKey:@"album"];
             
         }
     }
