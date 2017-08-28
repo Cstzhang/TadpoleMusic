@@ -31,7 +31,7 @@
         //统一返回样式
         UIButton *btn =[[UIButton alloc]init];
         btn.frame = CGRectMake(0, 0, 22, 22);
-        [btn setImage:[UIImage imageNamed:@"ic_return"] forState:0];
+        [btn setImage:[UIImage imageNamed:@"back-arrow"] forState:0];
         [btn addTarget:self action:@selector(backBarButtonItemAction) forControlEvents:UIControlEventTouchUpInside];
         UIBarButtonItem *back=[[UIBarButtonItem alloc]initWithCustomView:btn];
         viewController.navigationItem.leftBarButtonItem = back;

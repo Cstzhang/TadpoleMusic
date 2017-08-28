@@ -17,10 +17,7 @@
 @property (nonatomic, copy) NSString *artist;
 //专辑名
 @property (nonatomic, copy) NSString *album;
-//播放的音频/歌曲的时间位置(毫秒)
-@property (nonatomic, strong) NSNumber *play_offset_ms;
-//毫秒级的跟踪时间
-@property (nonatomic, strong) NSNumber *duration_ms;
+
 
 -(instancetype)initWithDictionary:(NSDictionary *)dict;
 

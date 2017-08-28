@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "BaseViewController.h"
-@interface HummingListController : BaseViewController
+@interface HummingListController : UIViewController
 /** 哼唱识别数组 */
 @property (nonatomic,strong) NSMutableArray * hummingArray;
 @end

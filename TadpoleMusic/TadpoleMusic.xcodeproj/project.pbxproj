@@ -32,6 +32,8 @@
 		6DA317061F3C3E5300593A0E /* UIColor+Addition.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DA317051F3C3E5300593A0E /* UIColor+Addition.m */; };
 		6DA3170E1F3C5C1000593A0E /* CircleRippleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DA3170D1F3C5C1000593A0E /* CircleRippleView.m */; };
 		6DB9AD211F4482ED0011FE33 /* SongModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DB9AD201F4482ED0011FE33 /* SongModel.m */; };
+		6DE205121F5463470077C8DF /* HummingSongViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DE205101F5463470077C8DF /* HummingSongViewCell.m */; };
+		6DE205131F5463470077C8DF /* HummingSongViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6DE205111F5463470077C8DF /* HummingSongViewCell.xib */; };
 		6DEFC7701F3DEB3200E45603 /* libACRCloud_IOS_SDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6DEFC76F1F3DEB3200E45603 /* libACRCloud_IOS_SDK.a */; };
 		6DEFC7721F3DEBCD00E45603 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6DEFC7711F3DEBCD00E45603 /* AudioToolbox.framework */; };
 		6DEFC7741F3DEBD300E45603 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6DEFC7731F3DEBD300E45603 /* AVFoundation.framework */; };
@@ -96,6 +98,9 @@
 		6DA3170D1F3C5C1000593A0E /* CircleRippleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CircleRippleView.m; sourceTree = "<group>"; };
 		6DB9AD1F1F4482ED0011FE33 /* SongModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SongModel.h; sourceTree = "<group>"; };
 		6DB9AD201F4482ED0011FE33 /* SongModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SongModel.m; sourceTree = "<group>"; };
+		6DE2050F1F5463470077C8DF /* HummingSongViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HummingSongViewCell.h; sourceTree = "<group>"; };
+		6DE205101F5463470077C8DF /* HummingSongViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HummingSongViewCell.m; sourceTree = "<group>"; };
+		6DE205111F5463470077C8DF /* HummingSongViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HummingSongViewCell.xib; sourceTree = "<group>"; };
 		6DEFC76D1F3DEB0900E45603 /* ACRCloudConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ACRCloudConfig.h; sourceTree = "<group>"; };
 		6DEFC76E1F3DEB0900E45603 /* ACRCloudRecognition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ACRCloudRecognition.h; sourceTree = "<group>"; };
 		6DEFC76F1F3DEB3200E45603 /* libACRCloud_IOS_SDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libACRCloud_IOS_SDK.a; sourceTree = "<group>"; };
@@ -207,6 +212,9 @@
 				6D92CCBD1F52F8E700B9969E /* PlatformViewCell.h */,
 				6D92CCBE1F52F8E700B9969E /* PlatformViewCell.m */,
 				6D92CCBF1F52F8E700B9969E /* PlatformViewCell.xib */,
+				6DE2050F1F5463470077C8DF /* HummingSongViewCell.h */,
+				6DE205101F5463470077C8DF /* HummingSongViewCell.m */,
+				6DE205111F5463470077C8DF /* HummingSongViewCell.xib */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -495,6 +503,7 @@
 				6D6888B81F4F1BE20079DD3B /* SongViewController.xib in Resources */,
 				6D92CCC11F52F8E700B9969E /* PlatformViewCell.xib in Resources */,
 				6DA06F901F341196009086E4 /* LaunchScreen.storyboard in Resources */,
+				6DE205131F5463470077C8DF /* HummingSongViewCell.xib in Resources */,
 				6D382D7F1F53C8F5000440C4 /* HummingListController.xib in Resources */,
 				6DA06F8D1F341196009086E4 /* Assets.xcassets in Resources */,
 			);
@@ -572,6 +581,7 @@
 				6D524B5D1F3B511F00E8C434 /* RootTabBarController.m in Sources */,
 				6D028EC81F35C9D4000E0935 /* BaseNavController.m in Sources */,
 				6D403DCE1F41EAF500EB3DCB /* SearchHandle.m in Sources */,
+				6DE205121F5463470077C8DF /* HummingSongViewCell.m in Sources */,
 				6D382D7E1F53C8F5000440C4 /* HummingListController.m in Sources */,
 				6DA317061F3C3E5300593A0E /* UIColor+Addition.m in Sources */,
 				6D1D1EB91F4DC71A0048A5EE /* SearchModel.m in Sources */,

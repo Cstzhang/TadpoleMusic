@@ -392,10 +392,12 @@ typedef NS_ENUM(NSInteger, SearchType){
     switch (self.searchType) {
         case SearchTypeMusic:
         {
-            SongViewController *searchVC = [[SongViewController alloc]init];
-//            searchVC.songModel =self.songModel;
-            [self presentViewController:searchVC animated:YES completion:nil];
-        
+//            SongViewController *searchVC = [[SongViewController alloc]init];
+////            searchVC.songModel =self.songModel;
+//            [self presentViewController:searchVC animated:YES completion:nil];
+            HummingListController *hummingVC =[[HummingListController alloc]init];
+            hummingVC.hummingArray = self.hummingArray;
+            [self.navigationController pushViewController:hummingVC animated:YES];
         }
             break;
             
