@@ -7,7 +7,10 @@
 //
 
 #import "PlatformViewCell.h"
+@interface PlatformViewCell()
 
+
+@end
 @implementation PlatformViewCell
 
 - (void)awakeFromNib {

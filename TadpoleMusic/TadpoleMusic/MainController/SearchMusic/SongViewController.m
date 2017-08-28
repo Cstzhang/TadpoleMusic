@@ -80,6 +80,7 @@
     [self setBaseUI];
     [self setBaseData];
     [self searchMusciInfo];
+    
 }
 
 -(void)searchMusciInfo{
@@ -87,10 +88,23 @@
     self.searchArray = [SearchHandle searchMusicInBD:self.songModel.title];
     if (self.searchArray.count != 0 ) {
         NSLog(@" self.searchArray %@", self.searchArray);
+        [self showPlatformData];
+    }else{
+        NSLog(@"没有歌曲的平台信息");
     }
+    
+  
+
 }
 
 
+-(void)showPlatformData{
+    
+    SearchModel * model = self.searchArray[0];
+    NSURL *imgUrl = [NSURL URLWithString:model.songImageUrl ];
+    [self.artistImage sd_setImageWithURL:imgUrl placeholderImage:[UIImage imageNamed:@""]];
+    [self.platformCollectionView reloadData];
+}
 
 - (IBAction)clickCloseBtn:(id)sender {
     //点击返回
@@ -105,7 +119,7 @@
 // numberOfItemsInSection
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
-    return 4;
+    return self.searchArray.count;
 }
 
 //cellForItemAtIndexPath
@@ -113,6 +127,11 @@
 {
     //创建 PhotoCollectionViewCell 创建cell的时候与cell对应的presenter 也创建了
     PlatformViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"PlatformViewCell" forIndexPath:indexPath];
+    if (self.searchArray.count!=0) {
+        SearchModel * model = self.searchArray[indexPath.row];
+        cell.platformName.text = model.musicPlatform;
+        cell.platformImage.image = [UIImage imageNamed:model.musicPlatform];
+    }
     //赋值数据
     return cell;
 }
@@ -126,8 +145,11 @@
 //didSelectItemAtIndexPath 点击
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    //取出点击的图片
-    NSLog(@"你点击了我 %ld",(long)indexPath.row);
+    SearchModel * model = self.searchArray[indexPath.row];
+    NSURL *songUrl = [NSURL URLWithString:model.songUrl];
+    NSLog(@"你点击了我 %ld %@",(long)indexPath.row,songUrl);
+    [[UIApplication sharedApplication] openURL:songUrl];
+    
 }
 
 
