@@ -9,14 +9,10 @@
 #import <Foundation/Foundation.h>
 
 @interface HummingModel : NSObject
-//发行方 音乐标签信息
-@property (nonatomic, copy) NSString *label;
 //识别度
 @property (nonatomic,strong) NSNumber *score;
 //歌名
 @property (nonatomic, copy) NSString *title;
-//发行时间
-@property (nonatomic, copy) NSString *release_date;
 //艺术家
 @property (nonatomic, copy) NSString *artist;
 //专辑名

@@ -10,6 +10,8 @@
 		6D028EC11F35BD35000E0935 /* HotListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D028EC01F35BD35000E0935 /* HotListViewController.m */; };
 		6D028EC81F35C9D4000E0935 /* BaseNavController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D028EC71F35C9D4000E0935 /* BaseNavController.m */; };
 		6D1D1EB91F4DC71A0048A5EE /* SearchModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D1D1EB81F4DC71A0048A5EE /* SearchModel.m */; };
+		6D382D7E1F53C8F5000440C4 /* HummingListController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D382D7C1F53C8F5000440C4 /* HummingListController.m */; };
+		6D382D7F1F53C8F5000440C4 /* HummingListController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6D382D7D1F53C8F5000440C4 /* HummingListController.xib */; };
 		6D403DCE1F41EAF500EB3DCB /* SearchHandle.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D403DCD1F41EAF500EB3DCB /* SearchHandle.m */; };
 		6D524B571F3B4DDF00E8C434 /* AppDelegate+AppService.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D524B561F3B4DDF00E8C434 /* AppDelegate+AppService.m */; };
 		6D524B5A1F3B4E1100E8C434 /* AppDelegate+ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D524B591F3B4E1100E8C434 /* AppDelegate+ViewController.m */; };
@@ -53,6 +55,9 @@
 		6D028ECC1F35EA0B000E0935 /* Main_pch.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Main_pch.pch; sourceTree = "<group>"; };
 		6D1D1EB71F4DC71A0048A5EE /* SearchModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchModel.h; sourceTree = "<group>"; };
 		6D1D1EB81F4DC71A0048A5EE /* SearchModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchModel.m; sourceTree = "<group>"; };
+		6D382D7B1F53C8F5000440C4 /* HummingListController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HummingListController.h; sourceTree = "<group>"; };
+		6D382D7C1F53C8F5000440C4 /* HummingListController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HummingListController.m; sourceTree = "<group>"; };
+		6D382D7D1F53C8F5000440C4 /* HummingListController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HummingListController.xib; sourceTree = "<group>"; };
 		6D403DCC1F41EAF500EB3DCB /* SearchHandle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchHandle.h; sourceTree = "<group>"; };
 		6D403DCD1F41EAF500EB3DCB /* SearchHandle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchHandle.m; sourceTree = "<group>"; };
 		6D524B531F3B4AFF00E8C434 /* Macros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Macros.h; sourceTree = "<group>"; };
@@ -400,6 +405,9 @@
 				6D6888B41F4F1BE20079DD3B /* SongViewController.h */,
 				6D6888B51F4F1BE20079DD3B /* SongViewController.m */,
 				6D6888B61F4F1BE20079DD3B /* SongViewController.xib */,
+				6D382D7B1F53C8F5000440C4 /* HummingListController.h */,
+				6D382D7C1F53C8F5000440C4 /* HummingListController.m */,
+				6D382D7D1F53C8F5000440C4 /* HummingListController.xib */,
 			);
 			path = SearchMusic;
 			sourceTree = "<group>";
@@ -487,6 +495,7 @@
 				6D6888B81F4F1BE20079DD3B /* SongViewController.xib in Resources */,
 				6D92CCC11F52F8E700B9969E /* PlatformViewCell.xib in Resources */,
 				6DA06F901F341196009086E4 /* LaunchScreen.storyboard in Resources */,
+				6D382D7F1F53C8F5000440C4 /* HummingListController.xib in Resources */,
 				6DA06F8D1F341196009086E4 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -563,6 +572,7 @@
 				6D524B5D1F3B511F00E8C434 /* RootTabBarController.m in Sources */,
 				6D028EC81F35C9D4000E0935 /* BaseNavController.m in Sources */,
 				6D403DCE1F41EAF500EB3DCB /* SearchHandle.m in Sources */,
+				6D382D7E1F53C8F5000440C4 /* HummingListController.m in Sources */,
 				6DA317061F3C3E5300593A0E /* UIColor+Addition.m in Sources */,
 				6D1D1EB91F4DC71A0048A5EE /* SearchModel.m in Sources */,
 				6D524B571F3B4DDF00E8C434 /* AppDelegate+AppService.m in Sources */,

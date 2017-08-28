@@ -102,7 +102,7 @@
     
     SearchModel * model = self.searchArray[0];
     NSURL *imgUrl = [NSURL URLWithString:model.songImageUrl ];
-    [self.artistImage sd_setImageWithURL:imgUrl placeholderImage:[UIImage imageNamed:@""]];
+    [self.artistImage sd_setImageWithURL:imgUrl placeholderImage:[UIImage imageNamed:@"默认头像"]];
     [self.platformCollectionView reloadData];
 }
 

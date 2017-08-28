@@ -12,7 +12,9 @@
 #import "ACRCloudRecognition.h"
 #import "SongViewController.h"
 #import "SongModel.h"
+#import "HummingModel.h"
 #import "SearchHandle.h"
+#import "HummingListController.h"
 
 //搜索按钮的宽度
 static  const int BTN_WIDTH = 160;
@@ -49,13 +51,21 @@ typedef NS_ENUM(NSInteger, SearchType){
 @property (nonatomic,strong) CircleRippleView * rippleView;
 /** 搜索类型 */
 @property (nonatomic, assign) SearchType searchType;
-/** 音乐模型 */
+/** 音乐搜索模型 */
 @property (nonatomic,strong) SongModel * songModel;
-
+/** 哼唱识别数组 */
+@property (nonatomic,strong) NSMutableArray * hummingArray;
 @end
 
 @implementation HomeViewController
 #pragma mark - **************** 懒加载
+-(NSMutableArray *)hummingArray{
+    if (!_hummingArray) {//哼唱模糊识别只提供前6个识别歌曲
+        _hummingArray= [NSMutableArray arrayWithCapacity:6];
+    }
+    return  _hummingArray;
+}
+
 
 //设置提示title
 -(UILabel *)tipsLabel{
@@ -152,12 +162,12 @@ typedef NS_ENUM(NSInteger, SearchType){
             make.width.equalTo(RATIO_W(100));
             make.height.equalTo(RATIO_W(30));
     }];
-    UIButton *rightBt=[UIButton buttonWithType:UIButtonTypeSystem];
-    rightBt.frame=CGRectMake(0, 0, 42, 23);
-    [rightBt setTitle:@"停止" forState:UIControlStateNormal];
-    [rightBt addTarget:self action:@selector(stopSearchMusic) forControlEvents:UIControlEventTouchUpInside];
-    UIBarButtonItem *rightItem=[[UIBarButtonItem alloc]initWithCustomView:rightBt];
-    self.navigationItem.rightBarButtonItem=rightItem;
+//    UIButton *rightBt=[UIButton buttonWithType:UIButtonTypeSystem];
+//    rightBt.frame=CGRectMake(0, 0, 42, 23);
+//    [rightBt setTitle:@"停止" forState:UIControlStateNormal];
+//    [rightBt addTarget:self action:@selector(stopSearchMusic) forControlEvents:UIControlEventTouchUpInside];
+//    UIBarButtonItem *rightItem=[[UIBarButtonItem alloc]initWithCustomView:rightBt];
+//    self.navigationItem.rightBarButtonItem=rightItem;
 
   
 }
@@ -167,9 +177,6 @@ typedef NS_ENUM(NSInteger, SearchType){
 #pragma mark - **************** 生命周期
 - (void)viewDidLoad {
     [super viewDidLoad];
-//    [SearchHandle searchMusicInBD:@"hello adele"];
-//    [SearchHandle searchMusicInBD:@"喜欢你"];
-//    [SearchHandle searchMusicInBD:@"你那么爱他"];
     [self setupUI];
     [self registerACR];
 }
@@ -180,11 +187,11 @@ typedef NS_ENUM(NSInteger, SearchType){
 -(void)searchMusic{
     //如果已经正在识别了，直接返回
     if (_start) {
+        [self stopSearchMusic];
         return;
     }
     //开始动画
     [_rippleView startAnimation];
-    
     //开始采集声纹
     [_client startRecordRec];
     //开始状态
@@ -194,9 +201,8 @@ typedef NS_ENUM(NSInteger, SearchType){
 }
 //音乐搜索的类型：听歌
 -(void)searchTypeMusic{
-    //如果已经正在识别了，直接返回
     if (_start) {
-        return;
+        [self stopSearchMusic];
     }
     NSLog(@"听音乐搜索模式");
     self.searchType=SearchTypeMusic;
@@ -204,13 +210,13 @@ typedef NS_ENUM(NSInteger, SearchType){
     self.musicTypeBtn.selected=YES;
     _config.accessKey = ACR_ACCESS_KEY;
     _config.accessSecret = ACR_ACCESS_SECRET;
+    [self searchMusic];
 }
 
 //音乐搜索的类型：哼唱
 -(void)searchTypeHumming{
-    //如果已经正在识别了，直接返回
     if (_start) {
-        return;
+        [self stopSearchMusic];
     }
     NSLog(@"听音乐搜索模式");
     self.searchType=SearchTypeMusicHumming;
@@ -218,6 +224,7 @@ typedef NS_ENUM(NSInteger, SearchType){
     self.musicTypeBtn.selected=NO;
     _config.accessKey = ACR_HUMMING_ACCESS_KEY;
     _config.accessSecret = ACR_HUMMING_ACCESS_SECRET;
+    [self searchMusic];
 }
 
 //停止音乐识别
@@ -240,7 +247,6 @@ typedef NS_ENUM(NSInteger, SearchType){
     _start = NO;
     //实例化
     _config = [[ACRCloudConfig alloc] init];
-    
     //秘钥
     _config.accessKey = ACR_ACCESS_KEY;
     _config.accessSecret = ACR_ACCESS_SECRET;
@@ -291,7 +297,7 @@ typedef NS_ENUM(NSInteger, SearchType){
 
 }
 
-
+// 返回声纹数据长度
 -(void)handleResultFp:(NSString *)result
           fingerprint:(NSData*)fingerprint
 {
@@ -307,87 +313,96 @@ typedef NS_ENUM(NSInteger, SearchType){
     });
 }
 
--(void)handleResult:(NSString *)result
-         resultType:(ACRCloudResultType)resType
-{
-    
+//搜索返回
+-(void)handleResult:(NSString *)result resultType:(ACRCloudResultType)resType{
+    __weak typeof(self)weakSelf = self;
     dispatch_async(dispatch_get_main_queue(), ^{
         NSError *error = nil;
-        
         NSData *jsonData = [result dataUsingEncoding:NSUTF8StringEncoding];
         NSDictionary* jsonObject = [NSJSONSerialization JSONObjectWithData:jsonData options:NSJSONReadingMutableContainers error:&error];
-        NSString *r = nil;
-        
-        NSLog(@"%@", result);
         //能够搜索到歌曲的处理
         if ([[jsonObject valueForKeyPath: @"status.code"] integerValue] == 0) {
             if ([jsonObject valueForKeyPath: @"metadata.music"]) {
-                self.songModel = [SongModel musicInfoWithDict:jsonObject];
-                [self modalToSearhMusicView];
+                weakSelf.songModel = [SongModel musicInfoWithDict:jsonObject];
+                [weakSelf jumpToSearhMusicView];
             }
             //处理哼唱识别的数据结果
             if ([jsonObject valueForKeyPath: @"metadata.humming"]) {
                 NSArray *metas = [jsonObject valueForKeyPath: @"metadata.humming"];
-                NSMutableArray *ra = [NSMutableArray arrayWithCapacity:6];
-                for (id d in metas) {
-                    //歌名
-                    NSString *title = [d objectForKey:@"title"];
-                    //相似度
-                    NSString *score = [d objectForKey:@"score"];
-                    //艺术家
-                    NSString *artist = [d objectForKey:@"artists"][0][@"name"];
-                    //专辑名
-                    NSString *album = [d objectForKey:@"album"][@"name"];
-                    
-                    NSString *sh = [NSString stringWithFormat:@"title : %@  score : %@", title, score];
-                    
-                    [ra addObject:sh];
+                if (metas.count!=0) {
+                    for (id song in metas) {
+                        HummingModel *oneModel = [HummingModel hummingInfoWithDict:song];
+                        [weakSelf.hummingArray addObject:oneModel];
+                    }
+                    [weakSelf jumpToSearhMusicView];
                 }
-                r = [ra componentsJoinedByString:@"\n"];
-                NSString *title1 = metas[0][@"title"];
-//                [self modalToSearhMusicView];
             }
-        
-            //self.resultView.text = r;
         } else {
-           //识别失败
-           // self.resultView.text = result;
+             #warning 处理不同搜索结果的提示
+             NSLog(@"识别失败:%@ ", result);
+            /* 
+             {"status":{"code":2005, "msg":"rec timeout", "version":"1.0"}}
+             {"status":{"msg":"No result","code":1001,"version":"1.0"}}
+             {"status":{"code":2001, "msg":"init failed or request timeout", "version":"1.0"}}
+             {"status":{"code":2004, "msg":"unable to generate fingerprint", "version":"1.0"}}
+             */
             
         }
         
+        //结束识别动画
         [_client stopRecordRec];
         _start = NO;
         [_rippleView stopAnimation];
         
+        //识别花费时间
         //NSTimeInterval nowTime = [[NSDate date] timeIntervalSince1970];
         //int cost = nowTime - startTime;
         //self.costLabel.text = [NSString stringWithFormat:@"cost : %ds", cost];
         
     });
 }
-
+//音量状态
 -(void)handleVolume:(float)volume
 {
+    #warning 提示音量问题
     dispatch_async(dispatch_get_main_queue(), ^{
-       // self.volumeLabel.text = [NSString stringWithFormat:@"Volume : %f",volume];
+    //    NSLog(@"volume :%f",volume);
     });
 }
 
+//识别状态
 -(void)handleState:(NSString *)state
 {
+    #warning 识别失败后的跳转  onRecording
     dispatch_async(dispatch_get_main_queue(), ^{
-        //self.stateLabel.text = [NSString stringWithFormat:@"State : %@",state];
+         NSLog(@"state :%@",state);
+
     });
 }
 #pragma mark - **************** other
 /**
  *  跳转到搜索结果页
  */
--(void)modalToSearhMusicView{
-    SongViewController *searchVC = [[SongViewController alloc]init];
-    searchVC.songModel =self.songModel;
-    [self presentViewController:searchVC animated:YES completion:nil];
-
+-(void)jumpToSearhMusicView{
+    switch (_searchType) {
+        case 1:
+        {
+            SongViewController *searchVC = [[SongViewController alloc]init];
+            searchVC.songModel =self.songModel;
+            [self presentViewController:searchVC animated:YES completion:nil];
+        
+        }
+            break;
+            
+        default:
+        {
+            HummingListController *hummingVC =[[HummingListController alloc]init];
+            hummingVC.hummingArray = self.hummingArray;
+            [self.navigationController pushViewController:hummingVC animated:YES];
+        }
+            break;
+    }
+   
 }
 
 
