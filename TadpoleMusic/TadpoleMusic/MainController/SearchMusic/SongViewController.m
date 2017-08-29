@@ -93,8 +93,15 @@
         self.albumLabel.text=self.songModel.album;
         self.companyLabel.text=[NSString stringWithFormat:@"发行方:%@",self.songModel.label];
         self.releaseTimeLabel.text=[NSString stringWithFormat:@"发行时间:%@",self.songModel.release_date];
-        self.searchScoreLabel.text=[NSString stringWithFormat:@"识别度:%@/100",self.songModel.score];
-    }
+        
+        if (self.searchType==1) {
+            int  score = (int)self.songModel.score.floatValue*100;
+            self.searchScoreLabel.text=[NSString stringWithFormat:@"识别度：%d/100",score];
+        }else{
+            self.searchScoreLabel.text=[NSString stringWithFormat:@"识别度：%d/100",self.songModel.score.intValue];
+
+        }
+  }
 }
 
 - (void)viewDidLoad {
@@ -106,7 +113,9 @@
 }
 
 -(void)searchMusciInfo{
-    self.searchDic = [SearchHandle searchMusicInBD:self.songModel.title];
+    NSString *key = [NSString stringWithFormat:@"%@+%@",self.songModel.title,self.songModel.artist];
+    NSLog(@"key %@",key);
+    self.searchDic = [SearchHandle searchMusicInBD:key];
     [self showHeadview];
     self.songPlatform = [NSMutableArray arrayWithArray:self.searchDic[@"musicPlatform"]];
     if (self.songPlatform.count != 0 ) {//
@@ -116,8 +125,6 @@
         
     }
     
-  
-
 }
 
 -(void)showHeadview{

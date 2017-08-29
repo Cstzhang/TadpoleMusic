@@ -61,10 +61,7 @@
                             </connections>
                         </button>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Summertime" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rlY-SH-VRs">
-                            <rect key="frame" x="10" y="15" width="98" height="20.5"/>
-                            <constraints>
-                                <constraint firstAttribute="width" relation="lessThanOrEqual" constant="220" id="pHl-SI-rI4"/>
-                            </constraints>
+                            <rect key="frame" x="10" y="15" width="285" height="20.5"/>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
@@ -125,6 +122,7 @@
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
+                        <constraint firstAttribute="trailing" secondItem="rlY-SH-VRs" secondAttribute="trailing" constant="50" id="1AJ-Ma-qFc"/>
                         <constraint firstItem="Ck6-0C-rNl" firstAttribute="centerX" secondItem="9uv-D8-UrG" secondAttribute="centerX" id="1wK-xO-4Lc"/>
                         <constraint firstItem="XnF-mC-U7l" firstAttribute="top" secondItem="rlY-SH-VRs" secondAttribute="bottom" constant="20" id="5MW-VJ-Ijt"/>
                         <constraint firstItem="xc3-gE-7ni" firstAttribute="trailing" secondItem="XnF-mC-U7l" secondAttribute="trailing" constant="-10" id="78s-3U-MCq"/>

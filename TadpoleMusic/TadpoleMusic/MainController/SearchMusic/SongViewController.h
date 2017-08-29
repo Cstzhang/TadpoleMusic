@@ -11,4 +11,6 @@
 @interface SongViewController : UIViewController
 /** 搜索到的歌曲模型 */
 @property (nonatomic,strong) SongModel * songModel;
+/** 搜索类型 0 music,1 humming*/
+@property (nonatomic, assign) int searchType;
 @end

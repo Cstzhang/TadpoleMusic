@@ -25,7 +25,7 @@
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="浪花一朵朵" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yIE-iF-kG9">
                         <rect key="frame" x="81" y="15" width="76.5" height="18"/>
                         <constraints>
-                            <constraint firstAttribute="width" relation="lessThanOrEqual" constant="150" id="7lF-Tf-ybv"/>
+                            <constraint firstAttribute="width" relation="lessThanOrEqual" constant="180" id="7lF-Tf-ybv"/>
                         </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                         <nil key="textColor"/>

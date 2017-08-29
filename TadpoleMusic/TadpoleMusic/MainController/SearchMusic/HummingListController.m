@@ -27,7 +27,16 @@
 @end
 
 @implementation HummingListController
+#pragma mark - **************** 懒加载
+-(NSMutableArray *)hummingArray{
+    if (!_hummingArray) {
+        _hummingArray = [NSMutableArray array];
+    }
+    return _hummingArray;
+}
+
 #pragma mark - **************** UI初始化
+
 -(void)setBaseUI{
     //nav
     [self.navigationItem setTitle:@"识别列表"];
@@ -53,7 +62,8 @@
         self.songName.text = model.title;
         self.albumLabel.text = [NSString stringWithFormat:@"《%@》",model.album];
         self.artistLabel.text = [NSString stringWithFormat:@"作者：%@",model.artist];
-        self.scoreLabel.text = [NSString stringWithFormat:@"识别度：%d/100",model.score.intValue*100];
+        int score = (int)(model.score.floatValue*100);
+        self.scoreLabel.text = [NSString stringWithFormat:@"识别度：%d/100",score];
          [self.hummingSongTabelView reloadData];
     }
     
@@ -90,20 +100,19 @@
         cell.songNameLabel.text = model.title;
         cell.albumLabel.text = [NSString stringWithFormat:@"《%@》",model.album];
         cell.artistLabel.text = [NSString stringWithFormat:@"作者：%@",model.artist];
-        cell.scoreLabel.text = [NSString stringWithFormat:@"识别度：%d/100",model.score.intValue*100];
+        int score = (int)(model.score.floatValue*100);
+        cell.scoreLabel.text = [NSString stringWithFormat:@"识别度：%d/100",score];
+
     }
-    
-    
-    
     return cell;
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     NSLog(@"indexPath %ld",(long)indexPath.row);
-    
-    
+    HummingModel *hummingModel = self.hummingArray[indexPath.row+1];
     SongViewController *searchVC = [[SongViewController alloc]init];
-//  searchVC.songModel =self.songModel;
+    searchVC.songModel =[self changeModelWithHummingData:hummingModel];
+    searchVC.searchType = 1;
     [self presentViewController:searchVC animated:YES completion:nil];
     
     
@@ -111,10 +120,39 @@
 }
 
 -(void)handleSingleTap{
+    HummingModel *hummingModel = self.hummingArray[0];
     SongViewController *searchVC = [[SongViewController alloc]init];
-    //    searchVC.songModel =self.songModel;
+    searchVC.songModel =[self changeModelWithHummingData:hummingModel];
+    searchVC.searchType = 1;
     [self presentViewController:searchVC animated:YES completion:nil];
     NSLog(@"点击了第一首歌曲");
+}
+
+-(SongModel *)changeModelWithHummingData:(HummingModel *)model{
+    NSMutableDictionary *dic = [NSMutableDictionary dictionary];
+    
+    [dic setValue:model.score forKey:@"score"];
+    
+    [dic setValue:model.title forKey:@"title"];
+    
+    NSMutableDictionary *albumDic = [NSMutableDictionary dictionary];
+    [albumDic setValue:model.album forKey:@"name"];
+    [dic setValue:albumDic forKey:@"album"];
+    
+    NSMutableDictionary *artistsDic = [NSMutableDictionary dictionary];
+    [artistsDic setValue:model.artist forKey:@"name"];
+    NSMutableArray *artistsArray =[NSMutableArray array];
+    [artistsArray addObject:artistsDic];
+    [dic setValue:artistsArray forKey:@"artists"];
+    
+    NSMutableDictionary *modelDoc = [NSMutableDictionary dictionary];
+    NSMutableArray *modelArray =[NSMutableArray array];
+    [modelArray addObject:dic];
+    [modelDoc setValue:modelArray forKey:@"metadata.music"];
+    
+    SongModel *songMode =  [SongModel musicInfoWithDict:modelDoc];
+
+    return songMode;
 }
 
 @end

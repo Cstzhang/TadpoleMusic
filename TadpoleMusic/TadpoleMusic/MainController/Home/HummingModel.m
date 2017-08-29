@@ -12,31 +12,25 @@
 -(instancetype)initWithDictionary:(NSDictionary *)dict{
     self = [super init];
     if (self) {
-       // NSDictionary *meta = [dict valueForKeyPath: @"metadata.music"][0];
         //识别度
-        if ((NSNull *)dict[@"score"] ==[NSNull null]) {
-            [self setValue:@"0" forKey:@"score"];
-        }else{
-            [self setValue:dict[@"score"] forKey:@"score"];
-            
-        }
+        [self setValue:dict[@"score"] forKey:@"score"];
         //歌名
-        if ((NSNull *)dict[@"title"] ==[NSNull null]) {
+        if (kObjectIsEmpty(dict[@"title"])) {
             [self setValue:@"未知歌名" forKey:@"title"];
         }else{
             [self setValue:dict[@"title"] forKey:@"title"];
             
         }
         //艺术家
-        if ((NSNull *)[dict objectForKey:@"artists"][0][@"name"]==[NSNull null]) {
-            [self setValue:@"" forKey:@"artist"];
+        if (kObjectIsEmpty([dict objectForKey:@"artists"][0][@"name"])) {
+            [self setValue:@"未知艺术家" forKey:@"artist"];
         }else{
             [self setValue:[dict objectForKey:@"artists"][0][@"name"] forKey:@"artist"];
             
         }
         //专辑名
-        if ((NSNull *)[dict objectForKey:@"album"][@"name"]==[NSNull null]) {
-            [self setValue:@"" forKey:@"album"];
+        if (kObjectIsEmpty([dict objectForKey:@"album"][@"name"])) {
+            [self setValue:@"未知专辑名" forKey:@"album"];
         }else{
             [self setValue:[dict objectForKey:@"album"][@"name"] forKey:@"album"];
             
