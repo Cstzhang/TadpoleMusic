@@ -178,6 +178,7 @@ typedef NS_ENUM(NSInteger, SearchType){
     [super viewDidLoad];
     [self setupUI];
     [self registerACR];
+    self.searchType=SearchTypeMusic;
 }
 
 
@@ -185,21 +186,21 @@ typedef NS_ENUM(NSInteger, SearchType){
 //搜索音乐
 -(void)searchMusic{
     //初始化识别为歌曲识别
-    self.searchType=SearchTypeMusic;
-    [self jumpToSearhMusicView];
+
+//    [self jumpToSearhMusicView];
 //    //如果已经正在识别了，直接返回
-//    if (_start) {
-//        [self stopSearchMusic];
-//        return;
-//    }
-//    //开始动画
-//    [_rippleView startAnimation];
-//    //开始采集声纹
-//    [_client startRecordRec];
-//    //开始状态
-//    _start = YES;
-//    //开始时间
-//    startTime = [[NSDate date] timeIntervalSince1970];
+    if (_start) {
+        [self stopSearchMusic];
+        return;
+    }
+    //开始动画
+    [_rippleView startAnimation];
+    //开始采集声纹
+    [_client startRecordRec];
+    //开始状态
+    _start = YES;
+    //开始时间
+    startTime = [[NSDate date] timeIntervalSince1970];
 }
 //音乐搜索的类型：听歌
 -(void)searchTypeMusic{
@@ -392,12 +393,12 @@ typedef NS_ENUM(NSInteger, SearchType){
     switch (self.searchType) {
         case SearchTypeMusic:
         {
-//            SongViewController *searchVC = [[SongViewController alloc]init];
-////            searchVC.songModel =self.songModel;
-//            [self presentViewController:searchVC animated:YES completion:nil];
-            HummingListController *hummingVC =[[HummingListController alloc]init];
-            hummingVC.hummingArray = self.hummingArray;
-            [self.navigationController pushViewController:hummingVC animated:YES];
+            SongViewController *searchVC = [[SongViewController alloc]init];
+            searchVC.songModel =self.songModel;
+            [self presentViewController:searchVC animated:YES completion:nil];
+//            HummingListController *hummingVC =[[HummingListController alloc]init];
+//            hummingVC.hummingArray = self.hummingArray;
+//            [self.navigationController pushViewController:hummingVC animated:YES];
         }
             break;
             

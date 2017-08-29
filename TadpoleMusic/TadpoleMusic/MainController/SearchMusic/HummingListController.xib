@@ -30,57 +30,80 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gf2-jc-ctk">
-                    <rect key="frame" x="8" y="80" width="359" height="183.5"/>
+                    <rect key="frame" x="15" y="70" width="345" height="169"/>
                     <subviews>
-                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="music_c" translatesAutoresizingMaskIntoConstraints="NO" id="SVv-1C-NsX">
-                            <rect key="frame" x="17" y="19" width="81" height="79"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="music_c" translatesAutoresizingMaskIntoConstraints="NO" id="SVv-1C-NsX">
+                            <rect key="frame" x="10" y="10" width="50" height="50"/>
                         </imageView>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="浪花一朵朵" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4A6-oX-hVa">
-                            <rect key="frame" x="106" y="19" width="92" height="21"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                            <nil key="textColor"/>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="浪花一朵朵" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4A6-oX-hVa">
+                            <rect key="frame" x="75" y="25" width="76.5" height="18"/>
+                            <constraints>
+                                <constraint firstAttribute="width" relation="lessThanOrEqual" constant="150" id="4zr-z3-8Dd"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="相似度：100/100" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ec4-1B-SFl">
-                            <rect key="frame" x="265" y="6" width="87" height="21"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="10"/>
-                            <nil key="textColor"/>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="相似度：100/100" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ec4-1B-SFl">
+                            <rect key="frame" x="258" y="25" width="65" height="10"/>
+                            <constraints>
+                                <constraint firstAttribute="width" relation="lessThanOrEqual" constant="110" id="hvk-By-gFl"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" pointSize="8"/>
+                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Pph-4A-hjT">
-                            <rect key="frame" x="313" y="32" width="24" height="22"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <state key="normal" image="下一步"/>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="《浪花专辑》" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7y2-ek-g24">
+                            <rect key="frame" x="75" y="48" width="74" height="14.5"/>
+                            <constraints>
+                                <constraint firstAttribute="width" relation="lessThanOrEqual" constant="150" id="2Sh-HA-YZA"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="有沐创作组" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wz4-QD-RlV">
+                            <rect key="frame" x="75" y="67.5" width="61.5" height="14.5"/>
+                            <constraints>
+                                <constraint firstAttribute="width" relation="lessThanOrEqual" constant="150" id="Fft-xF-fTh"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="形状-2" translatesAutoresizingMaskIntoConstraints="NO" id="Qkl-Bl-4SA">
+                            <rect key="frame" x="249" y="25" width="1" height="57"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="1" id="XMX-ha-oe8"/>
+                            </constraints>
+                        </imageView>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Pph-4A-hjT">
+                            <rect key="frame" x="308" y="40" width="15" height="22"/>
+                            <state key="normal" image="下一步_白"/>
                         </button>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="浪花专辑" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7y2-ek-g24">
-                            <rect key="frame" x="106" y="48" width="87" height="21"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                            <nil key="textColor"/>
-                            <nil key="highlightedColor"/>
-                        </label>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="有沐创作组" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wz4-QD-RlV">
-                            <rect key="frame" x="106" y="77" width="87" height="21"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                            <nil key="textColor"/>
-                            <nil key="highlightedColor"/>
-                        </label>
-                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="形状-2" translatesAutoresizingMaskIntoConstraints="NO" id="Qkl-Bl-4SA">
-                            <rect key="frame" x="242" y="6" width="2" height="92"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        </imageView>
                     </subviews>
                     <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
-                        <constraint firstAttribute="width" secondItem="gf2-jc-ctk" secondAttribute="height" multiplier="366:187" id="5Ai-Qq-tXf"/>
+                        <constraint firstAttribute="width" secondItem="gf2-jc-ctk" secondAttribute="height" multiplier="345:169" id="5Ai-Qq-tXf"/>
+                        <constraint firstItem="Pph-4A-hjT" firstAttribute="trailing" secondItem="Ec4-1B-SFl" secondAttribute="trailing" id="853-4e-w0v"/>
+                        <constraint firstItem="Pph-4A-hjT" firstAttribute="top" secondItem="Ec4-1B-SFl" secondAttribute="bottom" constant="5" id="9DR-Va-1k7"/>
+                        <constraint firstItem="Wz4-QD-RlV" firstAttribute="top" secondItem="7y2-ek-g24" secondAttribute="bottom" constant="5" id="H1F-n0-5sn"/>
+                        <constraint firstItem="Qkl-Bl-4SA" firstAttribute="top" secondItem="Ec4-1B-SFl" secondAttribute="top" id="SOa-eB-shd"/>
+                        <constraint firstItem="Ec4-1B-SFl" firstAttribute="top" secondItem="4A6-oX-hVa" secondAttribute="top" id="TOh-ez-t47"/>
+                        <constraint firstItem="Ec4-1B-SFl" firstAttribute="leading" secondItem="Qkl-Bl-4SA" secondAttribute="trailing" constant="8" id="TUM-m8-pYd"/>
+                        <constraint firstItem="4A6-oX-hVa" firstAttribute="top" secondItem="gf2-jc-ctk" secondAttribute="top" constant="25" id="WbN-ZX-nfs"/>
+                        <constraint firstItem="Qkl-Bl-4SA" firstAttribute="bottom" secondItem="Wz4-QD-RlV" secondAttribute="bottom" id="buV-VJ-OsK"/>
+                        <constraint firstItem="7y2-ek-g24" firstAttribute="top" secondItem="4A6-oX-hVa" secondAttribute="bottom" constant="5" id="eg0-eF-2cz"/>
+                        <constraint firstItem="4A6-oX-hVa" firstAttribute="leading" secondItem="SVv-1C-NsX" secondAttribute="trailing" constant="15" id="lFF-AP-c0Z"/>
+                        <constraint firstItem="Wz4-QD-RlV" firstAttribute="leading" secondItem="4A6-oX-hVa" secondAttribute="leading" id="lmY-Ja-UGS"/>
+                        <constraint firstAttribute="trailing" secondItem="Ec4-1B-SFl" secondAttribute="trailing" constant="22" id="rGA-kw-K1d"/>
+                        <constraint firstItem="SVv-1C-NsX" firstAttribute="leading" secondItem="gf2-jc-ctk" secondAttribute="leading" constant="10" id="sUD-VW-LU7"/>
+                        <constraint firstItem="SVv-1C-NsX" firstAttribute="top" secondItem="gf2-jc-ctk" secondAttribute="top" constant="10" id="tJF-Ii-fH6"/>
+                        <constraint firstItem="7y2-ek-g24" firstAttribute="leading" secondItem="4A6-oX-hVa" secondAttribute="leading" id="ufQ-ay-OEZ"/>
                     </constraints>
                 </view>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="QLh-Em-SyB">
-                    <rect key="frame" x="0.0" y="278.5" width="375" height="388.5"/>
+                    <rect key="frame" x="0.0" y="254" width="375" height="413"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                 </tableView>
             </subviews>
@@ -88,18 +111,18 @@
             <constraints>
                 <constraint firstItem="QLh-Em-SyB" firstAttribute="top" secondItem="gf2-jc-ctk" secondAttribute="bottom" constant="15" id="6fZ-gY-CXP"/>
                 <constraint firstAttribute="bottom" secondItem="QLh-Em-SyB" secondAttribute="bottom" id="MG9-NH-gM9"/>
-                <constraint firstItem="gf2-jc-ctk" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="80" id="Ojz-Iy-loh"/>
-                <constraint firstAttribute="trailing" secondItem="gf2-jc-ctk" secondAttribute="trailing" constant="8" id="SA6-2B-01J"/>
+                <constraint firstItem="gf2-jc-ctk" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="70" id="Ojz-Iy-loh"/>
+                <constraint firstAttribute="trailing" secondItem="gf2-jc-ctk" secondAttribute="trailing" constant="15" id="SA6-2B-01J"/>
                 <constraint firstItem="QLh-Em-SyB" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="YuI-fP-CKY"/>
                 <constraint firstAttribute="trailing" secondItem="QLh-Em-SyB" secondAttribute="trailing" id="ajA-n3-VJZ"/>
-                <constraint firstItem="gf2-jc-ctk" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="8" id="lFX-Es-3Ia"/>
+                <constraint firstItem="gf2-jc-ctk" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="15" id="lFX-Es-3Ia"/>
             </constraints>
             <point key="canvasLocation" x="33.5" y="53.5"/>
         </view>
     </objects>
     <resources>
         <image name="music_c" width="50" height="50"/>
-        <image name="下一步" width="15" height="15"/>
+        <image name="下一步_白" width="15" height="15"/>
         <image name="形状-2" width="1" height="1"/>
     </resources>
 </document>

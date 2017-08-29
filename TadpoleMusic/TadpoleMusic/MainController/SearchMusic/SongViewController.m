@@ -106,10 +106,7 @@
 }
 
 -(void)searchMusciInfo{
-//    self.searchDic = [SearchHandle searchMusicInBD:self.songModel.title];
-
-//    self.searchDic = [SearchHandle searchMusicInBD:@"Down at the coffeeshop"];
-    self.searchDic = [SearchHandle searchMusicInBD:@"Down at the coffeeshop"];
+    self.searchDic = [SearchHandle searchMusicInBD:self.songModel.title];
     [self showHeadview];
     self.songPlatform = [NSMutableArray arrayWithArray:self.searchDic[@"musicPlatform"]];
     if (self.songPlatform.count != 0 ) {//
@@ -138,8 +135,8 @@
         [[SDWebImageDownloader sharedDownloader] setValue:userAgent forHTTPHeaderField:@"User-Agent"];
     }
     [self.artistImage sd_setImageWithURL:imgUrl placeholderImage:[UIImage imageNamed:@"默认头像"] completed:^(UIImage * _Nullable image, NSError * _Nullable error, SDImageCacheType cacheType, NSURL * _Nullable imageURL) {
-        NSLog(@"error %@",error);
-        NSLog(@"image %@",image);
+//        NSLog(@"error %@",error);
+//        NSLog(@"image %@",image);
     }];
     
 

@@ -6,56 +6,78 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="64" id="KGk-i7-Jjw" customClass="HummingSongViewCell">
-            <rect key="frame" x="0.0" y="0.0" width="342" height="64"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="80" id="KGk-i7-Jjw" customClass="HummingSongViewCell">
+            <rect key="frame" x="0.0" y="0.0" width="342" height="80"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="342" height="63.5"/>
+                <rect key="frame" x="0.0" y="0.0" width="342" height="79.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="music_c" translatesAutoresizingMaskIntoConstraints="NO" id="NUp-Po-yEl">
-                        <rect key="frame" x="14" y="8" width="61" height="48"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="music_c" translatesAutoresizingMaskIntoConstraints="NO" id="NUp-Po-yEl">
+                        <rect key="frame" x="21" y="15" width="50" height="50"/>
                     </imageView>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="浪花一朵朵" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yIE-iF-kG9">
-                        <rect key="frame" x="92" y="8" width="87" height="21"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="浪花一朵朵" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yIE-iF-kG9">
+                        <rect key="frame" x="81" y="15" width="76.5" height="18"/>
+                        <constraints>
+                            <constraint firstAttribute="width" relation="lessThanOrEqual" constant="150" id="7lF-Tf-ybv"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="《浪花专辑》" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f6t-KU-hum">
-                        <rect key="frame" x="90" y="34" width="74" height="21"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="《浪花专辑》" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f6t-KU-hum">
+                        <rect key="frame" x="81" y="41" width="74" height="14.5"/>
+                        <constraints>
+                            <constraint firstAttribute="width" relation="lessThanOrEqual" constant="90" id="yTM-Vl-9av"/>
+                        </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                        <nil key="textColor"/>
+                        <color key="textColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="相似度:100/100" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uLZ-28-iHF">
-                        <rect key="frame" x="249" y="8" width="85" height="21"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="10"/>
-                        <nil key="textColor"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="相似度:100/100" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uLZ-28-iHF">
+                        <rect key="frame" x="268" y="15" width="59" height="10"/>
+                        <constraints>
+                            <constraint firstAttribute="width" relation="lessThanOrEqual" constant="100" id="nWg-mP-Nix"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="8"/>
+                        <color key="textColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="有沐创作组" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ABC-ge-qSV">
-                        <rect key="frame" x="164" y="34" width="64" height="21"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                        <nil key="textColor"/>
-                        <nil key="highlightedColor"/>
-                    </label>
-                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2fE-KC-YNF">
-                        <rect key="frame" x="319" y="34" width="15" height="22"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2fE-KC-YNF">
+                        <rect key="frame" x="312" y="30" width="15" height="22"/>
                         <state key="normal" image="下一步"/>
                     </button>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="有沐创作组" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ABC-ge-qSV">
+                        <rect key="frame" x="158" y="41" width="61.5" height="14.5"/>
+                        <constraints>
+                            <constraint firstAttribute="width" relation="lessThanOrEqual" constant="100" id="OVz-1U-fny"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                        <color key="textColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
                 </subviews>
+                <constraints>
+                    <constraint firstItem="NUp-Po-yEl" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="0gu-qz-tdn"/>
+                    <constraint firstItem="f6t-KU-hum" firstAttribute="leading" secondItem="yIE-iF-kG9" secondAttribute="leading" id="2Hr-t5-HMf"/>
+                    <constraint firstItem="uLZ-28-iHF" firstAttribute="top" secondItem="yIE-iF-kG9" secondAttribute="top" id="AMd-55-H0I"/>
+                    <constraint firstItem="2fE-KC-YNF" firstAttribute="trailing" secondItem="uLZ-28-iHF" secondAttribute="trailing" id="Hb2-WR-36V"/>
+                    <constraint firstItem="NUp-Po-yEl" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="21" id="Ij6-f5-IQy"/>
+                    <constraint firstItem="yIE-iF-kG9" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="centerY" multiplier="15:40" id="IwP-fg-6dV"/>
+                    <constraint firstItem="NUp-Po-yEl" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="centerY" multiplier="15:40" id="ci5-H8-JQw"/>
+                    <constraint firstItem="yIE-iF-kG9" firstAttribute="leading" secondItem="NUp-Po-yEl" secondAttribute="trailing" constant="10" id="dMq-ef-sue"/>
+                    <constraint firstItem="ABC-ge-qSV" firstAttribute="top" secondItem="f6t-KU-hum" secondAttribute="top" id="lsA-Pl-oKw"/>
+                    <constraint firstItem="ABC-ge-qSV" firstAttribute="leading" secondItem="f6t-KU-hum" secondAttribute="trailing" constant="3" id="nDA-nr-Qgw"/>
+                    <constraint firstItem="2fE-KC-YNF" firstAttribute="top" secondItem="uLZ-28-iHF" secondAttribute="bottom" constant="5" id="p8E-aM-Zz4"/>
+                    <constraint firstItem="f6t-KU-hum" firstAttribute="top" secondItem="yIE-iF-kG9" secondAttribute="bottom" constant="8" id="suV-Ah-GY1"/>
+                    <constraint firstAttribute="trailing" secondItem="uLZ-28-iHF" secondAttribute="trailing" constant="15" id="zdr-AP-kY9"/>
+                </constraints>
             </tableViewCellContentView>
             <connections>
                 <outlet property="albumLabel" destination="f6t-KU-hum" id="zyh-ra-gKG"/>

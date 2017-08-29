@@ -28,10 +28,10 @@
             
         }
         //艺术家
-        if ((NSNull *)[dict objectForKey:@"artists"][0]==[NSNull null]) {
+        if ((NSNull *)[dict objectForKey:@"artists"][0][@"name"]==[NSNull null]) {
             [self setValue:@"" forKey:@"artist"];
         }else{
-            [self setValue:[dict objectForKey:@"artists"][0] forKey:@"artist"];
+            [self setValue:[dict objectForKey:@"artists"][0][@"name"] forKey:@"artist"];
             
         }
         //专辑名
