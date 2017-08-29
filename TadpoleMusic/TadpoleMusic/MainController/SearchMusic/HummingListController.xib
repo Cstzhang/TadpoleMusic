@@ -15,7 +15,7 @@
                 <outlet property="albumLabel" destination="7y2-ek-g24" id="6Yx-iA-Udr"/>
                 <outlet property="artistLabel" destination="Wz4-QD-RlV" id="IoQ-9A-cA5"/>
                 <outlet property="firstSongBackView" destination="gf2-jc-ctk" id="O0M-q9-2Bo"/>
-                <outlet property="hummingSongTabel" destination="QLh-Em-SyB" id="IWm-AC-GaT"/>
+                <outlet property="hummingSongTabelView" destination="QLh-Em-SyB" id="33d-PT-64V"/>
                 <outlet property="lineImage" destination="Qkl-Bl-4SA" id="Ka0-ac-xtS"/>
                 <outlet property="scoreLabel" destination="Ec4-1B-SFl" id="gYS-T1-Ogb"/>
                 <outlet property="searchButton" destination="Pph-4A-hjT" id="UxT-o7-wzK"/>
@@ -43,11 +43,6 @@
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Qkl-Bl-4SA">
-                            <rect key="frame" x="252" y="0.0" width="5" height="128"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                        </imageView>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="相似度：100/100" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ec4-1B-SFl">
                             <rect key="frame" x="265" y="6" width="87" height="21"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -55,10 +50,10 @@
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Pph-4A-hjT">
-                            <rect key="frame" x="306" y="28" width="46" height="30"/>
+                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Pph-4A-hjT">
+                            <rect key="frame" x="313" y="32" width="24" height="22"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <state key="normal" title="Button"/>
+                            <state key="normal" image="下一步"/>
                         </button>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="浪花专辑" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7y2-ek-g24">
                             <rect key="frame" x="106" y="48" width="87" height="21"/>
@@ -74,6 +69,10 @@
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                         </label>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="形状-2" translatesAutoresizingMaskIntoConstraints="NO" id="Qkl-Bl-4SA">
+                            <rect key="frame" x="242" y="6" width="2" height="92"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        </imageView>
                     </subviews>
                     <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
@@ -100,5 +99,7 @@
     </objects>
     <resources>
         <image name="music_c" width="50" height="50"/>
+        <image name="下一步" width="15" height="15"/>
+        <image name="形状-2" width="1" height="1"/>
     </resources>
 </document>

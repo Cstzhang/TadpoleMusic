@@ -19,7 +19,8 @@
 @property (weak, nonatomic) IBOutlet UILabel *albumLabel;
 @property (weak, nonatomic) IBOutlet UILabel *artistLabel;
 @property (weak, nonatomic) IBOutlet UIButton *searchButton;
-@property (weak, nonatomic) IBOutlet UITableView *hummingSongTabel;
+
+@property (weak, nonatomic) IBOutlet UITableView *hummingSongTabelView;
 
 @end
 
@@ -31,19 +32,32 @@
     [self.view setBackgroundColor:[UIColor yellowColor]];
     [self.navigationController.navigationBar setTitleTextAttributes:@{NSFontAttributeName:TITLE_FONT,NSForegroundColorAttributeName:[UIColor blackColor]}];
     NSLog(@"humming data %@",self.hummingArray);
-    //firt view
-    
+   
+ 
+   
     //tableview
+    [self.hummingSongTabelView registerNib:[UINib nibWithNibName:@"HummingSongViewCell" bundle:nil] forCellReuseIdentifier:@"HummingSongViewCell"];
+    self.hummingSongTabelView.delegate = self;
+    self.hummingSongTabelView.dataSource = self;
+  
+    if (self.hummingArray.count!=0) {
+        HummingModel *model = self.hummingArray[0];
+         //firt view
+        self.songName.text = model.title;
+        self.albumLabel.text = [NSString stringWithFormat:@"《%@》",model.album];
+        self.artistLabel.text = [NSString stringWithFormat:@"作者：%@",model.artist];
+        self.scoreLabel.text = [NSString stringWithFormat:@"识别度：%@",model.score];
+        
+       
+         [self.hummingSongTabelView reloadData];
+    }
     
-    
-    
-
 }
 
 #pragma mark - **************** 生命周期
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+    [self setBaseUI];
 }
 
 
@@ -52,16 +66,25 @@
 #pragma tableView
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return self.hummingArray.count;
+//    return self.hummingArray.count-1;
+    return 5;
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    static NSString *identify = @"cellIdentify";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identify];
+    HummingSongViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"HummingSongViewCell" forIndexPath:indexPath];
     if (!cell) {
-        cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:identify];
+        cell = [[NSBundle mainBundle]loadNibNamed:@"HummingSongViewCell" owner:nil options:nil][0];
     }
-   
+    if (self.hummingArray.count!=0) {
+        HummingModel *model = self.hummingArray[indexPath.row+1];
+        cell.songNameLabel.text = model.title;
+        cell.albumLabel.text = [NSString stringWithFormat:@"《%@》",model.album];
+        cell.artistLabel.text = [NSString stringWithFormat:@"作者：%@",model.artist];
+        cell.scoreLabel.text = [NSString stringWithFormat:@"识别度：%@",model.score];
+    }
+    
+    
+    
     return cell;
 }
 
