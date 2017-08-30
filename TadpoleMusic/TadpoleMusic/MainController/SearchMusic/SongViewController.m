@@ -190,11 +190,26 @@
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
     SearchModel * model = self.songPlatform[indexPath.row];
-    NSURL *songUrl = [NSURL URLWithString:model.songUrl];
-    NSLog(@"你点击了我 %ld %@",(long)indexPath.row,songUrl);
-    [[UIApplication sharedApplication] openURL:songUrl];
+    [self opebScheme:model.songUrl];
     
 }
 
+//打开浏览器
+-(void)opebScheme:(NSString *)scheme{
+    UIApplication *application = [UIApplication sharedApplication];
+    NSURL *URl = [NSURL URLWithString:scheme];
+    
+    if ([application respondsToSelector:@selector(openURL:options:completionHandler:)]) {
+        [application openURL:URl options:@{} completionHandler:^(BOOL success) {
+            NSLog(@"Open %@   success:%d",scheme,success);
+        }];
+        
+    }else{
+        BOOL success = [application openURL:URl];
+        NSLog(@"Open %@  success:%d",scheme,success);
+    
+    }
+ 
+}
 
 @end

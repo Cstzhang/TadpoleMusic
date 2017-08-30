@@ -349,7 +349,7 @@ typedef NS_ENUM(NSInteger, SearchType){
              {"status":{"code":2001, "msg":"init failed or request timeout", "version":"1.0"}}
              {"status":{"code":2004, "msg":"unable to generate fingerprint", "version":"1.0"}}
              {"status":{"msg":"No result","code":1001,"version":"1.0"}}
-              {"status":{"code":3003, "msg":"limit exceeded, please upgrade your account", "version":"1.0"}}
+             {"status":{"code":3003, "msg":"limit exceeded, please upgrade your account", "version":"1.0"}}
              */
             NSLog(@"error %@",error);
             
