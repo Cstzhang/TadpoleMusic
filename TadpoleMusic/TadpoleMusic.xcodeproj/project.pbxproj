@@ -9,6 +9,10 @@
 /* Begin PBXBuildFile section */
 		6D028EC11F35BD35000E0935 /* HotListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D028EC01F35BD35000E0935 /* HotListViewController.m */; };
 		6D028EC81F35C9D4000E0935 /* BaseNavController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D028EC71F35C9D4000E0935 /* BaseNavController.m */; };
+		6D0460E11F580B7300CE1644 /* Database.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 6D0460DF1F580B7300CE1644 /* Database.xcdatamodeld */; };
+		6D0460F11F58109900CE1644 /* TadDBHander.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D0460F01F58109900CE1644 /* TadDBHander.m */; };
+		6D0460F61F58113200CE1644 /* SongList+CoreDataClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D0460F31F58113200CE1644 /* SongList+CoreDataClass.m */; };
+		6D0460F71F58113200CE1644 /* SongList+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D0460F51F58113200CE1644 /* SongList+CoreDataProperties.m */; };
 		6D1D1EB91F4DC71A0048A5EE /* SearchModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D1D1EB81F4DC71A0048A5EE /* SearchModel.m */; };
 		6D382D7E1F53C8F5000440C4 /* HummingListController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D382D7C1F53C8F5000440C4 /* HummingListController.m */; };
 		6D382D7F1F53C8F5000440C4 /* HummingListController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6D382D7D1F53C8F5000440C4 /* HummingListController.xib */; };
@@ -55,6 +59,14 @@
 		6D028ECA1F35EA0B000E0935 /* DefineRequest.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DefineRequest.h; sourceTree = "<group>"; };
 		6D028ECB1F35EA0B000E0935 /* DefineTheme.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DefineTheme.h; sourceTree = "<group>"; };
 		6D028ECC1F35EA0B000E0935 /* Main_pch.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Main_pch.pch; sourceTree = "<group>"; };
+		6D0460E01F580B7300CE1644 /* Database.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Database.xcdatamodel; sourceTree = "<group>"; };
+		6D0460E61F580FB200CE1644 /* TadpoleMusic-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "TadpoleMusic-Bridging-Header.h"; sourceTree = "<group>"; };
+		6D0460EF1F58109900CE1644 /* TadDBHander.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TadDBHander.h; sourceTree = "<group>"; };
+		6D0460F01F58109900CE1644 /* TadDBHander.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TadDBHander.m; sourceTree = "<group>"; };
+		6D0460F21F58113200CE1644 /* SongList+CoreDataClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SongList+CoreDataClass.h"; sourceTree = "<group>"; };
+		6D0460F31F58113200CE1644 /* SongList+CoreDataClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "SongList+CoreDataClass.m"; sourceTree = "<group>"; };
+		6D0460F41F58113200CE1644 /* SongList+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SongList+CoreDataProperties.h"; sourceTree = "<group>"; };
+		6D0460F51F58113200CE1644 /* SongList+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "SongList+CoreDataProperties.m"; sourceTree = "<group>"; };
 		6D1D1EB71F4DC71A0048A5EE /* SearchModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchModel.h; sourceTree = "<group>"; };
 		6D1D1EB81F4DC71A0048A5EE /* SearchModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchModel.m; sourceTree = "<group>"; };
 		6D382D7B1F53C8F5000440C4 /* HummingListController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HummingListController.h; sourceTree = "<group>"; };
@@ -167,6 +179,21 @@
 			path = HotList;
 			sourceTree = "<group>";
 		};
+		6D0460DE1F580B4B00CE1644 /* Database */ = {
+			isa = PBXGroup;
+			children = (
+				6D0460F21F58113200CE1644 /* SongList+CoreDataClass.h */,
+				6D0460F31F58113200CE1644 /* SongList+CoreDataClass.m */,
+				6D0460F41F58113200CE1644 /* SongList+CoreDataProperties.h */,
+				6D0460F51F58113200CE1644 /* SongList+CoreDataProperties.m */,
+				6D0460DF1F580B7300CE1644 /* Database.xcdatamodeld */,
+				6D0460E61F580FB200CE1644 /* TadpoleMusic-Bridging-Header.h */,
+				6D0460EF1F58109900CE1644 /* TadDBHander.h */,
+				6D0460F01F58109900CE1644 /* TadDBHander.m */,
+			);
+			path = Database;
+			sourceTree = "<group>";
+		};
 		6D1D1EB61F4DC7030048A5EE /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -241,6 +268,7 @@
 			isa = PBXGroup;
 			children = (
 				6DA06F9A1F3427CB009086E4 /* MainController */,
+				6D0460DE1F580B4B00CE1644 /* Database */,
 				6DA06F971F3427CB009086E4 /* Base */,
 				6DA06F981F3427CB009086E4 /* Define */,
 				6DA06F9C1F3427DD009086E4 /* Expand */,
@@ -473,6 +501,7 @@
 					6DA06F7C1F341196009086E4 = {
 						CreatedOnToolsVersion = 8.3.3;
 						DevelopmentTeam = Y5WX43KK4M;
+						LastSwiftMigration = 0830;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -568,18 +597,22 @@
 				6D028EC11F35BD35000E0935 /* HotListViewController.m in Sources */,
 				6DA06F851F341196009086E4 /* AppDelegate.m in Sources */,
 				6DA06FAC1F345499009086E4 /* BaseViewController.m in Sources */,
+				6D0460F71F58113200CE1644 /* SongList+CoreDataProperties.m in Sources */,
 				6DB9AD211F4482ED0011FE33 /* SongModel.m in Sources */,
 				6DA06F821F341196009086E4 /* main.m in Sources */,
 				6DA3170E1F3C5C1000593A0E /* CircleRippleView.m in Sources */,
 				6D92CCC01F52F8E700B9969E /* PlatformViewCell.m in Sources */,
 				6DA06FB81F3473D0009086E4 /* HomeViewController.m in Sources */,
 				6D6888B71F4F1BE20079DD3B /* SongViewController.m in Sources */,
+				6D0460F11F58109900CE1644 /* TadDBHander.m in Sources */,
+				6D0460E11F580B7300CE1644 /* Database.xcdatamodeld in Sources */,
 				6DFEC5DC1F433BCE000CB1F8 /* OCGumbo+Query.m in Sources */,
 				6DA06FBB1F3473DB009086E4 /* MyViewController.m in Sources */,
 				6DA317021F3C3BA900593A0E /* ComFunc.m in Sources */,
 				6D524B5A1F3B4E1100E8C434 /* AppDelegate+ViewController.m in Sources */,
 				6D524B5D1F3B511F00E8C434 /* RootTabBarController.m in Sources */,
 				6D028EC81F35C9D4000E0935 /* BaseNavController.m in Sources */,
+				6D0460F61F58113200CE1644 /* SongList+CoreDataClass.m in Sources */,
 				6D403DCE1F41EAF500EB3DCB /* SearchHandle.m in Sources */,
 				6DE205121F5463470077C8DF /* HummingSongViewCell.m in Sources */,
 				6D382D7E1F53C8F5000440C4 /* HummingListController.m in Sources */,
@@ -645,7 +678,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -687,7 +720,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
@@ -699,10 +732,11 @@
 			baseConfigurationReference = 709DFB86E9835E018CE23D66 /* Pods-TadpoleMusic.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				DEVELOPMENT_TEAM = Y5WX43KK4M;
 				GCC_PREFIX_HEADER = "${SRCROOT}/TadpoleMusic/Define/Main_pch.pch";
 				INFOPLIST_FILE = TadpoleMusic/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
@@ -711,6 +745,9 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.zzb.kd.TadpoleMusic;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "TadpoleMusic/Database/TadpoleMusic-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
@@ -719,10 +756,11 @@
 			baseConfigurationReference = 03A2AD41D0941161208EBF30 /* Pods-TadpoleMusic.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				DEVELOPMENT_TEAM = Y5WX43KK4M;
 				GCC_PREFIX_HEADER = "${SRCROOT}/TadpoleMusic/Define/Main_pch.pch";
 				INFOPLIST_FILE = TadpoleMusic/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
@@ -731,6 +769,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.zzb.kd.TadpoleMusic;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "TadpoleMusic/Database/TadpoleMusic-Bridging-Header.h";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};
@@ -756,6 +796,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		6D0460DF1F580B7300CE1644 /* Database.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				6D0460E01F580B7300CE1644 /* Database.xcdatamodel */,
+			);
+			currentVersion = 6D0460E01F580B7300CE1644 /* Database.xcdatamodel */;
+			path = Database.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 6DA06F751F341196009086E4 /* Project object */;
 }
