@@ -332,6 +332,8 @@ typedef NS_ENUM(NSInteger, SearchType){
             //处理哼唱识别的数据结果
             if ([jsonObject valueForKeyPath: @"metadata.humming"]) {
                 NSArray *metas = [jsonObject valueForKeyPath: @"metadata.humming"];
+                //清除上次的缓存
+                [self.hummingArray removeAllObjects];
                 if (metas.count!=0) {
                     for (id song in metas) {
                         HummingModel *oneModel = [HummingModel hummingInfoWithDict:song];

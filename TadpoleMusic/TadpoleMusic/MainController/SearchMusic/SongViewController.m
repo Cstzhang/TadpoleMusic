@@ -148,12 +148,16 @@
     
 
 }
-
-
-- (IBAction)clickCloseBtn:(id)sender {
-    //点击返回
-    [self dismissViewControllerAnimated:YES completion:nil];
+- (IBAction)clickClose:(id)sender {
+     NSLog(@"点击关闭");
 }
+
+//点击收藏
+- (IBAction)clickCollect:(id)sender {
+    NSLog(@"点击收藏");
+}
+
+
 
 
 

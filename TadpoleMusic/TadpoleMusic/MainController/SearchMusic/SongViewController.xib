@@ -7,6 +7,7 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -54,10 +55,10 @@
                             <nil key="highlightedColor"/>
                         </label>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pVE-w3-tNe">
-                            <rect key="frame" x="314" y="10" width="21" height="22"/>
-                            <state key="normal" image="close"/>
+                            <rect key="frame" x="317" y="10" width="18" height="22"/>
+                            <state key="normal" image="collect_unselect"/>
                             <connections>
-                                <action selector="clickCloseBtn:" destination="-1" eventType="touchUpInside" id="JHh-bi-LOo"/>
+                                <action selector="clickCollect:" destination="-1" eventType="touchUpInside" id="MlW-DJ-hsG"/>
                             </connections>
                         </button>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Summertime" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rlY-SH-VRs">
@@ -146,7 +147,7 @@
                         <constraint firstAttribute="trailing" secondItem="pVE-w3-tNe" secondAttribute="trailing" constant="10" id="fDc-A2-V3F"/>
                         <constraint firstItem="7od-I0-ez8" firstAttribute="centerX" secondItem="9uv-D8-UrG" secondAttribute="centerX" id="lgO-WI-ZfJ"/>
                         <constraint firstItem="rlY-SH-VRs" firstAttribute="top" secondItem="9uv-D8-UrG" secondAttribute="top" constant="15" id="nhu-i5-kts"/>
-                        <constraint firstItem="kXN-yD-uUn" firstAttribute="top" secondItem="9uv-D8-UrG" secondAttribute="top" constant="86" id="skm-Ah-jB7"/>
+                        <constraint firstItem="kXN-yD-uUn" firstAttribute="top" secondItem="9uv-D8-UrG" secondAttribute="centerY" multiplier="86:183" id="skm-Ah-jB7"/>
                         <constraint firstItem="Y2a-bl-5jM" firstAttribute="top" secondItem="HHV-Su-Kq8" secondAttribute="bottom" id="tga-aY-YHZ"/>
                         <constraint firstAttribute="trailing" secondItem="Ck6-0C-rNl" secondAttribute="trailing" constant="30" id="tsx-TY-3m5"/>
                         <constraint firstItem="jhA-tE-HVJ" firstAttribute="top" secondItem="kp2-4f-IHd" secondAttribute="top" id="u6r-xL-XyC"/>
@@ -155,19 +156,29 @@
                         <constraint firstItem="xc3-gE-7ni" firstAttribute="top" secondItem="XnF-mC-U7l" secondAttribute="bottom" constant="8" id="yn7-KP-Bqc"/>
                     </constraints>
                 </view>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XMF-ji-deK">
+                    <rect key="frame" x="339" y="40" width="21" height="22"/>
+                    <state key="normal" image="close"/>
+                    <connections>
+                        <action selector="clickClose:" destination="-1" eventType="touchUpInside" id="DrH-lT-5Eo"/>
+                    </connections>
+                </button>
             </subviews>
             <color key="backgroundColor" red="0.7019608021" green="0.7019608021" blue="0.7019608021" alpha="1" colorSpace="calibratedRGB"/>
             <constraints>
                 <constraint firstItem="9uv-D8-UrG" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="CT3-94-sQo"/>
                 <constraint firstItem="9uv-D8-UrG" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="GmB-TJ-cKD"/>
+                <constraint firstItem="XMF-ji-deK" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="40" id="W19-tm-ppo"/>
+                <constraint firstItem="XMF-ji-deK" firstAttribute="trailing" secondItem="9uv-D8-UrG" secondAttribute="trailing" id="flg-ai-nab"/>
                 <constraint firstItem="9uv-D8-UrG" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="15" id="i1y-Mk-BT1"/>
             </constraints>
-            <point key="canvasLocation" x="-20" y="24"/>
+            <point key="canvasLocation" x="-20.5" y="23.5"/>
         </view>
     </objects>
     <resources>
         <image name="bg2" width="321" height="191"/>
         <image name="close" width="21" height="21"/>
+        <image name="collect_unselect" width="18" height="17"/>
         <image name="默认头像" width="86" height="86"/>
     </resources>
 </document>
