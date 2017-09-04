@@ -11,12 +11,13 @@
 #import "SearchModel.h"
 #import "SongModel.h"
 #import "PlatformViewCell.h"
+#import "DBHander.h"
 @interface SongViewController ()<UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout>
 #pragma mark - **************** UI部分
 /** 歌曲名字 */
 @property (weak, nonatomic) IBOutlet UILabel *songNameLabel;
-/** 关闭返回按钮 */
-@property (weak, nonatomic) IBOutlet UIButton *closeBtn;
+@property (weak, nonatomic) IBOutlet UIButton *clollectBtn;
+
 /** 背景图 */
 @property (weak, nonatomic) IBOutlet UIImageView *backGroundImage;
 /** 艺术家头像像 */
@@ -44,26 +45,33 @@
 @property (nonatomic,strong) NSMutableArray * songPlatform;
 
 
+//声明AppDelegate对象属性，用于调用类中属性，管理存储上下文
+@property(nonatomic,strong)DBHander *dbHander;
+
 @end
 
 @implementation SongViewController
 #pragma mark - **************** 懒加载
+//搜索结果
 -(NSMutableDictionary *)searchDic{
     if (!_searchDic) {
         _searchDic= [[NSMutableDictionary alloc]init];
     }
     return  _searchDic;
 }
-
-
+//平台数组
 -(NSMutableArray *)songPlatform{
     if (!_songPlatform) {
         _songPlatform= [[NSMutableArray alloc]init];
     }
     return  _songPlatform;
 }
+
 #pragma mark - **************** -初始化
 -(void)setBaseUI{
+    //初始化 myAppDelegate
+    self.dbHander = [[DBHander alloc]init];
+    //背景
     UIImage *backGroundImage=[UIImage imageNamed:@"bg"];
     self.view.contentMode=UIViewContentModeScaleAspectFill;
     self.view.layer.contents=(__bridge id _Nullable)(backGroundImage.CGImage);
@@ -82,7 +90,10 @@
     //设置边框及边框颜色
     self.songBackView.layer.borderWidth = 8;
     self.songBackView.layer.borderColor =[ [UIColor clearColor] CGColor];
-    
+    //收藏按钮
+    [self.clollectBtn setImage:[UIImage imageNamed:@"collect_unselect"] forState:UIControlStateNormal];
+    [self.clollectBtn setImage:[UIImage imageNamed:@"collect_select"] forState:UIControlStateSelected];
+    self.clollectBtn.selected = [self.dbHander isFollowed:self.songModel];
 }
 
 -(void)setBaseData{
@@ -99,7 +110,6 @@
             self.searchScoreLabel.text=[NSString stringWithFormat:@"识别度：%d/100",score];
         }else{
             self.searchScoreLabel.text=[NSString stringWithFormat:@"识别度：%d/100",self.songModel.score.intValue];
-
         }
   }
 }
@@ -142,19 +152,28 @@
         [[SDWebImageDownloader sharedDownloader] setValue:userAgent forHTTPHeaderField:@"User-Agent"];
     }
     [self.artistImage sd_setImageWithURL:imgUrl placeholderImage:[UIImage imageNamed:@"默认头像"] completed:^(UIImage * _Nullable image, NSError * _Nullable error, SDImageCacheType cacheType, NSURL * _Nullable imageURL) {
-//        NSLog(@"error %@",error);
-//        NSLog(@"image %@",image);
     }];
     
 
 }
 - (IBAction)clickClose:(id)sender {
      NSLog(@"点击关闭");
+    //点击返回
+    [self dismissViewControllerAnimated:YES completion:nil];
+    
 }
 
 //点击收藏
 - (IBAction)clickCollect:(id)sender {
     NSLog(@"点击收藏");
+    
+    if (!self.clollectBtn.selected) {//关注
+        [self.dbHander followFun:self.songModel];
+    }else{//取消关注
+        [self.dbHander unfollowSong:self.songModel isFollw:0];
+    }
+    //修改按钮显示状态
+    self.clollectBtn.selected =!self.clollectBtn.selected;
 }
 
 
@@ -202,7 +221,6 @@
 -(void)opebScheme:(NSString *)scheme{
     UIApplication *application = [UIApplication sharedApplication];
     NSURL *URl = [NSURL URLWithString:scheme];
-    
     if ([application respondsToSelector:@selector(openURL:options:completionHandler:)]) {
         [application openURL:URl options:@{} completionHandler:^(BOOL success) {
             NSLog(@"Open %@   success:%d",scheme,success);
@@ -211,9 +229,13 @@
     }else{
         BOOL success = [application openURL:URl];
         NSLog(@"Open %@  success:%d",scheme,success);
-    
     }
  
 }
+
+
+
+
+
 
 @end

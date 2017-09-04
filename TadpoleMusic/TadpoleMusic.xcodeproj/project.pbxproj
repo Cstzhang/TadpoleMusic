@@ -10,7 +10,6 @@
 		6D028EC11F35BD35000E0935 /* HotListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D028EC01F35BD35000E0935 /* HotListViewController.m */; };
 		6D028EC81F35C9D4000E0935 /* BaseNavController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D028EC71F35C9D4000E0935 /* BaseNavController.m */; };
 		6D0460E11F580B7300CE1644 /* Database.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 6D0460DF1F580B7300CE1644 /* Database.xcdatamodeld */; };
-		6D0460F11F58109900CE1644 /* TadDBHander.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D0460F01F58109900CE1644 /* TadDBHander.m */; };
 		6D0460F61F58113200CE1644 /* SongList+CoreDataClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D0460F31F58113200CE1644 /* SongList+CoreDataClass.m */; };
 		6D0460F71F58113200CE1644 /* SongList+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D0460F51F58113200CE1644 /* SongList+CoreDataProperties.m */; };
 		6D1D1EB91F4DC71A0048A5EE /* SearchModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D1D1EB81F4DC71A0048A5EE /* SearchModel.m */; };
@@ -43,6 +42,7 @@
 		6DEFC7741F3DEBD300E45603 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6DEFC7731F3DEBD300E45603 /* AVFoundation.framework */; };
 		6DEFC7761F3DEBDA00E45603 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6DEFC7751F3DEBDA00E45603 /* Security.framework */; };
 		6DEFC7781F3DEBE800E45603 /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 6DEFC7771F3DEBE800E45603 /* libc++.tbd */; };
+		6DF7554A1F5D48FF007D7598 /* DBHander.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DF755491F5D48FF007D7598 /* DBHander.m */; };
 		6DFEC5DA1F433BCE000CB1F8 /* libGumbo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6DFEC5D51F433BCE000CB1F8 /* libGumbo.a */; };
 		6DFEC5DB1F433BCE000CB1F8 /* OCGumbo.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DFEC5D71F433BCE000CB1F8 /* OCGumbo.m */; };
 		6DFEC5DC1F433BCE000CB1F8 /* OCGumbo+Query.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DFEC5D91F433BCE000CB1F8 /* OCGumbo+Query.m */; };
@@ -61,8 +61,6 @@
 		6D028ECC1F35EA0B000E0935 /* Main_pch.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Main_pch.pch; sourceTree = "<group>"; };
 		6D0460E01F580B7300CE1644 /* Database.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Database.xcdatamodel; sourceTree = "<group>"; };
 		6D0460E61F580FB200CE1644 /* TadpoleMusic-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "TadpoleMusic-Bridging-Header.h"; sourceTree = "<group>"; };
-		6D0460EF1F58109900CE1644 /* TadDBHander.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TadDBHander.h; sourceTree = "<group>"; };
-		6D0460F01F58109900CE1644 /* TadDBHander.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TadDBHander.m; sourceTree = "<group>"; };
 		6D0460F21F58113200CE1644 /* SongList+CoreDataClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SongList+CoreDataClass.h"; sourceTree = "<group>"; };
 		6D0460F31F58113200CE1644 /* SongList+CoreDataClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "SongList+CoreDataClass.m"; sourceTree = "<group>"; };
 		6D0460F41F58113200CE1644 /* SongList+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SongList+CoreDataProperties.h"; sourceTree = "<group>"; };
@@ -120,6 +118,8 @@
 		6DEFC7731F3DEBD300E45603 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		6DEFC7751F3DEBDA00E45603 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		6DEFC7771F3DEBE800E45603 /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "usr/lib/libc++.tbd"; sourceTree = SDKROOT; };
+		6DF755481F5D48FF007D7598 /* DBHander.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBHander.h; sourceTree = "<group>"; };
+		6DF755491F5D48FF007D7598 /* DBHander.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DBHander.m; sourceTree = "<group>"; };
 		6DFEC5D31F433BCE000CB1F8 /* gumbo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = gumbo.h; sourceTree = "<group>"; };
 		6DFEC5D41F433BCE000CB1F8 /* tag_enum.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = tag_enum.h; sourceTree = "<group>"; };
 		6DFEC5D51F433BCE000CB1F8 /* libGumbo.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libGumbo.a; sourceTree = "<group>"; };
@@ -188,8 +188,8 @@
 				6D0460F51F58113200CE1644 /* SongList+CoreDataProperties.m */,
 				6D0460DF1F580B7300CE1644 /* Database.xcdatamodeld */,
 				6D0460E61F580FB200CE1644 /* TadpoleMusic-Bridging-Header.h */,
-				6D0460EF1F58109900CE1644 /* TadDBHander.h */,
-				6D0460F01F58109900CE1644 /* TadDBHander.m */,
+				6DF755481F5D48FF007D7598 /* DBHander.h */,
+				6DF755491F5D48FF007D7598 /* DBHander.m */,
 			);
 			path = Database;
 			sourceTree = "<group>";
@@ -604,12 +604,12 @@
 				6D92CCC01F52F8E700B9969E /* PlatformViewCell.m in Sources */,
 				6DA06FB81F3473D0009086E4 /* HomeViewController.m in Sources */,
 				6D6888B71F4F1BE20079DD3B /* SongViewController.m in Sources */,
-				6D0460F11F58109900CE1644 /* TadDBHander.m in Sources */,
 				6D0460E11F580B7300CE1644 /* Database.xcdatamodeld in Sources */,
 				6DFEC5DC1F433BCE000CB1F8 /* OCGumbo+Query.m in Sources */,
 				6DA06FBB1F3473DB009086E4 /* MyViewController.m in Sources */,
 				6DA317021F3C3BA900593A0E /* ComFunc.m in Sources */,
 				6D524B5A1F3B4E1100E8C434 /* AppDelegate+ViewController.m in Sources */,
+				6DF7554A1F5D48FF007D7598 /* DBHander.m in Sources */,
 				6D524B5D1F3B511F00E8C434 /* RootTabBarController.m in Sources */,
 				6D028EC81F35C9D4000E0935 /* BaseNavController.m in Sources */,
 				6D0460F61F58113200CE1644 /* SongList+CoreDataClass.m in Sources */,
