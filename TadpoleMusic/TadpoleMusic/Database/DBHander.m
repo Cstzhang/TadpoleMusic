@@ -49,8 +49,7 @@
         //保存
         [self.myAppDelegate saveContext];
     }
-    //=============
-    [self searchSong];
+
     
     
 }
@@ -117,8 +116,6 @@
     }
     //保存
     [self.myAppDelegate saveContext];
-    //=============
-    [self searchSong];
 }
 
 
@@ -130,8 +127,8 @@
     NSSortDescriptor * sortFunc = [[NSSortDescriptor alloc]initWithKey:@"searchTime" ascending:YES];
     request.sortDescriptors = @[sortFunc];
     //设置条件
-//    NSPredicate * predicate = [NSPredicate predicateWithFormat:@"status == 1"];
-//        request.predicate = predicate;
+    NSPredicate * predicate = [NSPredicate predicateWithFormat:@"status == 1"];
+        request.predicate = predicate;
     //执行查询请求
     NSError *error = nil;
     NSArray *songArr = [self.myAppDelegate.managedObjectContext executeFetchRequest:request error:&error];

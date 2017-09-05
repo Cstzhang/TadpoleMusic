@@ -8,7 +8,6 @@
 
 #import "SongSlideView.h"
 #import "SongCardView.h"
-
 @interface SongSlideView()
 {
     NSMutableArray *_cardViewArray;//存储底部的cardView
@@ -82,7 +81,7 @@
     if (_cardDataArray.count) {//如果数据不为空
         //加载叠加视图
         [self loadBottomView];
-        //加载滚动视图
+        //加载滚动视图 显示最后一张
         [self loadSlideCardViewWithCount:_cardDataArray.count];
     }
 }
@@ -92,22 +91,8 @@
 {
     CGSize viewSize = self.frame.size;
     CGFloat width = viewSize.width; //图宽
-    
-    if (_cardDataArray.count>10) {
-        //设置滚动范围
-        _mainScrollView.contentSize = CGSizeMake(width, viewSize.height*_cardDataArray.count);
-        //整体向下偏移
-        [_mainScrollView setContentOffset:CGPointMake(0, (count+_index)* viewSize.height) animated:NO];
-        //取出第一个viewCard
-        SongCardView*card = [_slideCardViewArray firstObject];
-        //viewCard 的frame修改
-        card.frame = CGRectMake(0, _index* viewSize.height, CardW, CardH);
-        return;
-    }
-    
     //坐标
     CGPoint point = CGPointMake(0, (_cardDataArray.count-1)*viewSize.height);
-    
     //实例化CardView
     SongCardView *card = [[SongCardView alloc]initWithFrame:CGRectMake(point.x, point.y, viewSize.width, viewSize.height-58)];
     //背景色
@@ -116,9 +101,6 @@
     card.layer.masksToBounds = YES;
     //设置圆角
     card.layer.cornerRadius = 5.0;
-    //设置颜色
-    [card loadCardViewWithDictionary:_cardDataArray[0]];
-    
     //添加点击事件
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(showSelectCardViewAction)];
     [card addGestureRecognizer:tap];
@@ -132,14 +114,8 @@
     _mainScrollView.contentOffset = CGPointMake(0, (_cardDataArray.count-1)* viewSize.height);
 }
 
--(void)loadBottomView
-{
-    
-    if (_cardDataArray.count>10) {//why 10??
-        return;
-    }
-    
-    float width = self.frame.size.width;
+//显示在底部的View
+-(void)loadBottomView{
     float height = self.frame.size.height;
     
     for(int i=0; i<(_cardDataArray.count<4?_cardDataArray.count:4); i++)
@@ -157,9 +133,6 @@
         card.layer.masksToBounds = YES;
         //圆角
         card.layer.cornerRadius = 5.0;
-        //加载背景色而已
-        [card loadCardViewWithDictionary:_cardDataArray[i]];
-        
         if (i<3) {//只显示3张，其余透明
             card.layer.zPosition = zPosition; // Z坐标
             card.alpha = 1;
@@ -168,7 +141,6 @@
             card.layer.zPosition = -288; // Z坐标
             card.alpha = 0;//透明
         }
-        
         //添加到视图与数组中
         if(i == 0){
             card.hidden = YES;
@@ -195,7 +167,6 @@
 {
     CGFloat offset_y = scrollView.contentOffset.y;//scrollView所在位置
     CGFloat height = scrollView.frame.size.height;//高度
-    CGFloat width = scrollView.frame.size.width;//视图宽度
     CGFloat currentIndex = offset_y/height;//当前标签
     
     //得到索引
@@ -216,8 +187,6 @@
         }else{
             scrollCardView.hidden = NO;
             scrollCardView.frame = CGRectMake(0, _index*height, CardW,CardH);
-            //加载颜色
-            [scrollCardView loadCardViewWithDictionary:_cardDataArray[_cardDataArray.count-1-_index]];
         }
     }
     else if(scrollCardView.frame.origin.y-height<offset_y&&offset_y<=scrollCardView.frame.origin.y)
@@ -227,7 +196,6 @@
     else
     {
         scrollCardView.frame = CGRectMake(0, _index*height, CardW,CardH);
-        [scrollCardView loadCardViewWithDictionary:_cardDataArray[_cardDataArray.count-1-_index]];
     }
     
     NSInteger _select = _index-3>0?(_index-3):0;
@@ -238,8 +206,6 @@
         
         //调整叠加视图
         SongCardView* moveCardView = [_cardViewArray objectAtIndex:i-_select];
-        [moveCardView loadCardViewWithDictionary:_cardDataArray[_cardDataArray.count-1-i]];
-        
         float range_y = (currOrigin_y - offset_y)/(_xMarginValue) ;
         
         moveCardView.frame = CGRectMake(0, range_y, CardW,CardH);
