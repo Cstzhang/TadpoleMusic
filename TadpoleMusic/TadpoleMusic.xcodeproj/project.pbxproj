@@ -15,6 +15,9 @@
 		6D1D1EB91F4DC71A0048A5EE /* SearchModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D1D1EB81F4DC71A0048A5EE /* SearchModel.m */; };
 		6D382D7E1F53C8F5000440C4 /* HummingListController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D382D7C1F53C8F5000440C4 /* HummingListController.m */; };
 		6D382D7F1F53C8F5000440C4 /* HummingListController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6D382D7D1F53C8F5000440C4 /* HummingListController.xib */; };
+		6D3E82E41F5D8ABF0040FF90 /* SongSlideView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D3E82E31F5D8ABF0040FF90 /* SongSlideView.m */; };
+		6D3E82E71F5D8ACE0040FF90 /* SongCardView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D3E82E61F5D8ACE0040FF90 /* SongCardView.m */; };
+		6D3E82E91F5D8B000040FF90 /* SongCardView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6D3E82E81F5D8B000040FF90 /* SongCardView.xib */; };
 		6D403DCE1F41EAF500EB3DCB /* SearchHandle.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D403DCD1F41EAF500EB3DCB /* SearchHandle.m */; };
 		6D524B571F3B4DDF00E8C434 /* AppDelegate+AppService.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D524B561F3B4DDF00E8C434 /* AppDelegate+AppService.m */; };
 		6D524B5A1F3B4E1100E8C434 /* AppDelegate+ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D524B591F3B4E1100E8C434 /* AppDelegate+ViewController.m */; };
@@ -70,6 +73,11 @@
 		6D382D7B1F53C8F5000440C4 /* HummingListController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HummingListController.h; sourceTree = "<group>"; };
 		6D382D7C1F53C8F5000440C4 /* HummingListController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HummingListController.m; sourceTree = "<group>"; };
 		6D382D7D1F53C8F5000440C4 /* HummingListController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HummingListController.xib; sourceTree = "<group>"; };
+		6D3E82E21F5D8ABF0040FF90 /* SongSlideView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SongSlideView.h; sourceTree = "<group>"; };
+		6D3E82E31F5D8ABF0040FF90 /* SongSlideView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SongSlideView.m; sourceTree = "<group>"; };
+		6D3E82E51F5D8ACE0040FF90 /* SongCardView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SongCardView.h; sourceTree = "<group>"; };
+		6D3E82E61F5D8ACE0040FF90 /* SongCardView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SongCardView.m; sourceTree = "<group>"; };
+		6D3E82E81F5D8B000040FF90 /* SongCardView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SongCardView.xib; sourceTree = "<group>"; };
 		6D403DCC1F41EAF500EB3DCB /* SearchHandle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchHandle.h; sourceTree = "<group>"; };
 		6D403DCD1F41EAF500EB3DCB /* SearchHandle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchHandle.m; sourceTree = "<group>"; };
 		6D524B531F3B4AFF00E8C434 /* Macros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Macros.h; sourceTree = "<group>"; };
@@ -370,6 +378,11 @@
 			children = (
 				6DA06FB91F3473DB009086E4 /* MyViewController.h */,
 				6DA06FBA1F3473DB009086E4 /* MyViewController.m */,
+				6D3E82E21F5D8ABF0040FF90 /* SongSlideView.h */,
+				6D3E82E31F5D8ABF0040FF90 /* SongSlideView.m */,
+				6D3E82E51F5D8ACE0040FF90 /* SongCardView.h */,
+				6D3E82E61F5D8ACE0040FF90 /* SongCardView.m */,
+				6D3E82E81F5D8B000040FF90 /* SongCardView.xib */,
 			);
 			path = My;
 			sourceTree = "<group>";
@@ -533,6 +546,7 @@
 				6D92CCC11F52F8E700B9969E /* PlatformViewCell.xib in Resources */,
 				6DA06F901F341196009086E4 /* LaunchScreen.storyboard in Resources */,
 				6DE205131F5463470077C8DF /* HummingSongViewCell.xib in Resources */,
+				6D3E82E91F5D8B000040FF90 /* SongCardView.xib in Resources */,
 				6D382D7F1F53C8F5000440C4 /* HummingListController.xib in Resources */,
 				6DA06F8D1F341196009086E4 /* Assets.xcassets in Resources */,
 			);
@@ -606,10 +620,12 @@
 				6D6888B71F4F1BE20079DD3B /* SongViewController.m in Sources */,
 				6D0460E11F580B7300CE1644 /* Database.xcdatamodeld in Sources */,
 				6DFEC5DC1F433BCE000CB1F8 /* OCGumbo+Query.m in Sources */,
+				6D3E82E41F5D8ABF0040FF90 /* SongSlideView.m in Sources */,
 				6DA06FBB1F3473DB009086E4 /* MyViewController.m in Sources */,
 				6DA317021F3C3BA900593A0E /* ComFunc.m in Sources */,
 				6D524B5A1F3B4E1100E8C434 /* AppDelegate+ViewController.m in Sources */,
 				6DF7554A1F5D48FF007D7598 /* DBHander.m in Sources */,
+				6D3E82E71F5D8ACE0040FF90 /* SongCardView.m in Sources */,
 				6D524B5D1F3B511F00E8C434 /* RootTabBarController.m in Sources */,
 				6D028EC81F35C9D4000E0935 /* BaseNavController.m in Sources */,
 				6D0460F61F58113200CE1644 /* SongList+CoreDataClass.m in Sources */,
