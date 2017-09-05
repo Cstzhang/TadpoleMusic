@@ -15,6 +15,9 @@
 #define NAVIGATION_BAR_HEIGHT 44
 //TabBar高度
 #define TAB_BAR_HEIGHT 59
+#define RatioValue  (SCREEN_HEIGHT-(1.8*HEAD_TABBAR_HEIGHT))/667.0
+#define CardW  RATIO_W(345)
+#define CardH  (RATIO_W(345)/33)*35
 
 //屏幕的bounds
 #define SCREEN_RECT ([UIScreen mainScreen].bounds)

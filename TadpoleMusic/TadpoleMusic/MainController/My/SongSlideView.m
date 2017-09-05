@@ -68,16 +68,18 @@
     return self;
 }
 
+//数据源填充
 -(void)addCardDataWithArray:(NSArray *)array
 {
     if (_cardDataArray.count == 0) {
-        //初始化序列号
+        //初始化序列号（最大的序号）
         _index = array.count-1;
     }
     
+    //_cardDataArray初始化
     [_cardDataArray addObjectsFromArray:array];
     
-    if (_cardDataArray.count) {
+    if (_cardDataArray.count) {//如果数据不为空
         //加载叠加视图
         [self loadBottomView];
         //加载滚动视图
@@ -92,13 +94,14 @@
     CGFloat width = viewSize.width; //图宽
     
     if (_cardDataArray.count>10) {
+        //设置滚动范围
         _mainScrollView.contentSize = CGSizeMake(width, viewSize.height*_cardDataArray.count);
-        //经过这个操作
+        //整体向下偏移
         [_mainScrollView setContentOffset:CGPointMake(0, (count+_index)* viewSize.height) animated:NO];
-        
+        //取出第一个viewCard
         SongCardView*card = [_slideCardViewArray firstObject];
-        card.frame = CGRectMake(0, _index* viewSize.height, viewSize.width, viewSize.height-58);
-        
+        //viewCard 的frame修改
+        card.frame = CGRectMake(0, _index* viewSize.height, CardW, CardH);
         return;
     }
     
@@ -107,9 +110,13 @@
     
     //实例化CardView
     SongCardView *card = [[SongCardView alloc]initWithFrame:CGRectMake(point.x, point.y, viewSize.width, viewSize.height-58)];
+    //背景色
     card.backgroundColor = [UIColor whiteColor];
+    //显示在最上层
     card.layer.masksToBounds = YES;
-    card.layer.cornerRadius = 5.0;//设置圆角
+    //设置圆角
+    card.layer.cornerRadius = 5.0;
+    //设置颜色
     [card loadCardViewWithDictionary:_cardDataArray[0]];
     
     //添加点击事件
@@ -127,7 +134,8 @@
 
 -(void)loadBottomView
 {
-    if (_cardDataArray.count>10) {
+    
+    if (_cardDataArray.count>10) {//why 10??
         return;
     }
     
@@ -136,24 +144,29 @@
     
     for(int i=0; i<(_cardDataArray.count<4?_cardDataArray.count:4); i++)
     {
-        //设置CardView的坐标，z值和透明度
+        //设置CardView的坐标，z值和透明度(i=0 第一张的时候y偏移为0，慢慢向下偏移)
         CGPoint point = CGPointMake(0, -i*height/_xMarginValue);
+        //z轴偏移 慢慢向左偏移
         float zPosition = -i*height/_zMarginValue;
         
-        //实例化CardView
-        SongCardView *card = [[SongCardView alloc]initWithFrame:CGRectMake(point.x, point.y, width,height-58)];
+        //实例化CardView -58 是为了脚部被上面的遮住
+        SongCardView *card = [[SongCardView alloc]initWithFrame:CGRectMake(point.x, point.y, CardW,CardH)];
+        //背景色
         card.backgroundColor = [UIColor whiteColor];
+        //显示在最上面
         card.layer.masksToBounds = YES;
+        //圆角
         card.layer.cornerRadius = 5.0;
+        //加载背景色而已
         [card loadCardViewWithDictionary:_cardDataArray[i]];
         
-        if (i<3) {
+        if (i<3) {//只显示3张，其余透明
             card.layer.zPosition = zPosition; // Z坐标
             card.alpha = 1;
         }
         else{
             card.layer.zPosition = -288; // Z坐标
-            card.alpha = 0;
+            card.alpha = 0;//透明
         }
         
         //添加到视图与数组中
@@ -202,7 +215,8 @@
             scrollCardView.hidden = YES;
         }else{
             scrollCardView.hidden = NO;
-            scrollCardView.frame = CGRectMake(0, _index*height, scrollCardView.frame.size.width, scrollCardView.frame.size.height);
+            scrollCardView.frame = CGRectMake(0, _index*height, CardW,CardH);
+            //加载颜色
             [scrollCardView loadCardViewWithDictionary:_cardDataArray[_cardDataArray.count-1-_index]];
         }
     }
@@ -212,7 +226,7 @@
     }
     else
     {
-        scrollCardView.frame = CGRectMake(0, _index*height, scrollCardView.frame.size.width, scrollCardView.frame.size.height);
+        scrollCardView.frame = CGRectMake(0, _index*height, CardW,CardH);
         [scrollCardView loadCardViewWithDictionary:_cardDataArray[_cardDataArray.count-1-_index]];
     }
     
@@ -228,7 +242,7 @@
         
         float range_y = (currOrigin_y - offset_y)/(_xMarginValue) ;
         
-        moveCardView.frame = CGRectMake(0, range_y, width, height-58);
+        moveCardView.frame = CGRectMake(0, range_y, CardW,CardH);
         
         if(range_y >= 0) // 如果超过当前滑动视图便隐藏
             moveCardView.hidden = YES;
@@ -260,11 +274,13 @@
         [self.delegate slideCardViewDidScrollAllPage:_cardDataArray.count-1 AndIndex:_index];
 }
 
+
 - (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate
 {
     for(SongCardView* card in _slideCardViewArray)  //调整所有图片的z值
         card.layer.zPosition = 0;
 }
+
 
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView //滚动结束处理
 {

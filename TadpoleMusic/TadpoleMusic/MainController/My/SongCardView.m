@@ -66,6 +66,7 @@
     self.backgroundColor = kRGBColor([[dictionary objectForKey:@"red"] floatValue], [[dictionary objectForKey:@"green"] floatValue], [[dictionary objectForKey:@"blue"] floatValue]);
 }
 
+
 - (IBAction)clickFollow:(id)sender {
 }
 

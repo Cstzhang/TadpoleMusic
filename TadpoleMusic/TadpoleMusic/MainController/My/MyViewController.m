@@ -9,10 +9,7 @@
 #import "MyViewController.h"
 #import "CircleRippleView.h"
 #import "SongSlideView.h"
-//#define adsViewWidth 293.0*(APPScreenBoundsWidth/320.0)
-#define RatioValue  (SCREEN_HEIGHT-HEAD_TABBAR_HEIGHT-10)/667.0
-#define APPScreenBoundsHeight [UIScreen mainScreen].bounds.size.height
-#define APPScreenBoundsWidth [UIScreen mainScreen].bounds.size.width
+
 @interface MyViewController ()<SongSlideDelegate>
 {
     //卡片的 UIScrollView
@@ -47,15 +44,15 @@
      alphaValue;//图片的透明比率值
      angleValue;//偏移角度
      */
-    
-    CGRect rect = {{lrintf(LEFT_ORIGIN),HEAD_TABBAR_HEIGHT+10},{lrintf(SCREEN_HEIGHT-(2*LEFT_ORIGIN)) , SCREEN_HEIGHT-HEAD_TABBAR_HEIGHT-10}};
-    
+    //设置宽高
+    CGRect rect = {{lrintf((SCREEN_WIDTH-RATIO_W(345))/2.0),HEAD_TABBAR_HEIGHT},{lrintf(CardW) , SCREEN_HEIGHT-(HEAD_TABBAR_HEIGHT+HEAD_TABBAR_HEIGHT)}};
+    //实例化
     _slide = [[SongSlideView alloc]initWithFrame:rect AndzMarginValue:9/(RatioValue) AndxMarginValue:11/(RatioValue) AndalphaValue:1 AndangleValue:2000];
-    
     _slide.delegate = self;
-    
+    //数据（需要补充未真实数据源数据）
     [_slide addCardDataWithArray:array];
-    _slide.backgroundColor = [UIColor clearColor];
+    
+_slide.backgroundColor = [UIColor clearColor];
     [self.view addSubview:_slide];
 }
 
