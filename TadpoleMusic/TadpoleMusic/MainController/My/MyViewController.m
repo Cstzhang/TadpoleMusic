@@ -31,35 +31,19 @@
     return _songArray;
 
 }
-
+-(void)viewWillAppear:(BOOL)animated{
+    //====搜索本地缓存的数据
+    [self.songArray  removeAllObjects];
+    [self.songArray addObjectsFromArray:[self.dbHander searchSong]];
+    //数据（需要补充未真实数据源数据）
+    [_slide addCardDataWithArray:self.songArray];
+}
 #pragma mark - **************** 基础UI
 -(void)setupUI{
      [self.navigationItem setTitle:@"我的"];
     //====初始化 myAppDelegate
     self.dbHander = [[DBHander alloc]init];
-    
-    NSArray *array = @[
-                       @{@"red":@"255",@"green":@"46",@"blue":@"62"},
-  @{@"red":@"82",@"green":@"255",@"blue":@"64"},
-  @{@"red":@"82",@"green":@"255",@"blue":@"255"},
-  @{@"red":@"79",@"green":@"85",@"blue":@"255"},
-  @{@"red":@"236",@"green":@"30",@"blue":@"255"},
-  @{@"red":@"46",@"green":@"255",@"blue":@"219"},
-  @{@"red":@"46",@"green":@"255",@"blue":@"219"},
-                         @{@"red":@"46",@"green":@"255",@"blue":@"219"},
-                         @{@"red":@"46",@"green":@"255",@"blue":@"219"},
-                         @{@"red":@"46",@"green":@"255",@"blue":@"219"},
-                         @{@"red":@"46",@"green":@"255",@"blue":@"219"},
-                         @{@"red":@"46",@"green":@"255",@"blue":@"219"},
-                         @{@"red":@"46",@"green":@"255",@"blue":@"219"},
-                         @{@"red":@"46",@"green":@"255",@"blue":@"219"},
-                         @{@"red":@"46",@"green":@"255",@"blue":@"219"},
-                         @{@"red":@"46",@"green":@"255",@"blue":@"219"},
-                         @{@"red":@"46",@"green":@"255",@"blue":@"219"},
-  @{@"red":@"255",@"green":@"152",@"blue":@"56"}
-                       ];
-    //====搜索本地缓存的数据
-    [self.songArray arrayByAddingObjectsFromArray:[self.dbHander searchSong]];
+ 
     #warning 如果数据为空需要有为空显示，并提醒去识别
     //====初始化UIScrollView
     //设置宽高
@@ -67,8 +51,6 @@
     //实例化
     _slide = [[SongSlideView alloc]initWithFrame:rect AndzMarginValue:9/(RatioValue) AndxMarginValue:11/(RatioValue) AndalphaValue:1 AndangleValue:2000];
     _slide.delegate = self;
-    //数据（需要补充未真实数据源数据）
-    [_slide addCardDataWithArray:array];
     //背景色
     _slide.backgroundColor = [UIColor clearColor];
     [self.view addSubview:_slide];

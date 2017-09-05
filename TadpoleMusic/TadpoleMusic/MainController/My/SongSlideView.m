@@ -8,6 +8,7 @@
 
 #import "SongSlideView.h"
 #import "SongCardView.h"
+#import "SongList+CoreDataClass.h"
 @interface SongSlideView()
 {
     NSMutableArray *_cardViewArray;//存储底部的cardView
@@ -44,7 +45,7 @@
         _bottomView = [[UIView alloc]initWithFrame:frame];
         _bottomView.backgroundColor = [UIColor clearColor];
         _bottomView.layer.cornerRadius = 5.0;
-        
+
         _mainScrollView = [[UIScrollView alloc]initWithFrame:frame];
         _mainScrollView.pagingEnabled = YES;
         _mainScrollView.autoresizingMask = YES;
@@ -82,13 +83,12 @@
         //加载叠加视图
         [self loadBottomView];
         //加载滚动视图 显示最后一张
-        [self loadSlideCardViewWithCount:_cardDataArray.count];
+        [self loadSlideCardView];
     }
 }
 
 #pragma mark- 加载最顶层的滚动视图
--(void)loadSlideCardViewWithCount:(NSInteger)count
-{
+-(void)loadSlideCardView{
     CGSize viewSize = self.frame.size;
     CGFloat width = viewSize.width; //图宽
     //坐标
@@ -104,11 +104,9 @@
     //添加点击事件
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(showSelectCardViewAction)];
     [card addGestureRecognizer:tap];
-    
     //添加到视图与数组中
     [_slideCardViewArray insertObject:card atIndex:0];
     [_mainScrollView addSubview:card];
-    
     //设置滚动视图属性
     _mainScrollView.contentSize = _cardDataArray.count>1 ? CGSizeMake(width, viewSize.height*_cardDataArray.count):CGSizeMake(width, viewSize.height*_cardDataArray.count+1);
     _mainScrollView.contentOffset = CGPointMake(0, (_cardDataArray.count-1)* viewSize.height);
@@ -169,7 +167,7 @@
     CGFloat height = scrollView.frame.size.height;//高度
     CGFloat currentIndex = offset_y/height;//当前标签
     
-    //得到索引
+    //得到索引 当前显示在最前的index 一般有5个 显示在最前面的是index=4
     _index = currentIndex>(int)currentIndex?(int)currentIndex+1:(int)currentIndex;
     
     if (_index>_cardDataArray.count-1) {
@@ -178,23 +176,29 @@
     
     //调整滚动视图图片的角度
     SongCardView* scrollCardView = [_slideCardViewArray firstObject];
-    
+    if (scrollCardView.model==nil) {
+        scrollCardView.model = _cardDataArray[_index];
+    }
     //表示处于当前视图内
     if(scrollCardView.frame.origin.y<offset_y)
     {
         if(offset_y>_cardDataArray.count*height-height){
+            NSLog(@"滑动下去了");
             scrollCardView.hidden = YES;
         }else{
+            NSLog(@"滑动回来了1");
             scrollCardView.hidden = NO;
             scrollCardView.frame = CGRectMake(0, _index*height, CardW,CardH);
         }
     }
     else if(scrollCardView.frame.origin.y-height<offset_y&&offset_y<=scrollCardView.frame.origin.y)
     {
+        NSLog(@"滑动途中");
         scrollCardView.hidden = NO;
     }
     else
     {
+        NSLog(@"滑动回来了2");
         scrollCardView.frame = CGRectMake(0, _index*height, CardW,CardH);
     }
     
@@ -203,13 +207,16 @@
     for (NSInteger i=_select; i<=_index; i++) {
         //调整滚动视图图片的角度
         float currOrigin_y = i * height; //当前图片的y坐标
-        
         //调整叠加视图
         SongCardView* moveCardView = [_cardViewArray objectAtIndex:i-_select];
+        if (moveCardView.model==nil) {
+            moveCardView.model = _cardDataArray[i-_select];
+        }
+        
+        NSLog(@"============== %ld",i-_select);
         float range_y = (currOrigin_y - offset_y)/(_xMarginValue) ;
         
         moveCardView.frame = CGRectMake(0, range_y, CardW,CardH);
-        
         if(range_y >= 0) // 如果超过当前滑动视图便隐藏
             moveCardView.hidden = YES;
         else
@@ -221,6 +228,7 @@
         float range_z = -(offset_y-currOrigin_y)/_zMarginValue;
         
         moveCardView.layer.zPosition = range_z;
+     
         
         //调整弹压视图的透明度
         float alpha = 1.f + (currOrigin_y-offset_y)/_alphaValue;
@@ -254,6 +262,9 @@
     {
         [self.delegate slideCardViewDidEndScrollIndex:_index];
     }
+    
+    
+    
 }
 
 

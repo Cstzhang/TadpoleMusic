@@ -132,7 +132,7 @@
     //执行查询请求
     NSError *error = nil;
     NSArray *songArr = [self.myAppDelegate.managedObjectContext executeFetchRequest:request error:&error];
-    NSLog(@"arr %@",songArr);
+//    NSLog(@"arr %@",songArr);
     return songArr;
 }
 

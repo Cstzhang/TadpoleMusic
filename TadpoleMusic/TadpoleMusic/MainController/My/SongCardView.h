@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
-
+@class SongList;
 @interface SongCardView : UIView
--(void)loadCardViewWithDictionary:(NSDictionary*)dictionary;
+/** <#注释#> */
+@property (nonatomic,strong) SongList * model;
 @end
