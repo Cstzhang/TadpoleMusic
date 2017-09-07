@@ -191,7 +191,20 @@
 
             NSLog(@"滑动回来了，视图还没出现在手机内");
             if (scrollCardView.index!=_index){
-                scrollCardView.model = _cardDataArray[_index];
+            
+                SongList *song =_cardDataArray[_index];
+                SongCardView* moveCardView = [_cardViewArray objectAtIndex:_index];
+                NSString *key = [NSString stringWithFormat:@"%@+%@",song.title,song.artist];
+                //如果当前显示的view中还没有头像，平台信息 ，而carview有，则从数组中添加进来
+                //头像
+                if (kObjectIsEmpty(scrollCardView.headUrlDic[key])&&!kObjectIsEmpty(moveCardView.headUrlDic[key])) {
+                    [scrollCardView.headUrlDic setObject:moveCardView.headUrlDic[key] forKey:key];
+                };
+                //平台信息
+                if (kObjectIsEmpty(scrollCardView.platformDoc[key])&&!kObjectIsEmpty(moveCardView.platformDoc[key])) {
+                    [scrollCardView.platformDoc setObject:moveCardView.platformDoc[key] forKey:key];
+                };
+                scrollCardView.model = song;
                 scrollCardView.index =_index;
             }
             scrollCardView.hidden = NO;
