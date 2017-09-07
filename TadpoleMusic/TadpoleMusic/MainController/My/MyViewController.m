@@ -33,10 +33,12 @@
 }
 -(void)viewWillAppear:(BOOL)animated{
     //====搜索本地缓存的数据
-    [self.songArray  removeAllObjects];
+    [self.songArray removeAllObjects];
+   
     [self.songArray addObjectsFromArray:[self.dbHander searchSong]];
     //数据（需要补充未真实数据源数据）
     [_slide addCardDataWithArray:self.songArray];
+    
 }
 #pragma mark - **************** 基础UI
 -(void)setupUI{
@@ -77,7 +79,7 @@
 //滑动某张视图
 -(void)slideCardViewDidScrollAllPage:(NSInteger)page AndIndex:(NSInteger)index
 {
-    NSLog(@"__page__%ld__index__%ld",page,index);
+   // NSLog(@"__page__%ld__index__%ld",page,index);
     
     //判断是否为第一页
     //    if(page == index){

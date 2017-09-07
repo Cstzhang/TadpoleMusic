@@ -75,11 +75,11 @@
 
 
 //判断是否有收藏
--(BOOL)isFollowed:(SongModel *)model{
+-(BOOL)isFollowed:(NSString *)title artist:(NSString *)artist{
     BOOL isFollow;
     NSFetchRequest *request = [[NSFetchRequest alloc]initWithEntityName:@"SongList"];
     //设置条件
-    NSPredicate * predicate = [NSPredicate predicateWithFormat:@"title == %@ AND artist == %@",model.title,model.artist];
+    NSPredicate * predicate = [NSPredicate predicateWithFormat:@"title == %@ AND artist == %@",title,artist];
     request.predicate = predicate;
     //执行查询请求
     NSError *error = nil;
@@ -89,7 +89,6 @@
     if (arr.count!=0) {
         SongList *song = arr[0];
         isFollow =song.status?YES:NO;
-        NSLog(@"title %@  artist %@  有数据 status %d",model.title,model.artist,song.status);
     }else{
         isFollow = NO;
     }
@@ -132,7 +131,6 @@
     //执行查询请求
     NSError *error = nil;
     NSArray *songArr = [self.myAppDelegate.managedObjectContext executeFetchRequest:request error:&error];
-//    NSLog(@"arr %@",songArr);
     return songArr;
 }
 

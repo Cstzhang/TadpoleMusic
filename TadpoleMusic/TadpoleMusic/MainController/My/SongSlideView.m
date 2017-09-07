@@ -75,7 +75,6 @@
         //初始化序列号（最大的序号）
         _index = array.count-1;
     }
-    
     //_cardDataArray初始化
     [_cardDataArray addObjectsFromArray:array];
     
@@ -116,7 +115,8 @@
 -(void)loadBottomView{
     float height = self.frame.size.height;
     
-    for(int i=0; i<(_cardDataArray.count<4?_cardDataArray.count:4); i++)
+    //for(int i=0; i<(_cardDataArray.count<4?_cardDataArray.count:4); i++)
+    for(int i=0; i<_cardDataArray.count; i++)
     {
         //设置CardView的坐标，z值和透明度(i=0 第一张的时候y偏移为0，慢慢向下偏移)
         CGPoint point = CGPointMake(0, -i*height/_xMarginValue);
@@ -131,11 +131,11 @@
         card.layer.masksToBounds = YES;
         //圆角
         card.layer.cornerRadius = 5.0;
-        if (i<3) {//只显示3张，其余透明
+        if (i<3) {//只显示3张
             card.layer.zPosition = zPosition; // Z坐标
             card.alpha = 1;
         }
-        else{
+        else{//其余透明
             card.layer.zPosition = -288; // Z坐标
             card.alpha = 0;//透明
         }
@@ -167,55 +167,77 @@
     CGFloat height = scrollView.frame.size.height;//高度
     CGFloat currentIndex = offset_y/height;//当前标签
     
-    //得到索引 当前显示在最前的index 一般有5个 显示在最前面的是index=4
-    _index = currentIndex>(int)currentIndex?(int)currentIndex+1:(int)currentIndex;
-    
+    //得到索引 当前显示在最前的index 假如有5个显示在最前面的是index=4
+    //不够整数的取整？
+    _index = currentIndex>(int)currentIndex?(int)currentIndex+2:(int)currentIndex;
     if (_index>_cardDataArray.count-1) {
         _index = (int)_cardDataArray.count-1;
     }
-    
+
     //调整滚动视图图片的角度
     SongCardView* scrollCardView = [_slideCardViewArray firstObject];
     if (scrollCardView.model==nil) {
         scrollCardView.model = _cardDataArray[_index];
+        scrollCardView.index = _index;
     }
     //表示处于当前视图内
+    
     if(scrollCardView.frame.origin.y<offset_y)
     {
         if(offset_y>_cardDataArray.count*height-height){
             NSLog(@"滑动下去了");
             scrollCardView.hidden = YES;
         }else{
-            NSLog(@"滑动回来了1");
+
+            NSLog(@"滑动回来了，视图还没出现在手机内");
+            if (scrollCardView.index!=_index){
+                scrollCardView.model = _cardDataArray[_index];
+                scrollCardView.index =_index;
+            }
             scrollCardView.hidden = NO;
             scrollCardView.frame = CGRectMake(0, _index*height, CardW,CardH);
         }
     }
     else if(scrollCardView.frame.origin.y-height<offset_y&&offset_y<=scrollCardView.frame.origin.y)
     {
-        NSLog(@"滑动途中");
+       // NSLog(@"滑动途中，显示scrollCardView");
         scrollCardView.hidden = NO;
     }
     else
     {
-        NSLog(@"滑动回来了2");
+        NSLog(@"滑动出去，即将离开屏幕");
+        if (scrollCardView.index!=_index) {
+//             if (scrollCardView.index==_index+1||scrollCardView.index==_index-1) {
+            SongList *song =_cardDataArray[_index];
+            SongCardView* moveCardView = [_cardViewArray objectAtIndex:_index];
+            NSString *key = [NSString stringWithFormat:@"%@+%@",song.title,song.artist];
+            //如果当前显示的view中还没有头像，平台信息 ，而carview有，则从数组中添加进来
+            //头像
+            if (kObjectIsEmpty(scrollCardView.headUrlDic[key])&&!kObjectIsEmpty(moveCardView.headUrlDic[key])) {
+                [scrollCardView.headUrlDic setObject:moveCardView.headUrlDic[key] forKey:key];
+            };
+            //平台信息
+            if (kObjectIsEmpty(scrollCardView.platformDoc[key])&&!kObjectIsEmpty(moveCardView.platformDoc[key])) {
+                [scrollCardView.platformDoc setObject:moveCardView.platformDoc[key] forKey:key];
+            };
+            scrollCardView.model =song;
+            scrollCardView.index =_index;
+        }
         scrollCardView.frame = CGRectMake(0, _index*height, CardW,CardH);
+      
     }
     
-    NSInteger _select = _index-3>0?(_index-3):0;
-    
-    for (NSInteger i=_select; i<=_index; i++) {
+    //点击是否是第四个及以上
+    for (NSInteger i=0; i<=_index-1; i++) {
         //调整滚动视图图片的角度
         float currOrigin_y = i * height; //当前图片的y坐标
         //调整叠加视图
-        SongCardView* moveCardView = [_cardViewArray objectAtIndex:i-_select];
+        SongCardView* moveCardView = [_cardViewArray objectAtIndex:i];
         if (moveCardView.model==nil) {
-            moveCardView.model = _cardDataArray[i-_select];
+            moveCardView.model = _cardDataArray[i];
         }
-        
-        NSLog(@"============== %ld",i-_select);
         float range_y = (currOrigin_y - offset_y)/(_xMarginValue) ;
-        
+
         moveCardView.frame = CGRectMake(0, range_y, CardW,CardH);
         if(range_y >= 0) // 如果超过当前滑动视图便隐藏
             moveCardView.hidden = YES;
@@ -226,23 +248,29 @@
         
         //调整弹压视图的z值
         float range_z = -(offset_y-currOrigin_y)/_zMarginValue;
-        
         moveCardView.layer.zPosition = range_z;
-     
-        
         //调整弹压视图的透明度
         float alpha = 1.f + (currOrigin_y-offset_y)/_alphaValue;
-        
         if (currentIndex-2<=i && i<=currentIndex) {
             moveCardView.alpha = 1;
+            moveCardView.hidden=NO;
         }else if(currentIndex-2>i&&currentIndex-3<i){
             moveCardView.alpha = alpha;
+            moveCardView.hidden=NO;
         }
         else{
             moveCardView.alpha = 0;
+            moveCardView.hidden=YES;
         }
+     
+        
     }
-    
+    if (_index ==  0 ) {
+        for (SongCardView* moveCardView in _cardViewArray ) {
+            moveCardView.alpha = 0;
+        }
+        
+    }
     //代理滚动时回调函数
     if([self.delegate respondsToSelector:@selector(slideCardViewDidScrollAllPage:AndIndex:)])
         [self.delegate slideCardViewDidScrollAllPage:_cardDataArray.count-1 AndIndex:_index];
@@ -251,21 +279,29 @@
 
 - (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate
 {
+    
+   
     for(SongCardView* card in _slideCardViewArray)  //调整所有图片的z值
-        card.layer.zPosition = 0;
+    { card.layer.zPosition = 0;
+    
+    }
+    
+  
 }
 
 
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView //滚动结束处理
 {
+
     if([self.delegate respondsToSelector:@selector(slideCardViewDidEndScrollIndex:)])
     {
         [self.delegate slideCardViewDidEndScrollIndex:_index];
     }
-    
-    
+//    SongCardView* scrollCardView = [_slideCardViewArray firstObject];
+//    scrollCardView.index =_index;
     
 }
+
 
 
 @end

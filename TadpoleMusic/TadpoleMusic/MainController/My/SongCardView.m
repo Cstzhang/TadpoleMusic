@@ -11,12 +11,13 @@
 #import "SongList+CoreDataClass.h"
 #import "SearchHandle.h"
 #import "SearchModel.h"
+#import "DBHander.h"
+
 @interface SongCardView()<UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout>
 @property (weak, nonatomic) IBOutlet UILabel *songNameLabel;
 @property (weak, nonatomic) IBOutlet UIButton *clollectBtn;
 @property (weak, nonatomic) IBOutlet UIView *backGroundView;
 @property (weak, nonatomic) IBOutlet UIImageView *artistImage;
-
 @property (weak, nonatomic) IBOutlet UILabel *artistLabel;
 @property (weak, nonatomic) IBOutlet UILabel *albumLabel;
 @property (weak, nonatomic) IBOutlet UILabel *companyLabel;
@@ -24,19 +25,40 @@
 @property (weak, nonatomic) IBOutlet UILabel *searchScoreLabel;
 @property (weak, nonatomic) IBOutlet UICollectionView *platformCollectionView;
 
+/** <#注释#> */
+@property (nonatomic,strong) SearchModel * searchModel;
 
+//声明AppDelegate对象属性，用于调用类中属性，管理存储上下文
+@property(nonatomic,strong)DBHander *dbHander;
 /** 平台数组 */
 @property (nonatomic,strong) NSMutableDictionary * searchDic;
 
 /** 平台数组 */
 @property (nonatomic,strong) NSMutableArray * songPlatform;
+
 @end
 
 @implementation SongCardView
+
+-(NSMutableDictionary *)platformDoc{
+    if (!_platformDoc) {
+        _platformDoc = [NSMutableDictionary dictionary];
+    }
+    return _platformDoc;
+}
+
+-(NSMutableDictionary *)headUrlDic{
+    if (!_headUrlDic) {
+        _headUrlDic = [NSMutableDictionary dictionary];
+    }
+    return _headUrlDic;
+}
 //搜索结果
 -(NSMutableDictionary *)searchDic{
     if (!_searchDic) {
         _searchDic= [[NSMutableDictionary alloc]init];
+        //====初始化 myAppDelegate
+        self.dbHander = [[DBHander alloc]init];
     }
     return  _searchDic;
 }
@@ -85,6 +107,7 @@
 
 -(void)setModel:(SongList *)model{
     _model=model;
+    NSLog(@"设置了一次数据");
     //初始化数据
     [self.songNameLabel setValue:_model.title forKey:@"text"];
     self.artistLabel.text=_model.artist;
@@ -92,30 +115,78 @@
     self.companyLabel.text=[NSString stringWithFormat:@"发行方:%@",_model.label];
     self.releaseTimeLabel.text=[NSString stringWithFormat:@"发行时间:%@",_model.release_date];
     self.searchScoreLabel.text=[NSString stringWithFormat:@"识别度：%.0f/100",_model.score];
-   //搜索歌曲平台
-    [self searchMusciInfo];
-//    self.clollectBtn.selected = [self.dbHander isFollowed:self.songModel];
-    
+    NSString *key = [NSString stringWithFormat:@"%@+%@",self.model.title,self.model.artist];
+    //内存中有图片信息，则不需要再次请求
+    if (!kObjectIsEmpty(self.headUrlDic[key])) {
+        NSString *head =self.headUrlDic[key];
+        [self.artistImage sd_setImageWithURL:[NSURL URLWithString:head] placeholderImage:[UIImage imageNamed:@"默认头像"]];
+    };
+    //如果内存中还有平台信息，则显示
+    if (!kObjectIsEmpty(self.platformDoc[key])) {
+        NSArray * arr =  [self.platformDoc objectForKey:key];
+        self.songPlatform = [NSMutableArray arrayWithArray:arr];
+        if (self.songPlatform.count != 0 ) {
+            [self.platformCollectionView reloadData];
+        }else{
+            NSLog(@"没有歌曲的平台信息");
+        }
+    }else{//内存中没有平台信息 则请求获取
+        //搜索歌曲平台
+        [self searchMusciInfo];
+    }
+    //收藏按钮样式
+    self.clollectBtn.selected = [ self.dbHander isFollowed:_model.label artist:_model.artist];
 }
 
 
 - (IBAction)clickFollow:(id)sender {
+    NSLog(@"点击了收藏");
+    
     
 }
 
 
 -(void)searchMusciInfo{
     NSString *key = [NSString stringWithFormat:@"%@+%@",self.model.title,self.model.artist];
+    
+    //主队列
+    dispatch_queue_t mainQueue = dispatch_get_main_queue();
+    //全局并发队列
+    dispatch_queue_t globalQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+    
+    dispatch_async(globalQueue, ^{
+        
     self.searchDic = [SearchHandle searchMusicInBD:key];
-    [self showHeadview];
-    self.songPlatform = [NSMutableArray arrayWithArray:self.searchDic[@"musicPlatform"]];
-    if (self.songPlatform.count != 0 ) {
-        [self.platformCollectionView reloadData];
-    }else{
-        NSLog(@"没有歌曲的平台信息");
-    }
+    dispatch_async(mainQueue, ^{
+        //如果还没有请求过头像，则请求一次
+        if (kObjectIsEmpty(self.headUrlDic[key])) {
+            [self.headUrlDic setObject:[self.searchDic valueForKey:@"songImageUrl"] forKey:key];
+            [self showHeadview];
+        };
+        //如果数组中还没有平台信息，则添加，显示
+        if (kObjectIsEmpty(self.platformDoc[key]) && !kObjectIsEmpty(self.searchDic[@"musicPlatform"])) {
+            [self.platformDoc setObject:self.searchDic[@"musicPlatform"] forKey:key];
+            self.songPlatform = [NSMutableArray arrayWithArray:self.searchDic[@"musicPlatform"]];
+            if (self.songPlatform.count != 0 ) {
+                [self.platformCollectionView reloadData];
+            }else{
+                NSLog(@"没有歌曲的平台信息");
+            }
+        }else{
+
+                NSLog(@"没有歌曲的平台信息");
+        }
+        
+       
+        });
+    });
+    
+
+    
+   
     
 }
+
 -(void)showHeadview{
     NSURL *imgUrl = [NSURL URLWithString:[self.searchDic valueForKey:@"songImageUrl"]];
     NSString * userAgent = @"";
@@ -129,8 +200,7 @@
         }
         [[SDWebImageDownloader sharedDownloader] setValue:userAgent forHTTPHeaderField:@"User-Agent"];
     }
-    [self.artistImage sd_setImageWithURL:imgUrl placeholderImage:[UIImage imageNamed:@"默认头像"] completed:^(UIImage * _Nullable image, NSError * _Nullable error, SDImageCacheType cacheType, NSURL * _Nullable imageURL) {
-    }];
+    [self.artistImage sd_setImageWithURL:imgUrl placeholderImage:[UIImage imageNamed:@"默认头像"]];
     
     
 }
@@ -150,9 +220,9 @@
     //创建 PhotoCollectionViewCell 创建cell的时候与cell对应的presenter 也创建了
     PlatformViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"PlatformViewCell" forIndexPath:indexPath];
     if (self.songPlatform.count!=0) {
-        SearchModel * model = self.songPlatform[indexPath.row];
-        cell.platformName.text = model.musicPlatform;
-        cell.platformImage.image = [UIImage imageNamed:model.musicPlatform];
+        self.searchModel = self.songPlatform[indexPath.row];
+        cell.platformName.text = self.searchModel.musicPlatform;
+        cell.platformImage.image = [UIImage imageNamed:self.searchModel.musicPlatform];
     }
     //赋值数据
     return cell;

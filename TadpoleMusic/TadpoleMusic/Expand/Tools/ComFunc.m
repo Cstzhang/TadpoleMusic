@@ -20,5 +20,14 @@
     UIGraphicsEndImageContext();
     return theImage;
 }
+/** 获取当前时间 */
++(NSString *)getCurrentTime
+{
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    [formatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
+    NSString *dateTime = [formatter stringFromDate:[NSDate date]];
+    return dateTime;
+}
+
 
 @end

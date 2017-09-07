@@ -15,7 +15,7 @@
 //插入一条歌曲数据到本地数据库
 -(void)insertSong:(SongModel *)model;
 //判断是否有收藏
--(BOOL)isFollowed:(SongModel *)model;
+-(BOOL)isFollowed:(NSString *)title artist:(NSString *)artist;
 //修改关注状态
 -(void)unfollowSong:(SongModel *)model isFollw:(int)status;
 //搜索缓存的数据

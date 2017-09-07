@@ -12,4 +12,7 @@
 #pragma mark - **************** 图形相关
 /**颜色转图片*/
 + (UIImage *)createImageWithColor:(UIColor *)color;
+#pragma mark ——— 时间相关
+/** 获取当前时间 */
++(NSString *)getCurrentTime;
 @end

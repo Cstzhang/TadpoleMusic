@@ -93,7 +93,7 @@
     //收藏按钮
     [self.clollectBtn setImage:[UIImage imageNamed:@"collect_unselect"] forState:UIControlStateNormal];
     [self.clollectBtn setImage:[UIImage imageNamed:@"collect_select"] forState:UIControlStateSelected];
-    self.clollectBtn.selected = [self.dbHander isFollowed:self.songModel];
+    self.clollectBtn.selected = [self.dbHander isFollowed:self.songModel.title artist:self.songModel.artist];
 }
 
 -(void)setBaseData{
@@ -125,15 +125,24 @@
 -(void)searchMusciInfo{
     NSString *key = [NSString stringWithFormat:@"%@+%@",self.songModel.title,self.songModel.artist];
     NSLog(@"key %@",key);
-    self.searchDic = [SearchHandle searchMusicInBD:key];
-    [self showHeadview];
-    self.songPlatform = [NSMutableArray arrayWithArray:self.searchDic[@"musicPlatform"]];
-    if (self.songPlatform.count != 0 ) {//
-        [self.platformCollectionView reloadData];
-    }else{
-        NSLog(@"没有歌曲的平台信息");
+    //主队列
+    dispatch_queue_t mainQueue = dispatch_get_main_queue();
+    //全局并发队列
+    dispatch_queue_t globalQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+    
+    dispatch_async(globalQueue, ^{
         
-    }
+        self.searchDic = [SearchHandle searchMusicInBD:key];
+        dispatch_async(mainQueue, ^{
+            [self showHeadview];
+            self.songPlatform = [NSMutableArray arrayWithArray:self.searchDic[@"musicPlatform"]];
+            if (self.songPlatform.count != 0 ) {
+                [self.platformCollectionView reloadData];
+            }else{
+                NSLog(@"没有歌曲的平台信息");
+            }
+        });
+    });
     
 }
 
@@ -151,10 +160,8 @@
         }
         [[SDWebImageDownloader sharedDownloader] setValue:userAgent forHTTPHeaderField:@"User-Agent"];
     }
-    [self.artistImage sd_setImageWithURL:imgUrl placeholderImage:[UIImage imageNamed:@"默认头像"] completed:^(UIImage * _Nullable image, NSError * _Nullable error, SDImageCacheType cacheType, NSURL * _Nullable imageURL) {
-    }];
+    [self.artistImage sd_setImageWithURL:imgUrl placeholderImage:[UIImage imageNamed:@"默认头像"]];
     
-
 }
 - (IBAction)clickClose:(id)sender {
      NSLog(@"点击关闭");
