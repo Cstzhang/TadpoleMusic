@@ -200,9 +200,6 @@ typedef NS_ENUM(NSInteger, SearchType){
 }
 //音乐搜索的类型：听歌
 -(void)searchTypeMusic{
-    if (self.searchType==SearchTypeMusic) {
-        return;
-    }
     if (_start) {//停止搜索
         [self stopSearchMusic];
     }
@@ -217,9 +214,7 @@ typedef NS_ENUM(NSInteger, SearchType){
 
 //音乐搜索的类型：哼唱
 -(void)searchTypeHumming{
-    if (self.searchType==SearchTypeMusicHumming) {
-        return;
-    }
+
     if (_start) {
         [self stopSearchMusic];
     }
@@ -317,6 +312,8 @@ typedef NS_ENUM(NSInteger, SearchType){
             NSLog(@"fingerprint data length = %ld", fingerprint.length);
         }
         [_client stopRecordRec];
+        [self.searchBtn toggle];
+        [_rippleView stopAnimation];
         _start = NO;
     });
 }
@@ -366,6 +363,7 @@ typedef NS_ENUM(NSInteger, SearchType){
         [_client stopRecordRec];
         _start = NO;
         [_rippleView stopAnimation];
+        [self.searchBtn toggle];
         
         //识别花费时间
         //NSTimeInterval nowTime = [[NSDate date] timeIntervalSince1970];
