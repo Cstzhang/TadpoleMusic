@@ -24,6 +24,8 @@
  *  持久化储存助理(数据链接器),整个CoreData框架的核心
  */
 @property (readonly, strong, nonatomic) NSPersistentStoreCoordinator *persistentStoreCoordinator;
+/** 网络状态是否正常 isNormalConnection网络连接正常 */
+@property(nonatomic,assign,getter=isNormalConnection)BOOL  netConnection;
 
 /**
  *  把我们临时数据库中进行的改变进行永久保存

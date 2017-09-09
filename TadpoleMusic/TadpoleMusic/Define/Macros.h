@@ -25,5 +25,7 @@
 //工具类
 #import "ComFunc.h"
 #import "UIColor+Addition.h"
+#import "MsgTool.h"
+#import "ZBTableView.h"
 
 #endif /* Macros_h */

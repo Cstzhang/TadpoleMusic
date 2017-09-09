@@ -27,7 +27,7 @@
     //背景图去掉
     self.tabBar.backgroundImage=[ComFunc createImageWithColor:CLEAR_COLOR];
     //设置分割线颜色
-    [self.tabBar setShadowImage:[ComFunc createImageWithColor:[UIColor zb_colorWithHex:0x28e532]]];
+    //[self.tabBar setShadowImage:[ComFunc createImageWithColor:[UIColor zb_colorWithHex:0x28e532]]];
     self.delegate=self;
     //tabbar数据数组
     NSArray * itemTitles        = @[@"搜歌",@"我的"];

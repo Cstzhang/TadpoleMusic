@@ -16,7 +16,7 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     [self setAppWindows];
     [self setRootViewController];
-
+    [self startNetworkMonitoring];
 //    NSLog(@"%s",__func__);
     return YES;
 }

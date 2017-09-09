@@ -3,7 +3,7 @@
 //  
 //
 //  Created by zhangzb on 2017/4/5.
-//  Copyright © 2017年 恒信永利. All rights reserved.
+//  Copyright © 2017年 zhangzb. All rights reserved.
 //
 
 #ifndef DefineRequest_h

@@ -12,6 +12,7 @@
 #import "SongModel.h"
 #import "PlatformViewCell.h"
 #import "DBHander.h"
+#import "SongList+CoreDataClass.h"
 @interface SongViewController ()<UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout>
 #pragma mark - **************** UI部分
 /** 歌曲名字 */
@@ -48,6 +49,8 @@
 //声明AppDelegate对象属性，用于调用类中属性，管理存储上下文
 @property(nonatomic,strong)DBHander *dbHander;
 
+/** 头部 */
+@property (nonatomic,copy) NSString *headUrl;
 @end
 
 @implementation SongViewController
@@ -93,25 +96,40 @@
     //收藏按钮
     [self.clollectBtn setImage:[UIImage imageNamed:@"collect_unselect"] forState:UIControlStateNormal];
     [self.clollectBtn setImage:[UIImage imageNamed:@"collect_select"] forState:UIControlStateSelected];
-    self.clollectBtn.selected = [self.dbHander isFollowed:self.songModel.title artist:self.songModel.artist];
+    
+   
 }
 
 -(void)setBaseData{
     if (self.songModel != nil) {
         NSLog(@"[NSThread currentThread] %@",[NSThread currentThread]);
         [self.songNameLabel setValue:self.songModel.title forKey:@"text"];
-        self.artistLabel.text=self.songModel.artist;
-        self.albumLabel.text=self.songModel.album;
+        self.artistLabel.text= [NSString stringWithFormat:@"作者：%@",self.songModel.artist];
+        self.albumLabel.text=[NSString stringWithFormat:@"《%@》",self.songModel.album];
         self.companyLabel.text=[NSString stringWithFormat:@"发行方:%@",self.songModel.label];
         self.releaseTimeLabel.text=[NSString stringWithFormat:@"发行时间:%@",self.songModel.release_date];
-        
         if (self.searchType==1) {
             int  score = (int)self.songModel.score.floatValue*100;
-            self.searchScoreLabel.text=[NSString stringWithFormat:@"识别度：%d/100",score];
+            self.searchScoreLabel.text=[NSString stringWithFormat:@"识别度：%d%@",score,@"%"];
         }else{
-            self.searchScoreLabel.text=[NSString stringWithFormat:@"识别度：%d/100",self.songModel.score.intValue];
+            self.searchScoreLabel.text=[NSString stringWithFormat:@"识别度：%d%@",self.songModel.score.intValue,@"%"];
         }
-  }
+         self.clollectBtn.selected = [self.dbHander isFollowed:self.songModel.title artist:self.songModel.artist];
+    }else{
+        if (self.songList!=nil) {
+            [self.songNameLabel setValue: self.songList.title forKey:@"text"];
+            self.artistLabel.text= [NSString stringWithFormat:@"作者：%@",self.songList.artist];
+            self.albumLabel.text=[NSString stringWithFormat:@"《%@》",self.songList.album];
+            self.companyLabel.text=[NSString stringWithFormat:@"发行方:%@",self.songList.label];
+            self.releaseTimeLabel.text=[NSString stringWithFormat:@"发行时间:%@",self.songList.release_date];
+            self.searchScoreLabel.text = [NSString stringWithFormat:@"识别度：%.0f%@",self.songList.score,@"%"];
+            self.headUrl =self.songList.attr1;
+             self.clollectBtn.selected = [self.dbHander isFollowed:self.songList.title artist:self.songList.artist];
+        }
+    
+    }
+    
+    
 }
 
 - (void)viewDidLoad {
@@ -123,31 +141,44 @@
 }
 
 -(void)searchMusciInfo{
-    NSString *key = [NSString stringWithFormat:@"%@+%@",self.songModel.title,self.songModel.artist];
+     NSString *key =@"";
+    if (self.songModel!=nil) {
+         key = [NSString stringWithFormat:@"%@+%@",self.songModel.title,self.songModel.artist];
+    }
+    if (self.songList!=nil) {
+        key = [NSString stringWithFormat:@"%@+%@",self.songList.title,self.songList.artist];
+    }
+    
     NSLog(@"key %@",key);
     //主队列
     dispatch_queue_t mainQueue = dispatch_get_main_queue();
     //全局并发队列
     dispatch_queue_t globalQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
-    
     dispatch_async(globalQueue, ^{
-        
+        //在线搜索歌曲平台信息
         self.searchDic = [SearchHandle searchMusicInBD:key];
         dispatch_async(mainQueue, ^{
+            //更新头部信息
             [self showHeadview];
+            //更新平台信息
             self.songPlatform = [NSMutableArray arrayWithArray:self.searchDic[@"musicPlatform"]];
             if (self.songPlatform.count != 0 ) {
                 [self.platformCollectionView reloadData];
             }else{
                 NSLog(@"没有歌曲的平台信息");
+                [MsgTool showMsg:@"该歌曲没有支持的播放平台"];
             }
         });
     });
-    
 }
 
 -(void)showHeadview{
+   
+    if (![self.headUrl isEqualToString:[self.searchDic valueForKey:@"songImageUrl"]]) {
+         self.headUrl = [self.searchDic valueForKey:@"songImageUrl"];
+    }
     NSURL *imgUrl = [NSURL URLWithString:[self.searchDic valueForKey:@"songImageUrl"]];
+    
     NSString * userAgent = @"";
     userAgent = [NSString stringWithFormat:@"%@/%@ (%@; iOS %@; Scale/%0.2f)", [[[NSBundle mainBundle] infoDictionary] objectForKey:(__bridge NSString *)kCFBundleExecutableKey] ?: [[[NSBundle mainBundle] infoDictionary] objectForKey:(__bridge NSString *)kCFBundleIdentifierKey], [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"] ?: [[[NSBundle mainBundle] infoDictionary] objectForKey:(__bridge NSString *)kCFBundleVersionKey], [[UIDevice currentDevice] model], [[UIDevice currentDevice] systemVersion], [[UIScreen mainScreen] scale]];
     
@@ -173,13 +204,26 @@
 //点击收藏
 - (IBAction)clickCollect:(id)sender {
     NSLog(@"点击收藏");
+    if (self.songModel!=nil) {
+        if (!self.clollectBtn.selected) {//关注
+            [self.dbHander followFun:self.songModel headUrl:self.headUrl];
+            
+        }else{//取消关注
+            [self.dbHander unfollowSongWithTitle:self.songModel.title artist:self.songModel.artist isFollw:0];
+        }
+
+    }else{
+        if (!self.clollectBtn.selected) {//关注
+           [self.dbHander unfollowSongWithTitle:self.songList.title artist:self.songList.artist isFollw:1];
+        }else{//取消关注
+            
+            [self.dbHander unfollowSongWithTitle:self.songList.title artist:self.songList.artist isFollw:0];
+        }
+        
     
-    if (!self.clollectBtn.selected) {//关注
-        [self.dbHander followFun:self.songModel];
-    }else{//取消关注
-        [self.dbHander unfollowSong:self.songModel isFollw:0];
+    
     }
-    //修改按钮显示状态
+     //修改按钮显示状态
     self.clollectBtn.selected =!self.clollectBtn.selected;
 }
 

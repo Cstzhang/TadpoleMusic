@@ -58,7 +58,7 @@
     NSLog(@"开始波纹动画");
     CABasicAnimation *alphaAnim = [CABasicAnimation animationWithKeyPath:@"opacity"];
     //改变属性的起始值，数值越大，展示圆圈越大
-    alphaAnim.fromValue = [NSNumber numberWithFloat:0.6];
+    alphaAnim.fromValue = [NSNumber numberWithFloat:0.7];
     //属性结束时的值
     alphaAnim.toValue = [NSNumber numberWithFloat:0.0];
     //
@@ -74,7 +74,7 @@
     groupAnimation.animations = @[alphaAnim, scaleAnim];
     //动画时长数值大动画越慢（应该优化成音量来控制）
     groupAnimation.duration = 3.0;
-//    groupAnimation.speed
+    groupAnimation.speed = 1.5;
     //结束时是否执行逆动画
     groupAnimation.autoreverses = YES;
     //重复次数 HUGE不停重复

@@ -9,7 +9,10 @@
 #import "AppDelegate.h"
 
 @interface AppDelegate (AppService)
-
+/**
+ *  网络监测
+ */
+- (void)startNetworkMonitoring;
 
 
 @end

@@ -15,25 +15,25 @@
 		6D1D1EB91F4DC71A0048A5EE /* SearchModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D1D1EB81F4DC71A0048A5EE /* SearchModel.m */; };
 		6D382D7E1F53C8F5000440C4 /* HummingListController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D382D7C1F53C8F5000440C4 /* HummingListController.m */; };
 		6D382D7F1F53C8F5000440C4 /* HummingListController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6D382D7D1F53C8F5000440C4 /* HummingListController.xib */; };
-		6D3E82E41F5D8ABF0040FF90 /* SongSlideView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D3E82E31F5D8ABF0040FF90 /* SongSlideView.m */; };
-		6D3E82E71F5D8ACE0040FF90 /* SongCardView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D3E82E61F5D8ACE0040FF90 /* SongCardView.m */; };
-		6D3E82E91F5D8B000040FF90 /* SongCardView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6D3E82E81F5D8B000040FF90 /* SongCardView.xib */; };
+		6D384ECA1F628A1300C517DC /* MyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D384EC81F628A1300C517DC /* MyViewController.m */; };
+		6D384ECB1F628A1300C517DC /* MyViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6D384EC91F628A1300C517DC /* MyViewController.xib */; };
+		6D384ECE1F628E8900C517DC /* ZBTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D384ECD1F628E8900C517DC /* ZBTableView.m */; };
 		6D403DCE1F41EAF500EB3DCB /* SearchHandle.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D403DCD1F41EAF500EB3DCB /* SearchHandle.m */; };
+		6D51CE411F6196C0009C4ADF /* MsgTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D51CE401F6196C0009C4ADF /* MsgTool.m */; };
 		6D524B571F3B4DDF00E8C434 /* AppDelegate+AppService.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D524B561F3B4DDF00E8C434 /* AppDelegate+AppService.m */; };
 		6D524B5A1F3B4E1100E8C434 /* AppDelegate+ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D524B591F3B4E1100E8C434 /* AppDelegate+ViewController.m */; };
 		6D524B5D1F3B511F00E8C434 /* RootTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D524B5C1F3B511F00E8C434 /* RootTabBarController.m */; };
 		6D55F78A1F4FD4E900FFEEED /* HummingModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D55F7891F4FD4E900FFEEED /* HummingModel.m */; };
 		6D6888B71F4F1BE20079DD3B /* SongViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D6888B51F4F1BE20079DD3B /* SongViewController.m */; };
 		6D6888B81F4F1BE20079DD3B /* SongViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6D6888B61F4F1BE20079DD3B /* SongViewController.xib */; };
+		6D71955C1F63D520008F6E72 /* LoadButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D71955B1F63D520008F6E72 /* LoadButton.m */; };
 		6D92CCC01F52F8E700B9969E /* PlatformViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D92CCBE1F52F8E700B9969E /* PlatformViewCell.m */; };
 		6D92CCC11F52F8E700B9969E /* PlatformViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6D92CCBF1F52F8E700B9969E /* PlatformViewCell.xib */; };
 		6DA06F821F341196009086E4 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DA06F811F341196009086E4 /* main.m */; };
 		6DA06F851F341196009086E4 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DA06F841F341196009086E4 /* AppDelegate.m */; };
 		6DA06F8D1F341196009086E4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6DA06F8C1F341196009086E4 /* Assets.xcassets */; };
-		6DA06F901F341196009086E4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6DA06F8E1F341196009086E4 /* LaunchScreen.storyboard */; };
 		6DA06FAC1F345499009086E4 /* BaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DA06FAA1F345499009086E4 /* BaseViewController.m */; };
 		6DA06FB81F3473D0009086E4 /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DA06FB71F3473D0009086E4 /* HomeViewController.m */; };
-		6DA06FBB1F3473DB009086E4 /* MyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DA06FBA1F3473DB009086E4 /* MyViewController.m */; };
 		6DA317021F3C3BA900593A0E /* ComFunc.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DA317011F3C3BA900593A0E /* ComFunc.m */; };
 		6DA317061F3C3E5300593A0E /* UIColor+Addition.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DA317051F3C3E5300593A0E /* UIColor+Addition.m */; };
 		6DA3170E1F3C5C1000593A0E /* CircleRippleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DA3170D1F3C5C1000593A0E /* CircleRippleView.m */; };
@@ -73,13 +73,15 @@
 		6D382D7B1F53C8F5000440C4 /* HummingListController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HummingListController.h; sourceTree = "<group>"; };
 		6D382D7C1F53C8F5000440C4 /* HummingListController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HummingListController.m; sourceTree = "<group>"; };
 		6D382D7D1F53C8F5000440C4 /* HummingListController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HummingListController.xib; sourceTree = "<group>"; };
-		6D3E82E21F5D8ABF0040FF90 /* SongSlideView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SongSlideView.h; sourceTree = "<group>"; };
-		6D3E82E31F5D8ABF0040FF90 /* SongSlideView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SongSlideView.m; sourceTree = "<group>"; };
-		6D3E82E51F5D8ACE0040FF90 /* SongCardView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SongCardView.h; sourceTree = "<group>"; };
-		6D3E82E61F5D8ACE0040FF90 /* SongCardView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SongCardView.m; sourceTree = "<group>"; };
-		6D3E82E81F5D8B000040FF90 /* SongCardView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SongCardView.xib; sourceTree = "<group>"; };
+		6D384EC71F628A1300C517DC /* MyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyViewController.h; sourceTree = "<group>"; };
+		6D384EC81F628A1300C517DC /* MyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyViewController.m; sourceTree = "<group>"; };
+		6D384EC91F628A1300C517DC /* MyViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MyViewController.xib; sourceTree = "<group>"; };
+		6D384ECC1F628E8900C517DC /* ZBTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZBTableView.h; sourceTree = "<group>"; };
+		6D384ECD1F628E8900C517DC /* ZBTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZBTableView.m; sourceTree = "<group>"; };
 		6D403DCC1F41EAF500EB3DCB /* SearchHandle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchHandle.h; sourceTree = "<group>"; };
 		6D403DCD1F41EAF500EB3DCB /* SearchHandle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchHandle.m; sourceTree = "<group>"; };
+		6D51CE3F1F6196C0009C4ADF /* MsgTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MsgTool.h; sourceTree = "<group>"; };
+		6D51CE401F6196C0009C4ADF /* MsgTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MsgTool.m; sourceTree = "<group>"; };
 		6D524B531F3B4AFF00E8C434 /* Macros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Macros.h; sourceTree = "<group>"; };
 		6D524B551F3B4DDF00E8C434 /* AppDelegate+AppService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "AppDelegate+AppService.h"; sourceTree = "<group>"; };
 		6D524B561F3B4DDF00E8C434 /* AppDelegate+AppService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "AppDelegate+AppService.m"; sourceTree = "<group>"; };
@@ -92,6 +94,8 @@
 		6D6888B41F4F1BE20079DD3B /* SongViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SongViewController.h; sourceTree = "<group>"; };
 		6D6888B51F4F1BE20079DD3B /* SongViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SongViewController.m; sourceTree = "<group>"; };
 		6D6888B61F4F1BE20079DD3B /* SongViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SongViewController.xib; sourceTree = "<group>"; };
+		6D71955A1F63D520008F6E72 /* LoadButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoadButton.h; sourceTree = "<group>"; };
+		6D71955B1F63D520008F6E72 /* LoadButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoadButton.m; sourceTree = "<group>"; };
 		6D92CCBD1F52F8E700B9969E /* PlatformViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlatformViewCell.h; sourceTree = "<group>"; };
 		6D92CCBE1F52F8E700B9969E /* PlatformViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlatformViewCell.m; sourceTree = "<group>"; };
 		6D92CCBF1F52F8E700B9969E /* PlatformViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PlatformViewCell.xib; sourceTree = "<group>"; };
@@ -100,14 +104,11 @@
 		6DA06F831F341196009086E4 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		6DA06F841F341196009086E4 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		6DA06F8C1F341196009086E4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		6DA06F8F1F341196009086E4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		6DA06F911F341196009086E4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6DA06FA91F345499009086E4 /* BaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BaseViewController.h; path = ../../Base/BaseViewController.h; sourceTree = "<group>"; };
 		6DA06FAA1F345499009086E4 /* BaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BaseViewController.m; path = ../../Base/BaseViewController.m; sourceTree = "<group>"; };
 		6DA06FB61F3473D0009086E4 /* HomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeViewController.h; sourceTree = "<group>"; };
 		6DA06FB71F3473D0009086E4 /* HomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeViewController.m; sourceTree = "<group>"; };
-		6DA06FB91F3473DB009086E4 /* MyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyViewController.h; sourceTree = "<group>"; };
-		6DA06FBA1F3473DB009086E4 /* MyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyViewController.m; sourceTree = "<group>"; };
 		6DA317001F3C3BA900593A0E /* ComFunc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ComFunc.h; sourceTree = "<group>"; };
 		6DA317011F3C3BA900593A0E /* ComFunc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ComFunc.m; sourceTree = "<group>"; };
 		6DA317041F3C3E5300593A0E /* UIColor+Addition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+Addition.h"; sourceTree = "<group>"; };
@@ -232,6 +233,15 @@
 			path = Vender;
 			sourceTree = "<group>";
 		};
+		6D51CE3E1F6196A9009C4ADF /* Msg */ = {
+			isa = PBXGroup;
+			children = (
+				6D51CE3F1F6196C0009C4ADF /* MsgTool.h */,
+				6D51CE401F6196C0009C4ADF /* MsgTool.m */,
+			);
+			name = Msg;
+			sourceTree = "<group>";
+		};
 		6D524B541F3B4D3400E8C434 /* Category */ = {
 			isa = PBXGroup;
 			children = (
@@ -239,6 +249,31 @@
 				6DA316FA1F3C2E4F00593A0E /* AppDelegate */,
 			);
 			path = Category;
+			sourceTree = "<group>";
+		};
+		6D7195431F6397D1008F6E72 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
+		6D71955D1F63D5E1008F6E72 /* TabelView */ = {
+			isa = PBXGroup;
+			children = (
+				6D384ECC1F628E8900C517DC /* ZBTableView.h */,
+				6D384ECD1F628E8900C517DC /* ZBTableView.m */,
+			);
+			name = TabelView;
+			sourceTree = "<group>";
+		};
+		6D71955E1F63D5F1008F6E72 /* Btn */ = {
+			isa = PBXGroup;
+			children = (
+				6D71955A1F63D520008F6E72 /* LoadButton.h */,
+				6D71955B1F63D520008F6E72 /* LoadButton.m */,
+			);
+			name = Btn;
 			sourceTree = "<group>";
 		};
 		6D92CCBC1F52F85900B9969E /* View */ = {
@@ -284,7 +319,6 @@
 				6DA06F831F341196009086E4 /* AppDelegate.h */,
 				6DA06F841F341196009086E4 /* AppDelegate.m */,
 				6DA06F8C1F341196009086E4 /* Assets.xcassets */,
-				6DA06F8E1F341196009086E4 /* LaunchScreen.storyboard */,
 				6DA06F911F341196009086E4 /* Info.plist */,
 				6DA06F801F341196009086E4 /* Supporting Files */,
 			);
@@ -355,6 +389,9 @@
 		6DA06FB01F3461C2009086E4 /* Tools */ = {
 			isa = PBXGroup;
 			children = (
+				6D71955E1F63D5F1008F6E72 /* Btn */,
+				6D71955D1F63D5E1008F6E72 /* TabelView */,
+				6D51CE3E1F6196A9009C4ADF /* Msg */,
 				6D403DCB1F41EAC100EB3DCB /* SearchHandle */,
 				6DEFC76C1F3DEAD300E45603 /* ACRCloud */,
 				6DA3170B1F3C5BE200593A0E /* CircleRipple */,
@@ -376,13 +413,10 @@
 		6DA06FB51F3473BC009086E4 /* My */ = {
 			isa = PBXGroup;
 			children = (
-				6DA06FB91F3473DB009086E4 /* MyViewController.h */,
-				6DA06FBA1F3473DB009086E4 /* MyViewController.m */,
-				6D3E82E21F5D8ABF0040FF90 /* SongSlideView.h */,
-				6D3E82E31F5D8ABF0040FF90 /* SongSlideView.m */,
-				6D3E82E51F5D8ACE0040FF90 /* SongCardView.h */,
-				6D3E82E61F5D8ACE0040FF90 /* SongCardView.m */,
-				6D3E82E81F5D8B000040FF90 /* SongCardView.xib */,
+				6D7195431F6397D1008F6E72 /* View */,
+				6D384EC71F628A1300C517DC /* MyViewController.h */,
+				6D384EC81F628A1300C517DC /* MyViewController.m */,
+				6D384EC91F628A1300C517DC /* MyViewController.xib */,
 			);
 			path = My;
 			sourceTree = "<group>";
@@ -544,9 +578,8 @@
 			files = (
 				6D6888B81F4F1BE20079DD3B /* SongViewController.xib in Resources */,
 				6D92CCC11F52F8E700B9969E /* PlatformViewCell.xib in Resources */,
-				6DA06F901F341196009086E4 /* LaunchScreen.storyboard in Resources */,
+				6D384ECB1F628A1300C517DC /* MyViewController.xib in Resources */,
 				6DE205131F5463470077C8DF /* HummingSongViewCell.xib in Resources */,
-				6D3E82E91F5D8B000040FF90 /* SongCardView.xib in Resources */,
 				6D382D7F1F53C8F5000440C4 /* HummingListController.xib in Resources */,
 				6DA06F8D1F341196009086E4 /* Assets.xcassets in Resources */,
 			);
@@ -613,19 +646,19 @@
 				6DA06FAC1F345499009086E4 /* BaseViewController.m in Sources */,
 				6D0460F71F58113200CE1644 /* SongList+CoreDataProperties.m in Sources */,
 				6DB9AD211F4482ED0011FE33 /* SongModel.m in Sources */,
+				6D384ECA1F628A1300C517DC /* MyViewController.m in Sources */,
 				6DA06F821F341196009086E4 /* main.m in Sources */,
 				6DA3170E1F3C5C1000593A0E /* CircleRippleView.m in Sources */,
 				6D92CCC01F52F8E700B9969E /* PlatformViewCell.m in Sources */,
+				6D51CE411F6196C0009C4ADF /* MsgTool.m in Sources */,
 				6DA06FB81F3473D0009086E4 /* HomeViewController.m in Sources */,
 				6D6888B71F4F1BE20079DD3B /* SongViewController.m in Sources */,
 				6D0460E11F580B7300CE1644 /* Database.xcdatamodeld in Sources */,
+				6D384ECE1F628E8900C517DC /* ZBTableView.m in Sources */,
 				6DFEC5DC1F433BCE000CB1F8 /* OCGumbo+Query.m in Sources */,
-				6D3E82E41F5D8ABF0040FF90 /* SongSlideView.m in Sources */,
-				6DA06FBB1F3473DB009086E4 /* MyViewController.m in Sources */,
 				6DA317021F3C3BA900593A0E /* ComFunc.m in Sources */,
 				6D524B5A1F3B4E1100E8C434 /* AppDelegate+ViewController.m in Sources */,
 				6DF7554A1F5D48FF007D7598 /* DBHander.m in Sources */,
-				6D3E82E71F5D8ACE0040FF90 /* SongCardView.m in Sources */,
 				6D524B5D1F3B511F00E8C434 /* RootTabBarController.m in Sources */,
 				6D028EC81F35C9D4000E0935 /* BaseNavController.m in Sources */,
 				6D0460F61F58113200CE1644 /* SongList+CoreDataClass.m in Sources */,
@@ -634,23 +667,13 @@
 				6D382D7E1F53C8F5000440C4 /* HummingListController.m in Sources */,
 				6DA317061F3C3E5300593A0E /* UIColor+Addition.m in Sources */,
 				6D1D1EB91F4DC71A0048A5EE /* SearchModel.m in Sources */,
+				6D71955C1F63D520008F6E72 /* LoadButton.m in Sources */,
 				6D524B571F3B4DDF00E8C434 /* AppDelegate+AppService.m in Sources */,
 				6D55F78A1F4FD4E900FFEEED /* HummingModel.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXVariantGroup section */
-		6DA06F8E1F341196009086E4 /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				6DA06F8F1F341196009086E4 /* Base */,
-			);
-			name = LaunchScreen.storyboard;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		6DA06F921F341196009086E4 /* Debug */ = {
@@ -748,6 +771,7 @@
 			baseConfigurationReference = 709DFB86E9835E018CE23D66 /* Pods-TadpoleMusic.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
 				DEVELOPMENT_TEAM = Y5WX43KK4M;
 				GCC_PREFIX_HEADER = "${SRCROOT}/TadpoleMusic/Define/Main_pch.pch";
@@ -772,6 +796,7 @@
 			baseConfigurationReference = 03A2AD41D0941161208EBF30 /* Pods-TadpoleMusic.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
 				DEVELOPMENT_TEAM = Y5WX43KK4M;
 				GCC_PREFIX_HEADER = "${SRCROOT}/TadpoleMusic/Define/Main_pch.pch";

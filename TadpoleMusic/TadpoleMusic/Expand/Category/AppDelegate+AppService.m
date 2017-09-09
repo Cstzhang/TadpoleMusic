@@ -11,6 +11,49 @@
 @implementation AppDelegate (AppService)
 
 
-
+/**
+ *  网络监测
+ */
+- (void)startNetworkMonitoring{
+    /** 初始化网络状态为异常 */
+    self.netConnection=NO;
+    [[AFNetworkReachabilityManager sharedManager] startMonitoring];
+    [[AFNetworkReachabilityManager sharedManager ] setReachabilityStatusChangeBlock:^(AFNetworkReachabilityStatus status) {
+        switch (status) {
+            case -1:
+                NSLog(@"未知网络");
+                break;
+            case 0:
+                NSLog(@"网络异常");
+                break;
+            case 1:
+                NSLog(@"GPRS网络");
+                break;
+            case 2:
+                NSLog(@"wifi网络");
+                break;
+            default:
+                break;
+        }
+        if(status ==AFNetworkReachabilityStatusReachableViaWWAN || status == AFNetworkReachabilityStatusReachableViaWiFi)
+        {
+            NSLog(@"网络正常");
+            self.netConnection=YES;
+        }else
+        {
+            NSLog(@"失去网络连接");
+            self.netConnection=NO;
+            UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"网络失去连接，请检查网络" message:nil preferredStyle:UIAlertControllerStyleAlert];
+            
+            UIAlertAction *actionConfirm = [UIAlertAction actionWithTitle:@"知道了" style:UIAlertActionStyleDefault handler:nil];
+            [alert addAction:actionConfirm];
+            [[UIApplication sharedApplication].delegate.window.rootViewController presentViewController:alert animated:YES completion:nil];
+            
+            
+        }
+    }];
+    
+    
+}
 
 @end

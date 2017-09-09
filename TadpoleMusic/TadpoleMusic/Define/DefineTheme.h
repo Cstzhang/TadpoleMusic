@@ -3,12 +3,20 @@
 //  
 //
 //  Created by zhangzb on 2017/4/5.
-//  Copyright © 2017年 恒信永利. All rights reserved.
+//  Copyright © 2017年 zhangzb. All rights reserved.
 //
 
 #ifndef DefineTheme_h
 #define DefineTheme_h
 #pragma mark - ****************  宽高
+
+#define PaddingToTop 20.0f
+//手势下滑最大允许位移
+#define  gestureOffset  200.0f
+//对应view可允许的最大偏移距离
+#define  dismissOffset  80.0f
+//幅值
+#define W  M_PI/(gestureOffset * 2)
 //状态栏高度
 #define STATUS_BAR_HEIGHT 20
 //NavBar高度

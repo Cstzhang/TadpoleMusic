@@ -7,6 +7,7 @@
 //
 
 #import "HomeViewController.h"
+#import <AVFoundation/AVFoundation.h>
 #import "CircleRippleView.h"
 #import "ACRCloudConfig.h"
 #import "ACRCloudRecognition.h"
@@ -15,7 +16,7 @@
 #import "HummingModel.h"
 #import "SearchHandle.h"
 #import "HummingListController.h"
-
+#import "LoadButton.h"
 //搜索按钮的宽度
 static  const int BTN_WIDTH = 160;
 //搜索类型
@@ -42,7 +43,7 @@ typedef NS_ENUM(NSInteger, SearchType){
 /** 提示语label */
 @property (nonatomic,strong) UILabel * tipsLabel;
 /** 监听的Button */
-@property (nonatomic,strong) UIButton * searchBtn;
+@property (nonatomic,strong) LoadButton * searchBtn;
 /** 音乐类型button */
 @property (nonatomic,strong) UIButton * musicTypeBtn;
 /** 哼唱类型button */
@@ -55,6 +56,7 @@ typedef NS_ENUM(NSInteger, SearchType){
 @property (nonatomic,strong) SongModel * songModel;
 /** 哼唱识别数组 */
 @property (nonatomic,strong) NSMutableArray * hummingArray;
+
 @end
 
 @implementation HomeViewController
@@ -65,7 +67,6 @@ typedef NS_ENUM(NSInteger, SearchType){
     }
     return  _hummingArray;
 }
-
 
 //设置提示title
 -(UILabel *)tipsLabel{
@@ -105,10 +106,10 @@ typedef NS_ENUM(NSInteger, SearchType){
     return _hummingTypeBtn;
 }
 //搜索歌曲按钮
--(UIButton *)searchBtn{
-    if (!_searchBtn) {
-        _searchBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-        [_searchBtn addTarget:self action:@selector(searchMusic) forControlEvents:UIControlEventTouchUpInside];
+-(LoadButton *)searchBtn{
+    if (!_searchBtn) {        
+        _searchBtn = [[LoadButton alloc]initWithFrame:CGRectMake((SCREEN_WIDTH-RATIO_W(BTN_WIDTH))/2, (SCREEN_HEIGHT-RATIO_W(BTN_WIDTH))/2, RATIO_W(BTN_WIDTH), RATIO_W(BTN_WIDTH))];
+        [_searchBtn addTarget:self action:@selector(searchMusic:) forControlEvents:UIControlEventTouchUpInside];
         [_searchBtn setBackgroundImage:[UIImage imageNamed:@"searchButton"] forState:UIControlStateNormal];
         [_searchBtn setBackgroundImage:[UIImage imageNamed:@"searchButton"] forState:UIControlStateHighlighted];
         [_searchBtn setBackgroundImage:[UIImage imageNamed:@"searchButton"] forState:UIControlStateSelected];
@@ -133,11 +134,7 @@ typedef NS_ENUM(NSInteger, SearchType){
     [self.view addSubview:self.rippleView];
     //设置识别按钮
     [self.view addSubview:self.searchBtn];
-    [_searchBtn mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.centerY.equalTo(self.view.centerY);
-        make.centerX.equalTo(self.view.centerX);
-        make.width.height.equalTo(RATIO_W(BTN_WIDTH));
-    }];
+   
     //提示语
     [self.view addSubview:self.tipsLabel];
     [_tipsLabel mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -161,12 +158,7 @@ typedef NS_ENUM(NSInteger, SearchType){
             make.width.equalTo(RATIO_W(100));
             make.height.equalTo(RATIO_W(30));
     }];
-//    UIButton *rightBt=[UIButton buttonWithType:UIButtonTypeSystem];
-//    rightBt.frame=CGRectMake(0, 0, 42, 23);
-//    [rightBt setTitle:@"停止" forState:UIControlStateNormal];
-//    [rightBt addTarget:self action:@selector(stopSearchMusic) forControlEvents:UIControlEventTouchUpInside];
-//    UIBarButtonItem *rightItem=[[UIBarButtonItem alloc]initWithCustomView:rightBt];
-//    self.navigationItem.rightBarButtonItem=rightItem;
+
 
   
 }
@@ -179,22 +171,26 @@ typedef NS_ENUM(NSInteger, SearchType){
     [self setupUI];
     [self registerACR];
     self.searchType=SearchTypeMusic;
+//    [self searchMusic];
 }
 
 
 #pragma mark - **************** 交互方法
 //搜索音乐
--(void)searchMusic{
+-(void)searchMusic:(LoadButton*)sender{
     //初始化识别为歌曲识别
-
-//    [self jumpToSearhMusicView];
-//    //如果已经正在识别了，直接返回
     if (_start) {
         [self stopSearchMusic];
         return;
     }
+    if (![self checkAudioStatus]) {
+        return;
+    }
+    
     //开始动画
     [_rippleView startAnimation];
+    
+    [sender toggle];
     //开始采集声纹
     [_client startRecordRec];
     //开始状态
@@ -204,7 +200,10 @@ typedef NS_ENUM(NSInteger, SearchType){
 }
 //音乐搜索的类型：听歌
 -(void)searchTypeMusic{
-    if (_start) {
+    if (self.searchType==SearchTypeMusic) {
+        return;
+    }
+    if (_start) {//停止搜索
         [self stopSearchMusic];
     }
     NSLog(@"听音乐搜索模式");
@@ -213,11 +212,14 @@ typedef NS_ENUM(NSInteger, SearchType){
     self.musicTypeBtn.selected=YES;
     _config.accessKey = ACR_ACCESS_KEY;
     _config.accessSecret = ACR_ACCESS_SECRET;
-    [self searchMusic];
+    //[self searchMusic:_searchBtn];
 }
 
 //音乐搜索的类型：哼唱
 -(void)searchTypeHumming{
+    if (self.searchType==SearchTypeMusicHumming) {
+        return;
+    }
     if (_start) {
         [self stopSearchMusic];
     }
@@ -227,7 +229,7 @@ typedef NS_ENUM(NSInteger, SearchType){
     self.musicTypeBtn.selected=NO;
     _config.accessKey = ACR_HUMMING_ACCESS_KEY;
     _config.accessSecret = ACR_HUMMING_ACCESS_SECRET;
-    [self searchMusic];
+   // [self searchMusic:_searchBtn];
 }
 
 //停止音乐识别
@@ -235,12 +237,15 @@ typedef NS_ENUM(NSInteger, SearchType){
     //停止识别
     NSLog(@"停止音乐识别");
     if(_client) {
-        [_client stopRecordRec];
+       [_client stopRecordRec];
     }
     _start = NO;
     //停止动画
     [_rippleView stopAnimation];
+    [self.searchBtn toggle];
+   
 }
+
 
 
 #pragma mark - **************** 音乐识别
@@ -374,16 +379,16 @@ typedef NS_ENUM(NSInteger, SearchType){
 {
     #warning 提示音量问题
     dispatch_async(dispatch_get_main_queue(), ^{
-    //    NSLog(@"volume :%f",volume);
+      //  NSLog(@"volume :%f",volume);
     });
 }
 
 //识别状态
 -(void)handleState:(NSString *)state
 {
-    #warning 识别失败后的跳转  onRecording
+    #warning 识别失败后的处理  onRecording
     dispatch_async(dispatch_get_main_queue(), ^{
-         NSLog(@"state :%@",state);
+       //  NSLog(@"state :%@",state);
 
     });
 }
@@ -398,6 +403,7 @@ typedef NS_ENUM(NSInteger, SearchType){
             SongViewController *searchVC = [[SongViewController alloc]init];
             searchVC.songModel =self.songModel;
             searchVC.searchType = 0;
+            [searchVC setModalTransitionStyle:UIModalTransitionStyleFlipHorizontal];
             [self presentViewController:searchVC animated:YES completion:nil];
         }
             break;
@@ -411,6 +417,36 @@ typedef NS_ENUM(NSInteger, SearchType){
             break;
     }
    
+}
+
+
+#pragma mark - **************** 麦克风
+
+//检查麦克风权限
+- (BOOL) checkAudioStatus{
+   __block BOOL result = NO;
+    AVAudioSession *avSession = [AVAudioSession sharedInstance];
+    
+    if ([avSession respondsToSelector:@selector(requestRecordPermission:)]) {
+        
+        [avSession requestRecordPermission:^(BOOL available) {
+            
+            if (available) {
+                //completionHandler
+                  result = YES;
+            }
+            else
+            {
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    [[[UIAlertView alloc] initWithTitle:@"温馨提示" message:@"请在“设置-隐私-麦克风”选项中允许蝌蚪访问您的麦克风" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil] show];
+                });
+                 result = NO;
+            }
+        }];
+        
+    }
+    
+    return result;
 }
 
 

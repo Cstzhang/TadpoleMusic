@@ -41,8 +41,8 @@
     //nav
     [self.navigationItem setTitle:@"识别列表"];
     [self.navigationController.navigationBar setTitleTextAttributes:@{NSFontAttributeName:TITLE_FONT,NSForegroundColorAttributeName:[UIColor blackColor]}];
-    NSLog(@"humming data %@",self.hummingArray);
-    //first view
+//    NSLog(@"humming data %@",self.hummingArray);
+    //第一首歌曲的信息 UI设定
     self.firstSongBackView.layer.cornerRadius = 8;
     self.firstSongBackView.layer.masksToBounds = YES;
     UIImage *backGroundImage=[UIImage imageNamed:@"bg1"];
@@ -50,22 +50,26 @@
     self.firstSongBackView.layer.contents=(__bridge id _Nullable)(backGroundImage.CGImage);
     UITapGestureRecognizer* singleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleSingleTap)];
     [self.firstSongBackView addGestureRecognizer:singleTap];
-    //tableview
+    //第一首歌的信息填充
+    if (self.hummingArray.count!=0) {
+        HummingModel *model = self.hummingArray[0];
+        //firt view
+        self.songName.text = model.title;
+        self.albumLabel.text = [NSString stringWithFormat:@"《%@》",model.album];
+        self.artistLabel.text = [NSString stringWithFormat:@"作者：%@",model.artist];
+        int score = (int)(model.score.floatValue*100);
+        self.scoreLabel.text = [NSString stringWithFormat:@"识别度：%d%@",score,@"%"];
+        [self.hummingSongTabelView reloadData];
+    }
+    
+    //tableview 哼唱列表其他信息
     [self.hummingSongTabelView registerNib:[UINib nibWithNibName:@"HummingSongViewCell" bundle:nil] forCellReuseIdentifier:@"HummingSongViewCell"];
     self.hummingSongTabelView.delegate = self;
     self.hummingSongTabelView.dataSource = self;
     self.hummingSongTabelView.bounces = NO;
     self.hummingSongTabelView.tableFooterView = [UIView new];
-    if (self.hummingArray.count!=0) {
-        HummingModel *model = self.hummingArray[0];
-         //firt view
-        self.songName.text = model.title;
-        self.albumLabel.text = [NSString stringWithFormat:@"《%@》",model.album];
-        self.artistLabel.text = [NSString stringWithFormat:@"作者：%@",model.artist];
-        int score = (int)(model.score.floatValue*100);
-        self.scoreLabel.text = [NSString stringWithFormat:@"识别度：%d/100",score];
-         [self.hummingSongTabelView reloadData];
-    }
+    
+
     
     
     
@@ -101,13 +105,14 @@
         cell.albumLabel.text = [NSString stringWithFormat:@"《%@》",model.album];
         cell.artistLabel.text = [NSString stringWithFormat:@"作者：%@",model.artist];
         int score = (int)(model.score.floatValue*100);
-        cell.scoreLabel.text = [NSString stringWithFormat:@"识别度：%d/100",score];
+        cell.scoreLabel.text = [NSString stringWithFormat:@"识别度：%d%@",score,@"%"];
 
     }
     return cell;
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    [tableView deselectRowAtIndexPath:indexPath animated:NO];
     NSLog(@"indexPath %ld",(long)indexPath.row);
     HummingModel *hummingModel = self.hummingArray[indexPath.row+1];
     SongViewController *searchVC = [[SongViewController alloc]init];

@@ -29,7 +29,7 @@
 
 #pragma mark - **************** 数据库操作
 //收藏操作
--(void)followFun:(SongModel *)model{
+-(void)followFun:(SongModel *)model headUrl:(NSString *)headUrl{
     //判断是否已经有
     NSFetchRequest *request = [[NSFetchRequest alloc]initWithEntityName:@"SongList"];
     //设置条件
@@ -41,7 +41,7 @@
     NSLog(@"arr %@",arr);
     //修改状态
     if (arr.count==0) {//如果没有 新增一条
-        [self insertSong:model];
+        [self insertSong:model headUrl:headUrl];
     }else{//如果有的话就修改即可
         for (SongList * song in arr) {
             song.status = 1;
@@ -50,12 +50,13 @@
         [self.myAppDelegate saveContext];
     }
 
-    
-    
 }
 
+
+
+
 //插入一条歌曲数据到本地数据库
--(void)insertSong:(SongModel *)model{
+-(void)insertSong:(SongModel *)model headUrl:(NSString *)headurl{
     //1创建实体描述文件
     NSEntityDescription *description = [NSEntityDescription entityForName:@"SongList" inManagedObjectContext:self.myAppDelegate.managedObjectContext];
     //2创建模型对象
@@ -69,6 +70,9 @@
     songList.album = model.album;
     songList.status = 1;
     songList.searchTime =[NSDate date];
+    if (headurl!=nil) {
+    songList.attr1 =headurl;
+    }
     //4保存数据
     [self.myAppDelegate saveContext];
 }
@@ -96,11 +100,13 @@
     return isFollow;
 }
 
+
+
 //修改关注状态
--(void)unfollowSong:(SongModel *)model isFollw:(int)status{
+-(void)unfollowSongWithTitle:(NSString *)title artist:(NSString *)artist isFollw:(int)status{
     NSFetchRequest *request = [[NSFetchRequest alloc]initWithEntityName:@"SongList"];
     //设置条件
-    NSPredicate * predicate = [NSPredicate predicateWithFormat:@"title == %@ AND artist == %@",model.title,model.artist];
+    NSPredicate * predicate = [NSPredicate predicateWithFormat:@"title == %@ AND artist == %@",title,artist];
     request.predicate = predicate;
     //执行查询请求
     NSError *error = nil;
@@ -118,8 +124,11 @@
 }
 
 
+
+
+
 //搜索缓存的数据
--(NSArray *)searchSong{
+-(NSArray *)searchSong:(int)currentPage{
     //创建 NSFetchRequestd对象
     NSFetchRequest *request = [[NSFetchRequest alloc]initWithEntityName:@"SongList"];
     //设置排序
@@ -128,6 +137,10 @@
     //设置条件
     NSPredicate * predicate = [NSPredicate predicateWithFormat:@"status == 1"];
         request.predicate = predicate;
+    //设置每页查询数
+    [request setFetchLimit:REQUEST_MIN_PAGE_NUM];
+    //查询的偏移量(查询多少条以后的数据 一般是： 页数 * 每页的数据量)
+    [request setFetchOffset:currentPage*REQUEST_MIN_PAGE_NUM];
     //执行查询请求
     NSError *error = nil;
     NSArray *songArr = [self.myAppDelegate.managedObjectContext executeFetchRequest:request error:&error];
