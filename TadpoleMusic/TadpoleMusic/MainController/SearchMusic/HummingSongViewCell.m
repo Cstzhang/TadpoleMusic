@@ -13,6 +13,11 @@
 - (void)awakeFromNib {
     [super awakeFromNib];
     // Initialization code
+
+    [self.songNameLabel setFont:[UIFont systemFontOfSize:15]];
+    [self.albumLabel setFont:[UIFont systemFontOfSize:12]];
+    [self.artistLabel setFont:[UIFont systemFontOfSize:12]];
+    [self.scoreLabel setFont:[UIFont systemFontOfSize:8]];
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {

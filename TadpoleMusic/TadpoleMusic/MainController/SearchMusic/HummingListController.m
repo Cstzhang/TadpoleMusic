@@ -59,6 +59,11 @@
         self.artistLabel.text = [NSString stringWithFormat:@"作者：%@",model.artist];
         int score = (int)(model.score.floatValue*100);
         self.scoreLabel.text = [NSString stringWithFormat:@"识别度：%d%@",score,@"%"];
+        //字体适配
+        [self.songName setFont:[UIFont systemFontOfSize:15]];
+        [self.albumLabel setFont:[UIFont systemFontOfSize:12]];
+        [self.artistLabel setFont:[UIFont systemFontOfSize:12]];
+        [self.scoreLabel setFont:[UIFont systemFontOfSize:8]];
         [self.hummingSongTabelView reloadData];
     }
     
@@ -68,9 +73,6 @@
     self.hummingSongTabelView.dataSource = self;
     self.hummingSongTabelView.bounces = NO;
     self.hummingSongTabelView.tableFooterView = [UIView new];
-    
-
-    
     
     
 }
@@ -90,8 +92,7 @@
     return self.hummingArray.count-1;
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-
-    return 80;
+    return (int)RATIO_H(75);
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {

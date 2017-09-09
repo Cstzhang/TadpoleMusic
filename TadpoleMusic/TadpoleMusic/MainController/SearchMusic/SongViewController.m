@@ -17,6 +17,7 @@
 #pragma mark - **************** UI部分
 /** 歌曲名字 */
 @property (weak, nonatomic) IBOutlet UILabel *songNameLabel;
+
 @property (weak, nonatomic) IBOutlet UIButton *clollectBtn;
 
 /** 背景图 */
@@ -96,6 +97,14 @@
     //收藏按钮
     [self.clollectBtn setImage:[UIImage imageNamed:@"collect_unselect"] forState:UIControlStateNormal];
     [self.clollectBtn setImage:[UIImage imageNamed:@"collect_select"] forState:UIControlStateSelected];
+    //字体适配
+    [self.songNameLabel setFont:[UIFont systemFontOfSize:17]];
+    [self.artistLabel setFont:[UIFont systemFontOfSize:17]];
+    [self.albumLabel setFont:[UIFont systemFontOfSize:17]];
+    [self.companyLabel setFont:[UIFont systemFontOfSize:10]];
+    [self.releaseTimeLabel setFont:[UIFont systemFontOfSize:10]];
+    [self.searchScoreLabel setFont:[UIFont systemFontOfSize:10]];
+    
     
    
 }

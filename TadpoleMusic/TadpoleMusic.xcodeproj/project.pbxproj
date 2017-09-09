@@ -27,6 +27,9 @@
 		6D6888B71F4F1BE20079DD3B /* SongViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D6888B51F4F1BE20079DD3B /* SongViewController.m */; };
 		6D6888B81F4F1BE20079DD3B /* SongViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6D6888B61F4F1BE20079DD3B /* SongViewController.xib */; };
 		6D71955C1F63D520008F6E72 /* LoadButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D71955B1F63D520008F6E72 /* LoadButton.m */; };
+		6D7195651F63FB1D008F6E72 /* UIFont+MyFont.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D7195641F63FB1D008F6E72 /* UIFont+MyFont.m */; };
+		6D7195711F640007008F6E72 /* LazyFadeInLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D71956E1F640007008F6E72 /* LazyFadeInLayer.m */; };
+		6D7195721F640007008F6E72 /* LazyFadeInView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D7195701F640007008F6E72 /* LazyFadeInView.m */; };
 		6D92CCC01F52F8E700B9969E /* PlatformViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D92CCBE1F52F8E700B9969E /* PlatformViewCell.m */; };
 		6D92CCC11F52F8E700B9969E /* PlatformViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6D92CCBF1F52F8E700B9969E /* PlatformViewCell.xib */; };
 		6DA06F821F341196009086E4 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DA06F811F341196009086E4 /* main.m */; };
@@ -96,6 +99,13 @@
 		6D6888B61F4F1BE20079DD3B /* SongViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SongViewController.xib; sourceTree = "<group>"; };
 		6D71955A1F63D520008F6E72 /* LoadButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoadButton.h; sourceTree = "<group>"; };
 		6D71955B1F63D520008F6E72 /* LoadButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoadButton.m; sourceTree = "<group>"; };
+		6D7195631F63FB1D008F6E72 /* UIFont+MyFont.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIFont+MyFont.h"; sourceTree = "<group>"; };
+		6D7195641F63FB1D008F6E72 /* UIFont+MyFont.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIFont+MyFont.m"; sourceTree = "<group>"; };
+		6D71956C1F640007008F6E72 /* LazyFadeIn.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LazyFadeIn.h; sourceTree = "<group>"; };
+		6D71956D1F640007008F6E72 /* LazyFadeInLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LazyFadeInLayer.h; sourceTree = "<group>"; };
+		6D71956E1F640007008F6E72 /* LazyFadeInLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LazyFadeInLayer.m; sourceTree = "<group>"; };
+		6D71956F1F640007008F6E72 /* LazyFadeInView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LazyFadeInView.h; sourceTree = "<group>"; };
+		6D7195701F640007008F6E72 /* LazyFadeInView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LazyFadeInView.m; sourceTree = "<group>"; };
 		6D92CCBD1F52F8E700B9969E /* PlatformViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlatformViewCell.h; sourceTree = "<group>"; };
 		6D92CCBE1F52F8E700B9969E /* PlatformViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlatformViewCell.m; sourceTree = "<group>"; };
 		6D92CCBF1F52F8E700B9969E /* PlatformViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PlatformViewCell.xib; sourceTree = "<group>"; };
@@ -276,6 +286,27 @@
 			name = Btn;
 			sourceTree = "<group>";
 		};
+		6D71956A1F63FFED008F6E72 /* Font */ = {
+			isa = PBXGroup;
+			children = (
+				6D7195631F63FB1D008F6E72 /* UIFont+MyFont.h */,
+				6D7195641F63FB1D008F6E72 /* UIFont+MyFont.m */,
+			);
+			name = Font;
+			sourceTree = "<group>";
+		};
+		6D71956B1F640007008F6E72 /* LazyFadeInView */ = {
+			isa = PBXGroup;
+			children = (
+				6D71956C1F640007008F6E72 /* LazyFadeIn.h */,
+				6D71956D1F640007008F6E72 /* LazyFadeInLayer.h */,
+				6D71956E1F640007008F6E72 /* LazyFadeInLayer.m */,
+				6D71956F1F640007008F6E72 /* LazyFadeInView.h */,
+				6D7195701F640007008F6E72 /* LazyFadeInView.m */,
+			);
+			path = LazyFadeInView;
+			sourceTree = "<group>";
+		};
 		6D92CCBC1F52F85900B9969E /* View */ = {
 			isa = PBXGroup;
 			children = (
@@ -389,6 +420,8 @@
 		6DA06FB01F3461C2009086E4 /* Tools */ = {
 			isa = PBXGroup;
 			children = (
+				6D71956B1F640007008F6E72 /* LazyFadeInView */,
+				6D71956A1F63FFED008F6E72 /* Font */,
 				6D71955E1F63D5F1008F6E72 /* Btn */,
 				6D71955D1F63D5E1008F6E72 /* TabelView */,
 				6D51CE3E1F6196A9009C4ADF /* Msg */,
@@ -655,6 +688,8 @@
 				6D6888B71F4F1BE20079DD3B /* SongViewController.m in Sources */,
 				6D0460E11F580B7300CE1644 /* Database.xcdatamodeld in Sources */,
 				6D384ECE1F628E8900C517DC /* ZBTableView.m in Sources */,
+				6D7195651F63FB1D008F6E72 /* UIFont+MyFont.m in Sources */,
+				6D7195711F640007008F6E72 /* LazyFadeInLayer.m in Sources */,
 				6DFEC5DC1F433BCE000CB1F8 /* OCGumbo+Query.m in Sources */,
 				6DA317021F3C3BA900593A0E /* ComFunc.m in Sources */,
 				6D524B5A1F3B4E1100E8C434 /* AppDelegate+ViewController.m in Sources */,
@@ -666,6 +701,7 @@
 				6DE205121F5463470077C8DF /* HummingSongViewCell.m in Sources */,
 				6D382D7E1F53C8F5000440C4 /* HummingListController.m in Sources */,
 				6DA317061F3C3E5300593A0E /* UIColor+Addition.m in Sources */,
+				6D7195721F640007008F6E72 /* LazyFadeInView.m in Sources */,
 				6D1D1EB91F4DC71A0048A5EE /* SearchModel.m in Sources */,
 				6D71955C1F63D520008F6E72 /* LoadButton.m in Sources */,
 				6D524B571F3B4DDF00E8C434 /* AppDelegate+AppService.m in Sources */,
@@ -776,7 +812,7 @@
 				DEVELOPMENT_TEAM = Y5WX43KK4M;
 				GCC_PREFIX_HEADER = "${SRCROOT}/TadpoleMusic/Define/Main_pch.pch";
 				INFOPLIST_FILE = TadpoleMusic/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
@@ -801,7 +837,7 @@
 				DEVELOPMENT_TEAM = Y5WX43KK4M;
 				GCC_PREFIX_HEADER = "${SRCROOT}/TadpoleMusic/Define/Main_pch.pch";
 				INFOPLIST_FILE = TadpoleMusic/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",

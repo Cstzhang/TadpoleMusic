@@ -17,6 +17,7 @@
 #import "SearchHandle.h"
 #import "HummingListController.h"
 #import "LoadButton.h"
+#import "LazyFadeInView.h"
 //搜索按钮的宽度
 static  const int BTN_WIDTH = 160;
 //搜索类型
@@ -40,8 +41,6 @@ typedef NS_ENUM(NSInteger, SearchType){
     NSTimeInterval          startTime;
     __block BOOL    _start;
 }
-/** 提示语label */
-@property (nonatomic,strong) UILabel * tipsLabel;
 /** 监听的Button */
 @property (nonatomic,strong) LoadButton * searchBtn;
 /** 音乐类型button */
@@ -56,7 +55,12 @@ typedef NS_ENUM(NSInteger, SearchType){
 @property (nonatomic,strong) SongModel * songModel;
 /** 哼唱识别数组 */
 @property (nonatomic,strong) NSMutableArray * hummingArray;
-
+//提示语
+@property (strong, nonatomic) LazyFadeInView *fadeInView;
+//搜索次数
+@property (nonatomic,assign) int searchTimeCount;
+/** 消息数组 */
+@property (nonatomic,strong) NSArray * msgArr;
 @end
 
 @implementation HomeViewController
@@ -68,17 +72,6 @@ typedef NS_ENUM(NSInteger, SearchType){
     return  _hummingArray;
 }
 
-//设置提示title
--(UILabel *)tipsLabel{
-    if (!_tipsLabel) {
-        _tipsLabel = [[UILabel alloc]init];
-        _tipsLabel.font = [UIFont systemFontOfSize:20];
-        _tipsLabel.textColor = WHITE_COLOR;
-        _tipsLabel.text = @"点击按钮开始识别";
-        _tipsLabel.textAlignment = NSTextAlignmentCenter;
-    }
-    return _tipsLabel;
-}
 //搜索歌曲按钮（按音乐搜索）
 -(UIButton *)musicTypeBtn{
     if (!_musicTypeBtn) {
@@ -134,13 +127,10 @@ typedef NS_ENUM(NSInteger, SearchType){
     [self.view addSubview:self.rippleView];
     //设置识别按钮
     [self.view addSubview:self.searchBtn];
-   
     //提示语
-    [self.view addSubview:self.tipsLabel];
-    [_tipsLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.centerX.equalTo(self.view.centerX);
-        make.bottom.equalTo(self.view.centerY).offset(-RATIO_W(BTN_WIDTH)/2 -20);
-    }];
+    self.fadeInView = [[LazyFadeInView alloc] initWithFrame:CGRectMake(CGRectGetMinX(self.searchBtn.frame)-25, CGRectGetMinY(self.searchBtn.frame)-130, SCREEN_WIDTH-(2*CGRectGetMinX(self.searchBtn.frame)-80), 120)];
+    [self.view addSubview:self.fadeInView];
+    
    //选择按钮
     [self.view addSubview:self.musicTypeBtn];
     [_musicTypeBtn mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -158,9 +148,9 @@ typedef NS_ENUM(NSInteger, SearchType){
             make.width.equalTo(RATIO_W(100));
             make.height.equalTo(RATIO_W(30));
     }];
-
-
-  
+    self.fadeInView.text = welcome;
+    self.searchTimeCount = 0;
+    self.msgArr = @[MsgStop01,MsgStop02,MsgStop03];
 }
 
 
@@ -171,13 +161,13 @@ typedef NS_ENUM(NSInteger, SearchType){
     [self setupUI];
     [self registerACR];
     self.searchType=SearchTypeMusic;
-//    [self searchMusic];
 }
 
 
 #pragma mark - **************** 交互方法
 //搜索音乐
 -(void)searchMusic:(LoadButton*)sender{
+    
     //初始化识别为歌曲识别
     if (_start) {
         [self stopSearchMusic];
@@ -186,7 +176,20 @@ typedef NS_ENUM(NSInteger, SearchType){
     if (![self checkAudioStatus]) {
         return;
     }
-    
+    switch (_searchType) {
+        case SearchTypeMusic:
+            
+        {
+            self.fadeInView.text = musicMsg;
+        }
+            break;
+            
+        case SearchTypeMusicHumming:
+        {
+            self.fadeInView.text = hummingMsg;
+        }
+            break;
+    }
     //开始动画
     [_rippleView startAnimation];
     
@@ -195,6 +198,8 @@ typedef NS_ENUM(NSInteger, SearchType){
     [_client startRecordRec];
     //开始状态
     _start = YES;
+    //搜索次数加一
+    _searchTimeCount++;
     //开始时间
     startTime = [[NSDate date] timeIntervalSince1970];
 }
@@ -209,12 +214,12 @@ typedef NS_ENUM(NSInteger, SearchType){
     self.musicTypeBtn.selected=YES;
     _config.accessKey = ACR_ACCESS_KEY;
     _config.accessSecret = ACR_ACCESS_SECRET;
-    //[self searchMusic:_searchBtn];
+    self.fadeInView.text = MsgChangeMusci;
 }
 
 //音乐搜索的类型：哼唱
 -(void)searchTypeHumming{
-
+   
     if (_start) {
         [self stopSearchMusic];
     }
@@ -224,7 +229,7 @@ typedef NS_ENUM(NSInteger, SearchType){
     self.musicTypeBtn.selected=NO;
     _config.accessKey = ACR_HUMMING_ACCESS_KEY;
     _config.accessSecret = ACR_HUMMING_ACCESS_SECRET;
-   // [self searchMusic:_searchBtn];
+    self.fadeInView.text = MsgChangeHumming;
 }
 
 //停止音乐识别
@@ -237,8 +242,10 @@ typedef NS_ENUM(NSInteger, SearchType){
     _start = NO;
     //停止动画
     [_rippleView stopAnimation];
+    
     [self.searchBtn toggle];
-   
+    int index = arc4random_uniform(3);
+    self.fadeInView.text = self.msgArr[index];
 }
 
 
@@ -345,16 +352,46 @@ typedef NS_ENUM(NSInteger, SearchType){
                 }
             }
         } else {
-             #warning 处理不同搜索结果的提示
-            
-            /* 
-             {"status":{"code":2005, "msg":"rec timeout", "version":"1.0"}}
-             {"status":{"msg":"No result","code":1001,"version":"1.0"}}
-             {"status":{"code":2001, "msg":"init failed or request timeout", "version":"1.0"}}
-             {"status":{"code":2004, "msg":"unable to generate fingerprint", "version":"1.0"}}
-             {"status":{"msg":"No result","code":1001,"version":"1.0"}}
-             {"status":{"code":3003, "msg":"limit exceeded, please upgrade your account", "version":"1.0"}}
-             */
+            NSInteger errorCode = [[jsonObject valueForKeyPath: @"status.code"] integerValue];
+            switch (errorCode) {
+                case 2005:
+                {
+                self.fadeInView.text = Msg2005;
+                }
+                    break;
+                case 1001:
+                {
+                    self.fadeInView.text = Msg1001;
+                }
+                    break;
+                case 2001:
+                {
+                    self.fadeInView.text = Msg2001;
+                }
+                    break;
+                case 2004:
+                {
+                    self.fadeInView.text = Msg2004;
+                }
+                    break;
+                case 3003:
+                {
+                    if (!(self.searchTimeCount>5)) {
+                       self.fadeInView.text =Msg300301;
+                    }else{
+                        self.fadeInView.text =Msg300302;
+
+                    }
+                }
+                    break;
+
+                default:
+                {
+                    self.fadeInView.text =Msg9999;
+                }
+                    break;
+            }
+
             NSLog(@"error %@",error);
             
         }
@@ -364,12 +401,6 @@ typedef NS_ENUM(NSInteger, SearchType){
         _start = NO;
         [_rippleView stopAnimation];
         [self.searchBtn toggle];
-        
-        //识别花费时间
-        //NSTimeInterval nowTime = [[NSDate date] timeIntervalSince1970];
-        //int cost = nowTime - startTime;
-        //self.costLabel.text = [NSString stringWithFormat:@"cost : %ds", cost];
-        
     });
 }
 //音量状态
@@ -384,10 +415,9 @@ typedef NS_ENUM(NSInteger, SearchType){
 //识别状态
 -(void)handleState:(NSString *)state
 {
-    #warning 识别失败后的处理  onRecording
+    #warning 识别结果 暂时用不到  onRecording
     dispatch_async(dispatch_get_main_queue(), ^{
        //  NSLog(@"state :%@",state);
-
     });
 }
 #pragma mark - **************** other
@@ -447,5 +477,24 @@ typedef NS_ENUM(NSInteger, SearchType){
     return result;
 }
 
+
+
+
+static NSString * const welcome = @"welcome!点击中间按钮开始识别歌曲";
+static NSString * const musicMsg = @"请尽量避免杂音，遇到闹市，蝌蚪君也会很无奈的";
+static NSString * const hummingMsg = @"请大声哼唱，不必担心打扰邻居哈。";
+static NSString * const Msg2005 = @"蝌蚪君找了一圈，也没有找到你唱的歌，麻烦你再唱一遍吧!";
+static NSString * const Msg1001 = @"一定是你唱的太小声了，蝌蚪君真的找不到这首歌";
+static NSString * const Msg2001 = @"天啊噜,这首歌印象里听过，但是没找到，麻烦再唱一次吧！";
+static NSString * const Msg2004 = @"你哼哼唧唧的声音比文字还小，亦或者，万全不是在唱歌？蝌蚪无能为力了";
+static NSString * const Msg300301 = @"实在不好意思，蝌蚪今天很累了，需要休息，请明天再来吧！";
+static NSString * const Msg300302 = @"好吧，其实很尴尬，因为经费问题，蝌蚪已经无能为力了，需要休息一天，请明天再来吧！";
+static NSString * const Msg9999 = @"不知道咋回事，找到你唱的歌";
+
+static NSString * const MsgChangeMusci = @"蝌蚪君准备好了,点击开始识别吧！请尽量避免杂音哦！";
+static NSString * const MsgChangeHumming = @"试试看用哼哼唧唧来识别吧，但是也要哼对旋律哦！旋律越准，声音越大，蝌蚪君找的越快！";
+static NSString * const MsgStop01 = @"如果你想让我识别新发布的专辑，那可能我也只会瞎找一通";
+static NSString * const MsgStop02 = @"没准，你再大声点，我就能识别出来";
+static NSString * const MsgStop03 = @"如果连续尝试几次也没有识别出来，可能是蝌蚪君被玩坏了导致的！";
 
 @end
