@@ -95,7 +95,7 @@
         _displayLink = nil;
     }
     
-    CTFontRef helveticaBold = CTFontCreateWithName(CFSTR("HelveticaNeue-Light"), 20.0, NULL);
+    CTFontRef helveticaBold = CTFontCreateWithName(CFSTR("HelveticaNeue-Light"), 18* SCREEN_WIDTH/NORM_SCREEN_WIDTH, NULL);
     [self.attributedString addAttribute:(NSString *)kCTFontAttributeName
                                   value:(__bridge id)helveticaBold
                                   range:NSMakeRange(0, self.text.length)];

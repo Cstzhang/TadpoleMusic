@@ -37,7 +37,6 @@
     if (stringArray.count!=0) {
         url= [NSString stringWithFormat:@"http://www.baidu.com/s?wd=%@",stringArray[0]];
     }
-//    NSLog(@"key ===========%@",url);
     
     //获取网页HTML
     NSURL *xcfURL = [NSURL URLWithString:[url stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]]];
@@ -47,7 +46,6 @@
         NSLog(@"没有搜索出歌曲");
         return result;
     }
-//    NSLog(@"htmlString  %@",htmlString);
     OCGumboDocument *document = [[OCGumboDocument alloc] initWithHTMLString:htmlString];
 
     #pragma mark - **************** 抓取平台名称
@@ -63,13 +61,11 @@
         OCGumboNode * imgNode = songImageGumboNode.find(@".c-img").first();
         if (imgNode!=nil) {
             imageUrl = imgNode.attr(@"src");
-//            NSLog(@"songImage %@",imageUrl);
         }else{
           //尝试另外一种获取方式
            OCGumboNode *songImageGumboNode = document.Query(@"body").find(@".op-musicsong-img").first();
             if (songImageGumboNode != nil && songImageGumboNode.attr(@"src") !=nil &&songImageGumboNode.attr(@"src").length !=0) {
                 imageUrl = songImageGumboNode.attr(@"src");
-//                NSLog(@"songImage %@",imageUrl);
             }
         
         }

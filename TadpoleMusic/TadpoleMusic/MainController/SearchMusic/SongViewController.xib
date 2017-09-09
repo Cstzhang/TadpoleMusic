@@ -4,7 +4,6 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
@@ -78,10 +77,7 @@
                             <nil key="highlightedColor"/>
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="发行方：无" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kp2-4f-IHd">
-                            <rect key="frame" x="14" y="253.5" width="51.5" height="12"/>
-                            <constraints>
-                                <constraint firstAttribute="width" relation="lessThanOrEqual" constant="100" id="wwO-os-Mv2"/>
-                            </constraints>
+                            <rect key="frame" x="14" y="253.5" width="123.5" height="12"/>
                             <fontDescription key="fontDescription" type="system" pointSize="10"/>
                             <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
@@ -132,6 +128,7 @@
                         <constraint firstItem="XnF-mC-U7l" firstAttribute="top" secondItem="rlY-SH-VRs" secondAttribute="bottom" constant="10" id="5MW-VJ-Ijt"/>
                         <constraint firstItem="xc3-gE-7ni" firstAttribute="trailing" secondItem="XnF-mC-U7l" secondAttribute="trailing" constant="-10" id="78s-3U-MCq"/>
                         <constraint firstItem="7od-I0-ez8" firstAttribute="top" secondItem="Ck6-0C-rNl" secondAttribute="bottom" constant="10" id="ASA-2d-sw0"/>
+                        <constraint firstItem="jhA-tE-HVJ" firstAttribute="leading" secondItem="kp2-4f-IHd" secondAttribute="trailing" constant="5" id="BiZ-Oe-vsl"/>
                         <constraint firstItem="kp2-4f-IHd" firstAttribute="leading" secondItem="XnF-mC-U7l" secondAttribute="leading" constant="4" id="Bmh-v5-61z"/>
                         <constraint firstAttribute="bottom" secondItem="Y2a-bl-5jM" secondAttribute="bottom" id="FeI-Zm-ic8"/>
                         <constraint firstItem="XnF-mC-U7l" firstAttribute="trailing" secondItem="pVE-w3-tNe" secondAttribute="trailing" id="JAH-r0-Ba6"/>

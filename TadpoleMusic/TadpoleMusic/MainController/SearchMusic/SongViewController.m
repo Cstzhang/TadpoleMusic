@@ -150,15 +150,19 @@
 }
 
 -(void)searchMusciInfo{
-     NSString *key =@"";
+    NSString *key =@"";
+    NSString *songNmae =@"";
     if (self.songModel!=nil) {
          key = [NSString stringWithFormat:@"%@+%@",self.songModel.title,self.songModel.artist];
+        songNmae=self.songModel.title;
     }
     if (self.songList!=nil) {
         key = [NSString stringWithFormat:@"%@+%@",self.songList.title,self.songList.artist];
+        songNmae=self.songList.title;
     }
     
     NSLog(@"key %@",key);
+    [MsgTool showMsgWithLoading:@""];
     //主队列
     dispatch_queue_t mainQueue = dispatch_get_main_queue();
     //全局并发队列
@@ -175,11 +179,44 @@
                 [self.platformCollectionView reloadData];
             }else{
                 NSLog(@"没有歌曲的平台信息");
-                [MsgTool showMsg:@"该歌曲没有支持的播放平台"];
+                [self tryOtherKey:songNmae];
             }
+            [MsgTool hideMsg];
         });
     });
 }
+
+-(void)tryOtherKey:(NSString *)key{
+    NSLog(@"key %@",key);
+      [MsgTool showMsgWithLoading:@""];
+    //主队列
+    dispatch_queue_t mainQueue = dispatch_get_main_queue();
+    //全局并发队列
+    dispatch_queue_t globalQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+    dispatch_async(globalQueue, ^{
+        //在线搜索歌曲平台信息
+        self.searchDic = [SearchHandle searchMusicInBD:key];
+        dispatch_async(mainQueue, ^{
+            
+            //更新头部信息
+            [self showHeadview];
+            //更新平台信息
+            self.songPlatform = [NSMutableArray arrayWithArray:self.searchDic[@"musicPlatform"]];
+              [MsgTool hideMsg];
+            if (self.songPlatform.count != 0 ) {
+                [self.platformCollectionView reloadData];
+            }else{
+                NSLog(@"没有歌曲的平台信息");
+                [MsgTool showMsg:@"该歌曲没有支持的播放平台"];
+            }
+           
+        });
+    });
+
+
+}
+
+
 
 -(void)showHeadview{
    

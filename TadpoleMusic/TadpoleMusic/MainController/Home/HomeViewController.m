@@ -128,7 +128,7 @@ typedef NS_ENUM(NSInteger, SearchType){
     //设置识别按钮
     [self.view addSubview:self.searchBtn];
     //提示语
-    self.fadeInView = [[LazyFadeInView alloc] initWithFrame:CGRectMake(CGRectGetMinX(self.searchBtn.frame)-25, CGRectGetMinY(self.searchBtn.frame)-130, SCREEN_WIDTH-(2*CGRectGetMinX(self.searchBtn.frame)-80), 120)];
+    self.fadeInView = [[LazyFadeInView alloc] initWithFrame:CGRectMake(CGRectGetMinX(self.searchBtn.frame)-5, CGRectGetMinY(self.searchBtn.frame)-80, SCREEN_WIDTH-(2*CGRectGetMinX(self.searchBtn.frame)-80), 70)];
     [self.view addSubview:self.fadeInView];
     
    //选择按钮
@@ -148,7 +148,6 @@ typedef NS_ENUM(NSInteger, SearchType){
             make.width.equalTo(RATIO_W(100));
             make.height.equalTo(RATIO_W(30));
     }];
-    self.fadeInView.text = welcome;
     self.searchTimeCount = 0;
     self.msgArr = @[MsgStop01,MsgStop02,MsgStop03];
 }
@@ -480,21 +479,20 @@ typedef NS_ENUM(NSInteger, SearchType){
 
 
 
-static NSString * const welcome = @"welcome!点击中间按钮开始识别歌曲";
-static NSString * const musicMsg = @"请尽量避免杂音，遇到闹市，蝌蚪君也会很无奈的";
-static NSString * const hummingMsg = @"请大声哼唱，不必担心打扰邻居哈。";
-static NSString * const Msg2005 = @"蝌蚪君找了一圈，也没有找到你唱的歌，麻烦你再唱一遍吧!";
-static NSString * const Msg1001 = @"一定是你唱的太小声了，蝌蚪君真的找不到这首歌";
-static NSString * const Msg2001 = @"天啊噜,这首歌印象里听过，但是没找到，麻烦再唱一次吧！";
-static NSString * const Msg2004 = @"你哼哼唧唧的声音比文字还小，亦或者，万全不是在唱歌？蝌蚪无能为力了";
-static NSString * const Msg300301 = @"实在不好意思，蝌蚪今天很累了，需要休息，请明天再来吧！";
-static NSString * const Msg300302 = @"好吧，其实很尴尬，因为经费问题，蝌蚪已经无能为力了，需要休息一天，请明天再来吧！";
-static NSString * const Msg9999 = @"不知道咋回事，找到你唱的歌";
+static NSString * const musicMsg = @"杂音会干扰蝌蚪的识别哦";
+static NSString * const hummingMsg = @"请大声歌唱吧";
+static NSString * const Msg2005 = @"没找到哦,再试试吧";
+static NSString * const Msg1001 = @"没找到哦,再试试吧";
+static NSString * const Msg2001 = @"没找到哦,再试试吧";
+static NSString * const Msg2004 = @"声音实在太小了,蝌蚪无能为力";
+static NSString * const Msg300301 = @"蝌蚪已经精疲力尽了";
+static NSString * const Msg300302 = @"蝌蚪需要休息,明天再来吧";
+static NSString * const Msg9999 = @"不知道咋回事,就是找不到哦";
 
-static NSString * const MsgChangeMusci = @"蝌蚪君准备好了,点击开始识别吧！请尽量避免杂音哦！";
-static NSString * const MsgChangeHumming = @"试试看用哼哼唧唧来识别吧，但是也要哼对旋律哦！旋律越准，声音越大，蝌蚪君找的越快！";
-static NSString * const MsgStop01 = @"如果你想让我识别新发布的专辑，那可能我也只会瞎找一通";
-static NSString * const MsgStop02 = @"没准，你再大声点，我就能识别出来";
-static NSString * const MsgStop03 = @"如果连续尝试几次也没有识别出来，可能是蝌蚪君被玩坏了导致的！";
+static NSString * const MsgChangeMusci = @"街边的扬声器我也能听到";
+static NSString * const MsgChangeHumming = @"麻烦大点声哦";
+static NSString * const MsgStop01 = @"新专辑我也没办法啊";
+static NSString * const MsgStop02 = @"没准再大声点，就能找到呢";
+static NSString * const MsgStop03 = @"找啊找啊找歌曲";
 
 @end
