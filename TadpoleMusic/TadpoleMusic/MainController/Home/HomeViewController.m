@@ -127,10 +127,6 @@ typedef NS_ENUM(NSInteger, SearchType){
     [self.view addSubview:self.rippleView];
     //设置识别按钮
     [self.view addSubview:self.searchBtn];
-    //提示语
-    self.fadeInView = [[LazyFadeInView alloc] initWithFrame:CGRectMake(CGRectGetMinX(self.searchBtn.frame)-5, CGRectGetMinY(self.searchBtn.frame)-80, SCREEN_WIDTH-(2*CGRectGetMinX(self.searchBtn.frame)-80), 70)];
-    [self.view addSubview:self.fadeInView];
-    
    //选择按钮
     [self.view addSubview:self.musicTypeBtn];
     [_musicTypeBtn mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -160,6 +156,17 @@ typedef NS_ENUM(NSInteger, SearchType){
     [self setupUI];
     [self registerACR];
     self.searchType=SearchTypeMusic;
+}
+-(void)viewWillAppear:(BOOL)animated{
+    //提示语
+    self.fadeInView = [[LazyFadeInView alloc] initWithFrame:CGRectMake(CGRectGetMinX(self.searchBtn.frame)-5, CGRectGetMinY(self.searchBtn.frame)-80, SCREEN_WIDTH-(2*CGRectGetMinX(self.searchBtn.frame)-80), 70)];
+    [self.view addSubview:self.fadeInView];
+
+}
+-(void)viewWillDisappear:(BOOL)animated{
+
+//    [self stopSearchMusic];
+    [self.fadeInView removeFromSuperview];
 }
 
 

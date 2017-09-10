@@ -32,9 +32,6 @@
         _duration = 1.2f;
         _numberOfLayers = 6;
         _interval = 0.2;
-        _alphaArray = [NSMutableArray array];
-        _tmpArray = [NSMutableArray array];
-        _attributedString = [[NSMutableAttributedString alloc] init];
         self.wrapped = YES;
     }
     return self;
@@ -42,6 +39,10 @@
 
 - (void)setText:(NSString *)text
 {
+    
+    _alphaArray = [NSMutableArray array];
+     _tmpArray = [NSMutableArray array];
+     _attributedString = [[NSMutableAttributedString alloc] init];
     [_displayLink removeFromRunLoop:[NSRunLoop mainRunLoop] forMode:NSRunLoopCommonModes];
     
     if (!text)
@@ -142,7 +143,7 @@
     
     for (id value in _tmpArray)
     {
-        NSLog(@"%@", value);
+       // NSLog(@"%@", value);
     }
     
     
@@ -163,7 +164,7 @@
     
     for (id value in _alphaArray)
     {
-        NSLog(@"%@", value);
+       // NSLog(@"%@", value);
     }
 }
 
