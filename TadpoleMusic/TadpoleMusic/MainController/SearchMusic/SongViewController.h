@@ -15,4 +15,7 @@
 @property (nonatomic,strong) SongList * songList;
 /** 搜索类型 0 music,1 humming*/
 @property (nonatomic, assign) int searchType;
+/** 搜索关键词 */
+@property (nonatomic,copy) NSString *searchKey;
+
 @end

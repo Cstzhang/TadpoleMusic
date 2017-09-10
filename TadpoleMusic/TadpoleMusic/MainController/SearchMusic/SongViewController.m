@@ -134,6 +134,11 @@
             self.searchScoreLabel.text = [NSString stringWithFormat:@"识别度：%.0f%@",self.songList.score,@"%"];
             self.headUrl =self.songList.attr1;
              self.clollectBtn.selected = [self.dbHander isFollowed:self.songList.title artist:self.songList.artist];
+        }else{
+           [self.songNameLabel setValue: self.searchKey forKey:@"text"];
+            self.artistLabel.text= [NSString stringWithFormat:@"作者：%@",self.searchKey];
+            self.albumLabel.text=[NSString stringWithFormat:@"《%@》",self.searchKey];
+        
         }
     
     }
@@ -159,6 +164,10 @@
     if (self.songList!=nil) {
         key = [NSString stringWithFormat:@"%@+%@",self.songList.title,self.songList.artist];
         songNmae=self.songList.title;
+    }
+    if (self.searchKey!=nil) {
+        key= self.searchKey;
+        songNmae=self.searchKey;
     }
     
     NSLog(@"key %@",key);
@@ -258,7 +267,8 @@
             [self.dbHander unfollowSongWithTitle:self.songModel.title artist:self.songModel.artist isFollw:0];
         }
 
-    }else{
+    }else if(self.songList!=nil){
+        
         if (!self.clollectBtn.selected) {//关注
            [self.dbHander unfollowSongWithTitle:self.songList.title artist:self.songList.artist isFollw:1];
         }else{//取消关注
@@ -267,6 +277,21 @@
         }
         
     
+    
+    }else{
+        if (!self.clollectBtn.selected) {//关注
+            SongModel * model = [[SongModel alloc]init];
+            model.title =self.searchKey;
+            model.artist= self.searchKey;
+            model.album = @"无";
+            model.label=@"无";
+            model.release_date=@"无";
+            [self.dbHander followFun:model headUrl:self.headUrl];
+        }else{//取消关注
+            
+            [self.dbHander unfollowSongWithTitle:self.searchKey artist:self.searchKey isFollw:0];
+        }
+        
     
     }
      //修改按钮显示状态

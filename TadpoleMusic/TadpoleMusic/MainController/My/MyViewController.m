@@ -12,7 +12,7 @@
 #import "DBHander.h"
 #import "SongViewController.h"
 #import "SongModel.h"
-@interface MyViewController ()<UITableViewDelegate,UITableViewDataSource>
+@interface MyViewController ()<UITableViewDelegate,UITableViewDataSource,UISearchBarDelegate>
 /**我的歌曲列表 */
 @property (nonatomic,strong) ZBTableView *mySongTableView;
 //声明AppDelegate对象属性，用于调用类中属性，管理存储上下文
@@ -21,6 +21,9 @@
 @property (nonatomic,strong) NSMutableArray * songArr;
 //当前页码
 @property (nonatomic, assign) int curryPage;
+
+/** 搜索 */
+@property (nonatomic,strong) UISearchBar * searchBar;
 
 @end
 
@@ -57,7 +60,6 @@
 
 #pragma mark - **************** 基础UI
 -(void)setBaseUI {
-    [self.navigationItem setTitle:@"我的"];
     /** 添加歌曲历史列表 */
     [self.view addSubview:self.mySongTableView];
     //头部
@@ -70,6 +72,12 @@
     self.curryPage=0;
     [self getSongData];
   
+    self.searchBar = [[UISearchBar alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH-30, 28)];
+    self.searchBar.backgroundImage = [UIImage imageNamed:@"btu_search"];
+    self.searchBar.placeholder = @"网上搜索";
+    self.searchBar.delegate = self;
+    UIBarButtonItem *searchButton = [[UIBarButtonItem alloc]initWithCustomView:self.searchBar];
+    self.navigationItem.leftBarButtonItems = [NSArray arrayWithObject:searchButton];
 }
 
 #pragma mark - **************** 生命周期
@@ -136,6 +144,7 @@
 
 //刷新
 -(void)onRefresh{
+    [self.searchBar resignFirstResponder];
     self.curryPage=0;
     NSLog(@"刷新中");
     [self.songArr removeAllObjects];
@@ -143,6 +152,7 @@
 }
 //下一页
 -(void)onNextPage{
+    [self.searchBar resignFirstResponder];
     if (kObjectIsEmpty(self.songArr)) {
         [self.mySongTableView.mj_footer endRefreshingWithNoMoreData];
         return;
@@ -174,6 +184,27 @@
 }
 
 
+- (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar{
+ 
+    [self.view endEditing:YES];
+    [self.searchBar resignFirstResponder];
+    [self jumpToSearch:searchBar.text];
+    self.searchBar.text=nil;
+}
+
+-(void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
+    [self.view endEditing:YES];
+    [self.searchBar resignFirstResponder];
+
+}
+
+-(void)jumpToSearch:(NSString *)key{
+    SongViewController *searchVC = [[SongViewController alloc]init];
+    searchVC.searchKey = key;
+    [searchVC setModalTransitionStyle:UIModalTransitionStyleFlipHorizontal];
+    [self presentViewController:searchVC animated:YES completion:nil];
 
 
+
+}
 @end
