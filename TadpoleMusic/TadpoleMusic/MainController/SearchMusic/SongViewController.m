@@ -136,8 +136,8 @@
              self.clollectBtn.selected = [self.dbHander isFollowed:self.songList.title artist:self.songList.artist];
         }else{
            [self.songNameLabel setValue: self.searchKey forKey:@"text"];
-            self.artistLabel.text= [NSString stringWithFormat:@"作者：%@",self.searchKey];
-            self.albumLabel.text=[NSString stringWithFormat:@"《%@》",self.searchKey];
+            self.artistLabel.text= [NSString stringWithFormat:@"作者：%@",@"无"];
+            self.albumLabel.text=[NSString stringWithFormat:@"《%@》",@"无"];
         
         }
     
