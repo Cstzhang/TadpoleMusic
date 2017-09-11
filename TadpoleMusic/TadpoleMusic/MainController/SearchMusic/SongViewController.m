@@ -178,7 +178,7 @@
     NSString *key =@"";
     NSString *songNmae =@"";
     if (self.songModel!=nil) {
-         key = [NSString stringWithFormat:@"%@+%@",self.songModel.title,self.songModel.artist];
+        key = [NSString stringWithFormat:@"%@+%@",self.songModel.title,self.songModel.artist];
         songNmae=self.songModel.title;
     }
     if (self.songList!=nil) {
@@ -343,8 +343,17 @@
     PlatformViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"PlatformViewCell" forIndexPath:indexPath];
     if (self.songPlatform.count!=0) {
         SearchModel * model = self.songPlatform[indexPath.row];
-        cell.platformName.text = model.musicPlatform;
-        cell.platformImage.image = [UIImage imageNamed:model.musicPlatform];
+       
+        if ([model.musicPlatform isEqualToString:@"-"]) {
+              cell.platformImage.image = [UIImage imageNamed:@"未知音乐图标"];
+              cell.platformName.text = @"未知平台";
+        }else{
+        
+          cell.platformImage.image = [UIImage imageNamed:model.musicPlatform];
+             cell.platformName.text = model.musicPlatform;
+        }
+      
+        
     }
     //赋值数据
     return cell;

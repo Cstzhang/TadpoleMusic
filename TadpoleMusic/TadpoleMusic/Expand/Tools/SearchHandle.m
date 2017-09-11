@@ -57,20 +57,26 @@
     OCQueryObject *songUrlElement = document.Query(@"body").find(@"#content_left").find(@".result-op").find(@".c-tabs-content");
     //准备返回的封面图
     NSString * imageUrl = @"-";
-    if (songImageGumboNode != nil ) {
+    if (songImageGumboNode.count != 0 ) {
         OCGumboNode * imgNode = songImageGumboNode.find(@".c-img").first();
         if (imgNode!=nil) {
             imageUrl = imgNode.attr(@"src");
-        }else{
-          //尝试另外一种获取方式
-           OCGumboNode *songImageGumboNode = document.Query(@"body").find(@".op-musicsong-img").first();
+        }
+        
+    }else{
+        //尝试另外一种获取方式
+        OCGumboNode *songImageGumboNode = document.Query(@"body").find(@".op-musicsong-img").first();
+        if (songImageGumboNode != nil && songImageGumboNode.attr(@"src") !=nil &&songImageGumboNode.attr(@"src").length !=0) {
+            imageUrl = songImageGumboNode.attr(@"src");
+        }else{//关键词搜索
+               OCGumboNode *songImageGumboNode = document.Query(@"body").find(@".op-music-lrc-r-img").first();
             if (songImageGumboNode != nil && songImageGumboNode.attr(@"src") !=nil &&songImageGumboNode.attr(@"src").length !=0) {
                 imageUrl = songImageGumboNode.attr(@"src");
             }
-        
+            
         }
-        
     }
+    
     [result setValue:imageUrl forKey:@"songImageUrl"];
     #pragma mark - **************** 准备返回数据
     if ((unsigned long)musicPlatformElement.count>0&&(unsigned long)songUrlElement.count>0) {//搜取的歌曲必须平台数大于1
@@ -85,7 +91,6 @@
             NSString * songUrl = @"-";
             //平台名称
             platform = elePlatform.text();
-            
             //歌曲URL
             if ((unsigned long)getElement.count>0 && songUrlElement.count>0) {//情况1
                     OCGumboNode *firstSong =eleSong.Query(@".c-icon-play-circle").first();
@@ -107,7 +112,24 @@
             
         }
         [result setObject:tmpArr forKey:@"musicPlatform"];
+    }else{
+        OCGumboNode *songImageGumboNode = document.Query(@"body").find(@".op-music-lrc-r-songname").first();
+        NSString * songUrl = @"-";
+        NSString * platform = @"-";
+        NSMutableArray *tmpArr = [NSMutableArray array];
+        NSDictionary * tmpMusic = [NSMutableDictionary dictionary];
+        if (songImageGumboNode != nil && songImageGumboNode.attr(@"href") !=nil &&songImageGumboNode.attr(@"href").length !=0) {
+            songUrl = songImageGumboNode.attr(@"href");
+            [tmpMusic setValue:platform forKey:@"musicPlatform"];
+            [tmpMusic setValue:songUrl  forKey:@"songUrl"];
+            SearchModel *oneModel = [[SearchModel alloc]initWithDict:tmpMusic];
+            [tmpArr addObject:oneModel];
+            [result setObject:tmpArr forKey:@"musicPlatform"];
+        }
+        
+        
     }
+    
     return result;
 }
 
