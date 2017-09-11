@@ -14,6 +14,7 @@ PODS:
   - AFNetworking/Serialization (3.1.0)
   - AFNetworking/UIKit (3.1.0):
     - AFNetworking/NSURLSession
+  - Bugly (2.4.6)
   - Masonry (0.6.4)
   - MBProgressHUD (1.0.0)
   - MJExtension (3.0.13)
@@ -24,6 +25,7 @@ PODS:
 
 DEPENDENCIES:
   - AFNetworking (~> 3.1.0)
+  - Bugly
   - Masonry (~> 0.6.1)
   - MBProgressHUD
   - MJExtension
@@ -32,12 +34,13 @@ DEPENDENCIES:
 
 SPEC CHECKSUMS:
   AFNetworking: 5e0e199f73d8626b11e79750991f5d173d1f8b67
+  Bugly: 7756e72c59387b0d490f46e83ab458ae94ee7fba
   Masonry: 281802d04d787ea2973179ee8bcb50500579ede2
   MBProgressHUD: 4890f671c94e8a0f3cf959aa731e9de2f036d71a
   MJExtension: 5932755f451458eefa24239358817f8d291240c7
   MJRefresh: b96cdb21c4aa75a7b07654311ab2f315c497e806
   SDWebImage: 76a6348bdc74eb5a55dd08a091ef298e56b55e41
 
-PODFILE CHECKSUM: 868392a0ccf9d8f87e83e40de732a584d47deba5
+PODFILE CHECKSUM: cd5ecce467666b5682d2b07a25c4ccc5029bc849
 
 COCOAPODS: 1.2.0

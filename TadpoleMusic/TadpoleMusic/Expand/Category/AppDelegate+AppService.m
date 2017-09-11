@@ -56,4 +56,12 @@
     
 }
 
+/**
+ *  Bug收集
+ */
+- (void)startBugly{
+    [Bugly startWithAppId:@"076a4256bf"];
+
+};
+
 @end

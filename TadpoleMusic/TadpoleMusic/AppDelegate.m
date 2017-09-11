@@ -17,6 +17,7 @@
     [self setAppWindows];
     [self setRootViewController];
     [self startNetworkMonitoring];
+    [self startBugly];
 //    NSLog(@"%s",__func__);
     return YES;
 }

@@ -13,6 +13,7 @@ targetsArray.each do |t|
         pod 'MJExtension'
         pod 'MBProgressHUD'
         pod 'SDWebImage'
+        pod 'Bugly'
     end
     
 end

@@ -13,6 +13,11 @@
  *  网络监测
  */
 - (void)startNetworkMonitoring;
+/**
+ *  Bug收集
+ */
+- (void)startBugly;
+
 
 
 @end

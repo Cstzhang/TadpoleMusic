@@ -177,13 +177,16 @@
 -(void)searchMusciInfo{
     NSString *key =@"";
     NSString *songNmae =@"";
+    NSString *album =@"";
     if (self.songModel!=nil) {
         key = [NSString stringWithFormat:@"%@+%@",self.songModel.title,self.songModel.artist];
         songNmae=self.songModel.title;
+        album =self.songModel.album;
     }
     if (self.songList!=nil) {
         key = [NSString stringWithFormat:@"%@+%@",self.songList.title,self.songList.artist];
         songNmae=self.songList.title;
+        album =self.songList.album;
     }
     if (self.searchKey!=nil) {
         key= self.searchKey;
@@ -215,6 +218,10 @@
             dispatch_async(mainQueue, ^{
               [self tryOtherKey:songNmae];
             });
+            if (self.songPlatform.count==0) {
+               [self tryOtherKey:album];
+            }
+            
         }
        
     });
@@ -239,8 +246,7 @@
                 [self.platformCollectionView reloadData];
             }else{
                 NSLog(@"没有歌曲的平台信息");
-                [MsgTool showMsg:@"该歌曲没有支持的播放平台"];
-            }
+                           }
         });
     });
 

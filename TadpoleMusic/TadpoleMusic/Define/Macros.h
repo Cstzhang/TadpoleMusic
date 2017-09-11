@@ -19,6 +19,7 @@
 #import <MJExtension.h>
 #import <Masonry.h>
 #import "MBProgressHUD.h"
+#import <Bugly/Bugly.h>
 //本工程分类
 #import "AppDelegate+ViewController.h"
 #import "AppDelegate+AppService.h"
