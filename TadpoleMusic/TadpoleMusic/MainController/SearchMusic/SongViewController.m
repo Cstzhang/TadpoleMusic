@@ -274,7 +274,9 @@
 - (IBAction)clickClose:(id)sender {
      NSLog(@"点击关闭");
     //点击返回
-    [self dismissViewControllerAnimated:YES completion:nil];
+    [self dismissViewControllerAnimated:YES completion:^{
+        NSLog(@"123");
+    }];
     
 }
 
@@ -318,6 +320,7 @@
     }
      //修改按钮显示状态
     self.clollectBtn.selected =!self.clollectBtn.selected;
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"songDataChanged" object:nil];
 }
 
 

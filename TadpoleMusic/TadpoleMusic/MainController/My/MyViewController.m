@@ -92,9 +92,19 @@
     // 设置CGRectZero从导航栏下开始计算
     self.automaticallyAdjustsScrollViewInsets = NO;
     [self setBaseUI];
-
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onRefresh) name:@"songDataChanged" object:nil];
+   
 }
 
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+}
+
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+}
 
 
 #pragma mark - **************** 代理方法
@@ -192,6 +202,10 @@
 }
 
 
+
+
+
+
 - (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar{
  
     [self.view endEditing:YES];
@@ -215,4 +229,5 @@
 
 
 }
+
 @end
