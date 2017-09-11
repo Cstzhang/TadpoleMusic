@@ -132,7 +132,7 @@
     //创建 NSFetchRequestd对象
     NSFetchRequest *request = [[NSFetchRequest alloc]initWithEntityName:@"SongList"];
     //设置排序
-    NSSortDescriptor * sortFunc = [[NSSortDescriptor alloc]initWithKey:@"searchTime" ascending:YES];
+    NSSortDescriptor * sortFunc = [[NSSortDescriptor alloc]initWithKey:@"searchTime" ascending:NO];
     request.sortDescriptors = @[sortFunc];
     //设置条件
     NSPredicate * predicate = [NSPredicate predicateWithFormat:@"status == 1"];

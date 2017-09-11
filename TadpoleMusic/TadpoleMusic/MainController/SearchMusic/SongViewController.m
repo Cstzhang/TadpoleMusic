@@ -13,6 +13,7 @@
 #import "PlatformViewCell.h"
 #import "DBHander.h"
 #import "SongList+CoreDataClass.h"
+#import "DGActivityIndicatorView.h"
 @interface SongViewController ()<UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout>
 #pragma mark - **************** UI部分
 /** 歌曲名字 */
@@ -38,6 +39,9 @@
 @property (weak, nonatomic) IBOutlet UICollectionView *platformCollectionView;
 @property (weak, nonatomic) IBOutlet UIView *songBackView;
 
+/** <#注释#> */
+@property (nonatomic,strong) DGActivityIndicatorView * activityIndicatorView;
+
 #pragma mark - **************** 数据部分
 
 /** 平台数组 */
@@ -56,6 +60,20 @@
 
 @implementation SongViewController
 #pragma mark - **************** 懒加载
+-(DGActivityIndicatorView *)activityIndicatorView{
+    if (!_activityIndicatorView) {
+        _activityIndicatorView = [[DGActivityIndicatorView alloc]
+                                  initWithType:DGActivityIndicatorAnimationTypeRotatingSquares
+                                  tintColor:[UIColor whiteColor]
+                                  size:40.0f];
+        
+        CGFloat width = 80.0f;
+        CGFloat height = 80.0f;
+        _activityIndicatorView.frame = CGRectMake(SCREEN_WIDTH/2-40.0f, SCREEN_HEIGHT-150.0f, width, height);
+    }
+    return _activityIndicatorView;
+
+}
 //搜索结果
 -(NSMutableDictionary *)searchDic{
     if (!_searchDic) {
@@ -104,8 +122,9 @@
     [self.companyLabel setFont:[UIFont systemFontOfSize:10]];
     [self.releaseTimeLabel setFont:[UIFont systemFontOfSize:10]];
     [self.searchScoreLabel setFont:[UIFont systemFontOfSize:10]];
-    
-    
+    //指示器
+    [self.view addSubview:self.activityIndicatorView];
+
    
 }
 
@@ -152,6 +171,7 @@
     [self setBaseData];
     [self searchMusciInfo];
     
+    
 }
 
 -(void)searchMusciInfo{
@@ -171,7 +191,7 @@
     }
     
     NSLog(@"key %@",key);
-    [MsgTool showMsgWithLoading:@""];
+    [self showTip];
     //主队列
     dispatch_queue_t mainQueue = dispatch_get_main_queue();
     //全局并发队列
@@ -179,25 +199,29 @@
     dispatch_async(globalQueue, ^{
         //在线搜索歌曲平台信息
         self.searchDic = [SearchHandle searchMusicInBD:key];
-        dispatch_async(mainQueue, ^{
-            //更新头部信息
-            [self showHeadview];
-            //更新平台信息
-            self.songPlatform = [NSMutableArray arrayWithArray:self.searchDic[@"musicPlatform"]];
-            if (self.songPlatform.count != 0 ) {
+        self.songPlatform = [NSMutableArray arrayWithArray:self.searchDic[@"musicPlatform"]];
+        if (self.songPlatform.count != 0 ) {
+    
+            dispatch_async(mainQueue, ^{
+                //更新头部信息
+                [self showHeadview];
+                //更新平台信息
+                [self hiddenTip];
                 [self.platformCollectionView reloadData];
-            }else{
-                NSLog(@"没有歌曲的平台信息");
-                [self tryOtherKey:songNmae];
-            }
-            [MsgTool hideMsg];
-        });
+            });
+        }else{
+            NSLog(@"没有歌曲的平台信息");
+            //再搜索一次
+            dispatch_async(mainQueue, ^{
+              [self tryOtherKey:songNmae];
+            });
+        }
+       
     });
 }
 
 -(void)tryOtherKey:(NSString *)key{
     NSLog(@"key %@",key);
-      [MsgTool showMsgWithLoading:@""];
     //主队列
     dispatch_queue_t mainQueue = dispatch_get_main_queue();
     //全局并发队列
@@ -206,19 +230,17 @@
         //在线搜索歌曲平台信息
         self.searchDic = [SearchHandle searchMusicInBD:key];
         dispatch_async(mainQueue, ^{
-            
             //更新头部信息
             [self showHeadview];
             //更新平台信息
             self.songPlatform = [NSMutableArray arrayWithArray:self.searchDic[@"musicPlatform"]];
-              [MsgTool hideMsg];
+            [self hiddenTip];
             if (self.songPlatform.count != 0 ) {
                 [self.platformCollectionView reloadData];
             }else{
                 NSLog(@"没有歌曲的平台信息");
                 [MsgTool showMsg:@"该歌曲没有支持的播放平台"];
             }
-           
         });
     });
 
@@ -355,6 +377,17 @@
  
 }
 
+
+-(void)showTip{
+    _activityIndicatorView.hidden = NO;
+    [_activityIndicatorView startAnimating];
+
+}
+-(void)hiddenTip{
+    _activityIndicatorView.hidden = YES;
+    [_activityIndicatorView stopAnimating];
+    
+}
 
 
 

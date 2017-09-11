@@ -161,11 +161,11 @@ typedef NS_ENUM(NSInteger, SearchType){
     //提示语
     self.fadeInView = [[LazyFadeInView alloc] initWithFrame:CGRectMake(CGRectGetMinX(self.searchBtn.frame)-5, CGRectGetMinY(self.searchBtn.frame)-80, SCREEN_WIDTH-(2*CGRectGetMinX(self.searchBtn.frame)-80), 70)];
     [self.view addSubview:self.fadeInView];
+    self.fadeInView.text = weclome;
 
 }
 -(void)viewWillDisappear:(BOOL)animated{
 
-//    [self stopSearchMusic];
     [self.fadeInView removeFromSuperview];
 }
 
@@ -485,7 +485,7 @@ typedef NS_ENUM(NSInteger, SearchType){
 
 
 
-
+static NSString * const weclome = @"点击开始识别吧!";
 static NSString * const musicMsg = @"杂音会干扰蝌蚪的识别哦";
 static NSString * const hummingMsg = @"请大声歌唱吧";
 static NSString * const Msg2005 = @"没找到哦,再试试吧";

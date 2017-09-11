@@ -41,14 +41,20 @@
 -(UITableView *)mySongTableView{
     kWeakSelf(self);
     if (!_mySongTableView) {
-        _mySongTableView=[[ZBTableView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT)];
+        _mySongTableView=[[ZBTableView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT-HEAD_TABBAR_HEIGHT)];
         _mySongTableView.backgroundColor=CLEAR_COLOR;
         _mySongTableView.delegate=self;
         _mySongTableView.dataSource=self;
         _mySongTableView.tableFooterView = [UIView new];
         [_mySongTableView registerNib:[UINib nibWithNibName:@"HummingSongViewCell" bundle:nil] forCellReuseIdentifier:@"songCell"];
-        _mySongTableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(onRefresh)];
-        _mySongTableView.mj_footer = [MJRefreshBackNormalFooter footerWithRefreshingTarget:self refreshingAction:@selector(onNextPage)];
+        MJRefreshGifHeader *header = [MJRefreshGifHeader headerWithRefreshingTarget:self refreshingAction:@selector(onRefresh)];
+        header.stateLabel.textColor = [UIColor whiteColor];
+         header.lastUpdatedTimeLabel.hidden = YES;
+        _mySongTableView.mj_header=header;
+        MJRefreshBackGifFooter *footer = [MJRefreshBackGifFooter footerWithRefreshingTarget:self refreshingAction:@selector(onNextPage)];
+          footer.stateLabel.textColor = [UIColor whiteColor];
+        _mySongTableView.mj_footer=footer;
+        _mySongTableView.mj_footer.automaticallyHidden = YES;
         /** 添加默认的数据为空，网络异常提示 */
         [_mySongTableView addViewWithWarnImage:@"" title:@"暂时没有数据，点击刷新" whetherNetWorkError:YES action:^{
             /** 点击重写加载 */
@@ -72,7 +78,7 @@
     self.curryPage=0;
     [self getSongData];
   
-    self.searchBar = [[UISearchBar alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH-30, 28)];
+    self.searchBar = [[UISearchBar alloc] initWithFrame:CGRectMake(0, 64, SCREEN_WIDTH-30, 28)];
     self.searchBar.backgroundImage = [UIImage imageNamed:@"btu_search"];
     self.searchBar.placeholder = @"网上搜索";
     self.searchBar.delegate = self;
@@ -83,6 +89,8 @@
 #pragma mark - **************** 生命周期
 - (void)viewDidLoad {
     [super viewDidLoad];
+    // 设置CGRectZero从导航栏下开始计算
+    self.automaticallyAdjustsScrollViewInsets = NO;
     [self setBaseUI];
 
 }
@@ -157,7 +165,7 @@
         [self.mySongTableView.mj_footer endRefreshingWithNoMoreData];
         return;
     }
-    if (self.songArr.count==self.curryPage*REQUEST_MIN_PAGE_NUM) {
+    if (self.songArr.count==(self.curryPage+1)*REQUEST_MIN_PAGE_NUM) {
         self.curryPage++;
         [self getSongData];
     }else{

@@ -4,7 +4,6 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
@@ -20,14 +19,14 @@
                 <rect key="frame" x="0.0" y="0.0" width="342" height="79.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="music_c" translatesAutoresizingMaskIntoConstraints="NO" id="NUp-Po-yEl">
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="music_c" translatesAutoresizingMaskIntoConstraints="NO" id="NUp-Po-yEl">
                         <rect key="frame" x="21" y="15" width="50" height="50"/>
                         <constraints>
                             <constraint firstAttribute="width" secondItem="NUp-Po-yEl" secondAttribute="height" multiplier="1:1" id="M8G-rC-vp8"/>
                         </constraints>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="浪花一朵朵" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yIE-iF-kG9">
-                        <rect key="frame" x="76" y="15" width="76.5" height="18"/>
+                        <rect key="frame" x="79" y="15" width="76.5" height="18"/>
                         <constraints>
                             <constraint firstAttribute="width" relation="lessThanOrEqual" constant="180" id="7lF-Tf-ybv"/>
                         </constraints>
@@ -36,7 +35,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="《浪花专辑》" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f6t-KU-hum">
-                        <rect key="frame" x="76" y="41" width="74" height="14.5"/>
+                        <rect key="frame" x="79" y="41" width="74" height="14.5"/>
                         <constraints>
                             <constraint firstAttribute="width" relation="lessThanOrEqual" constant="110" id="yTM-Vl-9av"/>
                         </constraints>
@@ -58,7 +57,7 @@
                         <state key="normal" image="下一步"/>
                     </button>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="有沐创作组" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ABC-ge-qSV">
-                        <rect key="frame" x="153" y="41" width="61.5" height="14.5"/>
+                        <rect key="frame" x="156" y="41" width="61.5" height="14.5"/>
                         <constraints>
                             <constraint firstAttribute="width" relation="lessThanOrEqual" constant="130" id="OVz-1U-fny"/>
                         </constraints>
@@ -75,7 +74,7 @@
                     <constraint firstItem="NUp-Po-yEl" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="21" id="Ij6-f5-IQy"/>
                     <constraint firstItem="yIE-iF-kG9" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="centerY" multiplier="15:40" id="IwP-fg-6dV"/>
                     <constraint firstItem="NUp-Po-yEl" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="15" id="KKa-Mo-6Xx"/>
-                    <constraint firstItem="yIE-iF-kG9" firstAttribute="leading" secondItem="NUp-Po-yEl" secondAttribute="trailing" constant="5" id="dMq-ef-sue"/>
+                    <constraint firstItem="yIE-iF-kG9" firstAttribute="leading" secondItem="NUp-Po-yEl" secondAttribute="trailing" constant="8" id="dMq-ef-sue"/>
                     <constraint firstItem="ABC-ge-qSV" firstAttribute="top" secondItem="f6t-KU-hum" secondAttribute="top" id="lsA-Pl-oKw"/>
                     <constraint firstItem="ABC-ge-qSV" firstAttribute="leading" secondItem="f6t-KU-hum" secondAttribute="trailing" constant="3" id="nDA-nr-Qgw"/>
                     <constraint firstItem="2fE-KC-YNF" firstAttribute="top" secondItem="uLZ-28-iHF" secondAttribute="bottom" constant="5" id="p8E-aM-Zz4"/>
