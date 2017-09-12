@@ -99,6 +99,9 @@
 #define RATIO_H(number) number*HEIGHT_RATIO_6
 #define RATIO_W(number) number*WIDTH_RATIO_6
 
+#define NETERR_BACKGROUND_IMAGE @"pic"
+#define EMPTY_BACKGROUND_IMAGE @"pic"
+
 
 
 #endif /* DefineTheme_h */

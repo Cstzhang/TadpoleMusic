@@ -87,7 +87,7 @@
         /** 添加提示语，这里高度写死了20，有待优化 */
         _tipLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(_tipImageView.frame)+10, frame.size.width, 20)];
         _tipLabel.textAlignment = NSTextAlignmentCenter;
-        _tipLabel.textColor = [UIColor lightGrayColor];
+        _tipLabel.textColor = [UIColor whiteColor];
         /** 提示语 */
         _tipLabel.text = self.emptyTipString;
         _tipLabel.backgroundColor = [UIColor clearColor];
@@ -151,7 +151,7 @@
     /** 是否显示网络异常图片 */
     if (isError) {/** 设置要显示的信息 */
         self.errorTipString = NETERR;/** 网络异常提示语 */
-        self.errorTipImageName = @"";/** 网络异常占位图 */
+        self.errorTipImageName = NETERR_BACKGROUND_IMAGE;/** 网络异常占位图 */
     }
 }
 

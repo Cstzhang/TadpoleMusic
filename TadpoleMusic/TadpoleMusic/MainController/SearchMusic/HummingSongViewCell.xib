@@ -4,6 +4,7 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
@@ -19,7 +20,7 @@
                 <rect key="frame" x="0.0" y="0.0" width="342" height="79.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="music_c" translatesAutoresizingMaskIntoConstraints="NO" id="NUp-Po-yEl">
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="music_1" translatesAutoresizingMaskIntoConstraints="NO" id="NUp-Po-yEl">
                         <rect key="frame" x="21" y="15" width="50" height="50"/>
                         <constraints>
                             <constraint firstAttribute="width" secondItem="NUp-Po-yEl" secondAttribute="height" multiplier="1:1" id="M8G-rC-vp8"/>
@@ -94,7 +95,7 @@
         </tableViewCell>
     </objects>
     <resources>
-        <image name="music_c" width="50" height="50"/>
+        <image name="music_1" width="50" height="50"/>
         <image name="下一步" width="15" height="15"/>
     </resources>
 </document>

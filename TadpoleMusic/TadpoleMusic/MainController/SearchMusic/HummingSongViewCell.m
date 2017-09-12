@@ -18,6 +18,9 @@
     [self.albumLabel setFont:[UIFont systemFontOfSize:12]];
     [self.artistLabel setFont:[UIFont systemFontOfSize:12]];
     [self.scoreLabel setFont:[UIFont systemFontOfSize:8]];
+    int index = arc4random_uniform(4);
+    UIImage * image = [UIImage imageNamed:[NSString stringWithFormat:@"%@%zd",@"music_",index+1]];
+    self.songImage.image = image;
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {

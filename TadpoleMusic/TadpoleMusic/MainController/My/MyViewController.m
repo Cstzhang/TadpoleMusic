@@ -56,9 +56,9 @@
         _mySongTableView.mj_footer=footer;
         _mySongTableView.mj_footer.automaticallyHidden = YES;
         /** 添加默认的数据为空，网络异常提示 */
-        [_mySongTableView addViewWithWarnImage:@"" title:@"暂时没有数据，点击刷新" whetherNetWorkError:YES action:^{
+        [_mySongTableView addViewWithWarnImage:EMPTY_BACKGROUND_IMAGE title:@"还有有收藏歌曲,快去搜歌吧!" whetherNetWorkError:YES action:^{
             /** 点击重写加载 */
-            [weakself onRefresh];
+//            [weakself onRefresh];
         }];
     }
     return _mySongTableView;

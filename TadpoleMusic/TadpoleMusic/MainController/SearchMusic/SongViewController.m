@@ -205,7 +205,6 @@
         self.searchDic = [SearchHandle searchMusicInBD:key];
         self.songPlatform = [NSMutableArray arrayWithArray:self.searchDic[@"musicPlatform"]];
         if (self.songPlatform.count != 0 ) {
-    
             dispatch_async(mainQueue, ^{
                 //更新头部信息
                 [self showHeadview];
@@ -224,19 +223,51 @@
             NSLog(@"没有歌曲的平台信息");
             //再搜索一次
             dispatch_async(mainQueue, ^{
-              [self tryOtherKey:songNmae];
+              [self tryOtherKey:songNmae album:album];
+
             });
+           
             
-            if (self.songPlatform.count==0) {
-               [self tryOtherKey:album];
-            }
+            
             
         }
        
     });
 }
 
--(void)tryOtherKey:(NSString *)key{
+-(void)tryOtherKey:(NSString *)key album:(NSString *)album{
+    NSLog(@"key %@",key);
+    //主队列
+    dispatch_queue_t mainQueue = dispatch_get_main_queue();
+    //全局并发队列
+    dispatch_queue_t globalQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+    dispatch_async(globalQueue, ^{
+        //在线搜索歌曲平台信息
+        self.searchDic = [SearchHandle searchMusicInBD:key];
+        dispatch_async(mainQueue, ^{
+            //歌曲名字
+            if (self.searchKey!=nil) {
+                NSString *songName =self.searchDic[@"songName"];
+                if (songName!=nil) {
+                    self.songNameLabel.text =songName;
+                }
+            }
+            //更新平台信息
+            self.songPlatform = [NSMutableArray arrayWithArray:self.searchDic[@"musicPlatform"]];
+            [self hiddenTip];
+            if (self.songPlatform.count != 0 ) {
+                [self.platformCollectionView reloadData];
+                //更新头部信息
+                [self showHeadview];
+            }else{
+                [self tryAlbum:album];
+            }
+        });
+    });
+}
+
+
+-(void)tryAlbum:(NSString *)key{
     NSLog(@"key %@",key);
     //主队列
     dispatch_queue_t mainQueue = dispatch_get_main_queue();
@@ -262,14 +293,10 @@
                 [self.platformCollectionView reloadData];
             }else{
                 NSLog(@"没有歌曲的平台信息");
-                 }
+            }
         });
     });
-
-
 }
-
-
 
 -(void)showHeadview{
    
@@ -355,7 +382,12 @@
 // numberOfItemsInSection
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
-    return self.songPlatform.count;
+    if (self.songPlatform.count!=0) {
+        return self.songPlatform.count;
+    }else{
+        return 1;
+    }
+    
 }
 
 //cellForItemAtIndexPath
@@ -376,6 +408,9 @@
         }
         cell.platformName.text = model.artist;
         
+    }else{
+      cell.platformImage.image = [UIImage imageNamed:@"未知音乐图标"];
+      cell.platformName.text = @"无支持平台";
     }
     //赋值数据
     return cell;
@@ -390,8 +425,13 @@
 //didSelectItemAtIndexPath 点击
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    SearchModel * model = self.songPlatform[indexPath.row];
-    [self opebScheme:model.songUrl];
+    if (self.songPlatform.count!=0) {
+        SearchModel * model = self.songPlatform[indexPath.row];
+        [self opebScheme:model.songUrl];
+    }else{
+        [MsgTool showTips:@"暂无支持平台进行播放"];
+    }
+    
     
 }
 
