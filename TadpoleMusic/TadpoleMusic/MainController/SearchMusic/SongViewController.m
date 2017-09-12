@@ -37,6 +37,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *searchScoreLabel;
 /** 各个平台View */
 @property (weak, nonatomic) IBOutlet UICollectionView *platformCollectionView;
+
 @property (weak, nonatomic) IBOutlet UIView *songBackView;
 
 /** <#注释#> */
@@ -211,6 +212,13 @@
                 //更新平台信息
                 [self hiddenTip];
                 [self.platformCollectionView reloadData];
+                //歌曲名字
+                if (self.searchKey!=nil) {
+                    NSString *songName =self.searchDic[@"songName"];
+                    if (songName!=nil) {
+                        self.songNameLabel.text =songName;
+                    }
+                }
             });
         }else{
             NSLog(@"没有歌曲的平台信息");
@@ -218,6 +226,7 @@
             dispatch_async(mainQueue, ^{
               [self tryOtherKey:songNmae];
             });
+            
             if (self.songPlatform.count==0) {
                [self tryOtherKey:album];
             }
@@ -239,6 +248,13 @@
         dispatch_async(mainQueue, ^{
             //更新头部信息
             [self showHeadview];
+            //歌曲名字
+            if (self.searchKey!=nil) {
+                NSString *songName =self.searchDic[@"songName"];
+                if (songName!=nil) {
+                    self.songNameLabel.text =songName;
+                }
+            }
             //更新平台信息
             self.songPlatform = [NSMutableArray arrayWithArray:self.searchDic[@"musicPlatform"]];
             [self hiddenTip];
@@ -246,7 +262,7 @@
                 [self.platformCollectionView reloadData];
             }else{
                 NSLog(@"没有歌曲的平台信息");
-                           }
+                 }
         });
     });
 
@@ -311,8 +327,8 @@
     }else{
         if (!self.clollectBtn.selected) {//关注
             SongModel * model = [[SongModel alloc]init];
-            model.title =self.searchKey;
-            model.artist= self.searchKey;
+            model.title =self.songNameLabel.text;
+            model.artist= self.songNameLabel.text;
             model.album = @"无";
             model.label=@"无";
             model.release_date=@"无";
@@ -352,13 +368,13 @@
        
         if ([model.musicPlatform isEqualToString:@"-"]) {
               cell.platformImage.image = [UIImage imageNamed:@"未知音乐图标"];
-              cell.platformName.text = @"未知平台";
+            
         }else{
         
           cell.platformImage.image = [UIImage imageNamed:model.musicPlatform];
-             cell.platformName.text = model.musicPlatform;
+            
         }
-      
+        cell.platformName.text = model.artist;
         
     }
     //赋值数据
@@ -368,7 +384,7 @@
 //sizeForItemAtIndexPath
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    return CGSizeMake(CGRectGetHeight(self.platformCollectionView.bounds), CGRectGetHeight(self.platformCollectionView.bounds));
+    return CGSizeMake(CGRectGetHeight(self.platformCollectionView.bounds)+20, CGRectGetHeight(self.platformCollectionView.bounds));
 }
 
 //didSelectItemAtIndexPath 点击

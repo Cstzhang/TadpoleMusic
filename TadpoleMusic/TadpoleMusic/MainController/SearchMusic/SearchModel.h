@@ -16,6 +16,8 @@
 
 /** 平台名称 */
 @property (nonatomic,copy) NSString * musicPlatform;
+/** 作者名字 */
+@property (nonatomic,copy) NSString * artist;
 
 -(instancetype)initWithDict:(NSDictionary *)dict;
 +(instancetype)musicInfoWithDict:(NSDictionary *)dict;

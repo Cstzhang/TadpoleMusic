@@ -25,7 +25,12 @@
             [self setValue:dict[@"musicPlatform"] forKey:@"musicPlatform"];
             
         }
-        
+        if ((NSNull *)dict[@"artist"] ==[NSNull null]) {
+            [self setValue:@"" forKey:@"artist"];
+        }else{
+            [self setValue:dict[@"artist"] forKey:@"artist"];
+            
+        }
     }
     return self;
 }

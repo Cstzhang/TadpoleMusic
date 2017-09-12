@@ -69,7 +69,7 @@
         if (songImageGumboNode != nil && songImageGumboNode.attr(@"src") !=nil &&songImageGumboNode.attr(@"src").length !=0) {
             imageUrl = songImageGumboNode.attr(@"src");
         }else{//关键词搜索
-               OCGumboNode *songImageGumboNode = document.Query(@"body").find(@".op-music-lrc-r-img").first();
+            OCGumboNode *songImageGumboNode = document.Query(@"body").find(@".op-music-lrc-r-img").first();
             if (songImageGumboNode != nil && songImageGumboNode.attr(@"src") !=nil &&songImageGumboNode.attr(@"src").length !=0) {
                 imageUrl = songImageGumboNode.attr(@"src");
             }
@@ -79,7 +79,7 @@
     
     [result setValue:imageUrl forKey:@"songImageUrl"];
     #pragma mark - **************** 准备返回数据
-    if ((unsigned long)musicPlatformElement.count>0&&(unsigned long)songUrlElement.count>0) {//搜取的歌曲必须平台数大于1
+    if ((unsigned long)musicPlatformElement.count>0&&(unsigned long)songUrlElement.count>0&&(unsigned long)musicPlatformElement.count==(unsigned long)songUrlElement.count) {//搜取的歌曲必须平台数大于1
         //
         //歌曲封面
         NSMutableArray *tmpArr = [NSMutableArray array];
@@ -87,25 +87,46 @@
             NSDictionary * tmpMusic = [NSMutableDictionary dictionary];
             OCGumboElement *elePlatform = musicPlatformElement[i];
             OCGumboElement *eleSong = songUrlElement[i];
-                      NSString * platform = @"-";
+            NSString * platform = @"-";
             NSString * songUrl = @"-";
+            NSString * artist = @"-";
             //平台名称
             platform = elePlatform.text();
             //歌曲URL
             if ((unsigned long)getElement.count>0 && songUrlElement.count>0) {//情况1
                     OCGumboNode *firstSong =eleSong.Query(@".c-icon-play-circle").first();
+                    OCQueryObject *songArtist =eleSong.Query(@".c-gray");
                     if (firstSong != nil) {
                        songUrl =  firstSong.attr(@"href");
+                    }
+                    if (songArtist != nil&&songArtist.count>1) {
+                        OCGumboNode *artistNode =songArtist[1];
+                        if (artistNode!=nil) {
+                             artist =  artistNode.text();
+                             artist= [artist stringByReplacingOccurrencesOfString:@" " withString:@""];
+                             artist= [artist stringByReplacingOccurrencesOfString:@"\n" withString:@""];
+                            artist= [artist stringByReplacingOccurrencesOfString:@"\t" withString:@""];
+                        }
+                        
                     }
 
             }else{//尝试第二种搜索
                     OCGumboNode *firstSong =eleSong.Query(@".op-musicsong-songname").first();
                     if (firstSong != nil) {
                         songUrl =  firstSong.attr(@"href");
+                      
                     }
+                   OCGumboNode *songArtist = document.Query(@".c-musicsong-singer").first();
+                  if (songArtist != nil) {
+                      artist =  songArtist.text();
+                      artist= [artist stringByReplacingOccurrencesOfString:@" " withString:@""];
+                      artist= [artist stringByReplacingOccurrencesOfString:@"\n" withString:@""];
+                      artist= [artist stringByReplacingOccurrencesOfString:@"\t" withString:@""];
+                  }
             }
 
             [tmpMusic setValue:platform forKey:@"musicPlatform"];
+            [tmpMusic setValue:artist forKey:@"artist"];
             [tmpMusic setValue:songUrl  forKey:@"songUrl"];
             SearchModel *oneModel = [[SearchModel alloc]initWithDict:tmpMusic];
             [tmpArr addObject:oneModel];
@@ -114,14 +135,30 @@
         [result setObject:tmpArr forKey:@"musicPlatform"];
     }else{
         OCGumboNode *songImageGumboNode = document.Query(@"body").find(@".op-music-lrc-r-songname").first();
+        
         NSString * songUrl = @"-";
         NSString * platform = @"-";
+        NSString * artist = @"-";
         NSMutableArray *tmpArr = [NSMutableArray array];
         NSDictionary * tmpMusic = [NSMutableDictionary dictionary];
         if (songImageGumboNode != nil && songImageGumboNode.attr(@"href") !=nil &&songImageGumboNode.attr(@"href").length !=0) {
             songUrl = songImageGumboNode.attr(@"href");
+            NSString *songName =songImageGumboNode.text();
+           
             [tmpMusic setValue:platform forKey:@"musicPlatform"];
             [tmpMusic setValue:songUrl  forKey:@"songUrl"];
+            
+            if (songName!=nil) {
+                 [result setValue:songName forKey:@"songName"];
+            }
+            OCGumboNode *songArtist = document.Query(@".c-music-lrc-r-singer").first();
+            if (songArtist != nil) {
+                artist =  songArtist.text();
+                artist= [artist stringByReplacingOccurrencesOfString:@" " withString:@""];
+                artist= [artist stringByReplacingOccurrencesOfString:@"\n" withString:@""];
+                artist= [artist stringByReplacingOccurrencesOfString:@"\t" withString:@""];
+            }
+            [tmpMusic setValue:artist forKey:@"artist"];
             SearchModel *oneModel = [[SearchModel alloc]initWithDict:tmpMusic];
             [tmpArr addObject:oneModel];
             [result setObject:tmpArr forKey:@"musicPlatform"];
