@@ -12,6 +12,8 @@
 		6D0460E11F580B7300CE1644 /* Database.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 6D0460DF1F580B7300CE1644 /* Database.xcdatamodeld */; };
 		6D0460F61F58113200CE1644 /* SongList+CoreDataClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D0460F31F58113200CE1644 /* SongList+CoreDataClass.m */; };
 		6D0460F71F58113200CE1644 /* SongList+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D0460F51F58113200CE1644 /* SongList+CoreDataProperties.m */; };
+		6D12C93B1F6A83EF004AB26E /* SetViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D12C9391F6A83EF004AB26E /* SetViewController.m */; };
+		6D12C93C1F6A83EF004AB26E /* SetViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6D12C93A1F6A83EF004AB26E /* SetViewController.xib */; };
 		6D1D1EB91F4DC71A0048A5EE /* SearchModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D1D1EB81F4DC71A0048A5EE /* SearchModel.m */; };
 		6D382D7E1F53C8F5000440C4 /* HummingListController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D382D7C1F53C8F5000440C4 /* HummingListController.m */; };
 		6D382D7F1F53C8F5000440C4 /* HummingListController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6D382D7D1F53C8F5000440C4 /* HummingListController.xib */; };
@@ -41,6 +43,9 @@
 		6DA317061F3C3E5300593A0E /* UIColor+Addition.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DA317051F3C3E5300593A0E /* UIColor+Addition.m */; };
 		6DA3170E1F3C5C1000593A0E /* CircleRippleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DA3170D1F3C5C1000593A0E /* CircleRippleView.m */; };
 		6DB9AD211F4482ED0011FE33 /* SongModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DB9AD201F4482ED0011FE33 /* SongModel.m */; };
+		6DDF92421F6AADB600424004 /* SetCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DDF92401F6AADB600424004 /* SetCell.m */; };
+		6DDF92431F6AADB600424004 /* SetCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6DDF92411F6AADB600424004 /* SetCell.xib */; };
+		6DDF924B1F6ABE4F00424004 /* UserDefaultTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DDF924A1F6ABE4F00424004 /* UserDefaultTool.m */; };
 		6DE205121F5463470077C8DF /* HummingSongViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DE205101F5463470077C8DF /* HummingSongViewCell.m */; };
 		6DE205131F5463470077C8DF /* HummingSongViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6DE205111F5463470077C8DF /* HummingSongViewCell.xib */; };
 		6DEFC7701F3DEB3200E45603 /* libACRCloud_IOS_SDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6DEFC76F1F3DEB3200E45603 /* libACRCloud_IOS_SDK.a */; };
@@ -78,6 +83,9 @@
 		6D0460F31F58113200CE1644 /* SongList+CoreDataClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "SongList+CoreDataClass.m"; sourceTree = "<group>"; };
 		6D0460F41F58113200CE1644 /* SongList+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SongList+CoreDataProperties.h"; sourceTree = "<group>"; };
 		6D0460F51F58113200CE1644 /* SongList+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "SongList+CoreDataProperties.m"; sourceTree = "<group>"; };
+		6D12C9381F6A83EF004AB26E /* SetViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SetViewController.h; sourceTree = "<group>"; };
+		6D12C9391F6A83EF004AB26E /* SetViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SetViewController.m; sourceTree = "<group>"; };
+		6D12C93A1F6A83EF004AB26E /* SetViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SetViewController.xib; sourceTree = "<group>"; };
 		6D1D1EB71F4DC71A0048A5EE /* SearchModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchModel.h; sourceTree = "<group>"; };
 		6D1D1EB81F4DC71A0048A5EE /* SearchModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchModel.m; sourceTree = "<group>"; };
 		6D382D7B1F53C8F5000440C4 /* HummingListController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HummingListController.h; sourceTree = "<group>"; };
@@ -134,6 +142,11 @@
 		6DA3170D1F3C5C1000593A0E /* CircleRippleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CircleRippleView.m; sourceTree = "<group>"; };
 		6DB9AD1F1F4482ED0011FE33 /* SongModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SongModel.h; sourceTree = "<group>"; };
 		6DB9AD201F4482ED0011FE33 /* SongModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SongModel.m; sourceTree = "<group>"; };
+		6DDF923F1F6AADB600424004 /* SetCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SetCell.h; sourceTree = "<group>"; };
+		6DDF92401F6AADB600424004 /* SetCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SetCell.m; sourceTree = "<group>"; };
+		6DDF92411F6AADB600424004 /* SetCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SetCell.xib; sourceTree = "<group>"; };
+		6DDF92491F6ABE4F00424004 /* UserDefaultTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserDefaultTool.h; sourceTree = "<group>"; };
+		6DDF924A1F6ABE4F00424004 /* UserDefaultTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserDefaultTool.m; sourceTree = "<group>"; };
 		6DE2050F1F5463470077C8DF /* HummingSongViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HummingSongViewCell.h; sourceTree = "<group>"; };
 		6DE205101F5463470077C8DF /* HummingSongViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HummingSongViewCell.m; sourceTree = "<group>"; };
 		6DE205111F5463470077C8DF /* HummingSongViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HummingSongViewCell.xib; sourceTree = "<group>"; };
@@ -286,6 +299,9 @@
 		6D7195431F6397D1008F6E72 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				6DDF923F1F6AADB600424004 /* SetCell.h */,
+				6DDF92401F6AADB600424004 /* SetCell.m */,
+				6DDF92411F6AADB600424004 /* SetCell.xib */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -442,6 +458,7 @@
 		6DA06FB01F3461C2009086E4 /* Tools */ = {
 			isa = PBXGroup;
 			children = (
+				6DDF92481F6ABE3E00424004 /* UserDefaultTool */,
 				6DF48BA11F65862B004B3015 /* DGActivityIndicatorView */,
 				6D71956B1F640007008F6E72 /* LazyFadeInView */,
 				6D71956A1F63FFED008F6E72 /* Font */,
@@ -473,6 +490,9 @@
 				6D384EC71F628A1300C517DC /* MyViewController.h */,
 				6D384EC81F628A1300C517DC /* MyViewController.m */,
 				6D384EC91F628A1300C517DC /* MyViewController.xib */,
+				6D12C9381F6A83EF004AB26E /* SetViewController.h */,
+				6D12C9391F6A83EF004AB26E /* SetViewController.m */,
+				6D12C93A1F6A83EF004AB26E /* SetViewController.xib */,
 			);
 			path = My;
 			sourceTree = "<group>";
@@ -524,6 +544,15 @@
 				6D55F7891F4FD4E900FFEEED /* HummingModel.m */,
 			);
 			name = Model;
+			sourceTree = "<group>";
+		};
+		6DDF92481F6ABE3E00424004 /* UserDefaultTool */ = {
+			isa = PBXGroup;
+			children = (
+				6DDF92491F6ABE4F00424004 /* UserDefaultTool.h */,
+				6DDF924A1F6ABE4F00424004 /* UserDefaultTool.m */,
+			);
+			name = UserDefaultTool;
 			sourceTree = "<group>";
 		};
 		6DEFC76C1F3DEAD300E45603 /* ACRCloud */ = {
@@ -635,7 +664,7 @@
 						CreatedOnToolsVersion = 8.3.3;
 						DevelopmentTeam = BMEW3T3PC5;
 						LastSwiftMigration = 0830;
-						ProvisioningStyle = Manual;
+						ProvisioningStyle = Automatic;
 					};
 				};
 			};
@@ -646,6 +675,7 @@
 			knownRegions = (
 				en,
 				Base,
+				"zh-Hans",
 			);
 			mainGroup = 6DA06F741F341196009086E4;
 			productRefGroup = 6DA06F7E1F341196009086E4 /* Products */;
@@ -662,11 +692,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6DDF92431F6AADB600424004 /* SetCell.xib in Resources */,
 				6D6888B81F4F1BE20079DD3B /* SongViewController.xib in Resources */,
 				6D92CCC11F52F8E700B9969E /* PlatformViewCell.xib in Resources */,
 				6D384ECB1F628A1300C517DC /* MyViewController.xib in Resources */,
 				6DE205131F5463470077C8DF /* HummingSongViewCell.xib in Resources */,
 				6D382D7F1F53C8F5000440C4 /* HummingListController.xib in Resources */,
+				6D12C93C1F6A83EF004AB26E /* SetViewController.xib in Resources */,
 				6DA06F8D1F341196009086E4 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -726,6 +758,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6DDF924B1F6ABE4F00424004 /* UserDefaultTool.m in Sources */,
 				6DFEC5DB1F433BCE000CB1F8 /* OCGumbo.m in Sources */,
 				6D028EC11F35BD35000E0935 /* HotListViewController.m in Sources */,
 				6DF48BB61F65862B004B3015 /* DGActivityIndicatorTriplePulseAnimation.m in Sources */,
@@ -733,12 +766,14 @@
 				6DA06F851F341196009086E4 /* AppDelegate.m in Sources */,
 				6DA06FAC1F345499009086E4 /* BaseViewController.m in Sources */,
 				6D0460F71F58113200CE1644 /* SongList+CoreDataProperties.m in Sources */,
+				6D12C93B1F6A83EF004AB26E /* SetViewController.m in Sources */,
 				6DF48BB21F65862B004B3015 /* DGActivityIndicatorDoubleBounceAnimation.m in Sources */,
 				6DB9AD211F4482ED0011FE33 /* SongModel.m in Sources */,
 				6D384ECA1F628A1300C517DC /* MyViewController.m in Sources */,
 				6DA06F821F341196009086E4 /* main.m in Sources */,
 				6DA3170E1F3C5C1000593A0E /* CircleRippleView.m in Sources */,
 				6DF48BB81F65862B004B3015 /* DGActivityIndicatorView.m in Sources */,
+				6DDF92421F6AADB600424004 /* SetCell.m in Sources */,
 				6D92CCC01F52F8E700B9969E /* PlatformViewCell.m in Sources */,
 				6D51CE411F6196C0009C4ADF /* MsgTool.m in Sources */,
 				6DA06FB81F3473D0009086E4 /* HomeViewController.m in Sources */,
@@ -776,6 +811,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
@@ -824,6 +860,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
@@ -869,7 +906,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = BMEW3T3PC5;
 				ENABLE_BITCODE = NO;
 				GCC_PREFIX_HEADER = "${SRCROOT}/TadpoleMusic/Define/Main_pch.pch";
@@ -883,8 +920,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.zzb.TadpoleMusic;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "7464e303-c90d-4da0-85aa-652c881cc5e7";
-				PROVISIONING_PROFILE_SPECIFIER = TadpoleMusicProfile;
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "TadpoleMusic/Database/TadpoleMusic-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
@@ -898,7 +935,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = BMEW3T3PC5;
 				ENABLE_BITCODE = NO;
 				GCC_PREFIX_HEADER = "${SRCROOT}/TadpoleMusic/Define/Main_pch.pch";
@@ -912,8 +949,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.zzb.TadpoleMusic;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "7464e303-c90d-4da0-85aa-652c881cc5e7";
-				PROVISIONING_PROFILE_SPECIFIER = TadpoleMusicProfile;
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "TadpoleMusic/Database/TadpoleMusic-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 			};

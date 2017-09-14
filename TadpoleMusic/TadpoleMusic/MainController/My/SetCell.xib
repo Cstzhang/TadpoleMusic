@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12121" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="KGk-i7-Jjw" customClass="SetCell">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="软件启动自动开启识别" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="v0R-db-hfW">
+                        <rect key="frame" x="15" y="13" width="153" height="18"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="q1W-qa-O9h">
+                        <rect key="frame" x="299" y="10" width="6" height="22"/>
+                        <state key="normal" image="ic-next"/>
+                    </button>
+                    <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="right" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="pzv-0E-Jg0">
+                        <rect key="frame" x="250" y="6.5" width="51" height="31"/>
+                        <connections>
+                            <action selector="clickSwitch:" destination="KGk-i7-Jjw" eventType="valueChanged" id="H3I-Ah-P3J"/>
+                        </connections>
+                    </switch>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="v0R-db-hfW" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="2nT-GF-rIH"/>
+                    <constraint firstItem="pzv-0E-Jg0" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="5Hj-GL-hpX"/>
+                    <constraint firstAttribute="trailing" secondItem="q1W-qa-O9h" secondAttribute="trailing" constant="15" id="XkE-zF-n8Z"/>
+                    <constraint firstItem="v0R-db-hfW" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="f7Q-Nh-q7V"/>
+                    <constraint firstItem="q1W-qa-O9h" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="feZ-36-xz2"/>
+                    <constraint firstItem="q1W-qa-O9h" firstAttribute="leading" secondItem="pzv-0E-Jg0" secondAttribute="trailing" id="ytC-Dp-n82"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="nextBtn" destination="q1W-qa-O9h" id="zjl-M4-YuI"/>
+                <outlet property="setName" destination="v0R-db-hfW" id="efk-ni-xc6"/>
+                <outlet property="statusSwitch" destination="pzv-0E-Jg0" id="0zG-4z-Jjz"/>
+            </connections>
+            <point key="canvasLocation" x="23" y="57"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="ic-next" width="6" height="12"/>
+    </resources>
+</document>

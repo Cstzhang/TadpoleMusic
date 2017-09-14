@@ -140,12 +140,12 @@
     }
      [_tmpArray addObject:@(tTotalCount)];
     
-    
-    for (id value in _tmpArray)
-    {
-       // NSLog(@"%@", value);
-    }
-    
+//    
+//    for (id value in _tmpArray)
+//    {
+//       // NSLog(@"%@", value);
+//    }
+//    
     
     for (int i = 0; i < _numberOfLayers; ++i)
     {
@@ -162,10 +162,10 @@
         }
     }
     
-    for (id value in _alphaArray)
-    {
-       // NSLog(@"%@", value);
-    }
+//    for (id value in _alphaArray)
+//    {
+//       // NSLog(@"%@", value);
+//    }
 }
 
 @end

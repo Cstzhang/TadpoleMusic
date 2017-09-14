@@ -12,6 +12,7 @@
 #import "DBHander.h"
 #import "SongViewController.h"
 #import "SongModel.h"
+#import "SetViewController.h"
 @interface MyViewController ()<UITableViewDelegate,UITableViewDataSource,UISearchBarDelegate>
 /**我的歌曲列表 */
 @property (nonatomic,strong) ZBTableView *mySongTableView;
@@ -21,7 +22,6 @@
 @property (nonatomic,strong) NSMutableArray * songArr;
 //当前页码
 @property (nonatomic, assign) int curryPage;
-
 /** 搜索 */
 @property (nonatomic,strong) UISearchBar * searchBar;
 
@@ -39,7 +39,7 @@
 /** 客户列表
  */
 -(UITableView *)mySongTableView{
-    kWeakSelf(self);
+//    kWeakSelf(self);
     if (!_mySongTableView) {
         _mySongTableView=[[ZBTableView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT-HEAD_TABBAR_HEIGHT)];
         _mySongTableView.backgroundColor=CLEAR_COLOR;
@@ -56,9 +56,8 @@
         _mySongTableView.mj_footer=footer;
         _mySongTableView.mj_footer.automaticallyHidden = YES;
         /** 添加默认的数据为空，网络异常提示 */
-        [_mySongTableView addViewWithWarnImage:EMPTY_BACKGROUND_IMAGE title:@"还有有收藏歌曲,快去搜歌吧!" whetherNetWorkError:YES action:^{
+        [_mySongTableView addViewWithWarnImage:EMPTY_BACKGROUND_IMAGE title:@"还没有收藏歌曲,快去搜歌吧!" whetherNetWorkError:YES action:^{
             /** 点击重写加载 */
-//            [weakself onRefresh];
         }];
     }
     return _mySongTableView;
@@ -77,13 +76,24 @@
     //初始化页码 从0页开始，每页10条数据
     self.curryPage=0;
     [self getSongData];
-  
-    self.searchBar = [[UISearchBar alloc] initWithFrame:CGRectMake(0, 64, SCREEN_WIDTH-30, 28)];
+    //设置按钮
+    UIButton *rightBt=[UIButton buttonWithType:UIButtonTypeCustom];
+    rightBt.frame=CGRectMake(0, 0, 30, 30);
+    [rightBt setImage:[UIImage imageNamed:@"ic_set"] forState:UIControlStateNormal];
+    [rightBt addTarget:self action:@selector(setProfile) forControlEvents:UIControlEventTouchUpInside];
+    UIBarButtonItem *rightItem=[[UIBarButtonItem alloc]initWithCustomView:rightBt];
+    self.navigationItem.rightBarButtonItem=rightItem;
+    
+    //添加搜索按钮
+    self.searchBar = [[UISearchBar alloc] initWithFrame:CGRectMake(0, 64, CGRectGetMaxX(self.navigationController.navigationBar.frame)-70, 28)];
     self.searchBar.backgroundImage = [UIImage imageNamed:@"btu_search"];
     self.searchBar.placeholder = @"网上搜索";
     self.searchBar.delegate = self;
     UIBarButtonItem *searchButton = [[UIBarButtonItem alloc]initWithCustomView:self.searchBar];
     self.navigationItem.leftBarButtonItems = [NSArray arrayWithObject:searchButton];
+  
+    
+    
 }
 
 #pragma mark - **************** 生命周期
@@ -113,7 +123,6 @@
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return self.songArr.count;
-//    return 10;
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     
@@ -203,9 +212,6 @@
 
 
 
-
-
-
 - (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar{
  
     [self.view endEditing:YES];
@@ -228,6 +234,13 @@
 
 
 
+}
+  
+//设置界面
+-(void)setProfile{
+    SetViewController *setVC = [[SetViewController alloc]init];
+    [setVC setModalTransitionStyle:UIModalTransitionStyleFlipHorizontal];
+    [self presentViewController:setVC animated:YES completion:nil];
 }
 
 @end

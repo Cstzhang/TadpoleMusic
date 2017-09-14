@@ -64,4 +64,16 @@
 
 };
 
+-(void)firstStart{
+    if(![[NSUserDefaults standardUserDefaults] boolForKey:@"firstStart"]){
+        [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"firstStart"];
+        [[NSUserDefaults standardUserDefaults] setBool:NO forKey:@"statusSwitch"];
+        [[NSUserDefaults standardUserDefaults] synchronize];
+        NSLog(@"第一次启动");
+    }else{
+        NSLog(@"不是第一次启动");
+    }
+
+}
+
 @end

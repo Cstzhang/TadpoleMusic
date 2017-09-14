@@ -18,7 +18,7 @@
     [self setRootViewController];
     [self startNetworkMonitoring];
     [self startBugly];
-//    NSLog(@"%s",__func__);
+    [self firstStart];
     return YES;
 }
 

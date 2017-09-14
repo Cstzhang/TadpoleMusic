@@ -19,5 +19,9 @@
 - (void)startBugly;
 
 
+/**
+ 第一次启动
+ */
+-(void)firstStart;
 
 @end

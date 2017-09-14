@@ -31,7 +31,7 @@
         //统一返回样式
         UIButton *btn =[[UIButton alloc]init];
         btn.frame = CGRectMake(0, 0, 22, 22);
-        [btn setImage:[UIImage imageNamed:@"back-arrow"] forState:0];
+        [btn setImage:[UIImage imageNamed:@"back_arrow_b"] forState:0];
         [btn addTarget:self action:@selector(backBarButtonItemAction) forControlEvents:UIControlEventTouchUpInside];
         UIBarButtonItem *back=[[UIBarButtonItem alloc]initWithCustomView:btn];
         viewController.navigationItem.leftBarButtonItem = back;
@@ -60,8 +60,10 @@
 //返回方法
 - (void)backBarButtonItemAction
 {
+    [self.view endEditing:YES];
     [self.navigationItem setHidesBackButton:NO];
     [self popViewControllerAnimated:YES];
+   
 }
 
 @end

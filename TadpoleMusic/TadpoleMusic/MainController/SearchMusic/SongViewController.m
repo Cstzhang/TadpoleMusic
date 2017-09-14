@@ -400,14 +400,21 @@
        
         if ([model.musicPlatform isEqualToString:@"-"]) {
               cell.platformImage.image = [UIImage imageNamed:@"未知音乐图标"];
-            
         }else{
-        
           cell.platformImage.image = [UIImage imageNamed:model.musicPlatform];
-            
         }
-        cell.platformName.text = model.artist;
-        
+        if (![self isNum:model.artist]) {
+            cell.platformName.text = model.artist;
+        }else{
+            if (self.songModel != nil) {
+                cell.platformName.text = self.songModel.artist;
+            }else if (self.songList != nil) {
+                cell.platformName.text = self.songList.artist;
+            }else{
+                cell.platformName.text = self.searchKey;
+            }
+        }
+           
     }else{
       cell.platformImage.image = [UIImage imageNamed:@"未知音乐图标"];
       cell.platformName.text = @"无支持平台";
@@ -464,6 +471,13 @@
 }
 
 
+- (BOOL)isNum:(NSString *)checkedNumString {
+    checkedNumString = [checkedNumString stringByTrimmingCharactersInSet:[NSCharacterSet decimalDigitCharacterSet]];
+    if(checkedNumString.length > 0) {
+        return NO;
+    }
+    return YES;
+}
 
 
 

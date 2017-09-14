@@ -51,29 +51,28 @@
     #pragma mark - **************** 抓取平台名称
     OCQueryObject *musicPlatformElement = document.Query(@"body").find(@".c-tabs-nav-view").find(@".c-tabs-nav-li");
     #pragma mark - **************** 抓取专辑封面
-    OCQueryObject *songImageGumboNode = document.Query(@"body").find(@".op-bk-polysemy-album");
+    
+    OCGumboNode *songImageGumboNode = document.Query(@"body").find(@".op-musicsong-img").first();
     #pragma mark - **************** 抓取歌曲URL
     OCQueryObject *getElement = document.Query(@"body").find(@".c-icon-play-circle");
     OCQueryObject *songUrlElement = document.Query(@"body").find(@"#content_left").find(@".result-op").find(@".c-tabs-content");
     //准备返回的封面图
     NSString * imageUrl = @"-";
-    if (songImageGumboNode.count != 0 ) {
-        OCGumboNode * imgNode = songImageGumboNode.find(@".c-img").first();
-        if (imgNode!=nil) {
-            imageUrl = imgNode.attr(@"src");
-        }
-        
+    if (songImageGumboNode != nil && songImageGumboNode.attr(@"src") !=nil &&songImageGumboNode.attr(@"src").length !=0) {
+        imageUrl = songImageGumboNode.attr(@"src");
     }else{
         //尝试另外一种获取方式
-        OCGumboNode *songImageGumboNode = document.Query(@"body").find(@".op-musicsong-img").first();
-        if (songImageGumboNode != nil && songImageGumboNode.attr(@"src") !=nil &&songImageGumboNode.attr(@"src").length !=0) {
-            imageUrl = songImageGumboNode.attr(@"src");
+         OCQueryObject *songImageGumboNode = document.Query(@"body").find(@".op-bk-polysemy-album");
+        if (songImageGumboNode.count != 0 ) {
+            OCGumboNode * imgNode = songImageGumboNode.find(@".c-img").first();
+            if (imgNode!=nil) {
+                imageUrl = imgNode.attr(@"src");
+            }
         }else{//关键词搜索
             OCGumboNode *songImageGumboNode = document.Query(@"body").find(@".op-music-lrc-r-img").first();
             if (songImageGumboNode != nil && songImageGumboNode.attr(@"src") !=nil &&songImageGumboNode.attr(@"src").length !=0) {
                 imageUrl = songImageGumboNode.attr(@"src");
             }
-            
         }
     }
     
@@ -124,6 +123,8 @@
                       artist= [artist stringByReplacingOccurrencesOfString:@"\t" withString:@""];
                   }
             }
+ 
+            
 
             [tmpMusic setValue:platform forKey:@"musicPlatform"];
             [tmpMusic setValue:artist forKey:@"artist"];

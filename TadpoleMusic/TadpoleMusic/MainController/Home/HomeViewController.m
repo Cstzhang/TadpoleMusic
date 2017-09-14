@@ -156,12 +156,20 @@ typedef NS_ENUM(NSInteger, SearchType){
     [self setupUI];
     [self registerACR];
     self.searchType=SearchTypeMusic;
+
+    if([[NSUserDefaults standardUserDefaults] boolForKey:@"statusSwitch"]){
+        [self searchMusic:self.searchBtn];
+    }
 }
 -(void)viewWillAppear:(BOOL)animated{
     //提示语
     self.fadeInView = [[LazyFadeInView alloc] initWithFrame:CGRectMake(CGRectGetMinX(self.searchBtn.frame)-5, CGRectGetMinY(self.searchBtn.frame)-80, SCREEN_WIDTH-(2*CGRectGetMinX(self.searchBtn.frame)-80), 70)];
     [self.view addSubview:self.fadeInView];
-    self.fadeInView.text = weclome;
+    if (![[NSUserDefaults standardUserDefaults] boolForKey:@"statusSwitch"] &&!_start) {
+            self.fadeInView.text = weclome;
+    }else{
+       self.fadeInView.text = MsgChangeMusci;
+    }
 
 }
 -(void)viewWillDisappear:(BOOL)animated{
@@ -412,7 +420,7 @@ typedef NS_ENUM(NSInteger, SearchType){
 //音量状态
 -(void)handleVolume:(float)volume
 {
-    #warning 提示音量问题
+//    #warning 提示音量问题
     dispatch_async(dispatch_get_main_queue(), ^{
       //  NSLog(@"volume :%f",volume);
     });
@@ -421,7 +429,7 @@ typedef NS_ENUM(NSInteger, SearchType){
 //识别状态
 -(void)handleState:(NSString *)state
 {
-    #warning 识别结果 暂时用不到  onRecording
+//    #warning 识别结果 暂时用不到  onRecording
     dispatch_async(dispatch_get_main_queue(), ^{
        //  NSLog(@"state :%@",state);
     });
