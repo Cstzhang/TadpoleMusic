@@ -504,7 +504,7 @@ static NSString * const Msg300301 = @"蝌蚪已经精疲力尽了";
 static NSString * const Msg300302 = @"蝌蚪需要休息,明天再来吧";
 static NSString * const Msg9999 = @"不知道咋回事,就是找不到哦";
 
-static NSString * const MsgChangeMusci = @"街边的扬声器我也能听到";
+static NSString * const MsgChangeMusci = @"街边的歌声我也能听到";
 static NSString * const MsgChangeHumming = @"麻烦大点声哦";
 static NSString * const MsgStop01 = @"新专辑我也没办法啊";
 static NSString * const MsgStop02 = @"没准再大声点，就能找到呢";

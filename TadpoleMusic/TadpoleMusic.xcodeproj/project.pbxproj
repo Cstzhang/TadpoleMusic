@@ -664,7 +664,7 @@
 						CreatedOnToolsVersion = 8.3.3;
 						DevelopmentTeam = BMEW3T3PC5;
 						LastSwiftMigration = 0830;
-						ProvisioningStyle = Automatic;
+						ProvisioningStyle = Manual;
 					};
 				};
 			};
@@ -906,7 +906,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				DEVELOPMENT_TEAM = BMEW3T3PC5;
 				ENABLE_BITCODE = NO;
 				GCC_PREFIX_HEADER = "${SRCROOT}/TadpoleMusic/Define/Main_pch.pch";
@@ -920,8 +920,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.zzb.TadpoleMusic;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
-				PROVISIONING_PROFILE_SPECIFIER = "";
+				PROVISIONING_PROFILE = "7464e303-c90d-4da0-85aa-652c881cc5e7";
+				PROVISIONING_PROFILE_SPECIFIER = TadpoleMusicProfile;
 				SWIFT_OBJC_BRIDGING_HEADER = "TadpoleMusic/Database/TadpoleMusic-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
@@ -935,7 +935,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				DEVELOPMENT_TEAM = BMEW3T3PC5;
 				ENABLE_BITCODE = NO;
 				GCC_PREFIX_HEADER = "${SRCROOT}/TadpoleMusic/Define/Main_pch.pch";
@@ -949,8 +949,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.zzb.TadpoleMusic;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
-				PROVISIONING_PROFILE_SPECIFIER = "";
+				PROVISIONING_PROFILE = "7464e303-c90d-4da0-85aa-652c881cc5e7";
+				PROVISIONING_PROFILE_SPECIFIER = TadpoleMusicProfile;
 				SWIFT_OBJC_BRIDGING_HEADER = "TadpoleMusic/Database/TadpoleMusic-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 			};

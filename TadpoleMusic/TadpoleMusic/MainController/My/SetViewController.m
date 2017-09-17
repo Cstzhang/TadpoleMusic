@@ -98,7 +98,7 @@
         case 0:
             cell.nextBtn.hidden=YES;
             cell.statusSwitch.hidden=NO;
-            cell.setName.text = @"启动自开搜索音乐";
+            cell.setName.text = @"启动时自动搜索音乐";
             break;
         case 1:
             cell.nextBtn.hidden=NO;
