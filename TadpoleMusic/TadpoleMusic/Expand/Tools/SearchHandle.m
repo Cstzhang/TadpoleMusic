@@ -53,6 +53,7 @@
     #pragma mark - **************** 抓取专辑封面
     
     OCGumboNode *songImageGumboNode = document.Query(@"body").find(@".op-musicsong-img").first();
+    
     #pragma mark - **************** 抓取歌曲URL
     OCQueryObject *getElement = document.Query(@"body").find(@".c-icon-play-circle");
     OCQueryObject *songUrlElement = document.Query(@"body").find(@"#content_left").find(@".result-op").find(@".c-tabs-content");

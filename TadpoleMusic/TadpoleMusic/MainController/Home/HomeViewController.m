@@ -153,10 +153,13 @@ typedef NS_ENUM(NSInteger, SearchType){
 #pragma mark - **************** 生命周期
 - (void)viewDidLoad {
     [super viewDidLoad];
+    //初始化UI
     [self setupUI];
+    //注册识别组件
     [self registerACR];
+    //初始化识别类型
     self.searchType=SearchTypeMusic;
-
+    //如果是启动自动搜索的话，开始搜索
     if([[NSUserDefaults standardUserDefaults] boolForKey:@"statusSwitch"]){
         [self searchMusic:self.searchBtn];
     }
@@ -164,13 +167,23 @@ typedef NS_ENUM(NSInteger, SearchType){
 -(void)viewWillAppear:(BOOL)animated{
     //提示语
     self.fadeInView = [[LazyFadeInView alloc] initWithFrame:CGRectMake(CGRectGetMinX(self.searchBtn.frame)-5, CGRectGetMinY(self.searchBtn.frame)-80, SCREEN_WIDTH-(2*CGRectGetMinX(self.searchBtn.frame)-80), 70)];
+    //显示提示语
     [self.view addSubview:self.fadeInView];
-    if (![[NSUserDefaults standardUserDefaults] boolForKey:@"statusSwitch"] &&!_start) {
-            self.fadeInView.text = weclome;
-    }else{
-       self.fadeInView.text = MsgChangeMusci;
+    //没有开始的时候，动画要停止
+    if (!_start) {
+        //停止转圈
+        [self.searchBtn endLoading];
     }
 
+    //判断是否要自动旋转
+    if (![[NSUserDefaults standardUserDefaults] boolForKey:@"statusSwitch"] &&!_start) {
+        self.fadeInView.text = weclome;
+    }else{
+        self.fadeInView.text = MsgChangeMusci;
+    }
+    
+  
+    
 }
 -(void)viewWillDisappear:(BOOL)animated{
 
@@ -207,7 +220,7 @@ typedef NS_ENUM(NSInteger, SearchType){
     //开始动画
     [_rippleView startAnimation];
     
-    [sender toggle];
+    [sender beginLoading];
     //开始采集声纹
     [_client startRecordRec];
     //开始状态
@@ -256,8 +269,9 @@ typedef NS_ENUM(NSInteger, SearchType){
     _start = NO;
     //停止动画
     [_rippleView stopAnimation];
-    
-    [self.searchBtn toggle];
+    //停止转圈
+    [self.searchBtn endLoading];
+    //提示语
     int index = arc4random_uniform(3);
     self.fadeInView.text = self.msgArr[index];
 }
@@ -332,8 +346,11 @@ typedef NS_ENUM(NSInteger, SearchType){
         if (fingerprint) {
             NSLog(@"fingerprint data length = %ld", fingerprint.length);
         }
+        //停止识别
         [_client stopRecordRec];
-        [self.searchBtn toggle];
+        //停止转圈
+        [self.searchBtn endLoading];
+        //停止波纹
         [_rippleView stopAnimation];
         _start = NO;
     });
@@ -414,7 +431,8 @@ typedef NS_ENUM(NSInteger, SearchType){
         [_client stopRecordRec];
         _start = NO;
         [_rippleView stopAnimation];
-        [self.searchBtn toggle];
+        
+        [self.searchBtn endLoading];
     });
 }
 //音量状态
