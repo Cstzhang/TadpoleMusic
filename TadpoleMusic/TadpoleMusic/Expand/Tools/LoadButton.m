@@ -94,6 +94,7 @@ static NSString *kLoadButtonRotationAnimationKey = @"loadButton.rotation";
 
 #pragma mark - 开始加载
 -(void)beginLoading{
+     NSLog(@"开始转圈");
     if (self.isLoading) {
         return;
     }
@@ -135,6 +136,7 @@ static NSString *kLoadButtonRotationAnimationKey = @"loadButton.rotation";
 
 #pragma mark - 结束动画
 -(void)endLoading{
+    NSLog(@"停止转圈");
     if (!self.isLoading) {
         return;
     }

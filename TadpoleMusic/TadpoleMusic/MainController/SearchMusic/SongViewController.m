@@ -361,7 +361,6 @@
             model.release_date=@"无";
             [self.dbHander followFun:model headUrl:self.headUrl];
         }else{//取消关注
-            
             [self.dbHander unfollowSongWithTitle:self.searchKey artist:self.searchKey isFollw:0];
         }
         

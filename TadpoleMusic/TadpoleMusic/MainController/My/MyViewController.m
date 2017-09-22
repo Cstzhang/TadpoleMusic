@@ -103,7 +103,6 @@
     self.automaticallyAdjustsScrollViewInsets = NO;
     [self setBaseUI];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onRefresh) name:@"songDataChanged" object:nil];
-   
 }
 
 - (void)viewWillAppear:(BOOL)animated

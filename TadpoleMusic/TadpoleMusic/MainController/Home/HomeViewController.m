@@ -136,6 +136,9 @@ typedef NS_ENUM(NSInteger, SearchType){
         make.height.equalTo(RATIO_W(30));
     }];
     self.musicTypeBtn.selected = YES;
+    self.musicTypeBtn.acceptEventInterval=1;
+    self.searchBtn.acceptEventInterval=1;
+    self.hummingTypeBtn.acceptEventInterval=1;
     //默认选择音乐识别
     [self.view addSubview:self.hummingTypeBtn];
     [_hummingTypeBtn mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -146,6 +149,7 @@ typedef NS_ENUM(NSInteger, SearchType){
     }];
     self.searchTimeCount = 0;
     self.msgArr = @[MsgStop01,MsgStop02,MsgStop03];
+
 }
 
 
@@ -188,6 +192,8 @@ typedef NS_ENUM(NSInteger, SearchType){
 -(void)viewWillDisappear:(BOOL)animated{
 
     [self.fadeInView removeFromSuperview];
+    
+    [self stopSearchMusic];
 }
 
 
@@ -201,6 +207,7 @@ typedef NS_ENUM(NSInteger, SearchType){
         return;
     }
     if (![self checkAudioStatus]) {
+        NSLog(@"没有麦克风权限");
         return;
     }
     switch (_searchType) {
@@ -232,8 +239,8 @@ typedef NS_ENUM(NSInteger, SearchType){
 }
 //音乐搜索的类型：听歌
 -(void)searchTypeMusic{
-    if (_start) {//停止搜索
-        [self stopSearchMusic];
+    if (_start) {
+        return;
     }
     NSLog(@"听音乐搜索模式");
     self.searchType=SearchTypeMusic;
@@ -242,13 +249,14 @@ typedef NS_ENUM(NSInteger, SearchType){
     _config.accessKey = ACR_ACCESS_KEY;
     _config.accessSecret = ACR_ACCESS_SECRET;
     self.fadeInView.text = MsgChangeMusci;
+    
+    [self searchMusic:self.searchBtn];
 }
 
 //音乐搜索的类型：哼唱
 -(void)searchTypeHumming{
-   
     if (_start) {
-        [self stopSearchMusic];
+        return;
     }
     NSLog(@"听音乐搜索模式");
     self.searchType=SearchTypeMusicHumming;
@@ -257,16 +265,14 @@ typedef NS_ENUM(NSInteger, SearchType){
     _config.accessKey = ACR_HUMMING_ACCESS_KEY;
     _config.accessSecret = ACR_HUMMING_ACCESS_SECRET;
     self.fadeInView.text = MsgChangeHumming;
+    
+    [self searchMusic:self.searchBtn];
 }
 
 //停止音乐识别
 -(void)stopSearchMusic{
     //停止识别
     NSLog(@"停止音乐识别");
-    if(_client) {
-       [_client stopRecordRec];
-    }
-    _start = NO;
     //停止动画
     [_rippleView stopAnimation];
     //停止转圈
@@ -274,6 +280,11 @@ typedef NS_ENUM(NSInteger, SearchType){
     //提示语
     int index = arc4random_uniform(3);
     self.fadeInView.text = self.msgArr[index];
+    if(_client) {
+       [_client stopRecordRec];
+    }
+    _start = NO;
+  
 }
 
 

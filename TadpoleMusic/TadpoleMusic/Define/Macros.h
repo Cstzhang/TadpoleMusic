@@ -29,5 +29,6 @@
 #import "MsgTool.h"
 #import "ZBTableView.h"
 #import "UserDefaultTool.h"
+#import "UIControl+AcceptEvent.h"
 
 #endif /* Macros_h */
