@@ -50,9 +50,9 @@
         //设置文字的颜色
         NSMutableDictionary *textAttrs                 = [NSMutableDictionary dictionary];
         textAttrs[NSForegroundColorAttributeName]      = [UIColor zb_colorWithHex:0x11ee83];
-        textAttrs[NSFontAttributeName]                 = TEXT_FONT;
+        textAttrs[NSFontAttributeName]                 = [UIFont systemFontOfSize:14];
         NSMutableDictionary *selectTextAttrs           = [NSMutableDictionary dictionary];
-        selectTextAttrs[NSFontAttributeName]           = TEXT_FONT;
+        selectTextAttrs[NSFontAttributeName]           = [UIFont systemFontOfSize:14];
         selectTextAttrs[NSForegroundColorAttributeName] = TABBAR_NORMAL_TINTCOLOR;
         //设置字体大小
         

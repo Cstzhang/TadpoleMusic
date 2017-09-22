@@ -522,7 +522,7 @@ typedef NS_ENUM(NSInteger, SearchType){
 
 
 
-static NSString * const weclome = @"点击开始识别吧!";
+static NSString * const weclome = @"请靠近音乐源来辨别音乐";
 static NSString * const musicMsg = @"杂音会干扰蝌蚪的识别哦";
 static NSString * const hummingMsg = @"请大声歌唱吧";
 static NSString * const Msg2005 = @"没找到哦,再试试吧";
@@ -534,7 +534,7 @@ static NSString * const Msg300302 = @"蝌蚪需要休息,明天再来吧";
 static NSString * const Msg9999 = @"不知道咋回事,就是找不到哦";
 
 static NSString * const MsgChangeMusci = @"街边的歌声我也能听到";
-static NSString * const MsgChangeHumming = @"麻烦大点声哦";
+static NSString * const MsgChangeHumming = @"请靠近音乐源来辨别音乐";
 static NSString * const MsgStop01 = @"新专辑我也没办法啊";
 static NSString * const MsgStop02 = @"没准再大声点，就能找到呢";
 static NSString * const MsgStop03 = @"找啊找啊找歌曲";
