@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12121" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -30,7 +31,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gf2-jc-ctk">
-                    <rect key="frame" x="15" y="70" width="345" height="169"/>
+                    <rect key="frame" x="15" y="72.5" width="345" height="169"/>
                     <subviews>
                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="music_c" translatesAutoresizingMaskIntoConstraints="NO" id="SVv-1C-NsX">
                             <rect key="frame" x="10" y="10" width="50" height="50"/>
@@ -103,15 +104,15 @@
                     </constraints>
                 </view>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="QLh-Em-SyB">
-                    <rect key="frame" x="0.0" y="254" width="375" height="413"/>
+                    <rect key="frame" x="0.0" y="236.5" width="375" height="430.5"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                 </tableView>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstItem="QLh-Em-SyB" firstAttribute="top" secondItem="gf2-jc-ctk" secondAttribute="bottom" constant="15" id="6fZ-gY-CXP"/>
+                <constraint firstItem="QLh-Em-SyB" firstAttribute="top" secondItem="gf2-jc-ctk" secondAttribute="bottom" constant="-5" id="6fZ-gY-CXP"/>
                 <constraint firstAttribute="bottom" secondItem="QLh-Em-SyB" secondAttribute="bottom" id="MG9-NH-gM9"/>
-                <constraint firstItem="gf2-jc-ctk" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="70" id="Ojz-Iy-loh"/>
+                <constraint firstItem="gf2-jc-ctk" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="centerY" multiplier="145:667" id="Ojz-Iy-loh"/>
                 <constraint firstAttribute="trailing" secondItem="gf2-jc-ctk" secondAttribute="trailing" constant="15" id="SA6-2B-01J"/>
                 <constraint firstItem="QLh-Em-SyB" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="YuI-fP-CKY"/>
                 <constraint firstAttribute="trailing" secondItem="QLh-Em-SyB" secondAttribute="trailing" id="ajA-n3-VJZ"/>

@@ -41,7 +41,7 @@
 -(UITableView *)mySongTableView{
 //    kWeakSelf(self);
     if (!_mySongTableView) {
-        _mySongTableView=[[ZBTableView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT-HEAD_TABBAR_HEIGHT)];
+        _mySongTableView=[[ZBTableView alloc]initWithFrame:CGRectMake(0, 10, SCREEN_WIDTH, SCREEN_HEIGHT-HEAD_TABBAR_HEIGHT)];
         _mySongTableView.backgroundColor=CLEAR_COLOR;
         _mySongTableView.delegate=self;
         _mySongTableView.dataSource=self;

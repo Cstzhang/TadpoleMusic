@@ -30,5 +30,6 @@
 #import "ZBTableView.h"
 #import "UserDefaultTool.h"
 #import "UIControl+AcceptEvent.h"
+#import "ZBNavigationBar.h"
 
 #endif /* Macros_h */

@@ -21,7 +21,6 @@
 @property (weak, nonatomic) IBOutlet UILabel *albumLabel;
 @property (weak, nonatomic) IBOutlet UILabel *artistLabel;
 @property (weak, nonatomic) IBOutlet UIButton *searchButton;
-
 @property (weak, nonatomic) IBOutlet UITableView *hummingSongTabelView;
 
 @end
@@ -74,6 +73,12 @@
     self.hummingSongTabelView.bounces = NO;
     self.hummingSongTabelView.tableFooterView = [UIView new];
     
+    if (@available(iOS 11.0, *)) {
+        self.hummingSongTabelView.contentInsetAdjustmentBehavior = UIApplicationBackgroundFetchIntervalNever;
+    } else {
+        self.automaticallyAdjustsScrollViewInsets = false;
+        // Fallback on earlier versions
+    }
     
 }
 

@@ -66,6 +66,7 @@
 		6DFEC5DB1F433BCE000CB1F8 /* OCGumbo.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DFEC5D71F433BCE000CB1F8 /* OCGumbo.m */; };
 		6DFEC5DC1F433BCE000CB1F8 /* OCGumbo+Query.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DFEC5D91F433BCE000CB1F8 /* OCGumbo+Query.m */; };
 		C301262EFF58C3E061D8450D /* libPods-TadpoleMusic.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CE0DCFCBB95E7EBAA7B4E76B /* libPods-TadpoleMusic.a */; };
+		E01E9EE4202809D0009AC6F1 /* ZBNavigationBar.m in Sources */ = {isa = PBXBuildFile; fileRef = E01E9EE3202809D0009AC6F1 /* ZBNavigationBar.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -186,6 +187,8 @@
 		6DFEC5D91F433BCE000CB1F8 /* OCGumbo+Query.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "OCGumbo+Query.m"; sourceTree = "<group>"; };
 		709DFB86E9835E018CE23D66 /* Pods-TadpoleMusic.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TadpoleMusic.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TadpoleMusic/Pods-TadpoleMusic.debug.xcconfig"; sourceTree = "<group>"; };
 		CE0DCFCBB95E7EBAA7B4E76B /* libPods-TadpoleMusic.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-TadpoleMusic.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		E01E9EE2202809D0009AC6F1 /* ZBNavigationBar.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZBNavigationBar.h; sourceTree = "<group>"; };
+		E01E9EE3202809D0009AC6F1 /* ZBNavigationBar.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZBNavigationBar.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -474,6 +477,8 @@
 				6DEFC76C1F3DEAD300E45603 /* ACRCloud */,
 				6DA3170B1F3C5BE200593A0E /* CircleRipple */,
 				6DA316FF1F3C3B4100593A0E /* CommonMethods */,
+				E01E9EE2202809D0009AC6F1 /* ZBNavigationBar.h */,
+				E01E9EE3202809D0009AC6F1 /* ZBNavigationBar.m */,
 			);
 			path = Tools;
 			sourceTree = "<group>";
@@ -662,14 +667,14 @@
 		6DA06F751F341196009086E4 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0830;
+				LastUpgradeCheck = 0920;
 				ORGANIZATIONNAME = zhangzb;
 				TargetAttributes = {
 					6DA06F7C1F341196009086E4 = {
 						CreatedOnToolsVersion = 8.3.3;
-						DevelopmentTeam = BMEW3T3PC5;
+						DevelopmentTeam = RXK44XAJ47;
 						LastSwiftMigration = 0830;
-						ProvisioningStyle = Manual;
+						ProvisioningStyle = Automatic;
 					};
 				};
 			};
@@ -800,6 +805,7 @@
 				6D403DCE1F41EAF500EB3DCB /* SearchHandle.m in Sources */,
 				6DE205121F5463470077C8DF /* HummingSongViewCell.m in Sources */,
 				6D382D7E1F53C8F5000440C4 /* HummingListController.m in Sources */,
+				E01E9EE4202809D0009AC6F1 /* ZBNavigationBar.m in Sources */,
 				6DA317061F3C3E5300593A0E /* UIColor+Addition.m in Sources */,
 				6D7195721F640007008F6E72 /* LazyFadeInView.m in Sources */,
 				6D1D1EB91F4DC71A0048A5EE /* SearchModel.m in Sources */,
@@ -824,7 +830,9 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
@@ -832,7 +840,11 @@
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -873,7 +885,9 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
@@ -881,7 +895,11 @@
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -912,8 +930,9 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
-				DEVELOPMENT_TEAM = BMEW3T3PC5;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = RXK44XAJ47;
 				ENABLE_BITCODE = NO;
 				GCC_PREFIX_HEADER = "${SRCROOT}/TadpoleMusic/Define/Main_pch.pch";
 				INFOPLIST_FILE = TadpoleMusic/Info.plist;
@@ -924,10 +943,10 @@
 					"$(PROJECT_DIR)/TadpoleMusic/Expand/Tools",
 					"$(PROJECT_DIR)/TadpoleMusic/Expand/Tools/gumbo",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.zzb.TadpoleMusic;
+				PRODUCT_BUNDLE_IDENTIFIER = com.zzb.TadpoleMusic123;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "7464e303-c90d-4da0-85aa-652c881cc5e7";
-				PROVISIONING_PROFILE_SPECIFIER = TadpoleMusicProfile;
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "TadpoleMusic/Database/TadpoleMusic-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
@@ -941,8 +960,9 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
-				DEVELOPMENT_TEAM = BMEW3T3PC5;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = RXK44XAJ47;
 				ENABLE_BITCODE = NO;
 				GCC_PREFIX_HEADER = "${SRCROOT}/TadpoleMusic/Define/Main_pch.pch";
 				INFOPLIST_FILE = TadpoleMusic/Info.plist;
@@ -953,10 +973,10 @@
 					"$(PROJECT_DIR)/TadpoleMusic/Expand/Tools",
 					"$(PROJECT_DIR)/TadpoleMusic/Expand/Tools/gumbo",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.zzb.TadpoleMusic;
+				PRODUCT_BUNDLE_IDENTIFIER = com.zzb.TadpoleMusic123;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "7464e303-c90d-4da0-85aa-652c881cc5e7";
-				PROVISIONING_PROFILE_SPECIFIER = TadpoleMusicProfile;
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "TadpoleMusic/Database/TadpoleMusic-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 			};

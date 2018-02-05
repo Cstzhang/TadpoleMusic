@@ -21,7 +21,7 @@
 -(UITableView *)mySongTableView{
     //    kWeakSelf(self);
     if (!_setTableView) {
-        _setTableView=[[UITableView alloc]initWithFrame:CGRectMake(0, 64, SCREEN_WIDTH, SCREEN_HEIGHT-64)];
+        _setTableView=[[UITableView alloc]initWithFrame:CGRectMake(0, 69, SCREEN_WIDTH, SCREEN_HEIGHT-64)];
         _setTableView.backgroundColor=WHITE_COLOR;
         _setTableView.delegate=self;
         _setTableView.dataSource=self;
@@ -38,7 +38,7 @@
     //头部
     UIView *headView = [[UIView alloc]init];
     headView.backgroundColor = [UIColor clearColor];
-    headView.frame = CGRectMake(0, 20, SCREEN_WIDTH, 40);
+    headView.frame = CGRectMake(0, 25, SCREEN_WIDTH, 40);
     [self.view addSubview:headView];
     //返回按钮
     UIButton *leftbtn =[[UIButton alloc]init];
@@ -47,6 +47,17 @@
     [headView addSubview:leftbtn];
     [leftbtn mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(headView.left).offset(15);
+        make.centerY.equalTo(headView.centerY);
+    }];
+    
+    UIButton *leftbtnBack =[[UIButton alloc]init];
+    [leftbtnBack setBackgroundColor:[UIColor clearColor]];
+    [leftbtnBack addTarget:self action:@selector(leftbtnClick) forControlEvents:UIControlEventTouchUpInside];
+    [headView addSubview:leftbtnBack];
+    [leftbtnBack mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo(headView.left).offset(10);
+        make.width.equalTo(60);
+        make.height.equalTo(60);
         make.centerY.equalTo(headView.centerY);
     }];
     
