@@ -509,7 +509,7 @@ typedef NS_ENUM(NSInteger, SearchType){
             else
             {
                 dispatch_async(dispatch_get_main_queue(), ^{
-                    [[[UIAlertView alloc] initWithTitle:@"温馨提示" message:@"请在“设置-隐私-麦克风”选项中允许蝌蚪访问您的麦克风" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil] show];
+                    [[[UIAlertView alloc] initWithTitle:@"温馨提示" message:@"蝌蚪希望使用您的麦克风用于录制音频并进行音乐识别,请在“设置-隐私-麦克风”选项中允许蝌蚪访问您的麦克风" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil] show];
                 });
                  result = NO;
             }
